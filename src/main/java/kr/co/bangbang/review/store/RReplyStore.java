@@ -1,5 +1,5 @@
 package kr.co.bangbang.review.store;
 
-public interface RReplyStroe {
+public interface RReplyStore {
 
 }
