@@ -3,5 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+	<typeAliases>
+		<typeAlias type="kr.co.bangbang.trip.domain.Trip" alias="Trip"/>
+		<typeAlias type="kr.co.bangbang.trip.domain.TReply" alias="TReply"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/trip-mapper.xml"/>
+		<mapper resource="mappers/treply-mapper.xml"/>
+	</mappers>
 </configuration>

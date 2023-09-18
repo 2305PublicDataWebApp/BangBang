@@ -2,3 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TReplyMapper">
+	<resultMap type="TReply" id="TReplyResultMap">
+		<id 	property="tReplyNo" 		column="TREPLY_NO"/>
+		<result property="tTripNo" 			column="TTRIP_NO"/>
+		<result property="tReplyContent" 	column="TREPLY_CONTENT"/>
+		<result property="tRUserId" 		column="TR_USER_ID"/>
+		<result property="tReplyDate" 		column="TREPLY_DATE"/>
+		<result property="tReplyYn" 		column="TREPLY_YN"/>
+		<result property="tRStatusYn" 		column="TR_STATUS_YN"/>
+		<result property="tRAdminId" 		column="TR_ADMIN_ID"/>
+		<result property="tReplyUpdate" 	column="TREPLY_UPDATE"/>
+	</resultMap>
+	
+	<select id="selectTReplyList" resultMap="TReplyResultMap">
+		SELECT * FROM TRIP_REPLY WHERE TTRIP_NO = #{tTripNo } AND TR_STATUS_YN = 'Y'
+	</select>
+</mapper>
