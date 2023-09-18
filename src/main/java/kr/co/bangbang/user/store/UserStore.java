@@ -30,4 +30,12 @@ public interface UserStore {
 	 */
 	User getUserById(SqlSession session, String sessionId);
 
+	/**
+	 * 마이페이지
+	 * @param session
+	 * @param userId
+	 * @return User
+	 */
+	User selectOneById(SqlSession session, String userId);
+
 }

@@ -31,5 +31,10 @@
 	<select id="getUserById" resultMap="userResultMap">
 		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
 	</select>
+	
+	<!-- 마이페이지 -->
+	<select id="selectOneById" resultMap="userResultMap">
+		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
+	</select>
 </mapper>
   

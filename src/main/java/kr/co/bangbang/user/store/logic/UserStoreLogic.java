@@ -30,5 +30,12 @@ public class UserStoreLogic implements UserStore{
 		return user;
 	}
 
+	// 마이페이지
+	@Override
+	public User selectOneById(SqlSession session, String userId) {
+		User user = session.selectOne("UserMapper.selectOneById", userId);
+		return user;
+	}
+
 
 }

@@ -37,4 +37,11 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 
+	// 마이페이지
+	@Override
+	public User selectOneById(String userId) {
+		User user = uStore.selectOneById(session, userId);
+		return user;
+	}
+
 }

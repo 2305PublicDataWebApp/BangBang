@@ -25,4 +25,11 @@ public interface UserService {
 	 */
 	User getUserById(String sessionId);
 
+	/**
+	 * 마이페이지
+	 * @param userId
+	 * @return User
+	 */
+	User selectOneById(String userId);
+
 }

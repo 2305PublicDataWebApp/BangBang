@@ -110,6 +110,30 @@ public class UserController {
 		return mv;
 	}
 	
+	// 마이페이지 이동
+	@RequestMapping(value="mypage.do", method=RequestMethod.POST)
+	public ModelAndView selectOneById(
+			ModelAndView mv
+			, @RequestParam("userId") String userId) {
+		try {
+			User user = uService.selectOneById(userId);
+			if(user != null) {
+				mv.addObject("user", user);
+				mv.setViewName("user/mypage");
+			} else {
+				mv.addObject("msg", "정보 조회에 실패하였습니다.");
+				mv.addObject("url", "redirect:/index.jsp");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "서비스 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "redirect:/index.jsp");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
 	// 개인 정보 조회 페이지 이동
 	@RequestMapping(value="info.do", method=RequestMethod.POST)
 	public ModelAndView showUserInfo(
@@ -178,13 +202,6 @@ public class UserController {
 	@RequestMapping(value="my_reply.do", method=RequestMethod.GET)
 	public ModelAndView showMyReply(ModelAndView mv) {
 		mv.setViewName("user/my_reply");
-		return mv;
-	}
-	
-	// 마이페이지 이동
-	@RequestMapping(value="mypage.do", method=RequestMethod.GET)
-	public ModelAndView showMypage(ModelAndView mv) {
-		mv.setViewName("user/mypage");
 		return mv;
 	}
 	
