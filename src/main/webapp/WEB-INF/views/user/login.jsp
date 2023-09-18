@@ -6,8 +6,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>로그인</title>
-		<link rel="stylesheet" href="../resources/css/login1.css">
-		<link rel="stylesheet" href="../resources/css/reset1.css">
+		<link rel="stylesheet" href="/resources/css/user/login.css">
+		<link rel="stylesheet" href="/resources/css/reset.css">
 		
     </head>
 	<body>
@@ -15,7 +15,7 @@
         <main class="mid-container">
             <!-- 상단 텍스트 -->
             <div class="introduce">
-                <img src="/resources/images/logo.png" width="50px"><br><br>
+                <img src="/resources/images/user/logo.png" width="50px"><br><br>
                 <h2>방방곡곡 발도장에 오신것을 환영합니다.</h2>
                 <small>방방곡곡 발도장은 국내 여행 정보를 제공해드리는 지식공유 플랫폼입니다.</small>
             </div>

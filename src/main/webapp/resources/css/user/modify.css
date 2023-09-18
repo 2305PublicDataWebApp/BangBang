@@ -1,0 +1,434 @@
+/* 배경 이미지 */
+main {
+    background-image: url('./images/back-img2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    /* background-color: rgb(249, 246, 243); */
+    /* background: linear-gradient(#fffacd, #e3bcbc); */
+    background: lightgray;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    position: relative;
+    background: white;
+    color: black;
+    background-color: white;
+    width: 1130px;
+    max-width: 1130px;
+    margin : 0 auto;
+    height: 1550px;
+    padding: 100px 20px;
+    font-family: sans-serif;
+    /* background: linear-gradient(to right,#80C49D -90%, white); */
+}
+
+/* 마이페이지 텍스트 */
+.menu-mypage {
+    width: 100px;
+    float: left;
+}
+
+/* 프로필 */
+.profile-box {
+    width : 340px;
+    height: 600px;
+    /* border : 1px solid black; */
+    float: left;
+}
+
+.profile {
+    position: fixed;
+    width : 340px;
+    height: 450px;
+    background : #022c6c;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    
+}
+
+.mypage-profile {
+    position: relative;
+    top : 70px;
+    left: 70px;
+    border : 2px solid black;
+    border-radius: 50%;
+    width:100px;
+    height: 100px;
+    margin: 30px 50px;
+    float: left;
+}
+
+.mypage-profile-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.mypage-profile-text {
+    position: relative;
+    top: 210px;
+    right: 100px;
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: white
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.profile-img-change {
+    position: relative;
+    color: white;
+    top: 210px;
+    width: 160px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* 마이페이지 메뉴 */
+.menu-mypage {
+    position: relative;
+    left: 50px;
+    /* border : 1px solid black; */
+    width : 700px;
+    height: 450px;
+    padding : 20px 20px;
+    float: left;
+}
+
+.menu-box {
+    border : 1px solid #ccc;
+    width: 660px;
+    height: 330px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+}
+
+.menu-box-text {
+    color: black;
+    font-size: 1.5em;
+    /* padding : 20px 0; */
+}
+
+.menu-box-top {
+    padding: 50px;
+}
+
+.menu-box-bottom {
+    padding: 30px 50px;
+}
+
+.menu-box hr {
+    width: 500px;
+}
+
+.menu-info {
+    float: left;
+    padding : 0 100px 0 140px;
+}
+.menu-info-board {
+    float: left;
+    padding : 0 70px 0 75px;
+}
+
+.menu-info-comment {
+    float: left;
+    padding : 0 70px 0 0;
+}
+
+.menu-icon {
+    position: relative;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+    /* padding-left: ; */
+}
+
+#info-text {
+    position: relative;
+    right: 25px;
+}
+
+#modify-text {
+    position: relative;
+    right: 25px;
+}
+
+#my-board {
+    position: relative;
+    right: 25px;
+}
+
+#my-reply {
+    position: relative;
+    right: 25px;
+}
+
+#info-remove {
+    position: relative;
+    right: 5px;
+}
+
+/* 개인 정보 조회 */
+.info {
+    position: relative;
+    /* border : 1px solid black; */
+    height: 500px;
+    padding : 30px 60px;
+}
+
+.info-detail {
+    padding: 20px;
+}
+
+.info-id {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-id-detail {
+    position: relative;
+    left: 100px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-pw {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-pw-detail {
+    position: relative;
+    left: 80px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-pwRe {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-pwRe-detail {
+    position: relative;
+    left: 35px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-name {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-name-detail {
+    position: relative;
+    left: 120px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-nickname {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-nickname-detail {
+    position: relative;
+    left: 100px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-email {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-email-detail {
+    position: relative;
+    left: 100px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-phone {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-phone-detail {
+    position: relative;
+    left: 100px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;
+}
+
+.info-birth {
+    font-size : 20px;
+    width: 100px;
+}
+
+.info-birth-detail {
+    position: relative;
+    left: 80px;
+    width: 220px;
+    height: 30px;
+    font-size : 20px;   
+}
+
+/* ********************** 닉네임 중복확인 버튼**********************  */
+.info-detail {
+    position: relative;
+}
+
+.btn-nickname.mini{
+    padding: 4px 12px;  
+    font-size: 12px;
+}
+
+.btn-nickname {
+    position: absolute;
+    right : 40px;
+    text-decoration: none;
+    color: #435334;
+    padding: 10px 30px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+.btn-nickname.yellow {
+    background: linear-gradient(rgba(240,210,100,1) 800%, rgba(229,201,96,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
+}
+
+/* ********************** 이메일 중복확인 버튼**********************  */
+.btn-email.mini{
+    padding: 4px 12px;  
+    font-size: 12px;
+}
+
+/* Gradient buttons */
+.btn-email {
+    position: absolute;
+    right : 40px;
+    text-decoration: none;
+    color: #435334;
+    padding: 10px 30px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+.btn-email.yellow {
+    background: linear-gradient(rgba(240,210,100,1) 80%, rgba(229,201,96,1) 100%);
+}
+
+.btn-addr.yellow:active {background: #DBC05B;}
+
+/* ********************** 수정 버튼**********************  */
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #eaedf1;
+    font-family: 'Lato', sans-serif;
+}
+
+.header {
+    background: white;
+    padding: 30px;
+    text-align: center;
+}
+
+
+.color .red {
+    background: #fa5a5a;
+}
+
+.content-3d {
+    margin: 40px auto;
+}
+
+/* value */
+/* 위치조정 */
+.btn-container{
+    width: 210px;
+    border-radius: 4px;
+    text-align: center;
+    margin : 0 auto;
+    /* margin-bottom: 40px; */
+}
+
+input[class*="btn"]{
+    border: 0;
+    width: 120px;
+}
+
+/* 3D Button */
+.btn-3d {
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    padding: 7px 30px;
+    color: white;
+    margin: 20px 10px 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+
+.btn-3d:active {
+    top: 9px;
+}
+
+/* 3D button colors */
+.btn-3d.red {
+    background-color: #e74c3c;
+    box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+        0 8px 0 0 #C24032,
+        0 8px 0 1px rgba(0, 0, 0, 0.4),
+        0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* 3D button active */
+.btn-3d.red:active {
+    box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}

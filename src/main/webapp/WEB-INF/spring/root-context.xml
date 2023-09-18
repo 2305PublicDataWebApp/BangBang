@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<!-- 값이나 의존성 주입 -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" 			 value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:XE"></property>
-		<property name="username"		 value="BANGBANG_ACC"></property>
+		<property name="url" 			 value="jdbc:log4jdbc:oracle:thin:@jmento.iptime.org:8922:XE"></property>
+		<property name="username"		 value="BANGBANG"></property>
 		<property name="password" 		 value="BANGBANG"></property>
 	</bean>
 	

@@ -1,0 +1,198 @@
+/* 배경 이미지 */
+main {
+    background-image: url('./images/back-img2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    /* background-color: rgb(249, 246, 243); */
+    /* background: linear-gradient(#fffacd, #e3bcbc); */
+    background: lightgray;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    position: relative;
+    background: white;
+    color: black;
+    background-color: white;
+    width: 1130px;
+    max-width: 1130px;
+    margin : 0 auto;
+    height: 1200px;
+    padding: 100px 20px;
+    font-family: sans-serif;
+    /* background: linear-gradient(to right,#80C49D -90%, white); */
+}
+
+/* 마이페이지 텍스트 */
+.menu-mypage {
+    width: 100px;
+    float: left;
+}
+
+/* 프로필 */
+.profile-box {
+    width : 340px;
+    height: 600px;
+    /* border : 1px solid black; */
+    float: left;
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.profile {
+    position: fixed;
+    width : 340px;
+    height: 450px;
+    background : #022c6c;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    
+}
+
+.mypage-profile {
+    position: relative;
+    top : 70px;
+    left: 70px;
+    border : 2px solid black;
+    border-radius: 50%;
+    width:100px;
+    height: 100px;
+    margin: 30px 50px;
+    float: left;
+}
+
+.mypage-profile-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.mypage-profile-text {
+    position: relative;
+    top: 210px;
+    right: 100px;
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: white
+}
+
+.profile-img-change {
+    position: relative;
+    color : white;
+    top: 210px;
+    width: 160px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* 마이페이지 메뉴 */
+.menu-mypage {
+    position: relative;
+    left: 50px;
+    /* border : 1px solid black; */
+    width : 700px;
+    height: 450px;
+    padding : 20px 20px;
+    float: left;
+}
+
+.menu-box {
+    border : 1px solid #ccc;
+    width: 660px;
+    height: 330px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+}
+
+.menu-box-text {
+    color: black;
+    font-size: 1.5em;
+    /* padding : 20px 0; */
+}
+
+.menu-box-top {
+    padding: 50px;
+}
+
+.menu-box-bottom {
+    padding: 30px 50px;
+}
+
+.menu-box hr {
+    width: 500px;
+}
+
+.menu-info {
+    float: left;
+    padding : 0 100px 0 140px;
+}
+.menu-info-board {
+    float: left;
+    padding : 0 70px 0 75px;
+}
+
+.menu-info-comment {
+    float: left;
+    padding : 0 70px 0 0;
+}
+
+.menu-icon {
+    position: relative;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+    /* padding-left: ; */
+}
+
+#info-text {
+    position: relative;
+    right: 25px;
+}
+
+#modify-text {
+    position: relative;
+    right: 25px;
+}
+
+#my-board {
+    position: relative;
+    right: 25px;
+}
+
+#my-reply {
+    position: relative;
+    right: 25px;
+}
+
+#info-remove {
+    position: relative;
+    right: 5px;
+}
+
+/* ****************** 게시판 ****************** */
+table {
+    border: 1px solid black;
+    width: 660px;
+    /* margin: 0 30px; */
+}
+
+th, tr, td {
+    border: 1px solid black;
+}
+
+.pageing {
+    width: 650px;
+    text-align: center;
+}
