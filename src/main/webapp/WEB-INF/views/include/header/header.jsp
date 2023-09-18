@@ -1,22 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header>
     <nav>
         <!-- 로고 -->
         <div class="logo">
-            방방곡곡 발도장
-            <img class="logo-img" width="35px" src="/resources/images/logo.png" alt="로고">
+        	<a href="/index.jsp">
+	            <span class="logo-text">방방곡곡 발도장</span> <img class="logo-img" width="35px" src="/resources/images/logo.png" alt="로고">
+            </a>
         </div>
 
         <i class="fa fa-bars"></i>
 
         <!-- 네비게이션 -->
         <ul class="navBar">
-            <li class="tab">여행지</li>
-            <li class="tab">매거진</li>
-            <li class="tab">공지사항</li>
-            <a href="#"><img class="login-img" src="/resources/images/user/login.png" alt="로그인"></a>
+            <a href="#"><li class="tab">여행지</li></a>
+            <a href="#"><li class="tab">매거진</li></a>
+            <a href="#"><li class="tab">공지사항</li></a>
+            
+            <!-- 로그인 세션 없을 경우 -->
+            <c:if test="${ userId eq null }">
+	            <a href="WEB-INF/views/user/login.do">
+	            	<img class="login-img" src="/resources/images/user/login.png" alt="로그인">
+	            </a>
+            </c:if>
+            
+            <!-- 로그인 세션 저장되어 있을 경우 -->
+            <c:if test="${ userId ne null }">
+	            <a href="WEB-INF/views/user/login.do">
+	            	<img class="login-img" src="/resources/images/user/mypage.png" alt="마이페이지">
+	            </a>
+            </c:if> 
         </ul>
 
     </nav>

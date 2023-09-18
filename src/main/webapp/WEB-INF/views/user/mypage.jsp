@@ -28,18 +28,38 @@
 	            <!-- *****마이페이지 ***** 프로필 -->
 	            <div class="profile-box">
 	                <div class="profile">
+	                
+	                	<!-- 로그아웃 -->
+	                	<a class="user-logout" href="/user/logout.do?userId=${ userId }">로그아웃</a>
+	                
+	                	<!-- 프로필 사진 등록 전 -->
+	                	<c:if test="${ profileImgRename eq null }">
+	                		<div class="mypage-profile">
+	                			<img class="mypage-profile-img" src="/resources/images/logo.png" alt="로고">
+	                		</div>
+	                	</c:if>
+	                
 	                    <!-- 프로필 사진 -->
-	                    <div class="mypage-profile">
-	                        <img class="mypage-profile-img" src="/resources/images/user/profile_1.jpg" alt="프로필">
-	                    </div>
-	
+	                    <c:if test="${ profileImgRename ne null }">
+		                    <div class="mypage-profile">
+		                    	<img class="mypage-profile-img" src="/resources/puploadFiles/${ profile.profileImgRename }" alt="프로필 이미지">
+	<!-- 	                        <img class="mypage-profile-img" src="/resources/images/user/profile_1.jpg" alt="프로필"> -->
+		                    </div>
+	                    </c:if>
+						
 	                    <!-- 프로필 텍스트 -->
-	                    <div class="mypage-profile-area">
-	                        <span class="mypage-profile-text">환영합니다!</span><br><br>
-	                        <span class="mypage-profile-text">${ user.userNickname }님</span>
-	                        <!-- 프로플 변경 버튼 -->
-	                        <button class="profile-img-change">프로필 이미지 설정 ></button>
-	                    </div>
+	                    <form action="/profile/upload.do" method="post" enctype="multipart/form-data">
+	                    <input type="hidden" name="pUserId" value="${ pUserId }">
+		                    <div class="mypage-profile-area">
+		                        <span class="mypage-profile-text">환영합니다!</span><br><br>
+		                        <span class="mypage-profile-text">${ user.userNickname }님</span>
+		                        <!-- 프로필 변경 버튼 -->
+	<!-- 	                        <button class="profile-img-change">프로필 이미지 설정 ></button> -->
+	<!-- 	                        <input type="file" name="uploadFile" value="프로필 이미지 설정"> -->
+									<input type="file" id="profile-image" name="" accept="image/*" style="display: none;">
+	    							<label for="profile-image" class="profile-img-change">프로필 이미지 설정 ></label>
+		                    </div>
+	                    </form>
 	                </div>
 	            </div>
 	
@@ -92,6 +112,20 @@
 		<jsp:include page="/WEB-INF/views/include/footer/footer.jsp"></jsp:include>
 	
 	    <!-- js -->
+	    <!-- 프로필 이미지 변경 버튼 -->
+		<script>
+// 		    document.getElementById('profile-image').addEventListener('change', function(event) {
+// 		        const fileInput = event.target;
+// 		        const selectedFile = fileInput.files[0];
+		
+// 		        if (selectedFile) {
+// 		            // 선택한 파일을 업로드하거나 다른 처리를 수행할 수 있습니다.
+// 		            // 이곳에서 선택한 파일(selectedFile)을 서버로 업로드하는 등의 작업을 수행합니다.
+// 		            // 예를 들어, Ajax 요청을 사용하여 서버에 파일을 업로드할 수 있습니다.
+// 		        }
+// 		    });
+		</script>
+	    
 	    <!-- 헤더 랜덤 이벤트 효과 -->
 	    <script>
 	        let header = document.querySelector('header');

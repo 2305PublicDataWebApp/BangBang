@@ -48,6 +48,15 @@ button {
     cursor: pointer;
 }
 
+/* 로그아웃 */
+.user-logout {
+	position: relative;
+	top: 15px;
+	left: 10px;
+	color: white;
+	font-weight: border;
+}
+
 .profile {
     position: fixed;
     width : 340px;
@@ -61,7 +70,7 @@ button {
 
 .mypage-profile {
     position: relative;
-    top : 70px;
+    top : 60px;
     left: 70px;
     border : 2px solid black;
     border-radius: 50%;
@@ -80,8 +89,10 @@ button {
 
 .mypage-profile-text {
     position: relative;
-    top: 210px;
-    right: 100px;
+    display: block;
+    width: 160px;
+    top: 55px;
+    left: 90px;
     font-size: 1.3em;
     font-weight: bolder;
     color: white
@@ -89,11 +100,17 @@ button {
 
 .profile-img-change {
     position: relative;
+    display : block;
     color : white;
-    top: 210px;
+    top: 120px;
+    left: 90px;
     width: 160px;
     height: 25px;
     cursor: pointer;
+}
+
+.profile-image  {
+	position: absolute;
 }
 
 /* 마이페이지 메뉴 */

@@ -88,6 +88,22 @@ public class UserController {
 		return mv;
 	}
 	
+	// 로그아웃
+	@RequestMapping(value="logout.do", method=RequestMethod.GET)
+	public ModelAndView userLogout(
+			ModelAndView mv
+			, HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+			mv.setViewName("redirect:/index.jsp");
+		} else {
+			mv.addObject("msg", "로그아웃에 실패하였습니다.");
+			mv.addObject("url", "/index.jsp");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
 	// 로그인 페이지 이동
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public ModelAndView showLoginFrom(ModelAndView mv) {
