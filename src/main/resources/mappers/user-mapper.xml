@@ -26,5 +26,10 @@
 	<select id="userLoginCheck" resultMap="userResultMap">
 		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_PW = #{ userPw } AND USER_YN = 'Y'
 	</select>
+	
+	<!-- 개인 정보 조회 -->
+	<select id="getUserById" resultMap="userResultMap">
+		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
+	</select>
 </mapper>
   

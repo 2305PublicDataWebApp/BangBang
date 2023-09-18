@@ -23,4 +23,12 @@ public class UserStoreLogic implements UserStore{
 		return uOne;
 	}
 
+	// 개인 정보 조회
+	@Override
+	public User getUserById(SqlSession session, String sessionId) {
+		User user = session.selectOne("UserMapper.getUserById", sessionId);
+		return user;
+	}
+
+
 }

@@ -111,9 +111,31 @@ public class UserController {
 	}
 	
 	// 개인 정보 조회 페이지 이동
-	@RequestMapping(value="info.do", method=RequestMethod.GET)
-	public ModelAndView showUserInfo(ModelAndView mv) {
-		mv.setViewName("user/info");
+	@RequestMapping(value="info.do", method=RequestMethod.POST)
+	public ModelAndView showUserInfo(
+			ModelAndView mv
+			, @RequestParam("userId") String userId
+			, HttpSession session) {
+		try {
+			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			User user = null;
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				user = uService.getUserById(sessionId);
+			}
+			if(user != null) { // 성공 시
+				mv.addObject("user", user);
+				mv.setViewName("user/info");
+			} else { // 실패 시
+				mv.addObject("msg", "정보 조회에 실패하였습니다.");
+				mv.addObject("url", "redirect:/index.jsp");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "서비스 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "redirect:/index.jsp");
+			mv.setViewName("common/error_page");
+		}
 		return mv;
 	}
 	

@@ -18,4 +18,11 @@ public interface UserService {
 	 */
 	User userLoginCheck(User user);
 
+	/**
+	 * 개인 정보 조회
+	 * @param sessionId
+	 * @return User
+	 */
+	User getUserById(String sessionId);
+
 }

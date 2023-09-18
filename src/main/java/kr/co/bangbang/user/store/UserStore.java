@@ -22,4 +22,12 @@ public interface UserStore {
 	 */
 	User userLoginCheck(SqlSession session, User user);
 
+	/**
+	 * 개인 정보 조회
+	 * @param session
+	 * @param user
+	 * @return User
+	 */
+	User getUserById(SqlSession session, String sessionId);
+
 }

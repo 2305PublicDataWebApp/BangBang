@@ -30,4 +30,11 @@ public class UserServiceImpl implements UserService{
 		return uOne;
 	}
 
+	// 개인 정보 조회
+	@Override
+	public User getUserById(String sessionId) {
+		User user = uStore.getUserById(session, sessionId);
+		return user;
+	}
+
 }
