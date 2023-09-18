@@ -4,7 +4,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>배너 리스트</title>
+	<title>회원검색</title>
 	</head>
 	<body>
 	

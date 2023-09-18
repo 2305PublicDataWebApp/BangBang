@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="BannerMapper">
+  
+  <resultMap type="Banner" id="BannerResultMap">
+		<id property="bannerNo"             	column="BANNER_NO" />
+		<result property="bannerName" 	    	column="BANNER_NAME" />
+		<result property="bannerArea"    		column="BANNER_AREA" />
+		<result property="bannerSize"     		column="BANNER_SIZE" />
+		<result property="bannerFileName"   	column="BANNER_FILENAME" />
+		<result property="bannerFilePath" 		column="BANNER_FILEPATH" />
+		<result property="bannerFileLength"   	column="BANNER_FILELENTH" />
+		<result property="linkUrl" 				column="LINK_URL" />
+		<result property="bStatusYn" 	 		column="B_STATUS_YN" />
+		<result property="bAdminId" 	  		column="B_ADMIN_ID" />
+	</resultMap>
+  
+  <insert id="insertBanner">
+  	INSERT INTO BANNER VALUES(SEQ_BANNER_NO.NEXTVAL, #{bannerName }, #{bannerArea }, 
+  	#{bannerSize }, #{bannerFileName }, #{bannerFilePath }, #{bannerFileLength }, 
+  	#{linkUrl }, DEFAULT, #{bAdminId })
+  </insert>
+  
+  
+  	<select id="selectListCount" resultType="_int">
+		SELECT COUNT (*) FROM BANNER WHERE B_STATUS_YN = 'Y'
+	</select>
+	
+	<select id="selectBannerList" resultMap="BannerResultMap">
+		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' ORDER BY BANNER_NO DESC
+	</select>
+  	
+  
+  
+  </mapper>

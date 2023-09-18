@@ -3,19 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-<!-- 	<settings> -->
-<!-- 		<setting name="jdbcTypeForNull" value="Null"/> -->
-<!-- 	</settings> -->
-
 	<typeAliases>
 		<typeAlias type="kr.co.bangbang.user.domain.User" alias="User"/>
 		<typeAlias type="kr.co.bangbang.admin.domain.Admin" alias="Admin"/>
+	  	<typeAlias type="kr.co.bangbang.banner.domain.Banner" alias="Banner"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappers/user-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
+	  	<mapper resource="mappers/banner-mapper.xml"/>
 	</mappers>
-	
 </configuration>
