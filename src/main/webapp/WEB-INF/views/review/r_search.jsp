@@ -4,9 +4,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>후기게시판 검색</title>
 	</head>
 	<body>
-	
+		<header>header</header>
+		
+		<div class="container">
+			<div class="banner">배너</div>
+			<div class="main"></div>
+		</div>
+		
+		<footer>footer</footer>
 	</body>
 </html>

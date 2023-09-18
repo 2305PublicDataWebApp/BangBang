@@ -9,6 +9,7 @@
 	  	<typeAlias type="kr.co.bangbang.banner.domain.Banner" alias="Banner"/>
 		<typeAlias type="kr.co.bangbang.trip.domain.Trip" alias="Trip"/>
 		<typeAlias type="kr.co.bangbang.trip.domain.TReply" alias="TReply"/>
+		<typeAlias type="kr.co.bangbang.notice.domain.Notice" alias="Notice"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/user-mapper.xml"/>
@@ -16,5 +17,6 @@
 	  	<mapper resource="mappers/banner-mapper.xml"/>
 		<mapper resource="mappers/trip-mapper.xml"/>
 		<mapper resource="mappers/treply-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
 	</mappers>
 </configuration>

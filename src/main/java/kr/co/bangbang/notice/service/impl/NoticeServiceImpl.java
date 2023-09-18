@@ -24,28 +24,23 @@ public class NoticeServiceImpl implements NoticeService{
 		return result;
 	}
 	@Override
-	public int getNListCount() {
-		int result = nStore.selectNListCount(sqlSession);
-		return result;
-	}
-	@Override
-	public List<Notice> selectNoticeList(NPageInfo nInfo) {
-		List<Notice> nList = nStore.selectNoticeList(sqlSession, nInfo);
-		return nList;
-	}
-	@Override
-	public Notice selectNoticeByNo(Integer noticeNo) {
-		Notice notice = nStore.selectNoticeByNo(sqlSession, noticeNo);
-		return notice;
-	}
-	@Override
 	public int modifyNotice(Notice notice) {
 		int result = nStore.modifyNotice(sqlSession, notice);
 		return result;
 	}
 	@Override
-	public int deleteNotice(Notice notice) {
-		int result = nStore.deleteNotice(sqlSession, notice);
+	public int getNListCount() {
+		int result = nStore.selectNListCount(sqlSession);
 		return result;
+	}
+	@Override
+	public Notice selectNoticeByNo(Integer noticeNo) {
+		Notice noticeOne = nStore.selectNoticeByNo(sqlSession, noticeNo);
+		return noticeOne;
+	}
+	@Override
+	public List<Notice> selectNoticeList(NPageInfo nInfo) {
+		List<Notice> nList = nStore.selectNoticeList(sqlSession, nInfo);
+		return nList;
 	}
 }
