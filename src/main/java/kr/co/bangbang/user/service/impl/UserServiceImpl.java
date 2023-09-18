@@ -16,11 +16,18 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private SqlSession session;
 
-	// 회원가입
+	// 회원 회원가입
 	@Override
 	public int userRegister(User user) {
 		int result = uStore.userRegister(session, user);
 		return result;
+	}
+
+	// 회원 로그인
+	@Override
+	public User userLoginCheck(User user) {
+		User uOne = uStore.userLoginCheck(session, user);
+		return uOne;
 	}
 
 }

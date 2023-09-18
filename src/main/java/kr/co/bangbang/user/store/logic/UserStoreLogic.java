@@ -9,11 +9,18 @@ import kr.co.bangbang.user.store.UserStore;
 @Repository
 public class UserStoreLogic implements UserStore{
 
-	// 회원가입
+	// 회원 회원가입
 	@Override
 	public int userRegister(SqlSession session, User user) {
 		int result = session.insert("UserMapper.userRegister", user);
 		return result;
+	}
+
+	// 회원 로그인
+	@Override
+	public User userLoginCheck(SqlSession session, User user) {
+		User uOne = session.selectOne("UserMapper.userLoginCheck", user);
+		return uOne;
 	}
 
 }

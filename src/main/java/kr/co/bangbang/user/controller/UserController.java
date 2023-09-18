@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +25,7 @@ public class UserController {
 	@Autowired
 	private UserService uService;
 	
-	// 회원가입
+	// 회원가입 구현
 	@RequestMapping(value="join.do", method=RequestMethod.POST)
 	public ModelAndView userRegister(
 			ModelAndView mv
@@ -46,15 +48,41 @@ public class UserController {
 			int result = uService.userRegister(user);
 			if(result > 0) {
 				mv.setViewName("user/login"); // 성공 시 로그인 페이지
-			} else {
+			} else {  // 실패
 				mv.addObject("msg", "회원가입에 실패하였습니다.");
 				mv.addObject("url", "/user/join.do");
 				mv.setViewName("common/error_page");
 			}
-		} catch (Exception e) {
+		} catch (Exception e) { // 예외처리
 			mv.addObject("msg", "회원가입 실패");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/user/join.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	// 로그인 구현
+	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	public ModelAndView userLogin(
+			ModelAndView mv
+			, @ModelAttribute User user
+			, HttpSession session) {
+		try {
+			User uOne = uService.userLoginCheck(user);
+			if(uOne != null) {	// 성공 시 아이디, 비밀번호 세션에 저장
+				session.setAttribute("userId", uOne.getUserId());
+				session.setAttribute("userPw", uOne.getUserPw());
+				mv.setViewName("redirect:/index.jsp");
+			} else { // 실패
+				mv.addObject("msg", "로그인에 실패하였습니다.");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "회원가입 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/user/login.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;

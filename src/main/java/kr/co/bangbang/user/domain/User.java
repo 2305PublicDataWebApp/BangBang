@@ -15,7 +15,7 @@ public class User {
 	private String userEmail;
 	private String userPhone;
 	private Date userBirth;
-	private TIMESTAMP userRegDate;
+	private Date userRegDate;
 	private String userYn;
 	
 	// 기본 생성자
@@ -88,10 +88,10 @@ public class User {
 	public void setUserBirth(Date userBirth) {
 		this.userBirth = userBirth;
 	}
-	public TIMESTAMP getUserRegDate() {
+	public Date getUserRegDate() {
 		return userRegDate;
 	}
-	public void setUserRegDate(TIMESTAMP userRegDate) {
+	public void setUserRegDate(Date userRegDate) {
 		this.userRegDate = userRegDate;
 	}
 	public String getUserYn() {
