@@ -1,12 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 	<head>
-		<title>Home</title>
+		<title>방방곡곡 발도장</title>
 	</head>
 	<body>
-		<script>
-			const url = window.location.href="WEB-INF/views/home.jsp";
-		</script>
+		<jsp:forward page="WEB-INF/views/home.jsp"></jsp:forward>
 	</body>
 </html>
