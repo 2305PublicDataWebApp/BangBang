@@ -13,6 +13,20 @@ public class NPageInfo {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public NPageInfo(int nCurrentPage, int nTotalCount, int nNaviTotalCount, int nRecordCountPerPage,
+			int nNaviCountPerPage, int nStartNavi, int nEndNavi) {
+		super();
+		this.nCurrentPage = nCurrentPage;
+		this.nTotalCount = nTotalCount;
+		this.nNaviTotalCount = nNaviTotalCount;
+		this.nRecordCountPerPage = nRecordCountPerPage;
+		this.nNaviCountPerPage = nNaviCountPerPage;
+		this.nStartNavi = nStartNavi;
+		this.nEndNavi = nEndNavi;
+	}
+
+
 	public int getnCurrentPage() {
 		return nCurrentPage;
 	}
