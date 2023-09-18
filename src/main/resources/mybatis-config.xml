@@ -7,11 +7,14 @@
 		<typeAlias type="kr.co.bangbang.user.domain.User" alias="User"/>
 		<typeAlias type="kr.co.bangbang.admin.domain.Admin" alias="Admin"/>
 	  	<typeAlias type="kr.co.bangbang.banner.domain.Banner" alias="Banner"/>
+		<typeAlias type="kr.co.bangbang.trip.domain.Trip" alias="Trip"/>
+		<typeAlias type="kr.co.bangbang.trip.domain.TReply" alias="TReply"/>
 	</typeAliases>
-	
 	<mappers>
 		<mapper resource="mappers/user-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
 	  	<mapper resource="mappers/banner-mapper.xml"/>
+		<mapper resource="mappers/trip-mapper.xml"/>
+		<mapper resource="mappers/treply-mapper.xml"/>
 	</mappers>
 </configuration>

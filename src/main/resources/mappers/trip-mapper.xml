@@ -2,3 +2,83 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TripMapper">
+	<resultMap type="Trip" id="tripResultMap">
+		<id 	property="tripNo" 		column="TRIP_NO"/>
+		<result property="tripType" 	column="TRIP_TYPE"/>
+		<result property="tripTitle" 	column="TRIP_TITLE"/>
+		<result property="tripAddr" 	column="TRIP_ADDR"/>
+		<result property="tripSummary" 	column="TRIP_SUMMARY"/>
+		<result property="tripContent" 	column="TRIP_CONTENT"/>
+		<result property="tripInfoAddr" column="TRIP_INFO_ADDR"/>
+		<result property="tripHomePage" column="TRIP_HOMEPAGE"/>
+		<result property="tripTime" 	column="TRIP_TIME"/>
+		<result property="tripPrice" 	column="TRIP_PRICE"/>
+		<result property="viewCount" 	column="VIEW_COUNT"/>
+		<result property="tStatusYn" 	column="T_STATUS_YN"/>
+		<result property="tAdminId" 	column="T_ADMIN_ID"/>
+		<result property="tripDate" 	column="TRIP_DATE"/>
+	</resultMap>
+	
+	<insert id="insertTrip">
+		INSERT INTO TRIP_BOARD VALUES(SEQ_TRIP_NO.NEXTVAL, #{tripType }, #{tripTitle }, #{tripAddr }, #{tripSummary }, #{tripContent }, #{tripInfoAddr }, #{tripHomePage }, #{tripTime }, #{tripPrice }, #{viewCount }, DEFAULT, #{tAdminId }, DEFAULT )
+	</insert>
+	
+	<update id="updateTrip">
+		UPDATE TRIP_BOARD SET TRIP_TYPE = #{tripType }, TRIP_TITLE = #{tripTitle }, TRIP_ADDR = #{tripAddr }, TRIP_SUMMARY = #{tripSummary }, TRIP_CONTENT = #{tripContent }, TRIP_INFO_ADDR = #{tripInfoAddr }, TRIP_HOMEPAGE = #{tripHomePage }, TRIP_TIME = #{tripTime }, TRIP_PRICE = #{tripPrice } WHERE TRIP_NO = #{tripNo}
+	</update>
+	
+	<update id="deleteTrip">
+		UPDATE TRIP_BOARD SET T_STATUS_YN = 'N' WHERE TRIP_NO = #{tripNo} AND T_ADMIN_ID = #{tAdminId}
+	</update>
+	
+	<select id="selectTripList" resultMap="tripResultMap">
+		SELECT * FROM TRIP_BOARD
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM TRIP_BOARD
+	</select>
+	
+	<select id="selectTripByNo" resultMap="tripResultMap">
+		SELECT * FROM TRIP_BOARD WHERE TRIP_NO = #{tripNo} AND T_STATUS_YN = 'Y'
+	</select>
+	
+	<select id="selectListByKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM TRIP_BOARD
+		<if test="searchCondition == 'all'">
+			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'trip'">
+			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'festival'">
+			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'content'">
+			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'by-member'">
+			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+	</select>
+	
+	<select id="selectTripsByKeyword" resultMap="tripResultMap">
+		SELECT * FROM TRIP_BOARD
+		<if test="searchCondition == 'all'">
+			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'trip'">
+			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'festival'">
+			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'content'">
+			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+		<if test="searchCondition == 'by-member'">
+			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if> 
+	</select>
+</mapper>
