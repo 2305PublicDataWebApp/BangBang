@@ -32,4 +32,12 @@ public interface BannerStore {
 	 */
 	List<Banner> selectBannerList(SqlSession session, BPageInfo bInfo);
 
+	/**
+	 * 배너삭제
+	 * @param session
+	 * @param string
+	 * @return
+	 */
+	int delete(SqlSession session, String string);
+
 }

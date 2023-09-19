@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,12 +27,13 @@ import kr.co.bangbang.banner.domain.Banner;
 import kr.co.bangbang.banner.service.BannerService;
 
 @Controller
+@RequestMapping(value="/banner/")
 public class BannerController {
 	
 	@Autowired
 	private BannerService bService;
 	
-	@RequestMapping(value = "/banner/insert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "insert.do", method = RequestMethod.GET)
 	public ModelAndView bannerInsertForm(
 			ModelAndView mv) {
 		mv.setViewName("banner/b_insert");
@@ -39,15 +41,16 @@ public class BannerController {
 	}
 	
 	 
-	@RequestMapping(value = "/banner/insert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "insert.do", method = RequestMethod.POST)
 	public ModelAndView bannerInsert(
 			ModelAndView mv
 			,HttpSession session
 			, @ModelAttribute Banner banner
-			,@RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
+			,@RequestParam(value = "fielUpload", required = false) MultipartFile uploadFile
 			,HttpServletRequest request) {
 		
 		try {
+//			String bannerNo = (String)session.getAttribute("bannerNo");
 //			String bAdminId = (String)session.getAttribute("adminId");
 			String bAdminId = "admin";
 			if(bAdminId != null && !bAdminId.equals("")) {
@@ -63,11 +66,17 @@ public class BannerController {
 				}
 				
 				int result = bService.insertBanner(banner);
-				mv.setViewName("redirect:/banner/bList.do");
-				
+				if(result > 0) {
+					mv.setViewName("redirect:/banner/bList.do");
+				} else {
+					mv.addObject("msg", "배너등록 내용이 존재하지 않습니다");
+					mv.addObject("error", "배너등록이 필요합니다.");
+					mv.addObject("url", "/index.jsp");
+					mv.setViewName("common/error_page");	
+				}	
 			} else {
-				mv.addObject("msg", "배너등록 내용이 존재하지 않습니다");
-				mv.addObject("error", "배너등록이 필요합니다.");
+				mv.addObject("msg", "로그인이 확인되지 않습니다");
+				mv.addObject("error", "로그인이 필요합니다.");
 				mv.addObject("url", "/index.jsp");
 				mv.setViewName("common/error_page");				
 			}
@@ -125,7 +134,7 @@ public class BannerController {
 	
 	
 	
-	@RequestMapping(value = "/banner/bList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "bList.do", method = RequestMethod.GET)
 	public ModelAndView showBannerList(
 			ModelAndView mv
 			,@RequestParam(value = "page", required=false, defaultValue = "1") Integer currentPage) {
@@ -155,12 +164,38 @@ public class BannerController {
 		if(endNavi > naviTotalCount) {
 			endNavi = naviTotalCount;
 		}
-		
-		
-		
+
 		BPageInfo bInfo = new BPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
 		
 		return bInfo;
 	}	
 
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+    public String ajaxTest(
+    		HttpServletRequest request) throws Exception {
+
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        int result = 0;
+        for(int i=0; i<size; i++) {
+        	result += bService.delete(ajaxMsg[i]);
+        	
+//        	if(result > 0) {
+//        		mv.setViewName("redirect:/banner/bList.do");
+//        	} else {
+//        		mv.addObject("msg", "배너삭제 내용이 존재하지 않습니다");
+//				mv.addObject("error", "배너삭제가 필요합니다.");
+//				mv.addObject("url", "/index.jsp");
+//				mv.setViewName("common/error_page");	
+//        	}
+        }
+        return result+"";
+    }
+	
+	
+	
 }

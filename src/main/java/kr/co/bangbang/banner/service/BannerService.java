@@ -27,6 +27,15 @@ public interface BannerService {
 	 */
 	List<Banner> selectBannerList(BPageInfo bInfo);
 
+	/**
+	 * 배너선택삭제
+	 * @param string
+	 * @return
+	 */
+	int delete(String string);
+
+	
+
 	
 	
 

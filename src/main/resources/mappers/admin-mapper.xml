@@ -3,8 +3,71 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AdminMapper">
+
+<resultMap type="User" id="userResultMap">
+		<id property="userId"             	column="USER_ID" />
+		<result property="userPw" 	   		column="USER_PW" />
+		<result property="userPwRe"   		column="USER_PWRE" />
+		<result property="userName"    		column="USER_NAME" />
+		<result property="userNickname" 	column="USER_NICKNAME" />
+		<result property="userEmail"		column="USER_EMAIL" />
+		<result property="userPhone"  		column="USER_PHONE" />
+		<result property="userBirth" 		column="USER_BIRTH" />
+		<result property="userRegDate"      column="USER_REGDATE" />
+		<result property="userYn" 	  		column="USER_YN" />
+	</resultMap>
+	
+	
 	<!-- 관리자 회원가입 -->
 	<insert id="adminRegister">
 		INSERT INTO ADMIN_TBL VALUES(#{ adminId }, #{ adminPw }, #{ adminPwRe }, #{ adminEmail })
 	</insert>
+	
+	<!--전체 회원수 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT (*) FROM USER_TBL WHERE USER_YN = 'Y'
+	</select>
+	
+	
+	<!--전체 회원조회 -->
+	<select id="selectUserList" resultMap="userResultMap">
+		SELECT * FROM USER_TBL WHERE USER_YN = 'Y' ORDER BY USER_NAME DESC
+	</select>
+	
+	
+	<!--관리자-검색회원 전체 갯수 -->
+	<select id="selectListByKeywordCount" resultType="_int">
+		SELECT COUNT (*) FROM USER_TBL
+		<if test="searchCondition == 'all'">
+			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'OR USER_NAME LIKE '%'||#{ searchKeyword }||'%' OR USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%' 
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE USER_NAME LIKE '%'||#{ searchKeyword }||'%'
+		</if> 
+		<if test="searchCondition == 'title'">
+			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%'
+		</if> 
+	</select>
+	
+	
+	<select id="searchUserByKeyword" resultMap="userResultMap">
+		SELECT COUNT (*) FROM USER_TBL
+		<if test="searchCondition == 'all'">
+			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'OR USER_NAME LIKE '%'||#{ searchKeyword }||'%' OR USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%' 
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE USER_NAME LIKE '%'||#{ searchKeyword }||'%'
+		</if> 
+		<if test="searchCondition == 'title'">
+			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%'
+		</if> 
+	</select>
+	
+	
 </mapper>

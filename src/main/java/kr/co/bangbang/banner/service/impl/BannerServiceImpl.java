@@ -38,6 +38,12 @@ public class BannerServiceImpl implements BannerService{
 		return bList;
 	}
 
+	@Override
+	public int delete(String string) {
+		int result = bStore.delete(session, string);
+		return result;
+	}
+
 
 	
 	

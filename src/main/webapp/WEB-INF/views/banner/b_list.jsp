@@ -8,6 +8,8 @@
 	<meta charset="UTF-8">
 	<title>배너 리스트</title>
 	<link rel="stylesheet" href="/resources/css/admin/bannerList.css">
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+
 	</head>
 	<body>
 <app-container>
@@ -26,18 +28,20 @@
         <app-panel>
             <h2>BANNER LIST <span id="visibleCount">발도장 로고</span><span id="nonVisibleCount"></span></h2>
         
+        	
             <list-item>
-            <list-cell><input type="checkbox" id="tableHeader01" name="table-header" value="1"></list-cell>
+            <list-cell><input type="checkbox" id="tableHeader01" name="RowCheck" value="${bannerNo }"></list-cell>
             <list-cell>선택</list-cell>
             <list-cell>배너명</list-cell>
             <list-cell>배너위치</list-cell>
             <list-cell>파일명</list-cell>
 <!--             <list-cell>Email</list-cell> -->
             </list-item>
+             
             <panel-list id="myList">
             <c:forEach var="banner" items="${bList }" varStatus="i">
             		<list-item data-co="1" data-id="1" class="active">
-                        <list-cell><input type="checkbox" id="" name="table-row" value=""></list-cell>
+                        <list-cell><input type="checkbox" id="" name="RowCheck" value="${banner.bannerNo }"></list-cell>
                         <list-cell>${i.count }</list-cell>
                         <list-cell>${banner.bannerName }</list-cell>
                         <list-cell>${banner.bannerArea }</list-cell>
@@ -51,7 +55,7 @@
         
                 <div class="paging" style="margin-left: 430px; margin-top: 25px;">
                     <a href="/banner/insert.do" class="btn btn-prev" style="width: 80px;">등록</a>
-                    <a href="#" class="btn btn-next" style="width: 80px;">삭제</a>
+                    <a href="#" class="btn btn-next" onclick="deleteValue();"  style="width: 80px;">삭제</a>
                 </div>
 
 
@@ -107,66 +111,120 @@
         </app-panel> -->
         </app-container>
 
-        <script>
-            /* init */
-    var notiRowEl = '.notice-list > tbody > tr';
-    var pageBtnEl = '.paging .btn';
-    var noticeTotal = $(notiRowEl).length;
-    var showRow = 10;
-    var lastIdx = 1;
+ <script type="text/javascript">
+//             /* init */
+//     var notiRowEl = '.notice-list > tbody > tr';
+//     var pageBtnEl = '.paging .btn';
+//     var noticeTotal = $(notiRowEl).length;
+//     var showRow = 10;
+//     var lastIdx = 1;
     
-    if (noticeTotal > 0) {
-        $(notiRowEl).each(function(i){
-            $(this).children('.no').html(noticeTotal - i);
-        });
-        $(pageBtnEl).not('.btn-prev, .btn-next').eq(0).addClass('active');
-        $(pageBtnEl + '.btn-prev').addClass('disabled');
-    }
-    if (noticeTotal > showRow) {
-        var pagingCount = Math.ceil(noticeTotal / showRow);
-        for (var i = 2; i <= pagingCount; i++) {
-            $(pageBtnEl + '.btn-next').before('<a href="javascript:;" class="btn">' + i + '</a>');
-            lastIdx = i;
-        }
-        $(notiRowEl).hide();
-        $(notiRowEl + ':hidden').slice(0, showRow).show();
-    } else {
-        $(pageBtnEl + '.btn-next').addClass('disabled');
-    }
+//     if (noticeTotal > 0) {
+//         $(notiRowEl).each(function(i){
+//             $(this).children('.no').html(noticeTotal - i);
+//         });
+//         $(pageBtnEl).not('.btn-prev, .btn-next').eq(0).addClass('active');
+//         $(pageBtnEl + '.btn-prev').addClass('disabled');
+//     }
+//     if (noticeTotal > showRow) {
+//         var pagingCount = Math.ceil(noticeTotal / showRow);
+//         for (var i = 2; i <= pagingCount; i++) {
+//             $(pageBtnEl + '.btn-next').before('<a href="javascript:;" class="btn">' + i + '</a>');
+//             lastIdx = i;
+//         }
+//         $(notiRowEl).hide();
+//         $(notiRowEl + ':hidden').slice(0, showRow).show();
+//     } else {
+//         $(pageBtnEl + '.btn-next').addClass('disabled');
+//     }
     
-    /* page button click event */
-    $(document).on('click', pageBtnEl, function(){
-        var thisIdx = $(this).index();
-        var activeIdx = $(pageBtnEl + '.active').index();
-        var thisClass = $(this).attr('class').replace(/ /g, '').replace('btn', '').replace('active', '').replace('disabled', '');
-        $(pageBtnEl).removeClass('active');
-        if (thisClass === '') {
-            listShow(thisIdx);
-        } else {
-            if (thisClass === 'btn-prev') {
-                if (activeIdx > 1) {
-                    listShow(activeIdx - 1);
-                } else {
-                    $(pageBtnEl).eq(activeIdx).addClass('active');
+//     /* page button click event */
+//     $(document).on('click', pageBtnEl, function(){
+//         var thisIdx = $(this).index();
+//         var activeIdx = $(pageBtnEl + '.active').index();
+//         var thisClass = $(this).attr('class').replace(/ /g, '').replace('btn', '').replace('active', '').replace('disabled', '');
+//         $(pageBtnEl).removeClass('active');
+//         if (thisClass === '') {
+//             listShow(thisIdx);
+//         } else {
+//             if (thisClass === 'btn-prev') {
+//                 if (activeIdx > 1) {
+//                     listShow(activeIdx - 1);
+//                 } else {
+//                     $(pageBtnEl).eq(activeIdx).addClass('active');
+//                 }
+//             }
+//             if (thisClass === 'btn-next') {
+//                 if (activeIdx < lastIdx) {
+//                     listShow(activeIdx + 1);
+//                 } else {
+//                     $(pageBtnEl).eq(activeIdx).addClass('active');
+//                 }
+//             }
+//         }
+//     });
+//     var listShow = function(idx){
+//         $(pageBtnEl).eq(idx).addClass('active');
+//         $(notiRowEl).hide();
+//         $(notiRowEl + ':hidden').slice((idx - 1) * 10, showRow * idx).show();
+//         $(pageBtnEl).removeClass('disabled');
+//         if (idx === lastIdx) $(pageBtnEl + '.btn-next').addClass('disabled');
+//         if (idx === 1) $(pageBtnEl + '.btn-prev').addClass('disabled');
+//     }
+    
+    
+ 
+    $(function(){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+		
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i=0; i<chk_listArr.length; i++){
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt){
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else{
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+	function deleteValue(){
+		var url = "/banner/delete.do";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+		var valueArr = new Array();
+	    var list  = $("input[name='RowCheck']");
+	    for(var i = 0; i < list .length; i++){
+	        if(list [i].checked){ //선택되어 있으면 배열에 값을 저장함
+	            valueArr.push(list[i].value);
+	        }
+	    }
+	    if (valueArr.length == 0){
+	    	alert("선택된 글이 없습니다.");
+	    }
+	    else{
+			var chk = confirm("정말 삭제하시겠습니까?");				 
+			$.ajax({
+			    url : url,                    // 전송 URL
+			    type : 'GET',                // GET or POST 방식
+			    traditional : true,
+			    data : {
+			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+			    },
+                success: function(jdata){
+                    if(jdata == valueArr.length) {
+                        alert("삭제 성공");
+                        location.replace("/banner/bList.do");
+                    }else{
+                        alert("삭제 실패");
+                    }
                 }
-            }
-            if (thisClass === 'btn-next') {
-                if (activeIdx < lastIdx) {
-                    listShow(activeIdx + 1);
-                } else {
-                    $(pageBtnEl).eq(activeIdx).addClass('active');
-                }
-            }
-        }
-    });
-    var listShow = function(idx){
-        $(pageBtnEl).eq(idx).addClass('active');
-        $(notiRowEl).hide();
-        $(notiRowEl + ':hidden').slice((idx - 1) * 10, showRow * idx).show();
-        $(pageBtnEl).removeClass('disabled');
-        if (idx === lastIdx) $(pageBtnEl + '.btn-next').addClass('disabled');
-        if (idx === 1) $(pageBtnEl + '.btn-prev').addClass('disabled');
-    };
+			});
+		}
+	}
         </script>	
 	</body>
 </html>

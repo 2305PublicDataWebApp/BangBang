@@ -25,7 +25,7 @@
     <div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h3>배너 등록<img src="/resources/images/user/logo.png" style="width: 35px; height: 35px; margin-right: 370px;" class="float-right"></h3>
+				<h3>배너 등록<img src="/resources/images/logo.png" style="width: 35px; height: 35px; margin-right: 370px;" class="float-right"></h3>
 			</div>
 			<div class="col-md-6 text-right">
 				<!-- <img src="/img/logo.png" style="width: 30px; height: 30px;" class="float-right"> -->
@@ -84,7 +84,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">이미지 파일</label>
 				<div class="col-sm-10">
-					<input type="file" name="uploadFile" onchange="readURL(this);" class="form-control">
+					<input type="file" name="fielUpload" onchange="readURL(this);" class="form-control">
 				</div>
 			</div>
 	
@@ -104,7 +104,7 @@
 	
 			<div class="form-group row">
 				<div class="col-sm-10 offset-sm-2">
-					<input type="submit" class="btn btn-primary" value="등록" onclick="CheckAddProduct()" style="background-color: #FFFACD; color: black; width: 100%;">
+					<input type="submit" class="btn btn-primary" value="등록"  style="background-color: #FFFACD; color: black; width: 100%;">
 				</div>
 			</div>
 		</form>
