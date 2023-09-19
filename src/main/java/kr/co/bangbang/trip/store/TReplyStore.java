@@ -10,4 +10,20 @@ public interface TReplyStore {
 
 	List<TReply> selectTReplyList(SqlSession sqlSession, int tTripNo);
 
+	/**
+	 * 댓글 등록 Store
+	 * @param sqlSession
+	 * @param tReply
+	 * @return
+	 */
+	int insertTReply(SqlSession sqlSession, TReply tReply);
+
+	/**
+	 * 댓글 수정 Store
+	 * @param sqlSession
+	 * @param tReply
+	 * @return
+	 */
+	int updateTReply(SqlSession sqlSession, TReply tReply);
+
 }

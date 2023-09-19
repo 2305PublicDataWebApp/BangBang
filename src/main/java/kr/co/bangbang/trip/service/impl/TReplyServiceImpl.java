@@ -23,4 +23,16 @@ public class TReplyServiceImpl implements TReplyService{
 		return tRList;
 	}
 
+	@Override
+	public int insertTReply(TReply tReply) {
+		int result = tRStore.insertTReply(sqlSession, tReply);
+		return result;
+	}
+
+	@Override
+	public int updateTReply(TReply tReply) {
+		int result = tRStore.updateTReply(sqlSession, tReply);
+		return result;
+	}
+
 }

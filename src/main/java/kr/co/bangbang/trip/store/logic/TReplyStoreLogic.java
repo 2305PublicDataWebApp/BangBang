@@ -16,4 +16,16 @@ public class TReplyStoreLogic implements TReplyStore{
 		return tRList;
 	}
 
+	@Override
+	public int insertTReply(SqlSession sqlSession, TReply tReply) {
+		int result = sqlSession.insert("TReplyMapper.insertTReply", tReply);
+		return result;
+	}
+
+	@Override
+	public int updateTReply(SqlSession sqlSession, TReply tReply) {
+		int result = sqlSession.update("TReplyMapper.updateTReply", tReply);
+		return result;
+	}
+
 }
