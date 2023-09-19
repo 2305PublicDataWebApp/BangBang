@@ -4,42 +4,44 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>공지사항수정</title>
+		<link rel="stylesheet" href="../resouces/css/notice/n_modify.jsp">
+		<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-	<div class="header">header</div>
-	<div class="container">
-		<div class="banner">
-			사진공간
-		</div>
-		<div class="top">
-			<div class="noticetitle">
-				<h2>공지사항</h2>
-			</div>
-			<hr>
-		</div>
-		<!-- <div class="mid"> 내용들어가기 -->
-		<table class="noticeform">
-			<tr>
-				<td>제목</td>
-				<td><input type="text" style="width: 400px; height: 40px;">
-				</td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea rows="20" cols="100"></textarea></td>
-			</tr>
-		</table>
-
-		<div class="bottom">
-			<!-- 글 쓰는 버튼 -->
-			<div class="modify">
-				<!--작성하기 버튼-->
-				<input class="write" type="button" value="수정하기">
-			</div>
-		</div>
-	</div>
-	<div class="footer">footer</div>
-
+		<header>header</header>
+    	<div class="contatiner">
+    		<div class="banner">배너</div>
+    		<div class="main">
+    			<h2>공지사항 등록</h2>
+    			<hr>
+    			<form action="/notice/n_modify.do" method="post">
+    				<table class="noticeform">
+    					<tr>
+    						<td>제목</td>
+    						<td>
+    							<input type="text" name="noticeTitle" value="${notice.noticeTitle }" style="width:400px;height:40px;">
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>작성자</td>
+    						<td><span>${adminId }</span></td>
+    					</tr>
+    					<tr>
+    						<td>내용</td>
+    						<td>
+    							<textarea rows="4" cols="50" name="noticeContent">${notice.noticeContent }</textarea>
+    						</td>
+    					</tr>
+    				</table>
+    				<div>
+    					<input type="submit" value="수정하기">
+    				</div>
+    			</form>
+    		</div>
+    	</div>
+		<footer>
+			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		</footer>
 	</body>
 </html>

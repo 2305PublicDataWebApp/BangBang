@@ -5,38 +5,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>후기게시판상세</title>
 	</head>
 	<body>
-		<div class="header">header</div>
-		<div class="banner">배너공간</div>
+		<header>header</header>
+		
 		<div class="container">
-			<div class="main">
-				<div class="top">
-					<div class="title">
-						<h3>후기게시판</h3>
-					</div>
-				</div>
-				<div class="mid">
-					<div class="button">
-						<div class="modify">
-							<input type="button" value="수정">
-						</div>
-						<div class="delete">
-							<input type="button" value="삭제">
-						</div>
-					</div>
-					<hr>
-					<div class="content">
-					</div>
-				</div>
-				<div class="bottom">
-					<div class="golist">
-						<input type="button" value="목록으로">
-					</div>
-				</div>
-			</div>
+			<div class="banner">배너</div>
+			<div class="main"></div>
 		</div>
-		<div class="footer">footer</div>
+		
+		<footer>footer</footer>
 	</body>
 </html>

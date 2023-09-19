@@ -13,23 +13,24 @@ import kr.co.bangbang.review.domain.RReply;
 import kr.co.bangbang.review.service.RReplyService;
 
 @Controller
-@RequestMapping("/rreply")
+@RequestMapping("/rreply/")
 public class RReplyController {
+	
 	@Autowired
 	private RReplyService rrSerivce;
 	
-	@RequestMapping(value="/insertrReply.do", method=RequestMethod.POST)
-	public ModelAndView insertrReply(ModelAndView mv
+	@RequestMapping(value="rr_insert.do", method=RequestMethod.POST)
+	public ModelAndView insertRReply(ModelAndView mv
 			, @ModelAttribute RReply rreply
 			, HttpSession session) {
 		String url ="";
 		try {
 			String rrUserId = (String)session.getAttribute("userId");
 			rreply.setRrUserId(rrUserId);
-			int result = rrSerivce.insertrReply(rreply);
-			url="/rdetail.do?reviewNo="+rreply.getrReviewNo();
+			int result = rrSerivce.insertRReply(rreply);
+			url="/review/r_detail.do?reviewNo="+rreply.getrReviewNo();
 			if(result > 0) {
-				mv.setViewName("redirect"+url);
+				mv.setViewName("redirect:"+url);
 			}else {
 				mv.addObject("msg","댓글 등록 실패");
 				mv.addObject("url", url);
@@ -37,14 +38,14 @@ public class RReplyController {
 			}
 			
 		} catch (Exception e) {
-			mv.addObject("msg","관리자에게 문의하세용");
+			mv.addObject("msg","관리자에게 문의하세요");
 			mv.addObject("url", url);
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 	
-	@RequestMapping(value="/rmodify.do", method=RequestMethod.POST)
+	@RequestMapping(value="rr_modify.do", method=RequestMethod.POST)
 	public ModelAndView modifyRReply(ModelAndView mv
 			,@ModelAttribute RReply rreply
 			, HttpSession session) {
@@ -53,12 +54,12 @@ public class RReplyController {
 			String rrUserId = (String)session.getAttribute("userId");
 			if(!rrUserId.equals("")) {
 				rreply.setRrUserId(rrUserId);
-				int result = rrSerivce.modifyrreply(rreply);
-				url = "/rdetail.do?reviewNo="+rreply.getrReviewNo();
+				int result = rrSerivce.modifyRReply(rreply);
+				url = "/review/r_detail.do?reviewNo="+rreply.getrReviewNo();
 				if(result > 0) {
 					mv.setViewName("redirect:"+url);
 				}else {
-					mv.addObject("msg", "댓글등록완료실패");
+					mv.addObject("msg", "댓글 수정 실패");
 					mv.addObject("url", url);
 					mv.setViewName("common/error_page");
 				}
@@ -68,28 +69,28 @@ public class RReplyController {
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg","관리자에게 문의");
+			mv.addObject("msg","관리자에게 문의하세요");
 			mv.addObject("url",url);
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 	
-	@RequestMapping(value="/rdelete.do", method=RequestMethod.GET)
-	public ModelAndView deleterreply(ModelAndView mv
+	@RequestMapping(value="rr_delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteRReply(ModelAndView mv
 			, @ModelAttribute RReply rreply
 			, HttpSession session) {
 		String url="";
 		try {
 			String userId = (String)session.getAttribute("userId");
 			String rrUserId = rreply.getRrUserId();
-			url = "/ndetail.do?reviewNo="+rreply.getrReviewNo();
+			url = "/review/r_detail.do?reviewNo="+rreply.getrReviewNo();
 			if(rrUserId != null && rrUserId.equals(userId)) {
-				int result = rrSerivce.deleterreply(rreply);
+				int result = rrSerivce.deleteRReply(rreply);
 				if(result > 0) {
 					mv.setViewName("redirect:"+url);
 				}else {
-					mv.addObject("msg", "댓글삭제실패");
+					mv.addObject("msg", "댓글 삭제 실패");
 					mv.addObject("url", url);
 					mv.setViewName("common/error_page");
 				}
@@ -100,7 +101,7 @@ public class RReplyController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의ㄱㄱ");
-			mv.addObject("url",url);
+			mv.addObject("url","/index.jsp");
 			mv.setViewName("common/error_page");
 		}
 		return mv;

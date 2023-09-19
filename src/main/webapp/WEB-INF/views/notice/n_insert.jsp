@@ -4,43 +4,46 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		<link rel="stylesheet" href="../resources/css/noticeInsert.css">
+		<title>공지사항등록</title>
+		<link rel="stylesheet" href="../resouces/css/notice/n_insert.jsp">
+		<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-    <div class="header">header</div>
-    <div class="banner"> <!--배너사진-->
-	사진
-    </div>
-        <div class="container"> <!-- 전체배경을 먹이기 위한 컨테이너-->
-            <div class="top"><!-- 공지사항 등록이란 글자..대충-->
-                <div class="noticetitle">
-                    <h2>공지사항</h2>
-                </div>
-                <hr>
-            </div>
-            <!-- <div class="mid"> 내용들어가기 -->
-                <table class="noticeform">
-                    <tr>
-                        <td>제목</td>
-                        <td>
-                            <input type="text" style="width:400px;height:40px;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td>
-                            <textarea rows="20" cols="100" ></textarea>
-                        </td>
-                    </tr>
-                </table>
-           
-            <div class="bottom">
-                <div class="enroll">
-                    <input type="button" value="작성하기">
-                </div>
-            </div>
-        </div>
-    <div class="footer">footer</div>
+    	<header>header</header>
+    	
+    	<div class="contatiner">
+    		<div class="banner">배너</div>
+    		<div class="main">
+    			<h2>공지사항 등록</h2>
+    			<hr>
+    			<form action="/notice/n_insert.do" method="post">
+    				<table class="noticeform">
+    					<tr>
+    						<td>제목</td>
+    						<td>
+    							<input type="text" name="noticeTitle" style="width:400px;height:40px;">
+    						</td>
+    					</tr>
+    					<tr>
+    						<td>작성자</td>
+    						<td><span>${adminId }</span></td>
+    					</tr>
+    					<tr>
+    						<td>내용</td>
+    						<td>
+    							<textarea rows="4" cols="50" name="noticeContent"></textarea>
+    						</td>
+    					</tr>
+    				</table>
+    				<div>
+    					<input type="submit" value="등록하기">
+    				</div>
+    			</form>
+    		</div>
+    	</div>
+    	
+    	<footer>
+    		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+    	</footer>
 	</body>
 </html>

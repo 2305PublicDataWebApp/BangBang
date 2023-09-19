@@ -20,9 +20,20 @@ public class NoticeStoreLgoic implements NoticeStore{
 	}
 
 	@Override
+	public int modifyNotice(SqlSession sqlSession, Notice notice) {
+		int result = sqlSession.update("NoticeMapper.modifyNotice", notice);
+		return result;
+	}
+	@Override
 	public int selectNListCount(SqlSession sqlSession) {
 		int result = sqlSession.selectOne("NoticeMapper.selectNListCount");
 		return result;
+	}
+
+	@Override
+	public Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo) {
+		Notice noticeOne = sqlSession.selectOne("NoticeMapper.selectNoticeByNo", noticeNo);
+		return noticeOne;
 	}
 
 	@Override
@@ -32,24 +43,6 @@ public class NoticeStoreLgoic implements NoticeStore{
 		RowBounds nrowBounds = new RowBounds(offset, limit);
 		List<Notice> nList = sqlSession.selectList("NoticeMapper.selectNoticeList", null, nrowBounds);
 		return nList;
-	}
-
-	@Override
-	public Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo) {
-		Notice notice = sqlSession.selectOne("NoticeMapper.selectNoticeNo", noticeNo);
-		return notice;
-	}
-
-	@Override
-	public int modifyNotice(SqlSession sqlSession, Notice notice) {
-		int result = sqlSession.update("NoticeMapper.modifyNotice", notice);
-		return result;
-	}
-
-	@Override
-	public int deleteNotice(SqlSession sqlSession, Notice notice) {
-		int result = sqlSession.update("NoticeMapper.deleteNotice", notice);
-		return result;
 	}
 	
 

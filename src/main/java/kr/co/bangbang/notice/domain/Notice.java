@@ -6,7 +6,7 @@ public class Notice {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
-	private String rAdminId;
+	private String nAdminId;
 	private Date noticeDate;
 	
 	public Notice() {
@@ -37,12 +37,12 @@ public class Notice {
 		this.noticeContent = noticeContent;
 	}
 
-	public String getrAdminId() {
-		return rAdminId;
+	public String getnAdminId() {
+		return nAdminId;
 	}
 
-	public void setrAdminId(String rAdminId) {
-		this.rAdminId = rAdminId;
+	public void setnAdminId(String nAdminId) {
+		this.nAdminId = nAdminId;
 	}
 
 	public Date getNoticeDate() {
@@ -56,7 +56,7 @@ public class Notice {
 	@Override
 	public String toString() {
 		return "공지게시판 [글번호=" + noticeNo + ", 글제목=" + noticeTitle + ", 글내용=" + noticeContent
-				+ ", 작성자아이디=" + rAdminId + ", 작성일=" + noticeDate + "]";
+				+ ", 작성자아이디=" + nAdminId + ", 작성일=" + noticeDate + "]";
 	}
 	
 	

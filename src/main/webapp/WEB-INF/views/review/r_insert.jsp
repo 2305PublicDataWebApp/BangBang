@@ -4,42 +4,56 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>후기게시판등록</title>
+		<!-- include libraries(jQuery, bootstrap) -->
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+		<!-- include summernote css/js-->
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	</head>
 	<body>
-    <div class="header">header</div>
-    <div class="banner"> <!--배너사진-->
-        사진공간
-    </div>
-        <div class="container"> <!-- 전체배경을 먹이기 위한 컨테이너-->
-            <div class="top"><!-- 리뷰 등록이란 글자..대충-->
-                <div class="reviewtitle">
-                    <h2>후기게시판</h2>
-                </div>
-                <hr>
-            </div>
-            <!-- <div class="mid"> 내용들어가기 -->
-                <table class="reviewform">
-                    <tr>
-                        <td>제목</td>
-                        <td>
-                            <input type="text" style="width:400px;height:40px;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td>
-                            <textarea rows="20" cols="100" ></textarea>
-                        </td>
-                    </tr>
-                </table>
-           
-            <div class="bottom">
-                <div class="enroll">
-                    <input type="button" value="작성하기">
-                </div>
-            </div>
-        </div>
-    <div class="footer">footer</div>
+    	<header>header</header>
+    	
+    	<div class="container">
+    		<div class="banner">배너</div>
+    		<div class="main">
+    			<h2>후기 등록</h2>
+    			<hr>
+    			<form action="/review/n_insert.do" method="post">
+    				<ul>
+    					<li>제목</li>
+    					<li>
+    						<input type="text" name="reviewTitle" style="width:400px;height:40px";>
+    					</li>
+    				</ul>
+    				<ul>
+    					<textarea name="content" id="summernote" value=""></textarea>
+    				</ul>
+    			</form>
+    		</div>
+    	</div>
+    	
+    	<footer>
+    		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+    	</footer>
+    	<script>
+    		$(document).ready(function() {
+    	     	$('#summernote').summernote({
+    	             height: 300,                 // set editor height
+    	             minHeight: null,             // set minimum height of editor
+    	             maxHeight: null,             // set maximum height of editor
+    	             focus: true                  // set focus to editable area after initializing summernote
+    	     	});
+    		});
+
+    	</script>
+    	<script>
+    		$(document).ready(function() {
+    		  	$('#summernote').summernote();
+    		});
+    	</script>
 	</body>
 </html>

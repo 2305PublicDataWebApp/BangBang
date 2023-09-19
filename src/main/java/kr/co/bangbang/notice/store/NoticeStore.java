@@ -8,17 +8,40 @@ import kr.co.bangbang.notice.domain.NPageInfo;
 import kr.co.bangbang.notice.domain.Notice;
 
 public interface NoticeStore {
-
+	/**
+	 * 공지사항 등록 Store
+	 * @param sqlSession
+	 * @param notice
+	 * @return
+	 */
 	int insertNotice(SqlSession sqlSession, Notice notice);
-
+	/**
+	 * 공지사항 수정 Store
+	 * @param sqlSession
+	 * @param notice
+	 * @return
+	 */
+	int modifyNotice(SqlSession sqlSession, Notice notice);
+	/**
+	 * 공지사항 갯수 조회 Store
+	 * @param sqlSession
+	 * @return
+	 */
 	int selectNListCount(SqlSession sqlSession);
-
-	List<Notice> selectNoticeList(SqlSession sqlSession, NPageInfo nInfo);
-
+	/**
+	 * 공지사항 번호로 조회 Store
+	 * @param sqlSession
+	 * @param noticeNo
+	 * @return
+	 */
 	Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo);
 
-	int modifyNotice(SqlSession sqlSession, Notice notice);
-
-	int deleteNotice(SqlSession sqlSession, Notice notice);
+	/**
+	 * 공지사항 갯수 조회 Store
+	 * @param sqlSession
+	 * @param nInfo
+	 * @return
+	 */
+	List<Notice> selectNoticeList(SqlSession sqlSession, NPageInfo nInfo);
 
 }
