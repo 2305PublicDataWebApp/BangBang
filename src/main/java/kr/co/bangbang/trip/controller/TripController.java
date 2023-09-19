@@ -159,7 +159,9 @@ public class TripController {
 			Integer tTotalCount = tService.getListCount();
 			TPageInfo tPInfo = this.getTPageInfo(tCurrentPage, tTotalCount);
 			List<Trip> tList = tService.selectTripList(tPInfo);
-			mv.addObject("tList", tList).addObject("tPInfo", tPInfo).setViewName("trip/t_list");
+			mv.addObject("tList", tList);
+			mv.addObject("tPInfo", tPInfo);
+			mv.setViewName("trip/t_list");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 조회에 실패했습니다.");
 			mv.addObject("error", e.getMessage());
@@ -214,10 +216,10 @@ public class TripController {
 		return mv;
 	}
 	
-	@RequestMapping(value="search.do", method = RequestMethod.GET)
+	@RequestMapping(value="t_search.do", method = RequestMethod.GET)
 	public ModelAndView tripSearchList(@RequestParam("searchCondition") String searchCondition
 			, @RequestParam("searchKeyword") String searchKeyword
-			, @RequestParam(value = "page", required = false, defaultValue = "1") Integer currentPage
+			, @RequestParam(value = "page", required = false, defaultValue = "1") Integer tCurrentPage
 			, ModelAndView mv) {
 		// 동적 쿼리
 		
@@ -227,16 +229,16 @@ public class TripController {
 		// put()메소드를 사용해서 key-value 설정을 하는데 key값(파란색 글씨)이 mapper.xml에서 사용 됨
 		tParamMap.put("searchCondition", searchCondition);
 		tParamMap.put("searchKeyword", searchKeyword);
-		int totalCount = tService.getListCount(tParamMap);
-		TPageInfo tPInfo = this.getTPageInfo(currentPage, totalCount);
+		int tTotalCount = tService.getListCount(tParamMap);
+		TPageInfo tPInfo = this.getTPageInfo(tCurrentPage, tTotalCount);
 		List<Trip> searchList = new ArrayList<Trip>();
 		searchList = tService.searchTripByKeyword(tPInfo, tParamMap);
 		if(!searchList.isEmpty()) {
-			mv.addObject("tList", searchList);
+			mv.addObject("sTList", searchList);
 			mv.addObject("tPInfo", tPInfo);
 			mv.addObject("searchCondition", searchCondition);
 			mv.addObject("searchKeyword", searchKeyword);
-			mv.setViewName("trip/search");
+			mv.setViewName("trip/t_search");
 		}
 		else {
 			mv.addObject("msg", "데이터 조회가 완료되지 않았습니다.");

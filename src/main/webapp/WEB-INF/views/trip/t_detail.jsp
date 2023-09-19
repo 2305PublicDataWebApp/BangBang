@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -15,9 +16,9 @@
 	    <main>
 	        <div id="main-container">
 	            <div id="title">
-	                    <p style="font-size: 30px; font-weight: bold; margin-bottom: 15px;">여행지 이름</p>
-	                    <p style="font-size: 15px; margin-bottom: 28px;">주소</p>
-	                    <p style="font-size: 20px;">간단한 한줄 소개</p>
+	                    <p style="font-size: 30px; font-weight: bold; margin-bottom: 15px;">${trip.tripTitle }</p>
+	                    <p style="font-size: 15px; margin-bottom: 28px;">${trip.tripAddr }</p>
+	                    <p style="font-size: 20px;">${trip.tripSummary }</p>
 	            </div>
 	            <div id="review-btn">
 	                <p>조회수
@@ -31,19 +32,19 @@
 	            <div id="semi-info">
 	                <div style="display: inline-block; width: 49%;">
 	                    <b style="margin-right: 20px;">주소</b>
-	                    <span>공덕역 4번출구</span>
+	                    <span>${trip.tripInfoAddr }</span>
 	                </div>
 	                <div style="display: inline-block; width: 49%;">
 	                    <b>홈페이지</b>
-	                    <a href="www.naver.com">www.naver.com</a>
+	                    <a href="https://${trip.tripHomePage }">${trip.tripHomePage }</a>
 	                </div>
 	                <div style="display: inline-block; width: 49%;">
 	                    <b>이용시간</b>
-	                    <span>-</span>
+	                    <span>${trip.tripTime }</span>
 	                </div>
 	                <div style="display: inline-block; width: 49%;">
 	                    <b>이용금액</b>
-	                    <span>-</span>
+	                    <span>${trip.tripPrice }</span>
 	                </div>
 	            </div>
 	            <div id="summer-note">
@@ -56,8 +57,9 @@
 	                <p>댓글
 	                    <span>0</span>
 	                </p>
-	                <form action="#" method="post" style="background-color: rgb(251, 254, 208);">
+	                <form action="/tReply/add.do" method="post" style="background-color: rgb(251, 254, 208);">
 	                    <div style="background-color: rgb(251, 254, 208); width: 90%; margin: 0 auto;">
+	                        <input type="hidden" name="tTripNo" value="${trip.tripNo }">
 	                        <textarea rows="4" cols="100" name="replyContent"></textarea>
 	                        <div style="display: flex; justify-content: right;">
 	                            <button>등록</button>
@@ -65,17 +67,19 @@
 	                    </div>
 	                </form>
 	                <div>
-	                    <div id="reply-list" style="border-bottom: 1px solid black;">
-	                        <div style="display: inline-block; width: 30px; height: 30px;">
-	                            <img src="" alt="a">
-	                        </div>
-	                        <span>닉네임</span>
-	                        <span>등록날짜</span>
-	                        <button>답글</button>
-	                        <button>수정</button>
-	                        <button>삭제</button>
-	                        <p>배고파</p>
-	                    </div>
+		            	<c:forEach var="tReply" items="${tRList }">
+		                    <div id="reply-list" style="border-bottom: 1px solid black;">
+		                        <div style="display: inline-block; width: 30px; height: 30px;">
+		                            <img src="" alt="a">
+		                        </div>
+		                        <span>${tReply.tRUserId }</span>
+		                        <span>${tReply.tReplyDate }</span>
+		                        <button>답글</button>
+		                        <button>수정</button>
+		                        <button>삭제</button>
+		                        <p>${tReply.tReplyContent }</p>
+		                    </div>
+		                </c:forEach>
 	                </div>
 	            </div>
 	        </div>

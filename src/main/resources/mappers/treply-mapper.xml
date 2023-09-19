@@ -15,6 +15,14 @@
 		<result property="tReplyUpdate" 	column="TREPLY_UPDATE"/>
 	</resultMap>
 	
+	<insert id="insertTReply">
+		INSERT INTO TRIP_REPLY VALUES(SEQ_TREPLY_NO.NEXTVAL, #{tTripNo }, #{tReplyContent }, #{tRUserId },DEFAULT, DEFAULT, DEFAULT, tRAdminId, DEFAULT)
+	</insert>
+	
+	<update id="updateTReply">
+		UPDATE TRIP_REPLY SET TREPLY_CONTENT = #{tReplyContent }, TREPLY_UPDATE = DEFAULT WHERE TREPLY_NO = #{tReplyNo } 	
+	</update>
+	
 	<select id="selectTReplyList" resultMap="TReplyResultMap">
 		SELECT * FROM TRIP_REPLY WHERE TTRIP_NO = #{tTripNo } AND TR_STATUS_YN = 'Y'
 	</select>

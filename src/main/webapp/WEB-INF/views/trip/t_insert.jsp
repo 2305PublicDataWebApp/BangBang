@@ -6,7 +6,16 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>게시글 등록 폼</title>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	    
+	    
 	    <link rel="stylesheet" href="/resources/css/trip/t_insert.css">
+<!-- 		<script src="/js/summernote/summernote-lite.js"></script> -->
+<!-- 		<script src="/js/summernote/lang/summernote-ko-KR.js"></script> -->
+<!-- 		<link rel="stylesheet" href="/css/summernote/summernote-lite.css"> -->
 	</head>
 	<body>
 	    <header>
@@ -22,7 +31,7 @@
 	                    </div>
 	                </div>
 	                <div style="margin: 40px auto; max-width: 700px;">
-	                    <form action="" method="get">
+						<form action="#" method="post">
 	                        <ul>
 	                            <li>
 	                                <label for="">여행지이름</label>
@@ -64,10 +73,21 @@
 	                            </li>
 	                            <li>
 	                                <label for="">상세정보</label>
-	                                <input type="text" id="" name="t-info"><br>
+	                                <textarea id="summernote" name="t-info"></textarea>
+<!-- 	                                <input type="text" id="" name="t-info"><br> -->
 	                            </li>
-	                        </ul>
-	                        <button>등록</button>
+	                            <script>
+								    // 메인화면 페이지 로드 함수
+								    $(document).ready(function () {
+								        $('#summernote').summernote({
+								            placeholder: '내용을 작성하세요',
+								            height: 400,
+								            maxHeight: 400
+								        });
+								    });
+								</script>
+							</ul>
+							<button>등록</button>
 	                    </form>
 	                </div>
 	            </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +19,7 @@
 	        <div>
 	            <div id="list">
 	                <div id="select">
-	                    <form action="/trip/search.do" method="get">
+	                    <form action="/trip/t_search.do" method="get">
 	                        <select name="searchCondition">
 								<option value="all">전체</option>
 								<option value="trip">여행지</option>
@@ -31,56 +32,23 @@
 	                    </form>
 	                </div>
 	                <div id="list-item">
-	                    <!-- forEach문으로 10개 만들기 -->
-	                    <div id="item-container">
-	                        <div id="img-div">
-	                            <img class="banner-img" src="/resources/images/trip/불국사.png" alt="">
-	                        </div>
-	                        <div id="info-li">
-	                            <ul>
-	                                <li class="trip-title">어딜까</li>
-	                                <li class="trip-addr">경상남도 어딘가</li>
-	                                <li class="trip-one">불국사는 아닌데 어딘지 모름</li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                    <div id="item-container">
-	                        <div id="img-div">
-	                            <img class="banner-img" src="/resources/images/trip/불국사.png" alt="">
-	                        </div>
-	                        <div id="info-li">
-	                            <ul>
-	                                <li class="trip-title">어딜까</li>
-	                                <li class="trip-addr">경상남도 어딘가</li>
-	                                <li class="trip-one">불국사는 아닌데 어딘지 모름</li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                    <div id="item-container">
-	                        <div id="img-div">
-	                            <img class="banner-img" src="/resources/images/trip/불국사.png" alt="">
-	                        </div>
-	                        <div id="info-li">
-	                            <ul>
-	                                <li class="trip-title">어딜까</li>
-	                                <li class="trip-addr">경상남도 어딘가</li>
-	                                <li class="trip-one">불국사는 아닌데 어딘지 모름</li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                    <div id="item-container">
-	                        <div id="img-div">
-	                            <img class="banner-img" src="/resources/images/trip/불국사.png" alt="">
-	                        </div>
-	                        <div id="info-li">
-	                            <ul>
-	                                <li class="trip-title">어딜까</li>
-	                                <li class="trip-addr">경상남도 어딘가</li>
-	                                <li class="trip-one">불국사는 아닌데 어딘지 모름</li>
-	                            </ul>
-	                        </div>
-	                    </div>
-	                    <!-- 여기까지-------- -->
+	                    <c:forEach begin="0" end="10" var="trip" items="${tList }" varStatus="i">
+		                    <div id="item-container">
+		                    	<c:url var="detailUrl" value="/trip/t_detail.do">
+		                    		<c:param name="tripNo" value="${trip.tripNo }"></c:param>
+		                    	</c:url>
+		                        <div id="img-div">
+		                            <a href="${detailUrl }"><img class="banner-img" src="/resources/images/main/개발자.jpg" alt=""></a>
+		                        </div>
+		                        <div id="info-li">
+		                            <ul>
+		                                <li class="trip-title"><a href="${detailUrl }">${trip.tripTitle }</a></li>
+		                                <li class="trip-addr">${trip.tripAddr }</li>
+		                                <li class="trip-one">${trip.tripSummary }</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+	                    </c:forEach>
 	                </div>
 	                
 	                <div style="display: flex; justify-content: right;">
@@ -88,13 +56,26 @@
 	                </div>
 	                <div style="display: flex; justify-content: center;">
 	                    <div id="page">
-	                        <a href="#">[이전]</a>
 	                        <!-- sts에서 페이징 처리하기 -->
-	                        <a href="#">1</a>
-	                        <a href="#">2</a>
-	                        <a href="#">3</a>
-	                        <!-- ------------- -->
-	                        <a href="#">[다음]</a>
+	                    	<c:if test="${tPInfo.tStartNavi ne '1' }">
+	                    		<c:url var="pageUrl" value="/trip/t_list.do">
+	                    			<c:param name="page" value="${tPInfo.startNavi -1 }"></c:param>
+	                    		</c:url>
+		                        <a href="${pageUrl }">[이전]</a>
+	                    	</c:if>
+	                        <c:forEach begin="${tPInfo.tStartNavi }" end="${tPInfo.tEndNavi }" var="p">
+	                        	<c:url var="pageUrl" value="/trip/t_list.do">
+	                        		<c:param name="page" value="${p }"></c:param>
+	                        	</c:url>
+	                        	<a href="${pageUrl }">${p }</a>&nbsp;
+	                        </c:forEach>
+	                        <c:if test="${tPInfo.tEndNavi ne tPInfo.tNaviTotalCount }">
+	                        	<c:url var="pageUrl" value="/trip/t_list.do">
+	                        		<c:param name="page" value="${tPInfo.tEndNavi +1 }"></c:param>
+	                        	</c:url>
+		                        <a href="${pageUrl }">[다음]</a>
+	                        </c:if>
+	                        <!-- 페이징 처리 -->
 	                    </div>
 	                </div>
 	            </div>
