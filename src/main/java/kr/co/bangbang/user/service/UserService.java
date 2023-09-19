@@ -19,17 +19,25 @@ public interface UserService {
 	User userLoginCheck(User user);
 
 	/**
-	 * 개인 정보 조회
-	 * @param sessionId
-	 * @return User
-	 */
-	User getUserById(String sessionId);
-
-	/**
 	 * 마이페이지
 	 * @param userId
 	 * @return User
 	 */
 	User selectOneById(String userId);
+
+	/**
+	 * 회원 정보 수정
+	 * @param user
+	 * @return
+	 */
+	int updateUser(User user);
+
+	/**
+	 * 회원 탈퇴
+	 * @param userId
+	 * @return
+	 */
+	int deleteUser(String userId);
+
 
 }

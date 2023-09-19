@@ -23,19 +23,29 @@ public interface UserStore {
 	User userLoginCheck(SqlSession session, User user);
 
 	/**
-	 * 개인 정보 조회
-	 * @param session
-	 * @param user
-	 * @return User
-	 */
-	User getUserById(SqlSession session, String sessionId);
-
-	/**
 	 * 마이페이지
 	 * @param session
 	 * @param userId
 	 * @return User
 	 */
 	User selectOneById(SqlSession session, String userId);
+
+	/**
+	 * 회원 정보 수정
+	 * @param session
+	 * @param user
+	 * @return
+	 */
+	int updateUser(SqlSession session, User user);
+
+	/**
+	 * 회원 탈퇴
+	 * @param session
+	 * @param userId
+	 * @return
+	 */
+	int deleteUser(SqlSession session, String userId);
+
+
 
 }

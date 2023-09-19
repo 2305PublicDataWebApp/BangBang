@@ -20,14 +20,14 @@
             
             <!-- 로그인 세션 없을 경우 -->
             <c:if test="${ userId eq null }">
-	            <a href="WEB-INF/views/user/login.do">
+	            <a href="/user/login.do">
 	            	<img class="login-img" src="/resources/images/user/login.png" alt="로그인">
 	            </a>
             </c:if>
             
             <!-- 로그인 세션 저장되어 있을 경우 -->
             <c:if test="${ userId ne null }">
-	            <a href="WEB-INF/views/user/login.do">
+	            <a href="/user/mypage.do?userId=${ userId }">
 	            	<img class="login-img" src="/resources/images/user/mypage.png" alt="마이페이지">
 	            </a>
             </c:if> 

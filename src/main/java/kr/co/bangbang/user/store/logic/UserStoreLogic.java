@@ -23,18 +23,25 @@ public class UserStoreLogic implements UserStore{
 		return uOne;
 	}
 
-	// 개인 정보 조회
-	@Override
-	public User getUserById(SqlSession session, String sessionId) {
-		User user = session.selectOne("UserMapper.getUserById", sessionId);
-		return user;
-	}
-
 	// 마이페이지
 	@Override
 	public User selectOneById(SqlSession session, String userId) {
 		User user = session.selectOne("UserMapper.selectOneById", userId);
 		return user;
+	}
+
+	// 회원 정보 수정
+	@Override
+	public int updateUser(SqlSession session, User user) {
+		int result  = session.update("UserMapper.updateUser", user);
+		return result;
+	}
+
+	// 회원 탈퇴
+	@Override
+	public int deleteUser(SqlSession session, String userId) {
+		int result = session.update("UserMapper.deleteUser", userId);
+		return result;
 	}
 
 

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +24,19 @@ public class UserController {
 	@Autowired
 	private UserService uService;
 	
-	// 회원가입 구현
+	/**
+	 * 회원가입 구현
+	 * @param mv
+	 * @param userId
+	 * @param userPw
+	 * @param userPwRe
+	 * @param userName
+	 * @param userNickname
+	 * @param userEmail
+	 * @param userPhone
+	 * @param uBirth
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="join.do", method=RequestMethod.POST)
 	public ModelAndView userRegister(
 			ModelAndView mv
@@ -62,7 +73,13 @@ public class UserController {
 		return mv;
 	}
 	
-	// 로그인 구현
+	/**
+	 * 로그인 구현
+	 * @param mv
+	 * @param user
+	 * @param session
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
 	public ModelAndView userLogin(
 			ModelAndView mv
@@ -88,7 +105,12 @@ public class UserController {
 		return mv;
 	}
 	
-	// 로그아웃
+	/**
+	 * 로그아웃 구현
+	 * @param mv
+	 * @param session
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="logout.do", method=RequestMethod.GET)
 	public ModelAndView userLogout(
 			ModelAndView mv
@@ -104,14 +126,22 @@ public class UserController {
 		return mv;
 	}
 	
-	// 로그인 페이지 이동
+	/**
+	 * 로그인 페이지 이동
+	 * @param mv 
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public ModelAndView showLoginFrom(ModelAndView mv) {
 		mv.setViewName("user/login");
 		return mv;
 	}
 	
-	// 아이디 찾기 페이지 이동
+	/**
+	 * 아이디 찾기 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="find_id.do", method=RequestMethod.GET)
 	public ModelAndView showFindIdForm(ModelAndView mv) {
 		mv.setViewName("user/find_id");
@@ -119,55 +149,78 @@ public class UserController {
 		
 	}
 	
-	// 비밀번호 찾기 페이지 이동
+	/**
+	 * 비밀번호 찾기 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="find_pw.do", method=RequestMethod.GET)
 	public ModelAndView showFindPwForm(ModelAndView mv) {
 		mv.setViewName("user/find_pw");
 		return mv;
 	}
 	
-	// 마이페이지 이동
-	@RequestMapping(value="mypage.do", method=RequestMethod.POST)
+	/**
+	 * 마이페이지 이동
+	 * @param mv
+	 * @param userId
+	 * @param session
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value="mypage.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView selectOneById(
 			ModelAndView mv
-			, @RequestParam("userId") String userId) {
+			, @RequestParam("userId") String userId
+			, HttpSession session) {
 		try {
-			User user = uService.selectOneById(userId);
-			if(user != null) {
-				mv.addObject("user", user);
-				mv.setViewName("user/mypage");
-			} else {
-				mv.addObject("msg", "정보 조회에 실패하였습니다.");
-				mv.addObject("url", "redirect:/index.jsp");
+			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				User user = uService.selectOneById(userId);
+				if(user != null) {
+					mv.addObject("user", user);
+					mv.setViewName("user/mypage");
+				} else {
+					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("url", "redirect:/index.jsp");
+					mv.setViewName("common/error_page");
+				}
+			} else { // 세션에 저장된 아이디가 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "서비스 실패");
-			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "redirect:/index.jsp");
-			mv.setViewName("common/error_page");
+		mv.addObject("msg", "서비스 실패");
+		mv.addObject("error", e.getMessage());
+		mv.addObject("url", "redirect:/index.jsp");
+		mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 	
 	// 개인 정보 조회 페이지 이동
-	@RequestMapping(value="info.do", method=RequestMethod.POST)
+	@RequestMapping(value="info.do", method=RequestMethod.GET)
 	public ModelAndView showUserInfo(
 			ModelAndView mv
 			, @RequestParam("userId") String userId
 			, HttpSession session) {
 		try {
 			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
-			User user = null;
+			
 			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
-				user = uService.getUserById(sessionId);
-			}
-			if(user != null) { // 성공 시
-				mv.addObject("user", user);
-				mv.setViewName("user/info");
-			} else { // 실패 시
-				mv.addObject("msg", "정보 조회에 실패하였습니다.");
-				mv.addObject("url", "redirect:/index.jsp");
+				User user = uService.selectOneById(userId);
+				
+				if(user != null) { // 성공 시
+					mv.addObject("user", user);
+					mv.setViewName("user/info");
+				} else { // 실패 시
+					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("url", "redirect:/index.jsp");
+					mv.setViewName("common/error_page");
+				}
+			} else { // 세션에 저장된 아이디가 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
@@ -179,16 +232,210 @@ public class UserController {
 		return mv;
 	}
 	
-	// 회원가입 페이지 이동
+	/**
+	 * 비밀번호 체크 페이지로 이동
+	 * @param mv
+	 * @param user
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="check_pw.do", method=RequestMethod.GET)
+	public ModelAndView CheckPwForm(
+			ModelAndView mv
+			, @ModelAttribute User user
+			, HttpSession session) {
+		String sessionId = (String)session.getAttribute("userId");
+		if(sessionId != null && !sessionId.isEmpty()) {
+			mv.setViewName("user/check_pw"); // 비밀번호 확인 페이지로 이동
+		} else {
+			mv.addObject("msg", "로그인 후 이용바랍니다.");
+			mv.addObject("url", "/user/login.do");
+			mv.setViewName("errorPage"); // 오류 페이지로 이동
+		}
+		return mv;
+	}
+	
+	/**
+	 * 회원 정보 수정 비밀번호 검증
+	 * @param mv
+	 * @param userPw
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="check_pw.do", method=RequestMethod.POST)
+	public ModelAndView checkPassword(
+			ModelAndView mv
+			, @RequestParam("userPw") String userPw
+			, HttpSession session) {
+		String userId = (String)session.getAttribute("userId"); // 세션 아이디
+		
+		User uUser = new User();
+		uUser.setUserId(userId);
+		uUser.setUserPw(userPw);
+		User user = uService.userLoginCheck(uUser);
+		
+		if(user != null) {
+			User uOne = uService.selectOneById(userId);
+			mv.addObject("user", uOne);
+			mv.setViewName("redirect:/user/modify.do?userId=" + userId);
+		} else {
+			mv.addObject("msg", "비밀번호가 일치하지 않습니다.");
+			mv.addObject("url", "/user/check_pw");
+			mv.setViewName("error_page"); // 오류 페이지로 이동
+		}
+		return mv;
+	}
+	
+	/**
+	 * 회원 탈퇴 비밀번호 검증 페이지 이동
+	 * @param mv
+	 * @param user
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="remove_check.do", method=RequestMethod.GET)
+	public ModelAndView removeCheckForm(
+			ModelAndView mv
+			, @ModelAttribute User user
+			, HttpSession session) {
+		
+		String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+		
+		if(sessionId != null && !sessionId.isEmpty()) {
+			mv.setViewName("user/remove_check"); // 비밀번호 확인 페이지로 이동
+		} else {
+			mv.addObject("msg", "로그인 후 이용바랍니다.");
+			mv.addObject("url", "/user/login.do");
+			mv.setViewName("errorPage"); // 오류 페이지로 이동
+		}
+		return mv;
+	}
+	
+	/**
+	 * 회원 탈퇴 비밀번호 검증
+	 * @param mv
+	 * @param userPw
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="remove_check.do", method=RequestMethod.POST)
+	public ModelAndView removeCheck(
+			ModelAndView mv
+			, @RequestParam("userPw") String userPw
+			, HttpSession session) {
+		String userId = (String)session.getAttribute("userId"); // 세션 아이디
+		
+		User uUser = new User();
+		uUser.setUserId(userId);
+		uUser.setUserPw(userPw);
+		User user = uService.userLoginCheck(uUser);
+		
+		if(user != null) {
+			User uOne = uService.selectOneById(userId);
+			mv.addObject("user", uOne);
+			mv.setViewName("redirect:/user/remove.do?userId=" + userId);
+		} else {
+			mv.addObject("msg", "비밀번호가 일치하지 않습니다.");
+			mv.addObject("url", "/user/check_pw");
+			mv.setViewName("error_page"); // 오류 페이지로 이동
+		}
+		return mv;
+	}
+	
+	/**
+	 * 회원 정보 수정
+	 * @param mv
+	 * @param user
+	 * @param userId
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="modify.do", method=RequestMethod.POST)
+	public ModelAndView userModify(
+			ModelAndView mv
+			, @ModelAttribute User user
+			, String userId
+			, HttpSession session) {
+		try {
+			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			if(userId.equals(sessionId) && sessionId !=null && sessionId != "") {
+				int result = uService.updateUser(user);
+				if(result > 0) { // 수정 성공 
+					mv.setViewName("redirect:/user/mypage.do?userId=" + sessionId);
+				} else { // 수정 실패
+					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+					mv.addObject("url", "redirect:/user/modify.do?userId=" + sessionId);
+					mv.setViewName("common/error_page");
+				}
+			} else {
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/user/login.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	// 회원 탈퇴
+	@RequestMapping(value="remove.do", method=RequestMethod.POST)
+	public ModelAndView removeUser(
+			ModelAndView mv
+			, String userId
+			, HttpSession session) {
+		try {
+			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				int result = uService.deleteUser(userId);
+				if(result > 0) {
+					mv.addObject("msg", "회원 탈퇴되었습니다.");
+					mv.addObject("url", "/user/logout.do");
+					mv.setViewName("common/inform");
+				} else { // 탈퇴 실패
+					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+					mv.addObject("url", "redirect:/user/modify.do?userId=" + sessionId);
+					mv.setViewName("common/error_page");
+				}
+			} else { // 로그인 세션 정보 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/user/login.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	/**
+	 * 회원가입 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="join.do", method=RequestMethod.GET)
 	public ModelAndView showRegisterForm(ModelAndView mv) {
 		mv.setViewName("user/join");
 		return mv;
 	}
 	
-	// 개인 정보 수정 페이지 이동
+	/**
+	 * 개인 정보 수정 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="modify.do", method=RequestMethod.GET)
-	public ModelAndView showModifyInfo(ModelAndView mv) {
+	public ModelAndView showModifyInfo(
+			ModelAndView mv
+			, @RequestParam("userId") String userId) {
+		User user = uService.selectOneById(userId);
+		mv.addObject("user", user);
 		mv.setViewName("user/modify");
 		return mv;
 	}

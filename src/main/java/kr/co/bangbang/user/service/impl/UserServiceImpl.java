@@ -30,18 +30,25 @@ public class UserServiceImpl implements UserService{
 		return uOne;
 	}
 
-	// 개인 정보 조회
-	@Override
-	public User getUserById(String sessionId) {
-		User user = uStore.getUserById(session, sessionId);
-		return user;
-	}
-
 	// 마이페이지
 	@Override
 	public User selectOneById(String userId) {
 		User user = uStore.selectOneById(session, userId);
 		return user;
+	}
+
+	// 회원 정보 수정
+	@Override
+	public int updateUser(User user) {
+		int result = uStore.updateUser(session, user);
+		return result;
+	}
+
+	// 회원 탈퇴
+	@Override
+	public int deleteUser(String userId) {
+		int result = uStore.deleteUser(session, userId);
+		return result;
 	}
 
 }

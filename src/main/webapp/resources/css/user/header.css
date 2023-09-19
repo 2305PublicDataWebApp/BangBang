@@ -16,7 +16,15 @@ header {
     position: relative;
     /* box-shadow: 0 0 50px #000; */ /* 그림자 */
     background: linear-gradient(#fffacd -20%, white);
+}
 
+/* 배경 이미지 */
+main {
+    background-image: url('./images/back-img2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+/*     opacity: 0.7; */
+    background: #F2F2F2;
 }
 
 a {
