@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<title>공지사항등록</title>
 		<link rel="stylesheet" href="../resouces/css/notice/n_insert.jsp">
+		<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
     	<header>header</header>
@@ -41,6 +42,8 @@
     		</div>
     	</div>
     	
-    	<footer>footer</footer>
+    	<footer>
+    		<jsp:include page="/WEB-INF/views/include/footer/footer.jsp"></jsp:include>
+    	</footer>
 	</body>
 </html>

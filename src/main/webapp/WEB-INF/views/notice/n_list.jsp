@@ -9,6 +9,7 @@
 		<title>공지사항리스트</title>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<link rel="stylesheet" href="../resources/css/n_list.css">
+    	<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
 		<header>header</header>
@@ -19,62 +20,31 @@
 				<h2>공지사항</h2>
 				<hr>
 				<div class="noticelist">
-					<div class="que">
-						<span>첫번째 공지사항</span>
-						<div class="arrow-wrap">
-							<span class="arrow-top">↑</span> <span class="arrow-bottom">↓</span>
+					<c:forEach var="notice" items="${nList }" varStatus="i">
+						<div class="que">
+						<span>
+							<label>제목</label>
+							<span>${notice.noticeTitle }</span>
+						</span>
 						</div>
-					</div>
-					<div class="anw">
-						<span>햄버거 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>두번째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>피자 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>세번째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>치킨 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>네번째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>보쌈 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>다섯번째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>고기 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>여섯번째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>고기 먹어요.</span>
-					</div>
-					<div class="que">
-						<span>일곱째 공지사항</span>
-					</div>
-					<div class="anw">
-						<span>고기 먹어요.</span>
-					</div>
+						<div class="anw">
+							<label>내용</label>
+							<span>${notice.noticeContent }</span>
+						</div>
+					</c:forEach>
 				</div>
 				<div class="bottom">
 					<a href="#" id="load">MORE</a>
 					<div>
-						<input type="submit" value="등록">
+						<button type="button" onclick="showRegisterNForm()">글쓰기</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<footer>footer</footer>
+		<footer>
+			<jsp:include page="/WEB-INF/views/include/footer/footer.jsp"></jsp:include>
+		</footer>
 	    <script>
         	$(".que").click(function() {
             	$(this).next(".anw").stop().slideToggle(300);
@@ -92,6 +62,11 @@
             		$('#load').fadeOut(100); // 컨텐츠 없을 시 버튼 사라짐
         		}
     		});
+        </script>
+        <script>
+        	function showRegisterNForm(){
+        		location.href="/notice/n_insert.do";
+        	}
         </script>
 	</body>
 </html>

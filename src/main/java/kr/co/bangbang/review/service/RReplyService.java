@@ -1,13 +1,18 @@
 package kr.co.bangbang.review.service;
 
+import java.util.List;
+
 import kr.co.bangbang.review.domain.RReply;
 
 public interface RReplyService {
 
-	int deleterreply(RReply rreply);
+	List<RReply> selectReplyList(Integer reviewNo);
 
-	int modifyrreply(RReply rreply);
+	int insertRReply(RReply rreply);
 
-	int insertrReply(RReply rreply);
+	int modifyRReply(RReply rreply);
+
+	int deleteRReply(RReply rreply);
+
 
 }

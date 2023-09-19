@@ -24,7 +24,7 @@ public interface NoticeService {
 	 */
 	int getNListCount();
 	/**
-	 * 공지사항 번호로 조회 Service
+	 * 공지사항 상세 조회 Service
 	 * @param noticeNo
 	 * @return
 	 */

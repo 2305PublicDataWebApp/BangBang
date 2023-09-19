@@ -38,9 +38,9 @@ public class NoticeController {
 			,HttpSession session
 			,HttpServletRequest request) {
 		try {
-			String rAdminId = (String)session.getAttribute("adminId");
-			if(rAdminId != null && !rAdminId.equals("")) {
-				notice.setrAdminId(rAdminId);
+			String nAdminId = (String)session.getAttribute("adminId");
+			if(nAdminId != null && !nAdminId.equals("")) {
+				notice.setnAdminId(nAdminId);
 				int result = nService.insertNotice(notice);
 				if(result > 0) {
 					mv.setViewName("redirect:/notice/n_list.do");
@@ -76,14 +76,14 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value="n_modify.do", method=RequestMethod.POST)
-	public ModelAndView noticeModify(ModelAndView mv
+	public ModelAndView modifyNotice(ModelAndView mv
 			, @ModelAttribute Notice notice
 			, HttpSession session
 			, HttpServletRequest request) {
 		try {
 			String adminId = (String)session.getAttribute("adminId");
-			String rAdminId = notice.getrAdminId();
-			if(rAdminId != null && adminId.equals("admin")) {
+			String nAdminId = notice.getnAdminId();
+			if(nAdminId != null && adminId.equals("admin")) {
 				int result = nService.modifyNotice(notice);
 				if(result > 0) {
 					mv.setViewName("redirect:/notice/n_detail.do?noticeNo="+notice.getNoticeNo());

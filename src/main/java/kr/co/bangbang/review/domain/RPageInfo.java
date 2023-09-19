@@ -13,6 +13,20 @@ public class RPageInfo {
 		// TODO Auto-generated constructor stub
 	}
 
+	public RPageInfo(int rCurrentPage, int rTotalCount, int rNaviTotalCount, int rRecordCountPerPage,
+			int rNaviCountPerPage, int rStartNavi, int rEndNavi) {
+		super();
+		this.rCurrentPage = rCurrentPage;
+		this.rTotalCount = rTotalCount;
+		this.rNaviTotalCount = rNaviTotalCount;
+		this.rRecordCountPerPage = rRecordCountPerPage;
+		this.rNaviCountPerPage = rNaviCountPerPage;
+		this.rStartNavi = rStartNavi;
+		this.rEndNavi = rEndNavi;
+	}
+
+
+
 	public int getrCurrentPage() {
 		return rCurrentPage;
 	}
