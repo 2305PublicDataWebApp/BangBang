@@ -1,13 +1,3 @@
-/* 배경 이미지 */
-main {
-    background-image: url('./images/back-img2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-    /* background-color: rgb(249, 246, 243); */
-    /* background: linear-gradient(#fffacd, #e3bcbc); */
-    background: lightgray;
-}
 
 /* 메인 컨테이너 */
 .main-container {
@@ -18,7 +8,7 @@ main {
     width: 1130px;
     max-width: 1130px;
     margin : 0 auto;
-    height: 700px;
+    height: 650px;
     padding: 100px 20px;
     font-family: sans-serif;
     /* background: linear-gradient(to right,#80C49D -90%, white); */
@@ -33,7 +23,7 @@ main {
 /* 프로필 */
 .profile-box {
     width : 340px;
-    height: 600px;
+    height: 455px;
     /* border : 1px solid black; */
     float: left;
 }
@@ -46,6 +36,15 @@ button {
     color: inherit;
     font: inherit;
     cursor: pointer;
+}
+
+/* 로그아웃 */
+.user-logout {
+	position: relative;
+	top: 15px;
+	left: 10px;
+	color: white;
+	font-weight: border;
 }
 
 .profile {
@@ -61,7 +60,7 @@ button {
 
 .mypage-profile {
     position: relative;
-    top : 70px;
+    top : 60px;
     left: 70px;
     border : 2px solid black;
     border-radius: 50%;
@@ -80,8 +79,10 @@ button {
 
 .mypage-profile-text {
     position: relative;
-    top: 210px;
-    right: 100px;
+    display: block;
+    width: 220px;
+    top: 55px;
+    left: 58px;
     font-size: 1.3em;
     font-weight: bolder;
     color: white
@@ -89,11 +90,17 @@ button {
 
 .profile-img-change {
     position: relative;
+    display : block;
     color : white;
-    top: 210px;
+    top: 120px;
+    left: 90px;
     width: 160px;
     height: 25px;
     cursor: pointer;
+}
+
+.profile-image  {
+	position: absolute;
 }
 
 /* 마이페이지 메뉴 */

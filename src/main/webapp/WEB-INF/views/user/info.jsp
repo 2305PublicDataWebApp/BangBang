@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,50 +17,7 @@
 	</head>
 	<body>
 		<!-- header -->
-	    <header>
-	        <nav>
-	            <!-- 로고 -->
-	            <div class="logo">
-	                방방곡곡 발도장
-	                <img class="logo-img" width="35px" src="/resources/images/user/logo.png" alt="로고">
-	            </div>
-	
-	            <i class="fa fa-bars"></i>
-	
-	            <!-- 네비게이션 -->
-	            <ul class="navBar">
-	                <li class="tab">여행지</li>
-	                <li class="tab">매거진</li>
-	                <li class="tab">공지사항</li>
-	                <a href="#"><img class="login-img" src="/resources/images/user/login.png" alt="로그인"></a>
-	            </ul>
-	
-	        </nav>
-	        <!-- 헤더 text -->
-	        <div class="header-content">
-	            <div class="content">
-	
-	                <!-- 헤더 text -->
-	                <h1>대한민국 <span>방방곡곡</span> <br> 어디든지!</h1>
-	                <p>
-	                    방방곡곡 발도장은 국내 여행 정보를 제공해드리는 <br> 지식공유 플랫폼입니다.
-	                </p>
-	
-	                <!-- 검색창 -->
-	                <div class="search">
-	                    <i class="fa fa-search"></i>
-	                    <input value="여행지 검색">
-	                    <button>search</button>
-	                </div>
-	
-	            </div>
-	            <!----content--->
-	            <div></div>
-	            <!-- 헤더 이미지 -->
-	            <!-- <img style="width: 1200px" class="header-img" src="./resources/images/img20.png"> -->
-	            <!-- <img style="width: 900px;" src="./resources/images/img3.png"> -->
-	        </div>
-	    </header>
+	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    
 	    
 		<!-- main -->
@@ -67,22 +25,7 @@
 	        <div class="main-container">
 	
 	            <!-- *****마이페이지 ***** 프로필 -->
-	            <div class="profile-box">
-	                <div class="profile">
-	                    <!-- 프로필 사진 -->
-	                    <div class="mypage-profile">
-	                        <img class="mypage-profile-img" src="/resources/images/user/profile_1.jpg" alt="프로필">
-	                    </div>
-	
-	                    <!-- 프로필 텍스트 -->
-	                    <div class="mypage-profile-area">
-	                        <span class="mypage-profile-text">환영합니다!</span><br><br>
-	                        <span class="mypage-profile-text">닉네임님</span>
-	                        <!-- 프로플 변경 버튼 -->
-	                        <button class="profile-img-change">프로필 이미지 설정 ></button>
-	                    </div>
-	                </div>
-	            </div>
+	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include>
 	
 	            <!-- ***** 마이페이지 ***** 메뉴 -->
 	            <div class="menu-mypage">
@@ -90,87 +33,58 @@
 	                <span class="menu-box-text">마이페이지</span>
 	                <br><br>
 	                <hr>
-	                <br><br>
-	                <div class="menu-box">
-	                    <div class="menu-box-top">
-	                        <!-- 개인 정보 조회 -->
-	                        <div class="menu-info">
-	                            <a href="#"><img class="menu-icon" src="/resources/images/user/info.png" alt="개인 정보 조회"></a><br>
-	                            <span id="info-text">개인 정보 조회</span>
-	                        </div>
-	                        <!-- 개인 정보 수정 -->
-	                        <div class="menu-info-modify">
-	                            <a href="#"><img class="menu-icon" src="/resources/images/user/modify.png" alt="개인 정보 수정"></a><br>
-	                            <span id="modify-text">개인 정보 수정</span>
-	                        </div>
-	    
-	                    </div>
-	                    <div class="menu-box-bottom">
-	                        <!-- 내가 쓴 게시글 -->
-	                        <div class="menu-info-board">
-	                            <a href="#"><img class="menu-icon" src="/resources/images/user/board.png" alt="내가 쓸 게시글"></a><br>
-	                            <span id="my-board">내가 쓴 게시글</span>
-	                        </div>
-	                        <!-- 댓글 쓴 게시글 -->
-	                        <div class="menu-info-comment">
-	                            <a href="#"><img class="menu-icon" src="/resources/images/user/reply.png" alt="댓글 쓴 게시글"></a><br>
-	                            <span id="my-reply">댓글 쓴 게시글</span>
-	                        </div>
-	                        <!-- 회원 탈퇴 -->
-	                        <div class="menu-info-remove">
-	                            <a href="#"><img class="menu-icon" src="/resources/images/user/remove.png" alt="탈퇴"></a><br>
-	                            <span id="info-remove">회원 탈퇴</span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <br><br><br><br><br><br>
+	                
+					<!-- ***** 마이페이지 ***** 메뉴 -->
+					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include>
+					
+					<!-- 개인정보 조회 -->
 	                <span class="menu-box-text">개인 정보 조회</span>
 	                <br><br>
 	                <hr>
 	                
 	                <div class="info">
-	
+					<input type="hidden" name="userId" value="userId">
 	                    <!-- 아이디 -->
 	                    <div class="info-detail">
 	                        <span class="info-id">아이디</span>
-	                        <span class="info-id-detail">user01</span>
+	                        <span class="info-id-detail">${ user.userId }</span>
 	                    </div>
 	
 	                    <!-- 비밀번호 -->
 	                    <div class="info-detail">
 	                        <span class="info-pw">비밀번호</span>
-	                        <span class="info-pw-detail">pass01</span>
+	                        <span class="info-pw-detail">${ user.userPw }</span>
 	                    </div>
 	
 	                    <!-- 이름 -->
 	                    <div class="info-detail">
 	                        <span class="info-name">이름</span>
-	                        <span class="info-name-detail">김이름</span>
+	                        <span class="info-name-detail">${ user.userName }</span>
 	                    </div>
 	
 	                    <!-- 닉네임 -->
 	                    <div class="info-detail">
 	                        <span class="info-nickname">닉네임</span>
-	                        <span class="info-nickname-detail">여행가고싶다</span>
+	                        <span class="info-nickname-detail">${ user.userNickname }</span>
 	                    </div>
 	
 	                    <!-- 이메일 -->
 	                    <div class="info-detail">
 	                        <span class="info-email">이메일</span>
-	                        <span class="info-email-detail">user01@naver.com</span>
+	                        <span class="info-email-detail">${ user.userEmail }</span>
 	                        
 	                    </div>
 	
 	                    <!-- 휴대폰 -->
 	                    <div class="info-detail">
 	                        <span class="info-phone">휴대폰</span>
-	                        <span class="info-phone-detail">010-1111-2222</span>
+	                        <span class="info-phone-detail">${ user.userPhone }</span>
 	                    </div>
 	
 	                    <!-- 생년월일 -->
 	                    <div class="info-detail">
 	                        <span class="info-birth">생년월일</span>
-	                        <span class="info-birth-detail">20000-11-11</span>
+	                        <span class="info-birth-detail">${ user.userBirth }</span>
 	                    </div>
 	                </div>
 	            </div>
@@ -178,50 +92,7 @@
 	    </main>
 	    
 		<!-- footer -->
-	    <footer class="footer">
-	        <!-- 로고 -->
-	        <div class="footer-title">
-	            <span class="footer-text">방방곡곡 발도장</span>
-	            <img class="footer-logo" src="/resources/images/user/logo.png" alt="로고">
-	        </div>
-	        <!-- 정보 -->
-	        <div class="footer-content">
-	            <div class="footer-content-detail">
-	                <span class="detail-title">
-	                    회사명
-	                </span>
-	                <span class="detail-content">
-	                    방방곡곡 발도장
-	                </span>
-	            </div>
-	            <div class="footer-content-detail">
-	                <span class="detail-title">
-	                    이메일
-	                </span>
-	                <span class="detail-content">
-	                    bangbang@goggog.com
-	                </span>
-	            </div>
-	            <div class="footer-content-detail">
-	                <span class="detail-title">
-	                    대표자
-	                </span>
-	                <span class="detail-content">
-	                    김대표
-	                </span>
-	            </div>
-	            <span class="footer-content-detail">
-	                <span class="detail-title-service">
-	                    고객센터
-	                </span>
-	                <span class="detail-content">
-	                    0503-4444-2222
-	                    <br>
-	                    <small>운영시간 : 9:00 - 16:00</small>
-	                </span>
-	            </span>
-	        </div>
-	    </footer>
+		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	
 	    <!-- js -->
 	    <!-- 헤더 랜덤 이벤트 효과 -->
@@ -268,8 +139,6 @@
 	            }
 	        })
 	        
-	    </script>
-	    <script>
 	        let profile = document.querySelector('.profile');
 	
 	        // 스크롤 이벤트 리스너

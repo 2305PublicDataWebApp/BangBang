@@ -19,79 +19,44 @@
 	<body>
 	
 		<!-- header -->
-	    <jsp:include page="/WEB-INF/views/include/header/header.jsp"></jsp:include>
+	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    
 	    <!-- main -->
 	    <main class="main">
 	        <div class="main-container">
 	
 	            <!-- *****마이페이지 ***** 프로필 -->
-	            <div class="profile-box">
-	                <div class="profile">
-	                    <!-- 프로필 사진 -->
-	                    <div class="mypage-profile">
-	                        <img class="mypage-profile-img" src="/resources/images/user/profile_1.jpg" alt="프로필">
-	                    </div>
-	
-	                    <!-- 프로필 텍스트 -->
-	                    <div class="mypage-profile-area">
-	                        <span class="mypage-profile-text">환영합니다!</span><br><br>
-	                        <span class="mypage-profile-text">${ user.userNickname }님</span>
-	                        <!-- 프로플 변경 버튼 -->
-	                        <button class="profile-img-change">프로필 이미지 설정 ></button>
-	                    </div>
-	                </div>
-	            </div>
+	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include>
 	
 	            <!-- ***** 마이페이지 ***** 메뉴 -->
 	            <div class="menu-mypage">
 	
 	                <span class="menu-box-text">마이페이지</span>
 	                <br><br>
-	                <hr>
-	                <br><br>
-	                <div class="menu-box">
-	                	<form action="/user/modify.do" method="post">
-		                    <div class="menu-box-top">
-		                        <!-- 개인 정보 조회 -->
-		                        <div class="menu-info">
-		                            <a href="#"><img class="menu-icon" src="/resources/images/user/info.png" alt="개인 정보 조회"></a><br>
-		                            <span id="info-text">개인 정보 조회</span>
-		                        </div>
-		                        <!-- 개인 정보 수정 -->
-		                        <div class="menu-info-modify">
-		                            <a href="#"><img class="menu-icon" src="/resources/images/user/modify.png" alt="개인 정보 수정"></a><br>
-		                            <span id="modify-text">개인 정보 수정</span>
-		                        </div>
-		    
-		                    </div>
-		                    <div class="menu-box-bottom">
-		                        <!-- 내가 쓴 게시글 -->
-		                        <div class="menu-info-board">
-		                            <a href="#"><img class="menu-icon" src="/resources/images/user/board.png" alt="내가 쓸 게시글"></a><br>
-		                            <span id="my-board">내가 쓴 게시글</span>
-		                        </div>
-		                        <!-- 댓글 쓴 게시글 -->
-		                        <div class="menu-info-comment">
-		                            <a href="#"><img class="menu-icon" src="/resources/images/user/reply.png" alt="댓글 쓴 게시글"></a><br>
-		                            <span id="my-reply">댓글 쓴 게시글</span>
-		                        </div>
-		                        <!-- 회원 탈퇴 -->
-		                        <div class="menu-info-remove">
-		                            <a href="#"><img class="menu-icon" src="/resources/images/user/remove.png" alt="탈퇴"></a><br>
-		                            <span id="info-remove">회원 탈퇴</span>
-		                        </div>
-		                    </div>
-		            	</form>
-	                </div>
+					<!-- ***** 마이페이지 ***** 메뉴 -->
+					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include>
 	            </div>
 	        </div>
 	    </main>
 	
 	    <!-- footer -->
-		<jsp:include page="/WEB-INF/views/include/footer/footer.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	
 	    <!-- js -->
+	    <!-- 프로필 이미지 변경 버튼 -->
+		<script>
+// 		    document.getElementById('profile-image').addEventListener('change', function(event) {
+// 		        const fileInput = event.target;
+// 		        const selectedFile = fileInput.files[0];
+		
+// 		        if (selectedFile) {
+// 		            // 선택한 파일을 업로드하거나 다른 처리를 수행할 수 있습니다.
+// 		            // 이곳에서 선택한 파일(selectedFile)을 서버로 업로드하는 등의 작업을 수행합니다.
+// 		            // 예를 들어, Ajax 요청을 사용하여 서버에 파일을 업로드할 수 있습니다.
+// 		        }
+// 		    });
+		</script>
+	    
 	    <!-- 헤더 랜덤 이벤트 효과 -->
 	    <script>
 	        let header = document.querySelector('header');
@@ -138,9 +103,6 @@
 	                bolean = true;
 	            }
 	        })
-	        
-	    </script>
-	    <script>
 	        let profile = document.querySelector('.profile');
 	
 	        // 스크롤 이벤트 리스너
