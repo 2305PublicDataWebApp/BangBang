@@ -153,7 +153,7 @@ public class AdminController {
 
 	private APageInfo getPageInfo(Integer currentPage, Integer totalCount) {
 		int recordCountPerPage = 10;
-		int naviCountPerPage = 1;
+		int naviCountPerPage = 5;
 		
 		int naviTotalCount;
 		naviTotalCount 
@@ -199,7 +199,7 @@ public class AdminController {
 //			model.addAttribute("searchCondition", searchCondition); paramMap으로 써도 됨
 //			model.addAttribute("searchKeyword", searchKeyword);
 			model.addAttribute("paramMap", paramMap);
-			model.addAttribute("pInfo", aInfo);
+			model.addAttribute("aInfo", aInfo);
 			model.addAttribute("uList", uList);
 			return "admin/user_list_search";
 		} else {
