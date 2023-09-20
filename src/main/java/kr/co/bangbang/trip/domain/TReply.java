@@ -8,7 +8,6 @@ public class TReply {
 	private String tReplyContent;
 	private String tRUserId;
 	private Date tReplyDate;
-	private char tReplyYn;
 	private char tRStatusYn;
 	private String tRAdminId;
 	private Date tReplyUpdate;
@@ -44,12 +43,6 @@ public class TReply {
 	public void settReplyDate(Date tReplyDate) {
 		this.tReplyDate = tReplyDate;
 	}
-	public char gettReplyYn() {
-		return tReplyYn;
-	}
-	public void settReplyYn(char tReplyYn) {
-		this.tReplyYn = tReplyYn;
-	}
 	public char gettRStatusYn() {
 		return tRStatusYn;
 	}
@@ -68,11 +61,10 @@ public class TReply {
 	public void settReplyUpdate(Date tReplyUpdate) {
 		this.tReplyUpdate = tReplyUpdate;
 	}
-	
 	@Override
 	public String toString() {
 		return "여행지 댓글 [댓글번호=" + tReplyNo + ", 게시글번호=" + tTripNo + ", 댓글내용=" + tReplyContent
-				+ ", 회원아이디=" + tRUserId + ", 작성일=" + tReplyDate + ", 삭제여부=" + tReplyYn + ", 수정여부="
-				+ tRStatusYn + ", 관리자아이디=" + tRAdminId + ", 수정일=" + tReplyUpdate + "]";
+				+ ", 회원아이디=" + tRUserId + ", 작성일=" + tReplyDate + ", 수정여부=" + tRStatusYn
+				+ ", 관리자아이디=" + tRAdminId + ", 수정일=" + tReplyUpdate + "]";
 	}
 }

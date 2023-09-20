@@ -9,21 +9,28 @@
 		<result property="tReplyContent" 	column="TREPLY_CONTENT"/>
 		<result property="tRUserId" 		column="TR_USER_ID"/>
 		<result property="tReplyDate" 		column="TREPLY_DATE"/>
-		<result property="tReplyYn" 		column="TREPLY_YN"/>
 		<result property="tRStatusYn" 		column="TR_STATUS_YN"/>
 		<result property="tRAdminId" 		column="TR_ADMIN_ID"/>
 		<result property="tReplyUpdate" 	column="TREPLY_UPDATE"/>
 	</resultMap>
 	
 	<insert id="insertTReply">
-		INSERT INTO TRIP_REPLY VALUES(SEQ_TREPLY_NO.NEXTVAL, #{tTripNo }, #{tReplyContent }, #{tRUserId },DEFAULT, DEFAULT, DEFAULT, tRAdminId, DEFAULT)
+		INSERT INTO TRIP_REPLY VALUES(SEQ_TREPLY_NO.NEXTVAL, #{tTripNo }, #{tReplyContent }, #{tRUserId },DEFAULT, DEFAULT, tRAdminId, DEFAULT)
 	</insert>
 	
 	<update id="updateTReply">
 		UPDATE TRIP_REPLY SET TREPLY_CONTENT = #{tReplyContent }, TREPLY_UPDATE = DEFAULT WHERE TREPLY_NO = #{tReplyNo } 	
 	</update>
 	
+	<update id="deleteTReply">
+		UPDATE TRIP_REPLY SET TR_STATUS_YN = 'N' WHERE TREPLY_NO = #{tReplyNo }
+	</update>
+	
 	<select id="selectTReplyList" resultMap="TReplyResultMap">
 		SELECT * FROM TRIP_REPLY WHERE TTRIP_NO = #{tTripNo } AND TR_STATUS_YN = 'Y'
+	</select>
+	
+	<select id="selectTReplyTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM TRIP_REPLY WHERE TR_STATUS_YN = 'Y'
 	</select>
 </mapper>

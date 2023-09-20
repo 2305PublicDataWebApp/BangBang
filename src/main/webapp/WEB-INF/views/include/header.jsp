@@ -14,7 +14,7 @@
 
         <!-- 네비게이션 -->
         <ul class="navBar">
-            <a href="#"><li class="tab">여행지</li></a>
+            <a href="/trip/t_list.do"><li class="tab">여행지</li></a>
             <a href="#"><li class="tab">매거진</li></a>
             <a href="#"><li class="tab">공지사항</li></a>
             

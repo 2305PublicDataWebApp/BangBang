@@ -50,10 +50,12 @@
 		                    </div>
 	                    </c:forEach>
 	                </div>
+	                <c:if test="${adminId ne null }">
+		                <div style="display: flex; justify-content: right;">
+		                    <button style="padding: 3px 8px; margin: 5px 10px;" onclick="insertTrip()">등록</button>
+		                </div>
+	                </c:if>
 	                
-	                <div style="display: flex; justify-content: right;">
-	                    <button style="padding: 3px 8px; margin: 5px 10px;">등록</button>
-	                </div>
 	                <div style="display: flex; justify-content: center;">
 	                    <div id="page">
 	                        <!-- sts에서 페이징 처리하기 -->
@@ -83,5 +85,10 @@
 	    </main>
 	    <footer>
 	    </footer>
+	    <script>
+	    	function insertTrip() {
+				location.href="/trip/t_insert.do";
+			}
+	    </script>
 	</body>
 </html>

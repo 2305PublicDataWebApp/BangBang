@@ -139,27 +139,27 @@
 	            }
 	        })
 	        
-	        let profile = document.querySelector('.profile');
+// 	        let profile = document.querySelector('.profile');
 	
-	        // 스크롤 이벤트 리스너
-	        window.addEventListener('scroll', () => {
-	            // 스크롤 위치
-	            let scrollY = window.scrollY;
+// 	        // 스크롤 이벤트 리스너
+// 	        window.addEventListener('scroll', () => {
+// 	            // 스크롤 위치
+// 	            let scrollY = window.scrollY;
 	
-	            // 프로필을 고정할 위치
-	            let fixedPosition = 500;
+// 	            // 프로필을 고정할 위치
+// 	            let fixedPosition = 500;
 	
-	            // 프로필이 고정될 때 상단으로부터의 거리
-	            let fixedTop = 50;
+// 	            // 프로필이 고정될 때 상단으로부터의 거리
+// 	            let fixedTop = 50;
 	
-	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
-	            if (scrollY >= fixedPosition) {
-	                profile.style.position = 'fixed';
-	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
-	            } else {
-	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
-	            }
-	        });
+// 	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
+// 	            if (scrollY >= fixedPosition) {
+// 	                profile.style.position = 'fixed';
+// 	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
+// 	            } else {
+// 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
+// 	            }
+// 	        });
 	    </script>
 	</body>
 </html>

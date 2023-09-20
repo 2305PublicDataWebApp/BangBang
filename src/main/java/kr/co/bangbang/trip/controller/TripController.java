@@ -120,7 +120,7 @@ public class TripController {
 		return mv;
 	}
 
-	@RequestMapping(value="delete.do", method = RequestMethod.GET)
+	@RequestMapping(value="t_delete.do", method = RequestMethod.GET)
 	public ModelAndView deleteTrip(ModelAndView mv
 			,@ModelAttribute Trip trip, HttpSession session) {
 		try {
@@ -198,8 +198,12 @@ public class TripController {
 			Trip trip = tService.selectTripByNo(tripNo);
 			if(trip != null) {
 				List<TReply> tRList = tRService.selectTReplyList(tripNo);
+				// 댓글 전체 갯수 가져오기
+				int tReplyCount = tRService.selectTReplyTotalCount(tripNo);
+				
 				if(tRList.size() > 0) {
 					mv.addObject("tRList", tRList);
+					mv.addObject("tReplyCount", tReplyCount);
 				}
 				mv.addObject("trip", trip).setViewName("trip/t_detail");
 			}else {

@@ -18,12 +18,6 @@ public class TReplyServiceImpl implements TReplyService{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<TReply> selectTReplyList(int tTripNo) {
-		List<TReply> tRList = tRStore.selectTReplyList(sqlSession, tTripNo);
-		return tRList;
-	}
-
-	@Override
 	public int insertTReply(TReply tReply) {
 		int result = tRStore.insertTReply(sqlSession, tReply);
 		return result;
@@ -33,6 +27,24 @@ public class TReplyServiceImpl implements TReplyService{
 	public int updateTReply(TReply tReply) {
 		int result = tRStore.updateTReply(sqlSession, tReply);
 		return result;
+	}
+
+	@Override
+	public int deleteTReply(TReply tReply) {
+		int result = tRStore.deleteTReply(sqlSession, tReply);
+		return result;
+	}
+
+	@Override
+	public List<TReply> selectTReplyList(int tTripNo) {
+		List<TReply> tRList = tRStore.selectTReplyList(sqlSession, tTripNo);
+		return tRList;
+	}
+
+	@Override
+	public int selectTReplyTotalCount(int tTripNo) {
+		int tReplyCount = tRStore.selectTReplyTotalCount(sqlSession, tTripNo);
+		return tReplyCount;
 	}
 
 }
