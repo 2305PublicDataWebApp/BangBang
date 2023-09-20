@@ -5,15 +5,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>후기게시판 검색</title>
+		<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-		<header>header</header>
+		<header>
+			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		</header>
 		
 		<div class="container">
-			<div class="banner">배너</div>
 			<div class="main"></div>
 		</div>
 		
-		<footer>footer</footer>
+		<footer>
+			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		</footer>
 	</body>
 </html>

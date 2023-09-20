@@ -6,7 +6,7 @@ import kr.co.bangbang.review.domain.RReply;
 
 public interface RReplyService {
 
-	List<RReply> selectReplyList(Integer reviewNo);
+	List<RReply> selectReplyList(int rReviewNo);
 
 	int insertRReply(RReply rreply);
 

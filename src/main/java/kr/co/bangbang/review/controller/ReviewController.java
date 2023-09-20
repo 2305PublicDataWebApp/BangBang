@@ -1,6 +1,8 @@
 package kr.co.bangbang.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -194,6 +196,32 @@ public class ReviewController {
 		}
 		RPageInfo rInfo = new RPageInfo(rCurrentPage, rTotalCount, rNaviTotalCount, rRecordCountPerPage, rNaviCountPerPage, rStartNavi, rEndNavi);
 		return rInfo;
+	}
+	
+	@RequestMapping(value="r_search.do", method=RequestMethod.GET)
+	public ModelAndView searchReviewList(ModelAndView mv
+			, @RequestParam("seachCondition") String searchCondition
+			, @RequestParam("searchKeyword") String searchKeyword
+			, @RequestParam(value="page", required=false, defaultValue="1") Integer rCurrentPage) {
+		Map<String, String> rParamMap = new HashMap<String, String>();
+		rParamMap.put("searchCondition", searchCondition);
+		rParamMap.put("searchKeyword", searchKeyword);
+		int rTotalCount = rService.getRListCount(rParamMap);
+		RPageInfo rInfo = this.getRPageInfo(rCurrentPage, rTotalCount);
+		List<Review> searchList = rService.searchReviewByKeyword(rInfo, rParamMap);
+		if(!searchList.isEmpty()) {
+			mv.addObject("searchCondition", searchCondition);
+			mv.addObject("searchKeyword", searchKeyword);
+			mv.addObject("rInfo", rInfo);
+			mv.addObject("rList", searchList);
+			mv.setViewName("trip/t_search");
+			mv.setViewName("review/r_search");
+		}else {
+			mv.addObject("msg", "데이터 조회 실패");
+			mv.addObject("url", "review/r_list");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
 	}
 	
 }
