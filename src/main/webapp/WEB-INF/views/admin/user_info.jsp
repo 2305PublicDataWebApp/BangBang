@@ -38,9 +38,9 @@
 <%-- 					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include> --%>
 					
 					<!-- 개인정보 조회 -->
-	                <span class="menu-box-text">개인 정보 조회</span>
-	                <button class="adminbtn">수정</button>
-	                <button class="adminbtn">삭제</button>
+	                <span class="menu-box-text" style="float: left">개인 정보 조회</span>
+	                <a href="" style="margin-left: 400px; width=30px" >수정</a>
+	                <a href="" style="margin-left: 10px;">삭제</a>              
 	                <br><br>
 	                <hr>
 	                
@@ -99,8 +99,7 @@
 	                    <div class="info-detail">
 	                        <span class="info-user-yn">회원여부</span>
 	                        <span class="info-user-yn-detail">${ user.userYn }</span>
-	                    </div>    
-	                    
+	                    </div> 
 	                </div>
 	            </div>
 	        </div>

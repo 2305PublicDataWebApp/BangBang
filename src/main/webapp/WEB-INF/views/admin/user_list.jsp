@@ -4,35 +4,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="UTF-8">
+<head>
+<meta charset="UTF-8">
 	<title>전체회원조회</title>
-	<link rel='stylesheet' href='/resources/css/admin/memberList.css'>
-<!--     <script src='https://unpkg.com/vue@2.5.17/dist/vue.js'></script> -->
-	</head>
-	<body>
-<header style="text-align: center;">
-    <br><br>
-    <h1>헤더</h1>
-  </header>
-  <hr>
-  <br><br><br><br>
-
-    <div id="boardTable" class="board-list">
-    
-	<form action="/admin/searchUserList.do" method="get">
-		
-	        <div class="filter input-group mb-3">
-	        <select name="searchCondition">
-				<option value="all">전체</option>
-				<option value="writer">작성자</option>
-				<option value="title">제목</option>
-				<option value="content">내용</option>   
-			</select> 
-	        <input class="form-control" type="text" placeholder="검색"/>
-	        <input type="submit" value="검색">
-     </form>
-                                </div>
+		<link rel='stylesheet' href='/resources/css/admin/memberList.css'>
+		<link rel='stylesheet' href='/resources/css/admin/a_header.css'>
+		<link rel="stylesheet" href="/resources/css/user/footer.css">
+</head>
+<body>
+	<!-- header -->
+	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>	 
+	<main class="u_list_main">
+		<br><br><br><br><br>
+		<h1>전체회원조회</h1>
+		<hr>
+		 <div id="boardTable" class="board-list">	    
+			<form action="/admin/searchUserList.do" method="get">
+				<div class="filter input-group mb-3">
+			        <select name="searchCondition">
+						<option value="all" <c:if test="${param.searchCondition == 'all' }">selected</c:if>>전체</option>
+						<option value="name" <c:if test="${param.searchCondition == 'name' }">selected</c:if>>이름</option>
+						<option value="id" <c:if test="${param.searchCondition == 'id' }">selected</c:if>>아이디</option>
+						<option value="nickname" <c:if test="${param.searchCondition == 'nickname' }">selected</c:if>>닉네임</option>   
+					</select> 
+			      <input class="form-control" type="text" name="searchKeyword" placeholder="검색"/>
+			      <input type="submit" value="검색">
+			     </div>
+		  	</form>
+		</div>
         <table class="table table-borderd  table-fixed">
             <thead>
             <tr>
@@ -49,54 +48,67 @@
 	            		<td>${i.count }</td>
 	            		<td>${uOne.userId }</td>
 	            		<c:url var="detailUrl" value="/admin/aInfo.do">
-						<c:param name="userId" value="${uOne.userId }"></c:param>
+							<c:param name="userId" value="${uOne.userId }"></c:param>
 						</c:url>
 						<td><a href="${detailUrl }">${uOne.userName }</a></td>
 	            		<td>${uOne.userNickname }</td>
 	            		<td>${uOne.userRegDate }</td>
 	            	</tr>            	
-            	</c:forEach>
-            	
+            	</c:forEach>	
             </tbody>
         </table>
-        <nav aria-label="Page navigation example">
-            <div class="current-page-area">
-          </div>
-         	<c:if test="${pInfo.startNavi != 1 }">
-			<c:url var="prevUrl" value="/admin/list.do">
-			<c:param name="page" value=""></c:param>
+        <div aria-label="Page navigation example" class="page">
+	        <c:url var="prevUrl" value="/admin/list.do">
+				<c:param name="page" value=""></c:param>
 			</c:url>
-            <ul class="pagination justify-content-center">
-            <li class="page-item" ><a class="page-link" href="${prevUrl }">Prev</a></li>
-            </c:if>
+            <div class="current-page-area"></div>
+          	<ul class="pagination justify-content-center">
+	         	<c:if test="${aInfo.startNavi != 1 }">
+					<li class="page-item" ><a class="page-link" href="${prevUrl }">Prev</a></li>
+	            </c:if>
             
-            <c:forEach begin="${aInfo.startNavi }" end="${aInfo.endNavi }" var="p">
-			<c:url var="pageUrl" value="/admin/list.do">
-			<c:param name="page" value="${p }"></c:param>
-			</c:url>
-            <li class="page-item" ><a class="page-link" href="${pageUrl }">${p }</a></li>
-            </c:forEach>
+	            <c:forEach begin="${aInfo.startNavi }" end="${aInfo.endNavi }" var="p">
+					<c:url var="pageUrl" value="/admin/list.do">
+						<c:param name="page" value="${p }"></c:param>
+					</c:url>
+	            	&nbsp;&nbsp;&nbsp;<li class="page-item" ><a class="page-link" href="${pageUrl }">${p }</a></li>&nbsp;&nbsp;&nbsp;
+	            </c:forEach>
             
-            <c:if test="${aInfo.endNavi != aInfo.naviTotalCount }">
-			<c:url var="nextUrl" value="/admin/list.do"> 
-			<c:param name="page" value="${aInfo.endNavi + 1 }"></c:param>
-			</c:url>
-            <li class="page-item" ><a class="page-link" href="${nextUrl }">Next</a></li>
-            </c:if>
-            
+	            <c:if test="${aInfo.endNavi != aInfo.naviTotalCount }">
+					<c:url var="nextUrl" value="/admin/list.do"> 
+						<c:param name="page" value="${aInfo.endNavi + 1 }"></c:param>
+					</c:url>
+	            	<li class="page-item" ><a class="page-link" href="${nextUrl }">Next</a></li>
+	            </c:if>
             </ul>
-        </nav>
-        </div>
-
-
-        <br><br><br><br>
-        <hr>
-        <footer style="text-align: center;">  
-            <h1>푸터</h1>
-        </footer>
-    
-        <script>
-
-        </script>	
-	</body>
+        </div>     
+<!--         <nav aria-label="Page navigation example"> -->
+<%-- 	        <c:url var="prevUrl" value="/admin/list.do"> --%>
+<%-- 				<c:param name="page" value=""></c:param> --%>
+<%-- 			</c:url> --%>
+<!--             <div class="current-page-area"></div> -->
+<!--           	<ul class="pagination justify-content-center"> -->
+<%-- 	         	<c:if test="${aInfo.startNavi != 1 }"> --%>
+<%-- 					<li class="page-item" ><a class="page-link" href="${prevUrl }">Prev</a></li> --%>
+<%-- 	            </c:if> --%>
+            
+<%-- 	            <c:forEach begin="${aInfo.startNavi }" end="${aInfo.endNavi }" var="p"> --%>
+<%-- 					<c:url var="pageUrl" value="/admin/list.do"> --%>
+<%-- 						<c:param name="page" value="${p }"></c:param> --%>
+<%-- 					</c:url> --%>
+<%-- 	            	<li class="page-item" ><a class="page-link" href="${pageUrl }">${p }</a></li> --%>
+<%-- 	            </c:forEach> --%>
+            
+<%-- 	            <c:if test="${aInfo.endNavi != aInfo.naviTotalCount }"> --%>
+<%-- 					<c:url var="nextUrl" value="/admin/list.do">  --%>
+<%-- 						<c:param name="page" value="${aInfo.endNavi + 1 }"></c:param> --%>
+<%-- 					</c:url> --%>
+<%-- 	            	<li class="page-item" ><a class="page-link" href="${nextUrl }">Next</a></li> --%>
+<%-- 	            </c:if> --%>
+<!--             </ul> -->
+<!--         </nav>      -->
+	</main>
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>	
+</body>
 </html>

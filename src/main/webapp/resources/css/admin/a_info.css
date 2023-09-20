@@ -7,7 +7,7 @@
     width: 1130px;
     max-width: 1130px;
     margin : 0 auto;
-    height: 1305px;
+    height: 900px;
     padding: 100px 20px;
     font-family: sans-serif;
 }
@@ -182,7 +182,7 @@ button {
 .info {
     position: relative;
     /* border : 1px solid black; */
-    height: 500px;
+    height: 700px;
     padding : 30px 60px;
 }
 

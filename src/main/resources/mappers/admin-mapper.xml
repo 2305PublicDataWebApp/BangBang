@@ -79,17 +79,17 @@
 	
 	
 	<select id="searchUserByKeyword" resultMap="userResultMap">
-		SELECT COUNT (*) FROM USER_TBL
+		SELECT * FROM USER_TBL
 		<if test="searchCondition == 'all'">
 			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'OR USER_NAME LIKE '%'||#{ searchKeyword }||'%' OR USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%' 
 		</if>
-		<if test="searchCondition == 'writer'">
+		<if test="searchCondition == 'name'">
 			WHERE USER_NAME LIKE '%'||#{ searchKeyword }||'%'
 		</if> 
-		<if test="searchCondition == 'title'">
+		<if test="searchCondition == 'id'">
 			WHERE USER_ID LIKE '%'||#{ searchKeyword }||'%'
 		</if>
-		<if test="searchCondition == 'content'">
+		<if test="searchCondition == 'nickname'">
 			WHERE USER_NICKNAME LIKE '%'||#{ searchKeyword }||'%'
 		</if> 
 	</select>

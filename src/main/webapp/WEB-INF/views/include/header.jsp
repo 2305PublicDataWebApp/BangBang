@@ -15,7 +15,6 @@
             <a href="/trip/t_list.do"><li class="tab">여행지</li></a>
             <a href="/review/r_list.do"><li class="tab">여행후기</li></a>
             <a href="/notice/n_list.do"><li class="tab">공지사항</li></a>
-            
             <!-- 로그인 세션 없을 경우 -->
             <c:if test="${ userId eq null && adminId eq null }">
 	            <a href="/user/login.do">
@@ -30,10 +29,16 @@
             </c:if>
             <!-- 어드민 로그인 -->
             <c:if test="${ adminId ne null && userId eq null}">
+	            <a href="/admin/list.do"><li class="tab">회원관리</li></a>
+	            <a href="/banner/bList.do"><li class="tab">배너관리</a></li>
 	            <a href="/admin/a_logout.do">로그아웃</a>
             </c:if>
+           
+
+
         </ul>
     </nav>
+            
     <!-- 헤더 text -->
     <div class="header-content">
         <div class="content">

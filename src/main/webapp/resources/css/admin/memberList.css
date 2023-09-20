@@ -51,6 +51,14 @@
     -webkit-tap-highlight-color: transparent;
   }
   
+  page {
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    padding: 0px 10px;
+    margin-top: 10px	
+}
+  
   @-ms-viewport {
     width: device-width;
   }
@@ -68,9 +76,11 @@
     color: #212529;
     text-align: left;
     background-color: #fff;
-    width: 1260px;
-    margin: 0 auto;
-    background: linear-gradient(#FFFACD, #E3BCBC);
+  }
+  .u_list_main {
+  width: 1130px;
+  margin: 0 auto;
+  background-color: white;
   }
   
   [tabindex="-1"]:focus {
@@ -4730,6 +4740,7 @@
     padding-left: 0;
     list-style: none;
     border-radius: 0.25rem;
+    margin-top: 50px;
   }
   
   .page-link {
