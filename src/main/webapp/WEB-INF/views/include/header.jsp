@@ -19,18 +19,23 @@
             <a href="#"><li class="tab">공지사항</li></a>
             
             <!-- 로그인 세션 없을 경우 -->
-            <c:if test="${ userId eq null }">
+            <c:if test="${ userId eq null && adminId eq null }">
 	            <a href="/user/login.do">
 	            	<img class="login-img" src="/resources/images/user/login.png" alt="로그인">
 	            </a>
             </c:if>
             
             <!-- 로그인 세션 저장되어 있을 경우 -->
-            <c:if test="${ userId ne null }">
+            <c:if test="${ userId ne null && adminId eq null}">
 	            <a href="/user/mypage.do?userId=${ userId }">
 	            	<img class="login-img" src="/resources/images/user/mypage.png" alt="마이페이지">
 	            </a>
-            </c:if> 
+            </c:if>
+            
+            <!-- 어드민 로그인 -->
+            <c:if test="${ adminId ne null && userId eq null}">
+	            <a href="/admin/a_logout.do">로그아웃</a>
+            </c:if>
         </ul>
 
     </nav>

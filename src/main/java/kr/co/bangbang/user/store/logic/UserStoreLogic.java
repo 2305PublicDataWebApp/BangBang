@@ -1,8 +1,13 @@
 package kr.co.bangbang.user.store.logic;
 
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.bangbang.review.domain.Review;
+import kr.co.bangbang.user.domain.UPageInfo;
 import kr.co.bangbang.user.domain.User;
 import kr.co.bangbang.user.store.UserStore;
 
@@ -43,6 +48,5 @@ public class UserStoreLogic implements UserStore{
 		int result = session.update("UserMapper.deleteUser", userId);
 		return result;
 	}
-
 
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -50,86 +52,30 @@
 		                        <col style="width: 20%">
 		                    </colgroup>
 		                    <thead>
+		                    <!-- *************** 테이블 제목 *************** -->
 		                        <tr>
-		                            <th>
-		                                No
-		                            </th>
-		                            <th>
-		                                카테고리
-		                            </th>
-		                            <th>
-		                                제목
-		                            </th>
-		                            <th>
-		                                작성날짜
-		                            </th>
+		                            <th>No</th>
+		                            <th>카테고리</th>
+		                            <th>제목</th>
+		                            <th>작성날짜</th>
 		                        </tr>
 		                    </thead>
 		                    <tbody>
-								<!-- list 데이터는 items에 넣었고, var에서 설정한 변수로 list 데이터에서 -->
-								<!-- 꺼낸 값을 사용하고 i의 값은 varStatus로 사용 -->
-								<c:forEach var="board" items="${ bList }" varStatus="i">
+		                    	<!-- *************** 테이블 내용 *************** -->
+								<c:forEach var="board" items="${ rList }" varStatus="r">
+<!-- 								<input -->
+		                        <tr>
+		                            <td>${ r.count }</td>
+		                            <td>${ board.reiviewType }</td>
+                          		 	<c:url var="detailUrl" value="/review/r_detail.do">
+                          		 		<c:param name="reviewTitle" value="${ board.reviewTitle }"></c:param>
+                          		 	</c:url>
+                          		 	<td class="date">
+                          		 		<fmt:formatDate pattern="YYYY-MM-dd" value="${ board.reviewDate }"/>
+                          		 	</td>
+		                        </tr>
+								
 								</c:forEach>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
-		                        <tr>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                            <td>d</td>
-		                        </tr>
 		                    </tbody>
 		                    <tfoot class="search-content">
 		                        <tr>
@@ -209,6 +155,34 @@
 	            }
 	        })
 	        
+	        <!-- 프로필 이미지 미리보기 -->
+	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.
+	        var imageInput = document.getElementById('profile-image');
+	        var imagePreview = document.getElementById('image-preview');
+
+	        // 파일 선택 필드의 change 이벤트를 감지하여 미리보기 업데이트
+	        imageInput.addEventListener('change', function () {
+	            var file = imageInput.files[0]; // 선택한 파일
+
+	            if (file) {
+	                var reader = new FileReader(); // FileReader 객체 생성
+
+	                reader.onload = function (e) {
+	                    // 파일 읽기가 완료되면 미리보기 업데이트
+	                    var img = document.createElement('img'); // 이미지 엘리먼트 생성
+	                    img.src = e.target.result; // 읽은 파일 데이터를 이미지 소스로 설정
+	                    img.style.maxWidth = '100%'; // 이미지가 너무 크면 화면에 맞게 조절
+	                    imagePreview.innerHTML = ''; // 이미지 미리보기 영역 초기화
+	                    imagePreview.appendChild(img); // 이미지를 미리보기 영역에 추가
+	                };
+
+	                reader.readAsDataURL(file); // 파일을 읽어 데이터 URL로 변환하여 이미지 소스로 설정
+	            } else {
+	                // 파일이 선택되지 않았을 때 미리보기 영역 초기화
+	                imagePreview.innerHTML = '';
+	            }
+	            profileForm.submit();
+	        });
 	    </script>
 	</body>
 </html>

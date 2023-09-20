@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	@Override
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

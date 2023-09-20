@@ -112,7 +112,7 @@ public class NoticeController {
 			Integer nTotalCount = nService.getNListCount();
 			NPageInfo nInfo = this.getNPageInfo(nCurrentPage, nTotalCount);
 			List<Notice> nList = nService.selectNoticeList(nInfo);
-			mv.addObject("nList", nList).addObject("nInfo", nInfo).setViewName("/notice/n_list");
+			mv.addObject("nList", nList).addObject("nInfo", nInfo).setViewName("notice/n_list");
 		} catch (Exception e) {
 			mv.addObject("msg", "목록 조회 오류");
 			mv.addObject("url", "/index.jsp");

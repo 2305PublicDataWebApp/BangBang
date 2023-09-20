@@ -1,7 +1,11 @@
 package kr.co.bangbang.user.store;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
+import kr.co.bangbang.review.domain.Review;
+import kr.co.bangbang.user.domain.UPageInfo;
 import kr.co.bangbang.user.domain.User;
 
 public interface UserStore {
@@ -34,7 +38,7 @@ public interface UserStore {
 	 * 회원 정보 수정
 	 * @param session
 	 * @param user
-	 * @return
+	 * @return int
 	 */
 	int updateUser(SqlSession session, User user);
 
@@ -42,10 +46,9 @@ public interface UserStore {
 	 * 회원 탈퇴
 	 * @param session
 	 * @param userId
-	 * @return
+	 * @return int
 	 */
 	int deleteUser(SqlSession session, String userId);
-
 
 
 }
