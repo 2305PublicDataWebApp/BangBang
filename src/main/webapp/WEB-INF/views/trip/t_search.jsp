@@ -49,10 +49,11 @@
 	                    </c:forEach>
 	                    <!-- 여기까지-------- -->
 	                </div>
-	                
-	                <div style="display: flex; justify-content: right;">
-	                    <button style="padding: 3px 8px; margin: 5px 10px;">등록</button>
-	                </div>
+	                <c:if test="${adminId ne null }">
+		                <div style="display: flex; justify-content: right;">
+		                    <button style="padding: 3px 8px; margin: 5px 10px;">등록</button>
+		                </div>
+					</c:if>
 	                <div style="display: flex; justify-content: center;">
 	                    <div id="page">
 	                    	<c:if test="${tPInfo.tStartNavi ne '1' }">

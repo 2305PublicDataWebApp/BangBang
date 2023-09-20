@@ -8,8 +8,6 @@ import kr.co.bangbang.trip.domain.TReply;
 
 public interface TReplyStore {
 
-	List<TReply> selectTReplyList(SqlSession sqlSession, int tTripNo);
-
 	/**
 	 * 댓글 등록 Store
 	 * @param sqlSession
@@ -25,5 +23,23 @@ public interface TReplyStore {
 	 * @return
 	 */
 	int updateTReply(SqlSession sqlSession, TReply tReply);
+
+	/**
+	 * 댓글 삭제 Store
+	 * @param sqlSession
+	 * @param tReply
+	 * @return
+	 */
+	int deleteTReply(SqlSession sqlSession, TReply tReply);
+
+	List<TReply> selectTReplyList(SqlSession sqlSession, int tTripNo);
+
+	/**
+	 * 댓글 전체 갯수 조회
+	 * @param sqlSession
+	 * @param tripNo
+	 * @return
+	 */
+	int selectTReplyTotalCount(SqlSession sqlSession, int tTripNo);
 
 }

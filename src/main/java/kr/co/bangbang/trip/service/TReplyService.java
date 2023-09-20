@@ -22,4 +22,18 @@ public interface TReplyService {
 	 */
 	int updateTReply(TReply tReply);
 
+	/**
+	 * 댓글 삭제 Store
+	 * @param tReply
+	 * @return
+	 */
+	int deleteTReply(TReply tReply);
+
+	/**
+	 * 댓글 전체 갯수 Service
+	 * @param tripNo
+	 * @return
+	 */
+	int selectTReplyTotalCount(int tTripNo);
+
 }
