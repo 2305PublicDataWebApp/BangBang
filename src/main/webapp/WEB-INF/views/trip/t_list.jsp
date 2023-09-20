@@ -8,14 +8,13 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>여행지 추천 게시판</title>
 	    <link rel="stylesheet" href="/resources/css/trip/t_list.css">
+	    <link rel="stylesheet" href="/resources/css/user/footer.css">
+	    <link rel="stylesheet" href="/resources/css/user/header.css">
+	    <link rel="stylesheet" href="/resources/css/reset.css">
 	</head>
 	<body>
-	    <header>
-	    </header>
+	   <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    <main>
-	        <div class="banner">
-	            <img class="banner-img" src="/resources/images/main/dirud.png" class="d-block w-100" alt="벚꽃">
-	        </div>
 	        <div>
 	            <div id="list">
 	                <div id="select">
@@ -83,8 +82,7 @@
 	            </div>
 	        </div>
 	    </main>
-	    <footer>
-	    </footer>
+	    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	    <script>
 	    	function insertTrip() {
 				location.href="/trip/t_insert.do";

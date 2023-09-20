@@ -29,15 +29,15 @@
 	</update>
 	
 	<update id="deleteTrip">
-		UPDATE TRIP_BOARD SET T_STATUS_YN = 'N' WHERE TRIP_NO = #{tripNo} AND T_ADMIN_ID = #{tAdminId}
+		UPDATE TRIP_BOARD SET T_STATUS_YN = 'N' WHERE TRIP_NO = #{tripNo} AND T_ADMIN_ID = #{tAdminId }
 	</update>
 	
 	<select id="selectTripList" resultMap="tripResultMap">
-		SELECT * FROM TRIP_BOARD
+		SELECT * FROM TRIP_BOARD WHERE T_STATUS_YN = 'Y'
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
-		SELECT COUNT(*) FROM TRIP_BOARD
+		SELECT COUNT(*) FROM TRIP_BOARD WHERE T_STATUS_YN = 'Y'
 	</select>
 	
 	<select id="selectTripByNo" resultMap="tripResultMap">
@@ -47,38 +47,38 @@
 	<select id="selectListByKeywordCount" resultType="_int">
 		SELECT COUNT(*) FROM TRIP_BOARD
 		<if test="searchCondition == 'all'">
-			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%'
+			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%' AND T_STATUS_YN = 'Y'
 		</if>
 		<if test="searchCondition == 'trip'">
-			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'festival'">
-			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'content'">
-			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'by-member'">
-			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 	</select>
 	
 	<select id="selectTripsByKeyword" resultMap="tripResultMap">
 		SELECT * FROM TRIP_BOARD
-		<if test="searchCondition == 'all'">
-			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%'
+		<if test="searchCondition == 'all'"> 
+			WHERE TRIP_TITLE LIKE '%'||#{searchKeyword }||'%' AND T_STATUS_YN = 'Y'
 		</if>
 		<if test="searchCondition == 'trip'">
-			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'여행지'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'festival'">
-			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'지역축제'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'content'">
-			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'테마'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 		<if test="searchCondition == 'by-member'">
-			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%'
+			WHERE TRIP_TYPE LIKE '%'||'구성원별'||'%' AND TRIP_TITLE LIKE '%'||#{searchKeyword}||'%' AND T_STATUS_YN = 'Y'
 		</if> 
 	</select>
 </mapper>

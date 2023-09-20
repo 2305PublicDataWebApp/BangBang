@@ -7,6 +7,9 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>게시글 수정 폼</title>
 	    <link rel="stylesheet" href="/resources/css/trip/t_modify.css">
+	    <link rel="stylesheet" href="/resources/css/user/footer.css">
+	    <link rel="stylesheet" href="/resources/css/user/header.css">
+	    <link rel="stylesheet" href="/resources/css/reset.css">
 	    
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,9 +21,7 @@
 		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css">
 	</head>
 	<body>
-	    <header>
-	
-	    </header>
+	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    <main>
 	        <div id="main-container">
 	            <div id="form">
@@ -33,52 +34,53 @@
 	                <div style="margin: 40px auto; max-width: 700px;">
 	                    <form action="/trip/t_modify.do" method="post">
 	                    	<input type="hidden" name="tripNo" value="${trip.tripNo }">
+	                    	<input type="hidden" name="tAdminId" value="${trip.tAdminId }">
 	                        <ul>
 	                        	<li>
 	                                <label for="type">게시글 타입</label>
-	                                <input type="text" id="type" name="ttype" value="${trip.tripType }"><br>
+	                                <input type="text" id="type" name="tripType" value="${trip.tripType }"><br>
 	                            </li>
 	                            <li>
-	                                <label for="title">여행지이름</label>
-	                                <input type="text" id="title" name="tname" value="${trip.tripTitle }"><br>
+	                                <label for="tTitle">여행지이름</label>
+	                                <input type="text" id="tTitle" name="tripTitle" value="${trip.tripTitle }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="addr">주소</label>
-	                                <input type="text" id="addr" name="taddr" value="${trip.tripAddr }"><br>
+	                                <input type="text" id="addr" name="tripAddr" value="${trip.tripAddr }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="oneInfo">한줄소개</label>
-	                                <input type="text" id="oneInfo" name="tone" value="${trip.tripSummary }"><br>
+	                                <input type="text" id="oneInfo" name="tripSummary" value="${trip.tripSummary }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="thum">썸네일</label>
 	                                <input type="text" id="thum" name="tthum" value="${trip.tripNo }">
 	                                <button>파일찾기</button><br>                            
 	                            </li>
-	                            <li>
-	                                <label for="file">첨부파일</label>
-	                                <input type="text" id="file" name="tfile" value="${trip.tripNo }">
-	                                <button>파일찾기</button><br>
-	                            </li>
+<!-- 	                            <li> -->
+<!-- 	                                <label for="file">첨부파일</label> -->
+<%-- 	                                <input type="text" id="file" name="tfile" value="${trip.tripNo }"> --%>
+<!-- 	                                <button>파일찾기</button><br> -->
+<!-- 	                            </li> -->
 	                            <li>
 	                                <label for="infoaddr">상세주소</label>
-	                                <input type="text" id="infoaddr" name="tinfoaddr" value="${trip.tripInfoAddr }"><br>
+	                                <input type="text" id="infoaddr" name="tripInfoAddr" value="${trip.tripInfoAddr }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="home">홈페이지</label>
-	                                <input type="text" id="home" name="thomepage" value="${trip.tripHomePage }"><br>
+	                                <input type="text" id="home" name="tripHomePage" value="${trip.tripHomePage }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="time">이용시간</label>
-	                                <input type="text" id="time" name="ttime" value="${trip.tripTime }"><br>
+	                                <input type="text" id="time" name="tripTime" value="${trip.tripTime }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="price">이용금액</label>
-	                                <input type="text" id="price" name="tprice" value="${trip.tripPrice }"><br>
+	                                <input type="text" id="price" name="tripPrice" value="${trip.tripPrice }"><br>
 	                            </li>
 	                            <li>
 	                                <label for="summernote">상세정보</label>
-	                                <textarea id="summernote" name="tinfo" value="${trip.tripContent }"></textarea><br>
+	                                <textarea id="summernote" name="tripContent" value="${trip.tripContent }"></textarea><br>
 <!-- 	                                <input type="text" id="info" name="tinfo" value=""><br> -->
 	                            </li>
 	                        </ul>
@@ -88,8 +90,16 @@
 	            </div>
 	        </div>
 	    </main>
-	    <footer>
-	
-	    </footer>
+	    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+	    <script>
+		    $(document).ready(function () {
+		        $('#summernote').summernote({
+// 		            placeholder: '내용을 작성하세요',
+					value: "${trip.tripContent }",
+		            height: 400,
+		            maxHeight: 400
+		        });
+		    });
+	    </script>
 	</body>
 </html>

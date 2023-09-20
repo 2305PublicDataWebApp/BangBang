@@ -62,7 +62,7 @@ public class TripController {
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/trip/insert.do");
+			mv.addObject("url", "/trip/t_insert.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -92,7 +92,7 @@ public class TripController {
 		try {
 			String adminId = (String)session.getAttribute("adminId");
 			String tAdminId = trip.gettAdminId();
-			if(tAdminId != null && "admin".equals(adminId)) {
+			if(tAdminId != null && tAdminId.contains("admin")) {
 				// 수정이라는 과정은 대체하는 것, 대체하는 방법은 삭제 후 등록
 				int result = tService.updateTrip(trip);
 				if(result > 0) {
@@ -208,6 +208,7 @@ public class TripController {
 				mv.addObject("trip", trip).setViewName("trip/t_detail");
 			}else {
 				mv.addObject("msg", "게시글 데이터 조회를 실패하였습니다.");
+				mv.addObject("url", "/trip/t_list.do");
 				mv.addObject("error", "게시글 조회 실패");
 				mv.setViewName("common/error_page");
 			}

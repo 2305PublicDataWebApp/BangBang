@@ -15,7 +15,7 @@
 	</resultMap>
 	
 	<insert id="insertTReply">
-		INSERT INTO TRIP_REPLY VALUES(SEQ_TREPLY_NO.NEXTVAL, #{tTripNo }, #{tReplyContent }, #{tRUserId },DEFAULT, DEFAULT, tRAdminId, DEFAULT)
+		INSERT INTO TRIP_REPLY VALUES(SEQ_TREPLY_NO.NEXTVAL, #{tTripNo }, #{tReplyContent }, #{tRUserId },DEFAULT, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
 	<update id="updateTReply">
@@ -31,6 +31,6 @@
 	</select>
 	
 	<select id="selectTReplyTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM TRIP_REPLY WHERE TR_STATUS_YN = 'Y'
+		SELECT COUNT(*) FROM TRIP_REPLY WHERE TR_STATUS_YN = 'Y' AND TTRIP_NO = #{tTripNo }
 	</select>
 </mapper>

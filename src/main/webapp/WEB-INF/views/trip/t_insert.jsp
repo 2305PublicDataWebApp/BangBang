@@ -7,6 +7,9 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>게시글 등록 폼</title>
 	    <link rel="stylesheet" href="/resources/css/trip/t_insert.css">
+	    <link rel="stylesheet" href="/resources/css/user/footer.css">
+	    <link rel="stylesheet" href="/resources/css/user/header.css">
+	    <link rel="stylesheet" href="/resources/css/reset.css">
 	    
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,9 +21,7 @@
 		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css">
 	</head>
 	<body>
-	    <header>
-	
-	    </header>
+	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    <main>
 	        <div id="main-container">
 	            <div id="form">
@@ -35,49 +36,49 @@
 	                        <ul>
 	                        	<li>
 	                                <label for="type">게시글 타입</label>
-	                                <input type="text" id="type" name="ttype"><br>
+	                                <input type="text" id="type" name="tripType"><br>
 	                            </li>
 	                            <li>
 	                                <label for="title">여행지이름</label>
-	                                <input type="text" id="title" name="tname"><br>
+	                                <input type="text" id="title" name="tripTitle"><br>
 	                            </li>
 	                            <li>
 	                                <label for="addr">주소</label>
-	                                <input type="text" id="addr" name="taddr"><br>
+	                                <input type="text" id="addr" name="tripAddr"><br>
 	                            </li>
 	                            <li>
 	                                <label for="oneInfo">한줄소개</label>
-	                                <input type="text" id="oneInfo" name="tone"><br>
+	                                <input type="text" id="oneInfo" name="tripSummary"><br>
 	                            </li>
 	                            <li>
 	                                <label for="thum">썸네일</label>
 	                                <input type="text" id="thum" name="tthum">
 	                                <button>파일찾기</button><br>                            
 	                            </li>
-	                            <li>
-	                                <label for="file">첨부파일</label>
-	                                <input type="text" id="file" name="tfile">
-	                                <button>파일찾기</button><br>
-	                            </li>
+<!-- 	                            <li> -->
+<!-- 	                                <label for="file">첨부파일</label> -->
+<!-- 	                                <input type="text" id="file" name="tfile"> -->
+<!-- 	                                <button>파일찾기</button><br> -->
+<!-- 	                            </li> -->
 	                            <li>
 	                                <label for="infoaddr">상세주소</label>
-	                                <input type="text" id="infoaddr" name="tinfoaddr"><br>
+	                                <input type="text" id="infoaddr" name="tripInfoAddr"><br>
 	                            </li>
 	                            <li>
 	                                <label for="home">홈페이지</label>
-	                                <input type="text" id="home" name="thomepage"><br>
+	                                <input type="text" id="home" name="tripHomePage"><br>
 	                            </li>
 	                            <li>
 	                                <label for="time">이용시간</label>
-	                                <input type="text" id="time" name="ttime"><br>
+	                                <input type="text" id="time" name="tripTime"><br>
 	                            </li>
 	                            <li>
 	                                <label for="price">이용금액</label>
-	                                <input type="text" id="price" name="tprice"><br>
+	                                <input type="text" id="price" name="tripPrice"><br>
 	                            </li>
 	                            <li>
 	                                <label for="summernote">상세정보</label>
-	                                <textarea id="summernote" name="tinfo"></textarea>
+	                                <textarea id="summernote" name="tripContent"></textarea>
 <!-- 	                                <input type="text" id="" name="t-info"><br> -->
 	                            </li>
 	                            <script>
@@ -146,8 +147,6 @@
 	            </div>
 	        </div>
 	    </main>
-	    <footer>
-	
-	    </footer>
+		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</body>
 </html>

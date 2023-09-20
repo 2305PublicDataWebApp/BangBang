@@ -27,7 +27,7 @@ public class TReplyController {
 			, HttpSession session) {
 		String url="";
 		try {
-			String tReplyWriter = (String)session.getAttribute("tRUserId");
+			String tReplyWriter = (String)session.getAttribute("userId");
 			if(tReplyWriter != null && !tReplyWriter.equals("")) {
 				tReply.settRUserId(tReplyWriter);
 				int result = tRService.insertTReply(tReply);
@@ -51,7 +51,7 @@ public class TReplyController {
 		} catch (Exception e) {
 			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", url );
+			mv.addObject("url", url);
 			mv.setViewName("common/error_page");
 		}
 		return mv;
