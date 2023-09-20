@@ -52,6 +52,12 @@ public class AdminServiceImpl implements AdminService{
 		return uList;
 	}
 
+	@Override
+	public User selectOneById(String userId) {
+		User user = aStore.selectOneById(session, userId);
+		return user;
+	}
+
 	
 
 

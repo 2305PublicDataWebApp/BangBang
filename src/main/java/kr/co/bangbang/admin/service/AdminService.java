@@ -44,6 +44,13 @@ public interface AdminService {
 	 */
 	List<User> searchUserByKeyword(APageInfo aInfo, Map<String, String> paramMap);
 
+	/**
+	 * 관리자-회원정보조회
+	 * @param userId
+	 * @return
+	 */
+	User selectOneById(String userId);
+
 
 
 
