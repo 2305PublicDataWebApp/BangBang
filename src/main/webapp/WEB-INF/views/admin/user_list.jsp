@@ -47,10 +47,13 @@
             	<c:forEach items="${user }" var="uOne" varStatus="i">
 					<tr>
 	            		<td>${i.count }</td>
-	            		<td>${uOne.userName }</td>
-	            		<td>${uOne.userName }</td>
-	            		<td>${uOne.userName }</td>
-	            		<td>${uOne.userName }</td>
+	            		<td>${uOne.userId }</td>
+	            		<c:url var="detailUrl" value="/admin/aInfo.do">
+						<c:param name="userId" value="${uOne.userId }"></c:param>
+						</c:url>
+						<td><a href="${detailUrl }">${uOne.userName }</a></td>
+	            		<td>${uOne.userNickname }</td>
+	            		<td>${uOne.userRegDate }</td>
 	            	</tr>            	
             	</c:forEach>
             	

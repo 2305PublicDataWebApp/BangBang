@@ -59,11 +59,18 @@ public class AdminStoreLogic implements AdminStore{
 		return searchList;
 	}
 
+<<<<<<< HEAD
 	// 관리자 로그인
 	@Override
 	public Admin adminLogin(SqlSession session, Admin admin) {
 		Admin aOne = session.selectOne("AdminMapper.adminLogin", admin);
 		return aOne;
+=======
+	@Override
+	public User selectOneById(SqlSession session, String userId) {
+		User user = session.selectOne("AdminMapper.selectOneById", userId);
+		return user;
+>>>>>>> refs/remotes/origin/20230920psw
 	}
 	
 	

@@ -176,7 +176,7 @@ public class AdminController {
 	
 	
 	
-	@RequestMapping(value = "/admin/searchUserList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "searchUserList.do", method = RequestMethod.GET)
 	public String searchUserList(
 			@RequestParam("searchCondition") String searchCondition
 			, @ RequestParam("searchKeyword") String searchKeyword
@@ -201,7 +201,7 @@ public class AdminController {
 			model.addAttribute("paramMap", paramMap);
 			model.addAttribute("pInfo", aInfo);
 			model.addAttribute("uList", uList);
-			return "admin/search";
+			return "admin/user_list_search";
 		} else {
 			model.addAttribute("msg", "데이터 조회가 완료되지 않았습니다.");
 			model.addAttribute("error", "데이터 조회 실패");
@@ -213,7 +213,38 @@ public class AdminController {
 	
 	
 	
-	
+	@RequestMapping(value="aInfo.do", method=RequestMethod.GET)
+	public ModelAndView showUserInfo(
+			ModelAndView mv
+			, @RequestParam("userId") String userId
+			, HttpSession session) {
+		try {
+//			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			String sessionId = "user03";
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				User user = aService.selectOneById(userId);
+				
+				if(user != null) { // 성공 시
+					mv.addObject("user", user);
+					mv.setViewName("admin/user_info");
+				} else { // 실패 시
+					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("url", "redirect:/index.jsp");
+					mv.setViewName("common/error_page");
+				}
+			} else { // 세션에 저장된 아이디가 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "서비스 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "redirect:/index.jsp");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}	
 	
 	
 	

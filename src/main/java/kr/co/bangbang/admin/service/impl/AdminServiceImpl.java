@@ -52,11 +52,18 @@ public class AdminServiceImpl implements AdminService{
 		return uList;
 	}
 
+<<<<<<< HEAD
 	// 관리자 로그인
 	@Override
 	public Admin adminLogin(Admin admin) {
 		Admin aOne = aStore.adminLogin(session, admin);
 		return aOne;
+=======
+	@Override
+	public User selectOneById(String userId) {
+		User user = aStore.selectOneById(session, userId);
+		return user;
+>>>>>>> refs/remotes/origin/20230920psw
 	}
 
 	

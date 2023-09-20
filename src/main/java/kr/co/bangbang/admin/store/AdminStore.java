@@ -52,11 +52,20 @@ public interface AdminStore {
 	List<User> searchUserByKeyword(SqlSession session, APageInfo aInfo, Map<String, String> paramMap);
 
 	/**
+<<<<<<< HEAD
 	 * 어드민 로그인
 	 * @param session
 	 * @param admin
 	 * @return Admin
 	 */
 	Admin adminLogin(SqlSession session, Admin admin);
+=======
+	 * 관리자-회원정보조회
+	 * @param session
+	 * @param userId
+	 * @return
+	 */
+	User selectOneById(SqlSession session, String userId);
+>>>>>>> refs/remotes/origin/20230920psw
 
 }
