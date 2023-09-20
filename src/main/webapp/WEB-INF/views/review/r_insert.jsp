@@ -5,20 +5,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>후기게시판등록</title>
-		<link rel="stylesheet" href="/resources/css/user/footer.css">
-		<script src="/resources/summernote/summernote-lite.js"></script>
-		<script src="/resources/summernote/summernote-ko-KR.js.js"></script>
-		<link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
+    	<link rel="stylesheet" href="/resources/css/user/header.css">
+    	<link rel="stylesheet" href="/resources/css/user/footer.css">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	    <!-- 썸머노트를 위한 import -->
+		<script src="../resources/js/summernote/summernote-lite.js"></script>
+		<script src="../resources/js/summernote/lang/summernote-ko-KR.js"></script>
+		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css">
 	</head>
 	<body>
-    	<header>
-    		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-    	</header>
+    	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
     	
     	<div class="container">
     		<div class="main">
     			<div class="reviewsubject">
-    				<span>후기 등록</span>
+    				<h2><span>후기 등록</span></h2>
     			</div>
     			<hr>
     			<div class="reviewform">
@@ -39,7 +44,7 @@
 							</li>
 							<li>
 								<label>내용</label>
-    							<textarea name="content" id="summernote" value="summernote"></textarea>
+    							<textarea id="summernote" name="rinfo"></textarea>
 							</li>
     					</ul>
     					<div class="button">
@@ -50,8 +55,6 @@
     		</div>
     	</div>
     	
-    	<footer>
-    		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-    	</footer>
+    	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</body>
 </html>

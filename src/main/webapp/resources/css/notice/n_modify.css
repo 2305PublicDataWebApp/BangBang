@@ -1,1 +1,70 @@
 @charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container{
+	width:100%;
+    background : #F2F2F2;
+}
+
+.center{
+	max-width:1130px;
+	margin : 0 auto;
+	padding-right : 40px;
+	padding-left : 40px;
+	padding-top : 100px;
+	padding-bottom : 150px;
+	background : white;
+	
+}
+
+.noticesubject{
+	font-size:40px;
+	padding-bottom:20px;
+}
+
+.button{
+	float:right;
+	width:100px;
+	height:50px;
+	margin-right:80px;
+	margin-rop:10px;
+}
+
+.modifyform{
+	padding-top : 20px;
+	padding-bottom : 10px;
+	padding-right:20px;
+	padding-left : 20px;
+}
+
+.title{
+	font-size:20px;
+}
+.name{
+	font-size:20px;
+}
+.content{
+	font-size:20px;
+}
+
+textarea {
+  resize: none;
+  margin-left:15px;
+  
+}
+.title2{
+	width : 600px;
+	height : 40px;
+	margin-left:15px;
+}
+.name2{
+	font-size:20px;
+	padding-left : 20px;
+	width : 600px;
+	height : 50px;
+}

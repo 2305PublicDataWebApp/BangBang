@@ -27,7 +27,7 @@ public class NoticeController {
 	
 	@RequestMapping(value="n_insert.do", method=RequestMethod.GET)
 	public ModelAndView showInsertForm(ModelAndView mv) {
-		mv.setViewName("/notice/n_insert");
+		mv.setViewName("notice/n_insert");
 		return mv;
 	}
 	
@@ -47,12 +47,14 @@ public class NoticeController {
 				}
 				mv.setViewName("redirect:/notice/n_list.do");
 			}else {
-				mv.addObject("msg","게시글 등록 실패");
-				mv.addObject("url","/notice/n_list.do");
+				mv.addObject("msg","관리자 정보가 존재하지 않습니다.");
+				mv.addObject("error","로그인이 필요합니다");
+				mv.addObject("url","/index.jsp");
 				mv.setViewName("common/error_page");
 			}
 		}catch(Exception e) {
 			mv.addObject("msg","게시글 등록 실패");
+			mv.addObject("error",e.getMessage());			
 			mv.addObject("url","/notice/n_list.do");
 			mv.setViewName("common/error_page");
 		}
@@ -66,10 +68,11 @@ public class NoticeController {
 		try {
 			notice = nService.selectNoticeByNo(noticeNo);
 			mv.addObject("notice", notice);
-			mv.setViewName("/notice/n_modify");
+			mv.setViewName("notice/n_modify");
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 수정 실패");
-			mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
+			mv.addObject("msg", "게시글 조회 실패");
+			mv.addObject("error",e.getMessage());
+			mv.addObject("url", "/notice/n_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -83,53 +86,60 @@ public class NoticeController {
 		try {
 			String adminId = (String)session.getAttribute("adminId");
 			String nAdminId = notice.getnAdminId();
-			if(nAdminId != null && adminId.equals("admin")) {
+			if(nAdminId != null && nAdminId.contains("admin")) {
 				int result = nService.modifyNotice(notice);
 				if(result > 0) {
 					mv.setViewName("redirect:/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 				}else {
 					mv.addObject("msg", "게시글 수정 실패");
+					mv.addObject("error","게시글 수정 실패");
 					mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 					mv.setViewName("common/error_page");
 				}
 			}else {
-				mv.addObject("msg", "게시글 수정 실패");
+				mv.addObject("msg", "게시글 수정 실.");
+				mv.addObject("error","게시글 수정 실패");
 				mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 수정 실패");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 
-	@RequestMapping(value="/n_list.do", method=RequestMethod.GET)
+	@RequestMapping(value="n_list.do", method=RequestMethod.GET)
 	public ModelAndView showNoticeList(
 			@RequestParam(value="page", required=false, defaultValue="1") Integer nCurrentPage, ModelAndView mv) {
 		try {
 			Integer nTotalCount = nService.getNListCount();
 			NPageInfo nInfo = this.getNPageInfo(nCurrentPage, nTotalCount);
 			List<Notice> nList = nService.selectNoticeList(nInfo);
-			mv.addObject("nList", nList).addObject("nInfo", nInfo).setViewName("/notice/n_list");
+			mv.addObject("nList", nList);
+			mv.addObject("nInfo", nInfo);
+			mv.setViewName("/notice/n_list");
 		} catch (Exception e) {
 			mv.addObject("msg", "목록 조회 오류");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 
-	@RequestMapping(value="/n_detail.do", method=RequestMethod.GET)
+	@RequestMapping(value="n_detail.do", method=RequestMethod.GET)
 	public ModelAndView showNoticeDetail(ModelAndView mv
 			, @RequestParam("noticeNo") Integer noticeNo){
 		try {
 			Notice noticeOne = nService.selectNoticeByNo(noticeNo);
 			mv.addObject("notice", noticeOne);
-			mv.setViewName("/notice/n_detail");
+			mv.setViewName("notice/n_detail");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 상세 조회 실패");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/n_list.do");
 			mv.setViewName("common/error_page");
 		}

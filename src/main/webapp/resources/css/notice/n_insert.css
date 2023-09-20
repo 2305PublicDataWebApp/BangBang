@@ -1,19 +1,69 @@
 @charset "UTF-8";
 
-.header{
-	width : 100%
-	height : 50px;
-	background-color:yellowgreen;
+* {
+    margin: 0;
+    padding: 0;
 }
-.footer{
-	width : 100%;
-	height : 150px;
-	background-color:yellowgreen;
+
+
+.container{
+	width:100%;
+    background : #F2F2F2;
 }
-.contatiner{
-	width : 100%
+
+.center{
+	max-width:1130px;
 	margin : 0 auto;
-	padding-bottom : 50px;
-	padding-top : 50px;
-	backgorund : linear-gradient(to bottom, #FFFACD, #E3BCBC);
+	padding-right : 40px;
+	padding-left : 40px;
+	padding-top : 100px;
+	padding-bottom : 150px;
+	background : white;
+}
+
+.noticesubject{
+	font-size:40px;
+	padding-bottom:20px;
+}
+
+.button{
+	float:right;
+	width:100px;
+	height:50px;
+	margin-right:80px;
+	margin-rop:10px;
+}
+
+.noticeform{
+	padding-top : 20px;
+	padding-bottom : 10px;
+	padding-right:20px;
+	padding-left : 20px;
+}
+
+.title{
+	font-size:20px;
+}
+.name{
+	font-size:20px;
+}
+.content{
+	font-size:20px;
+}
+
+textarea {
+  resize: none;
+  margin-left:15px;
+  
+}
+.title2{
+	width : 600px;
+	height : 40px;
+	margin-left:15px;
+}
+.name2{
+	font-size:20px;
+	padding-left : 20px;
+	width : 600px;
+	height : 50px;
 }

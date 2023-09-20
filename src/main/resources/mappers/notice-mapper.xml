@@ -7,11 +7,11 @@
 		<id property="noticeNo" column="NOTICE_NO" />
 		<result property="noticeTitle" column="NOTICE_TITLE" />		
 		<result property="noticeContent" column="NOTICE_CONTENT" />		
-		<result property="rAdminId" column="N_ADMIN_ID" />		
+		<result property="nAdminId" column="N_ADMIN_ID" />		
 		<result property="noticeDate" column="NOTICE_DATE" />		
 	</resultMap>
 	<insert id="insertNotice">
-		INSERT INTO NOTICE_BOARD VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeTitle }, #{noticeContent }, #{rAdminId }, DEFAULT)
+		INSERT INTO NOTICE_BOARD VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeTitle }, #{noticeContent }, #{nAdminId }, DEFAULT)
 	</insert>
 	<update id="modifyNotice">
 		UPDATE NOTICE_BOARD SET NOTICE_TITLE = #{noticeTitle }, NOTICE_CONTENT = #{noticeContent }, NOTICE_DATE = DEFAULT WHERE NOTICE_NO = #{noticeNo }

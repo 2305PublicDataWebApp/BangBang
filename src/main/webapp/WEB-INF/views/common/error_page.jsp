@@ -10,9 +10,9 @@
 		${ error }
 		<script>
 			const result = "${ msg }";
-			const url = "${ url }";
+/* 			const url = "${ url }";
 			alert(result);
-			location.href = url;
+			location.href = url; */
 		</script>
 	</body>
 </html>

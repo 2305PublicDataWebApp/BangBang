@@ -7,17 +7,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>공지사항리스트</title>
-    	<link rel="stylesheet" href="../resources/css/n_list.css">
+    	<link rel="stylesheet" href="../resources/css/notice/n_list.css">
     	<link rel="stylesheet" href="/resources/css/user/header.css">
     	<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-		<header>
 			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-		</header>
 
 		<div class="container">
-			<div class="main">
+			<div class="center">
 				<div class="noticetitle">
 					<span>공지사항</span>
 				</div>
@@ -31,7 +29,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="notice" items="{nList }" varStatus="i">
+					<c:forEach var="notice" items="${nList }" varStatus="i">
 						<tr>
 							<td>${i.count }</td>
 							<c:url var="detailUrl" value="/notice/n_detail.do">
@@ -51,8 +49,8 @@
 						</c:url>
 						<a href="${preUrl }">[이전]</a>
 					</c:if>
-					<c:forEach begin="${nInfo.nStartNavi }" end="${nEndNavi }" var = "n">
-						<c:url var="pageUrl" value="notice/n_list.do">
+					<c:forEach begin="${nInfo.nStartNavi }" end="${nInfo.nEndNavi }" var = "n">
+						<c:url var="pageUrl" value="/notice/n_list.do">
 							<c:param name="page" value="${n }"></c:param>
 						</c:url>
 						<a href="${pageUrl }">${n }</a>&nbsp;
@@ -75,9 +73,7 @@
 			</div>
 		</div>
 		
-		<footer>
 			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-		</footer>
 		<script>
 			function showRegisterNForm(){
 				location.href="/notice/n_insert.do"
