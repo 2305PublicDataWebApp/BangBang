@@ -14,6 +14,8 @@
 		<typeAlias type="kr.co.bangbang.trip.domain.TReply" alias="TReply"/>
 		<typeAlias type="kr.co.bangbang.profile.domain.Profile" alias="Profile"/>
 		<typeAlias type="kr.co.bangbang.notice.domain.Notice" alias="Notice"/>
+		<typeAlias type="kr.co.bangbang.review.domain.Review" alias="Review"/>
+		<typeAlias type="kr.co.bangbang.review.domain.RReply" alias="RReply"/>
 <!-- 		<typeAlias type="kr.co.bangbang.search.domain.Search" alias="Search"/> -->
 	</typeAliases>
 	<mappers>
@@ -24,5 +26,7 @@
 		<mapper resource="mappers/treply-mapper.xml"/>
 		<mapper resource="mappers/profile-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/review-mapper.xml"/>
+		<mapper resource="mappers/rreply-mapper.xml"/>
 	</mappers>
 </configuration>

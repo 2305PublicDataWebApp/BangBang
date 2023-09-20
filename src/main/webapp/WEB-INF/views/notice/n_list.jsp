@@ -7,36 +7,69 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>공지사항리스트</title>
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<link rel="stylesheet" href="../resources/css/n_list.css">
+    	<link rel="stylesheet" href="/resources/css/user/header.css">
     	<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-		<header>header</header>
+		<header>
+			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		</header>
 
 		<div class="container">
-			<div class="banner">배너</div>
 			<div class="main">
-				<h2>공지사항</h2>
-				<hr>
-				<div class="noticelist">
-					<c:forEach var="notice" items="${nList }" varStatus="i">
-						<div class="que">
-						<span>
-							<label>제목</label>
-							<span>${notice.noticeTitle }</span>
-						</span>
-						</div>
-						<div class="anw">
-							<label>내용</label>
-							<span>${notice.noticeContent }</span>
-						</div>
-					</c:forEach>
+				<div class="noticetitle">
+					<span>공지사항</span>
 				</div>
+				<hr>
+				<table class="noticetable">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="notice" items="{nList }" varStatus="i">
+						<tr>
+							<td>${i.count }</td>
+							<c:url var="detailUrl" value="/notice/n_detail.do">
+								<c:param name="noticeNo" value="${notice.noticeNo }" />
+							</c:url>
+							<td><a href="${detailUrl }">${notice.noticeTitle }</a></td>
+							<td>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate }"/>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+				<div class="paging">
+					<c:if test="${nInfo.nStartNavi != 1}">
+						<c:url var="preUrl" value="/notice/n_list.do">
+							<c:param name="page" value="${nInfo.nStartNavi -1 }" />
+						</c:url>
+						<a href="${preUrl }">[이전]</a>
+					</c:if>
+					<c:forEach begin="${nInfo.nStartNavi }" end="${nEndNavi }" var = "n">
+						<c:url var="pageUrl" value="notice/n_list.do">
+							<c:param name="page" value="${n }"></c:param>
+						</c:url>
+						<a href="${pageUrl }">${n }</a>&nbsp;
+					</c:forEach>
+					<c:if test="${nInfo.nEndNavi != nInfo.nNaviTotalCount }">
+						<c:url var="nextUrl" value="/notice/n_list.do">
+							<c:param name="page" value="${nInfo.nEndNavi +1 }" />
+						</c:url>
+						<a href="${nextUrl }">[다음]</a>
+					</c:if>
+				</div>
+				</table>
 				<div class="bottom">
-					<a href="#" id="load">MORE</a>
 					<div>
-						<button type="button" onclick="showRegisterNForm()">글쓰기</button>
+						<c:if test="${adminId ne null }">
+							<button type="button" onclick="showRegisterNForm()">글쓰기</button>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -45,28 +78,10 @@
 		<footer>
 			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 		</footer>
-	    <script>
-        	$(".que").click(function() {
-            	$(this).next(".anw").stop().slideToggle(300);
-            	$(this).toggleClass('on').siblings().removeClass('on');
-            	$(this).next(".anw").siblings(".anw").slideUp(300);
-        	});
-        </script>
-        <script>
-        	$('.list > div.que').hide();
-     		$(".list > div.que").slice(0, 5).css("display", "block"); 
-    		$("#load").click(function(e){
-        		e.preventDefault();
-        		$(".list >div.que:hidden").slice(0, 5).fadeIn(200).css('display', 'block'); // 클릭시 more 갯수 지저정
-        		if($(".list >div.que:hidden").length == 0){ // 컨텐츠 남아있는지 확인
-            		$('#load').fadeOut(100); // 컨텐츠 없을 시 버튼 사라짐
-        		}
-    		});
-        </script>
-        <script>
-        	function showRegisterNForm(){
-        		location.href="/notice/n_insert.do";
-        	}
-        </script>
+		<script>
+			function showRegisterNForm(){
+				location.href="/notice/n_insert.do"
+			}
+		</script>
 	</body>
 </html>

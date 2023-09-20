@@ -1,6 +1,7 @@
 package kr.co.bangbang.review.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,34 +19,45 @@ public class ReviewServiceImpl implements ReviewService{
 	private ReviewStore rStore;
 	@Autowired
 	private SqlSession sqlSession;
+	
 	@Override
 	public int insertReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rStore.insertReview(sqlSession, review);
+		return result;
 	}
 	@Override
 	public int modifyReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rStore.modifyReview(sqlSession, review);
+		return result;
 	}
 	@Override
 	public int deleteReview(Review review) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rStore.deleteReview(sqlSession, review);
+		return result;
 	}
 	@Override
 	public int getRListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rStore.selectListCount(sqlSession);
+		return result;
 	}
 	@Override
 	public Review selectReviewByNo(Integer reviewNo) {
-		// TODO Auto-generated method stub
-		return null;
+		Review review = rStore.selectReviewByNo(sqlSession, reviewNo);
+		return review;
 	}
 	@Override
 	public List<Review> selectReviewList(RPageInfo rInfo) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Review> rList = rStore.selectReviewByList(sqlSession, rInfo);
+		return rList;
+	}
+	@Override
+	public List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rParamMap) {
+		List<Review> searchList = rStore.selectReviewByKeyword(sqlSession, rInfo, rParamMap);
+		return searchList;
+	}
+	@Override
+	public int getRListCount(Map<String, String> rParamMap) {
+		int result = rStore.selectListCount(sqlSession, rParamMap);
+		return result;
 	}
 }

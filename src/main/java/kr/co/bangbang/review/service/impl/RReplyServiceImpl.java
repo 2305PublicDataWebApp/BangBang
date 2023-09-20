@@ -17,25 +17,26 @@ public class RReplyServiceImpl implements RReplyService{
 	private RReplyStore rrStore;
 	@Autowired
 	private SqlSession sqlSession;
+	
 	@Override
-	public List<RReply> selectReplyList(Integer reviewNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<RReply> selectReplyList(int rReviewNo) {
+		List<RReply> rrList = rrStore.selectReplyList(sqlSession, rReviewNo);
+		return rrList;
 	}
 	@Override
 	public int insertRReply(RReply rreply) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rrStore.insertRReply(sqlSession, rreply);
+		return result;
 	}
 	@Override
 	public int modifyRReply(RReply rreply) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rrStore.modifyRReply(sqlSession, rreply);
+		return result;
 	}
 	@Override
 	public int deleteRReply(RReply rreply) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rrStore.deleteRReply(sqlSession, rreply);
+		return result;
 	}
 	
 

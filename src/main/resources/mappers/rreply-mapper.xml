@@ -2,3 +2,32 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RReplyMapper">
+	<resultMap type="RReply" id="rreplyResultMap">
+		<id property="rReplyNo" column="RREPLY_NO" />
+		<result property="rReviewNo" column="RREVIEW_NO" />
+		<result property="rReplyContent" column="RREPLY_CONTENT" />
+		<result property="rrUserId" column="RR_USER_ID" />
+		<result property="rReplyDate" column="RREPLY_DATE" />
+		<result property="rReplyUpdate" column="RREPLY_UPDATE" />
+		<result property="rRplyStatusYn" column="RR_STATUS_YN" />
+		<result property="rrAdminId" column="RR_ADMIN_ID" />
+	</resultMap>
+	
+	<insert id="insertRReply">
+		INSERT INTO REVIEW_REPLY VALUES(SEQ_RREPLY_NO.NEXTVAL, #{rReviewNo }, #{rReplyContent }, #{rrUserId }, DEFAULT, DEFAULT, DEFAULT, NULL)
+	</insert>
+	
+	<update id="modifyRReply">
+		UPDATE REVIEW_REPLY SET RREPLY_CONTENT = #{rReplyContent }, RREPLY_UPDATE = DEFAULT WHERE RREPLY_NO = #{rReplyNo }
+	</update>
+	
+	<update id="deleteRReply">
+		UPDATE REVIEW_REPLY SET RR_STATUS_YN = 'N' WHERE RREPLY_NO = #{rReplyNo } AND [RR_USER_ID = #{rrUserId } OR  RR_ADMIN_ID = #{rrAdminId }]
+	</update>
+	
+	<select id="selectReplyList" resultMap="rreplyResultMap">
+		SELECT * FROM REVIEW_REPLY WHERE RREVIEW_NO = #{rReviewNo } AND RR_STATUS_YN = 'Y'
+	</select>
+	
+</mapper>

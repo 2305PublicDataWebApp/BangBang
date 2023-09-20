@@ -1,6 +1,7 @@
 package kr.co.bangbang.review.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.bangbang.review.domain.RPageInfo;
 import kr.co.bangbang.review.domain.Review;
@@ -46,6 +47,10 @@ public interface ReviewService {
 	 * @return
 	 */
 	List<Review> selectReviewList(RPageInfo rInfo);
+
+	List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rParamMap);
+
+	int getRListCount(Map<String, String> rParamMap);
 	
 	
 

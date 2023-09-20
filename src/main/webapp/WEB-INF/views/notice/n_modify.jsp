@@ -6,12 +6,14 @@
 		<meta charset="UTF-8">
 		<title>공지사항수정</title>
 		<link rel="stylesheet" href="../resouces/css/notice/n_modify.jsp">
+		<link rel="stylesheet" href="/resources/css/user/header.css">
 		<link rel="stylesheet" href="/resources/css/user/footer.css">
 	</head>
 	<body>
-		<header>header</header>
+		<header>
+			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		</header>
     	<div class="contatiner">
-    		<div class="banner">배너</div>
     		<div class="main">
     			<h2>공지사항 등록</h2>
     			<hr>

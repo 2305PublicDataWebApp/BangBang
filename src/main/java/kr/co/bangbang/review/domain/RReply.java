@@ -9,7 +9,6 @@ public class RReply {
 	private String rrUserId;
 	private Date rReplyDate;
 	private Date rReplyUpdate;
-	private int rReplyYN;
 	private int rRplyStatusYn;
 	private String rrAdminId;
 	
@@ -65,14 +64,6 @@ public class RReply {
 		this.rReplyUpdate = rReplyUpdate;
 	}
 
-	public int getrReplyYN() {
-		return rReplyYN;
-	}
-
-	public void setrReplyYN(int rReplyYN) {
-		this.rReplyYN = rReplyYN;
-	}
-
 	public int getrRplyStatusYn() {
 		return rRplyStatusYn;
 	}
@@ -93,7 +84,7 @@ public class RReply {
 	public String toString() {
 		return "후기댓글 [댓글번호=" + rReplyNo + ", 글번호=" + rReviewNo + ", 댓글내용=" + rReplyContent
 				+ ", 작성자=" + rrUserId + ", 작성일=" + rReplyDate + ", 수정일=" + rReplyUpdate
-				+ ", 수정가능여부=" + rReplyYN + ", 삭제여부=" + rRplyStatusYn + ", 관리자아이디=" + rrAdminId + "]";
+				+ ", 삭제여부=" + rRplyStatusYn + ", 관리자아이디=" + rrAdminId + "]";
 	}
 	
 	
