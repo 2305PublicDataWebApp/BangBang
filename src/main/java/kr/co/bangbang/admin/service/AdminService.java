@@ -45,21 +45,17 @@ public interface AdminService {
 	List<User> searchUserByKeyword(APageInfo aInfo, Map<String, String> paramMap);
 
 	/**
-<<<<<<< HEAD
 	 * 관리자 로그인
 	 * @param admin
 	 * @return Admin
 	 */
 	Admin adminLogin(Admin admin);
-=======
+	
+	/**
 	 * 관리자-회원정보조회
 	 * @param userId
 	 * @return
 	 */
 	User selectOneById(String userId);
->>>>>>> refs/remotes/origin/20230920psw
-
-
-
 
 }
