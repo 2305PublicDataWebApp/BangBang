@@ -123,23 +123,35 @@
 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
 	            }
 	        });
+	        
 	        <!-- 프로필 이미지 미리보기 -->
-	        // 파일 선택 시 이미지 미리 보기 함수
-// 	        document.getElementById('profile-image-input').addEventListener('change', function (event) {
-// 	            var profileImg = document.getElementById('profile-img');
-// 	            var file = event.target.files[0];
-// 	            var reader = new FileReader();
+	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.
+	        var imageInput = document.getElementById('profile-image');
+	        var imagePreview = document.getElementById('image-preview');
 
-// 	            reader.onload = function (e) {
-// 	                profileImg.src = e.target.result;
-// 	            };
+	        // 파일 선택 필드의 change 이벤트를 감지하여 미리보기 업데이트
+	        imageInput.addEventListener('change', function () {
+	            var file = imageInput.files[0]; // 선택한 파일
 
-// 	            if (file) {
-// 	                reader.readAsDataURL(file);
-// 	            } else {
-// 	                profileImg.src = '/resources/images/logo.png'; // 기본 이미지 설정
-// 	            }
-// 	        });
+	            if (file) {
+	                var reader = new FileReader(); // FileReader 객체 생성
+
+	                reader.onload = function (e) {
+	                    // 파일 읽기가 완료되면 미리보기 업데이트
+	                    var img = document.createElement('img'); // 이미지 엘리먼트 생성
+	                    img.src = e.target.result; // 읽은 파일 데이터를 이미지 소스로 설정
+	                    img.style.maxWidth = '100%'; // 이미지가 너무 크면 화면에 맞게 조절
+	                    imagePreview.innerHTML = ''; // 이미지 미리보기 영역 초기화
+	                    imagePreview.appendChild(img); // 이미지를 미리보기 영역에 추가
+	                };
+
+	                reader.readAsDataURL(file); // 파일을 읽어 데이터 URL로 변환하여 이미지 소스로 설정
+	            } else {
+	                // 파일이 선택되지 않았을 때 미리보기 영역 초기화
+	                imagePreview.innerHTML = '';
+	            }
+	            profileForm.submit();
+	        });
 	    </script>
 	</body>
 </html>

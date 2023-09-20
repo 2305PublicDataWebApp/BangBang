@@ -23,7 +23,7 @@
 	<div class="menu-box-bottom">
 		<!-- 내가 쓴 게시글 -->
 		<div class="menu-info-board">
-		    <a href="/user/my_board.do"><img class="menu-icon" src="/resources/images/user/board.png" alt="내 게시글 조회"></a><br>
+		    <a href="/user/my_board.do?userId=${ user.userId }"><img class="menu-icon" src="/resources/images/user/board.png" alt="내 게시글 조회"></a><br>
 		    <span id="my-board">내가 쓴 게시글</span>
 		</div>
 		<!-- 댓글 쓴 게시글 -->

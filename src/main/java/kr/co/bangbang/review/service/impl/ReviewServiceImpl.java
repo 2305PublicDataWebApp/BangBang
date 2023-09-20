@@ -11,6 +11,7 @@ import kr.co.bangbang.review.domain.RPageInfo;
 import kr.co.bangbang.review.domain.Review;
 import kr.co.bangbang.review.service.ReviewService;
 import kr.co.bangbang.review.store.ReviewStore;
+import kr.co.bangbang.user.domain.UPageInfo;
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -58,6 +59,20 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public int getRListCount(Map<String, String> rParamMap) {
 		int result = rStore.selectListCount(sqlSession, rParamMap);
+		return result;
+	}
+	
+	// 마이페이지 - 게시글 목록 조회
+	@Override
+	public List<Review> selectReviewList(UPageInfo pInfo, String userId) {
+		List<Review> rList = rStore.selectReviewList(sqlSession, pInfo, userId);
+		return rList;
+	}
+	
+	// 마이페이지 - 게시글 전체 갯수 조회
+	@Override
+	public int getListCount(String userId) {
+		int result = rStore.selectBoardCount(sqlSession, userId);
 		return result;
 	}
 }

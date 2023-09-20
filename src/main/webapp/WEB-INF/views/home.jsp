@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="/resources/css/main/main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/resources/css/reset.css">
-		<link rel="stylesheet" href="./resources/css/user/header.css">
-        <link rel="stylesheet" href="./resources/css/user/footer.css">
+		<link rel="stylesheet" href="/resources/css/user/header.css">
+        <link rel="stylesheet" href="/resources/css/user/footer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,7 +22,7 @@
         <div id="container">
             <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
         
-            <main>
+            <main class="main-container">
                 <div id="banner">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="carousel-inner">
                             <div id="main-banner" class="carousel-item active">
-                                <img class="banner-img" src="/resources/images/main/dirud.png" class="d-block w-100" alt="벚꽃">
+                                <img class="banner-img" src="/resources/images/main/festival.png" class="d-block w-100" alt="벚꽃">
                             </div>
                             <div id="main-banner" class="carousel-item">
                                 <img class="banner-img" src="/resources/images/main/등대.jpg" class="d-block w-100" alt="에펠탑">

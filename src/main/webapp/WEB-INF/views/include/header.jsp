@@ -15,6 +15,7 @@
             <a href="/trip/t_list.do"><li class="tab">여행지</li></a>
             <a href="/review/r_list.do"><li class="tab">여행후기</li></a>
             <a href="/notice/n_list.do"><li class="tab">공지사항</li></a>
+            
             <!-- 로그인 세션 없을 경우 -->
             <c:if test="${ userId eq null && adminId eq null }">
 	            <a href="/user/login.do">

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.co.bangbang.review.domain.RPageInfo;
 import kr.co.bangbang.review.domain.Review;
+import kr.co.bangbang.user.domain.UPageInfo;
 
 public interface ReviewService {
 	/**
@@ -51,7 +52,21 @@ public interface ReviewService {
 	List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rParamMap);
 
 	int getRListCount(Map<String, String> rParamMap);
-	
+
+	/**
+	 * 마이페이지 - 게시글 목록 조회
+	 * @param pInfo
+	 * @param userId 
+	 * @return List<Review>
+	 */
+	List<Review> selectReviewList(UPageInfo pInfo, String userId);
+
+	/**
+	 * 마이페이지 - 게시글 전체 갯수 조회
+	 * @param userId 
+	 * @return
+	 */
+	int getListCount(String userId);
 	
 
 }

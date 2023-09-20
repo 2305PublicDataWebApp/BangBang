@@ -70,4 +70,14 @@
 		WHERE R_USER_ID LIKE '%'||#{searchKeyword }||'%'
 		</if>
 	</select>
+	
+	<!-- 마이페이지 - 게시글 목록 조회 -->
+	<select id="selectReviewList" resultMap="ReviewResultMap">
+		SELECT * FROM REVIEW_BOARD WHERE R_USER_ID = #{ userId } ORDER BY REVIEW_NO DESC
+	</select>
+	
+	<!-- 마이페이지 - 게시글 전체 갯수 조회 -->
+	<select id="selectBoardCount" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW_BOARD WHERE R_USER_ID = #{ userId } AND R_STATUS_YN = 'Y'
+	</select>
 </mapper>

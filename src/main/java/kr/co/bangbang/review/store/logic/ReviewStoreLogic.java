@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.bangbang.review.domain.RPageInfo;
 import kr.co.bangbang.review.domain.Review;
 import kr.co.bangbang.review.store.ReviewStore;
+import kr.co.bangbang.user.domain.UPageInfo;
 
 @Repository
 public class ReviewStoreLogic implements ReviewStore{
@@ -65,6 +66,23 @@ public class ReviewStoreLogic implements ReviewStore{
 	@Override
 	public int selectListCount(SqlSession sqlSession, Map<String, String> rParamMap) {
 		int result = sqlSession.selectOne("ReviewMapper.selectReviewByKeywordCount", rParamMap);
+		return result;
+	}
+
+	// 마이페이지 - 게시글 목록 조회
+	@Override
+	public List<Review> selectReviewList(SqlSession sqlSession, UPageInfo pInfo, String userId) {
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurrentPage()-1) * limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<Review> rList = sqlSession.selectList("ReviewMapper.selectReviewList", userId, rowBounds);
+		return rList;
+	}
+
+	// 마이페이지 - 게시글 전체 갯수 조회
+	@Override
+	public int selectBoardCount(SqlSession sqlSession, String userId) {
+		int result = sqlSession.selectOne("ReviewMapper.selectBoardCount", userId);
 		return result;
 	}
 

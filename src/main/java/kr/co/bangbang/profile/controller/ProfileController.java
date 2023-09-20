@@ -29,12 +29,20 @@ public class ProfileController {
 	@Autowired
 	private ProfileService pService;
 
-	// 프로필 이미지 등록
+	/**
+	 * 프로필 이미지 등록
+	 * @param mv
+	 * @param profile
+	 * @param uploadFile
+	 * @param request
+	 * @param sessoin
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="upload.do", method=RequestMethod.POST)
 	public ModelAndView profileRegister(
 			ModelAndView mv
 			, @ModelAttribute Profile profile
-			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
+			, @RequestParam(value="profile-image", required=false) MultipartFile uploadFile
 			, HttpServletRequest request
 			, HttpSession sessoin) {
 		try {
@@ -58,7 +66,8 @@ public class ProfileController {
 					
 					int result = pService.insertProfile(profile);
 					if(result > 0) { // 프로필 등록 성공
-						mv.setViewName("user/mypage");
+						sessoin.setAttribute("profile", profile);
+						mv.setViewName("redirect:/user/mypage.do?userId="+pUserId);
 					} else { // 프로필 등록 실패
 						mv.addObject("msg", "프로필 사진 등록에 실패하였습니다.");
 						mv.addObject("url", "/user/mypage.do");
@@ -83,8 +92,13 @@ public class ProfileController {
 		return mv;
 	}
 
-	
-	// 파일 이름/경로/크기 가져오는 메소드
+	/**
+	 * 파일 이름/경로/크기 가져오는 메소드
+	 * @param uploadFile
+	 * @param request
+	 * @return Map<String, Object>
+	 * @throws Exception
+	 */
 	private Map<String, Object> saveFile(MultipartFile uploadFile, HttpServletRequest request) throws Exception {
 		// 이름/경로/크기 총 3개를 넘겨야 하기 때문에 Hashmap 사용함
 		Map<String, Object> infoMap = new HashMap<String, Object>();

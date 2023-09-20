@@ -178,28 +178,55 @@
 	            }
 	        })
 	        
-	    </script>
-	    <script>
-	        let profile = document.querySelector('.profile');
+// 	        let profile = document.querySelector('.profile');
 	
-	        // 스크롤 이벤트 리스너
-	        window.addEventListener('scroll', () => {
-	            // 스크롤 위치
-	            let scrollY = window.scrollY;
+// 	        // 스크롤 이벤트 리스너
+// 	        window.addEventListener('scroll', () => {
+// 	            // 스크롤 위치
+// 	            let scrollY = window.scrollY;
 	
-	            // 프로필을 고정할 위치 (예: 500px)
-	            let fixedPosition = 580;
+// 	            // 프로필을 고정할 위치 (예: 500px)
+// 	            let fixedPosition = 580;
 	
-	            // 프로필이 고정될 때 상단으로부터의 거리 (예: 20px)
-	            let fixedTop = 50;
+// 	            // 프로필이 고정될 때 상단으로부터의 거리 (예: 20px)
+// 	            let fixedTop = 50;
 	
-	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
-	            if (scrollY >= fixedPosition) {
-	                profile.style.position = 'fixed';
-	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
+// 	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
+// 	            if (scrollY >= fixedPosition) {
+// 	                profile.style.position = 'fixed';
+// 	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
+// 	            } else {
+// 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
+// 	            }
+// 	        });
+	        
+	        <!-- 프로필 이미지 미리보기 -->
+	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.
+	        var imageInput = document.getElementById('profile-image');
+	        var imagePreview = document.getElementById('image-preview');
+
+	        // 파일 선택 필드의 change 이벤트를 감지하여 미리보기 업데이트
+	        imageInput.addEventListener('change', function () {
+	            var file = imageInput.files[0]; // 선택한 파일
+
+	            if (file) {
+	                var reader = new FileReader(); // FileReader 객체 생성
+
+	                reader.onload = function (e) {
+	                    // 파일 읽기가 완료되면 미리보기 업데이트
+	                    var img = document.createElement('img'); // 이미지 엘리먼트 생성
+	                    img.src = e.target.result; // 읽은 파일 데이터를 이미지 소스로 설정
+	                    img.style.maxWidth = '100%'; // 이미지가 너무 크면 화면에 맞게 조절
+	                    imagePreview.innerHTML = ''; // 이미지 미리보기 영역 초기화
+	                    imagePreview.appendChild(img); // 이미지를 미리보기 영역에 추가
+	                };
+
+	                reader.readAsDataURL(file); // 파일을 읽어 데이터 URL로 변환하여 이미지 소스로 설정
 	            } else {
-	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
+	                // 파일이 선택되지 않았을 때 미리보기 영역 초기화
+	                imagePreview.innerHTML = '';
 	            }
+	            profileForm.submit();
 	        });
 	    </script>
 	</body>

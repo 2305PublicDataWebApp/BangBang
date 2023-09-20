@@ -1,5 +1,9 @@
 package kr.co.bangbang.user.service;
 
+import java.util.List;
+
+import kr.co.bangbang.review.domain.Review;
+import kr.co.bangbang.user.domain.UPageInfo;
 import kr.co.bangbang.user.domain.User;
 
 public interface UserService {
@@ -38,6 +42,12 @@ public interface UserService {
 	 * @return
 	 */
 	int deleteUser(String userId);
+
+	/**
+	 * 개시글 전체 갯수 조회
+	 * @return
+	 */
+	int getListCount();
 
 
 }
