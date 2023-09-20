@@ -33,7 +33,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="r_insert.do", method=RequestMethod.GET)
 	public ModelAndView showInsertForm(ModelAndView mv) {
-		mv.setViewName("review/r_insert.do");
+		mv.setViewName("review/r_insert");
 		return mv;
 	}
 
@@ -58,7 +58,8 @@ public class ReviewController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의 바람");
-			mv.addObject("url", "/notice/n_list");
+			mv.addObject("error",e.getMessage());
+			mv.addObject("url", "/notice/n_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -71,9 +72,10 @@ public class ReviewController {
 		try {
 			review = rService.selectReviewByNo(reviewNo);
 			mv.addObject("review", review);
-			mv.setViewName("/review/r_modify");
+			mv.setViewName("review/r_modify");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 수정 실패");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/r_list.do?reviewNo="+review.getReviewNo());
 			mv.setViewName("common_error_page");
 		}
@@ -104,6 +106,7 @@ public class ReviewController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 수정 실패");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 			mv.setViewName("common/error_page");
 		}
@@ -136,6 +139,7 @@ public class ReviewController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의해주세요.");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
@@ -152,6 +156,7 @@ public class ReviewController {
 			mv.addObject("rList", rList).addObject("rInfo", rInfo).setViewName("review/r_list");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 목록 조회 실패");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
 		}
@@ -177,6 +182,7 @@ public class ReviewController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의하세요.");
+			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
