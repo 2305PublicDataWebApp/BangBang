@@ -51,4 +51,12 @@ public interface AdminStore {
 	 */
 	List<User> searchUserByKeyword(SqlSession session, APageInfo aInfo, Map<String, String> paramMap);
 
+	/**
+	 * 어드민 로그인
+	 * @param session
+	 * @param admin
+	 * @return Admin
+	 */
+	Admin adminLogin(SqlSession session, Admin admin);
+
 }

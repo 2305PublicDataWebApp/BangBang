@@ -28,7 +28,6 @@
 	            <!-- *****마이페이지 ***** 프로필 -->
 	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include>
 	
-	            <!-- ***** 마이페이지 ***** 메뉴 -->
 	            <div class="menu-mypage">
 	
 	                <span class="menu-box-text">마이페이지</span>
@@ -57,8 +56,8 @@
 // 		    });
 		</script>
 	    
-	    <!-- 헤더 랜덤 이벤트 효과 -->
 	    <script>
+	    <!-- 헤더 랜덤 이벤트 효과 -->
 	        let header = document.querySelector('header');
 	        let bars = document.querySelector('.fa-bars');
 	        let navBar = document.querySelector('.navBar');
@@ -124,6 +123,23 @@
 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
 	            }
 	        });
+	        <!-- 프로필 이미지 미리보기 -->
+	        // 파일 선택 시 이미지 미리 보기 함수
+// 	        document.getElementById('profile-image-input').addEventListener('change', function (event) {
+// 	            var profileImg = document.getElementById('profile-img');
+// 	            var file = event.target.files[0];
+// 	            var reader = new FileReader();
+
+// 	            reader.onload = function (e) {
+// 	                profileImg.src = e.target.result;
+// 	            };
+
+// 	            if (file) {
+// 	                reader.readAsDataURL(file);
+// 	            } else {
+// 	                profileImg.src = '/resources/images/logo.png'; // 기본 이미지 설정
+// 	            }
+// 	        });
 	    </script>
 	</body>
 </html>

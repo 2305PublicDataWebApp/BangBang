@@ -44,6 +44,13 @@ public interface AdminService {
 	 */
 	List<User> searchUserByKeyword(APageInfo aInfo, Map<String, String> paramMap);
 
+	/**
+	 * 관리자 로그인
+	 * @param admin
+	 * @return Admin
+	 */
+	Admin adminLogin(Admin admin);
+
 
 
 

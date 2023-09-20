@@ -7,6 +7,9 @@
 		<title>회원가입</title>
         <link rel="stylesheet" href="/resources/css/user/join.css">
         <link rel="stylesheet" href="/resources/css/reset.css">
+        
+        <!-- jquery 라이브러리 -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
 	<body>
 		<!-- main -->
@@ -30,6 +33,10 @@
                         <div class="user-box-id">
                             <input type="text" name="userId" required="">
                             <label>아이디 *</label>
+                            
+                            <!-- id ajax 중복체크 -->
+                            <span class="id_ok">사용 가능한 아이디입니다.</span>
+                            <span class="id_already">사용 불가능한 아이디입니다.</span>
                         </div>
                         <!-- 아이디 중복확인 -->
                         <div class="btn-id yellow mini">
@@ -98,5 +105,10 @@
                 </form>
             </div>
         </main>
+        
+        <!-- js -->
+        <script>
+        	
+        </script>
 	</body>
 </html>

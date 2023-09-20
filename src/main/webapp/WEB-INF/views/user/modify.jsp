@@ -41,7 +41,7 @@
 	                <br><br>
 	                <hr>
 	                
-	                <form action="user/modify.do" method="post">
+	                <form action="/user/modify.do" method="post">
 	                    <div class="info">
 
 							<!-- 아이디 -->

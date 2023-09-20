@@ -43,13 +43,13 @@
                 </form>
                 <!-- 회원가입 링크 -->
                 <div class="a-container">
-                    <a href="#" class="a-3d green">회원가입</a>
+                    <a href="/user/join.do" class="a-3d green">회원가입</a>
                 </div>
                 <br>
 
                 <div class="admin-login">
                     <!-- 관리자 로그인 -->
-                    <a href="#" class="admin-login-ink">관리자 로그인</a><br>
+                    <a href="/admin/a_login.do" class="admin-login-ink">관리자 로그인</a><br>
                     <!-- 아이디 / 비밀번호 찾기 -->
                     <a href="#" class="find-ink">아이디 찾기</a> | <a href="#" class="find-ink">비밀번호 찾기</a>
                 </div>

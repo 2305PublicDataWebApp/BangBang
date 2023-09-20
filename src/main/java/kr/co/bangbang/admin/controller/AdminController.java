@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,36 +28,113 @@ public class AdminController {
 	@Autowired
 	private AdminService aService;
 	
-	// 관리자 회원가입 페이지 이동
+	/**
+	 * 관리자 회원가입 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="a_join.do", method=RequestMethod.GET)
 	public ModelAndView showAdminRegister(ModelAndView mv) {
 		mv.setViewName("admin/a_join");
 		return mv;
 	}
 	
-	// 관리자 회원가입
+	/**
+	 * 관리자 회원가입
+	 * @param mv
+	 * @param adminId
+	 * @param adminPw
+	 * @param amdinPwRe
+	 * @param adminEmail
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="a_join.do", method=RequestMethod.POST)
 	public ModelAndView adminRegister(
 			ModelAndView mv
-			, @ModelAttribute Admin admin) {
+			, String adminId
+			, String adminPw
+			, String amdinPwRe
+			, String adminEmail) {
 		try {
+			
+			Admin admin = new Admin(adminId, adminPw, adminPw, adminEmail);
 			int result = aService.adminRegister(admin);
 			if(result > 0) {
-				mv.setViewName("admin/a_login.do"); // 성공시 로그인 페이지
+				mv.addObject("msg", "관리자 회원가입에 성공하였습니다.");
+				mv.addObject("url", "/admin/a_login.do");
+				mv.setViewName("common/inform");
 			} else {
 				mv.addObject("msg", "회원가입에 실패하였습니다.");
-				mv.addObject("url", "/user/join.do");
+				mv.addObject("url", "/admin/join.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/user/join.do");
+			mv.addObject("url", "/admin/join.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
 	
+	/**
+	 * 관리자 로그인 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "a_login.do", method = RequestMethod.GET)
+	public ModelAndView showLoginForm(ModelAndView mv) {
+		mv.setViewName("admin/a_login");
+		return mv;
+	}
+	
+	/**
+	 * 관리자 로그인
+	 * @param mv
+	 * @param admin
+	 * @param session
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "a_login.do", method = RequestMethod.POST)
+	public ModelAndView adminLogin(
+			ModelAndView mv
+			, @ModelAttribute Admin admin
+			, HttpSession session) {
+		try {
+			Admin aOne = aService.adminLogin(admin);
+			if(aOne != null) { // 로그인 성공
+				session.setAttribute("adminId", aOne.getAdminId());
+				session.setAttribute("adminPw", aOne.getAdminPw());
+				mv.setViewName("redirect:/index.jsp");
+			} else { // 로그인 실패
+				mv.addObject("msg", "로그인에 실패하였습니다.");
+				mv.addObject("url", "/admin/a_login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "서비스 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/user/a_join.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	// 관리자 로그아웃
+	@RequestMapping(value = "a_logout.do", method = RequestMethod.GET)
+	public ModelAndView adminLogout(
+			ModelAndView mv
+			, HttpSession session) {
+		if(session != null) {
+			session.invalidate();
+			mv.setViewName("redirect:/index.jsp");
+		} else {
+			mv.addObject("msg", "로그아웃에 실패하였습니다.");
+			mv.addObject("url", "redirect:/index.jsp");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
 	
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public ModelAndView showUserList(

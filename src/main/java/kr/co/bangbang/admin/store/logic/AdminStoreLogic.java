@@ -58,6 +58,13 @@ public class AdminStoreLogic implements AdminStore{
 		List<User> searchList = session.selectList("AdminMapper.searchUserByKeyword", paramMap, rowBounds);
 		return searchList;
 	}
+
+	// 관리자 로그인
+	@Override
+	public Admin adminLogin(SqlSession session, Admin admin) {
+		Admin aOne = session.selectOne("AdminMapper.adminLogin", admin);
+		return aOne;
+	}
 	
 	
 }

@@ -4,13 +4,12 @@
 <div class="profile-box">
 	<div class="profile">
 	
-		<!-- 로그아웃 -->
 		<a class="user-logout" href="/user/logout.do?userId=${ userId }">로그아웃</a>
 		
 		<!-- 프로필 사진 등록 전 -->
 		<c:if test="${ profileImgRename eq null }">
 			<div class="mypage-profile">
-			<img class="mypage-profile-img" src="/resources/images/logo.png" alt="로고">
+				<img class="mypage-profile-img" src="/resources/images/logo.png" alt="로고">
 			</div>
 		</c:if>
 		
@@ -18,7 +17,6 @@
 		<c:if test="${ profileImgRename ne null }">
 			<div class="mypage-profile">
 				<img class="mypage-profile-img" src="/resources/puploadFiles/${ profile.profileImgRename }" alt="프로필 이미지">
-			<!-- <img class="mypage-profile-img" src="/resources/images/user/profile_1.jpg" alt="프로필"> -->
 			</div>
 		</c:if>
 		

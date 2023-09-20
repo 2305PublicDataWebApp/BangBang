@@ -27,7 +27,6 @@
 	            <!-- *****마이페이지 ***** 프로필 -->
 	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include>
 	
-	            <!-- ***** 마이페이지 ***** 메뉴 -->
 	            <div class="menu-mypage">
 	
 	                <span class="menu-box-text">마이페이지</span>

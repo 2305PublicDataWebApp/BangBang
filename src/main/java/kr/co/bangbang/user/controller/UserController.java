@@ -99,7 +99,7 @@ public class UserController {
 		} catch (Exception e) { // 예외처리
 			mv.addObject("msg", "회원가입 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/user/login.do");
+			mv.addObject("url", "/user/join.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -198,7 +198,13 @@ public class UserController {
 		return mv;
 	}
 	
-	// 개인 정보 조회 페이지 이동
+	/**
+	 * 개인 정보 조회 페이지 이동
+	 * @param mv
+	 * @param userId
+	 * @param session
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value="info.do", method=RequestMethod.GET)
 	public ModelAndView showUserInfo(
 			ModelAndView mv
@@ -237,7 +243,7 @@ public class UserController {
 	 * @param mv
 	 * @param user
 	 * @param session
-	 * @return
+	 * @return ModelAndView
 	 */
 	@RequestMapping(value="check_pw.do", method=RequestMethod.GET)
 	public ModelAndView CheckPwForm(
@@ -260,7 +266,7 @@ public class UserController {
 	 * @param mv
 	 * @param userPw
 	 * @param session
-	 * @return
+	 * @return ModelAndView
 	 */
 	@RequestMapping(value="check_pw.do", method=RequestMethod.POST)
 	public ModelAndView checkPassword(
@@ -291,7 +297,7 @@ public class UserController {
 	 * @param mv
 	 * @param user
 	 * @param session
-	 * @return
+	 * @return ModelAndView
 	 */
 	@RequestMapping(value="remove_check.do", method=RequestMethod.GET)
 	public ModelAndView removeCheckForm(
@@ -316,7 +322,7 @@ public class UserController {
 	 * @param mv
 	 * @param userPw
 	 * @param session
-	 * @return
+	 * @return ModelAndView
 	 */
 	@RequestMapping(value="remove_check.do", method=RequestMethod.POST)
 	public ModelAndView removeCheck(
@@ -348,7 +354,7 @@ public class UserController {
 	 * @param user
 	 * @param userId
 	 * @param session
-	 * @return
+	 * @return ModelAndView
 	 */
 	@RequestMapping(value="modify.do", method=RequestMethod.POST)
 	public ModelAndView userModify(
@@ -358,6 +364,7 @@ public class UserController {
 			, HttpSession session) {
 		try {
 			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			
 			if(userId.equals(sessionId) && sessionId !=null && sessionId != "") {
 				int result = uService.updateUser(user);
 				if(result > 0) { // 수정 성공 
@@ -381,7 +388,13 @@ public class UserController {
 		return mv;
 	}
 	
-	// 회원 탈퇴
+	/**
+	 * 회원 탈퇴
+	 * @param mv
+	 * @param userId
+	 * @param session
+	 * @return ModelAndView
+	 */ 
 	@RequestMapping(value="remove.do", method=RequestMethod.POST)
 	public ModelAndView removeUser(
 			ModelAndView mv
@@ -442,7 +455,11 @@ public class UserController {
 	
 	// 내가 쓴 게시글 검색 페이지 이동
 	@RequestMapping(value="my_board_search.do", method=RequestMethod.GET)
-	public ModelAndView showMyBoardSearch(ModelAndView mv) {
+	public ModelAndView showMyBoardSearch(
+			ModelAndView mv
+			, String userId) {
+		User user = uService.selectOneById(userId);
+		mv.addObject("user", user);
 		mv.setViewName("user/my_board_search");
 		return mv;
 	}

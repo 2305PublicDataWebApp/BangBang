@@ -52,6 +52,13 @@ public class AdminServiceImpl implements AdminService{
 		return uList;
 	}
 
+	// 관리자 로그인
+	@Override
+	public Admin adminLogin(Admin admin) {
+		Admin aOne = aStore.adminLogin(session, admin);
+		return aOne;
+	}
+
 	
 
 
