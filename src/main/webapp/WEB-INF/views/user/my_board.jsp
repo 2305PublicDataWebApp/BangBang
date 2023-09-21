@@ -41,9 +41,9 @@
 	                <!-- 내가 쓴 게시글 -->
 	                <div class="my-board">
 		                <span class="menu-box-text">내 게시글 조회</span>
-		                <br><br>
-		                <hr id="menu-board-hr">
-		                <br><br>
+		                <br>
+<!-- 		                <hr id="menu-board-hr"> -->
+<!-- 		                <br><br> -->
 		                <table>
 		                    <colgroup>
 		                        <col style="width: 10%">
@@ -65,9 +65,9 @@
 								<c:forEach var="board" items="${ rList }" varStatus="r">
 <%-- 									<input type="hidden" name="userId" value=${ userId }> --%>
 		                        <tr> 
-		                            <td>${ r.count }</td>
+		                            <td>${ board.reviewNo }</td>
 <%-- 		                            <td>${ board.reiviewType }</td> --%>
-                          		 	<td>${board.reiviewType }</td>
+                          		 	<td>${board.reviewType }</td>
                           		 	<c:url var="detailUrl" value="/review/r_detail.do">
                           		 		<c:param name="reviewNo" value="${ board.reviewNo }"></c:param>
                           		 	</c:url>
@@ -86,10 +86,10 @@
 				                <tr align="center">
 					                <td colspan="4">
 					                	<c:if test="${ pInfo.startNavi !=1 }">
-					                		<c:url var="prevUrl" value="/user/my_board.do">
+					                		<c:url var="prevUrl" value="/user/my_board.do?userId=${userId }">
 					                			<c:param name="page" value="${ pInfo.startNavi -1 }"></c:param>
 					                		</c:url>
-					                		<a href="${ prevUrl }">이전</a>
+					                		<a href="${ prevUrl }">[이전]</a>
 					                	</c:if>
 					                	<c:forEach begin="${ pInfo.startNavi }" end="${ pInfo.endNavi }" var="p">
 					                		<!-- var : 변수명, value : url -->
@@ -100,7 +100,7 @@
 					                		<a href="${ pageUrl }">${ p }</a>&nbsp;
 					                	</c:forEach>
                         				<c:if test="${ pInfo.endNavi != pInfo.naviTotalCount }">
-											<c:url var="nextUrl" value="/user/my_board.do">
+											<c:url var="nextUrl" value="/user/my_board.do?userId=${userId }">
 												<c:param name="page" value="${ pInfo.endNavi + 1 }"></c:param>
 											</c:url>
 											<a href="${ nextUrl }">[다음]</a>

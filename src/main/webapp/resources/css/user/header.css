@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 header {
     border-bottom-right-radius: 10px;
     background: #fffacd; /* 뒷 배경색 */
@@ -13,7 +20,7 @@ header {
     padding: 8vmin 10vmin;
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(#fffacd -20%, white);
+    background: linear-gradient(#fffacd -20%, white);s
 }
 
 /* 배경 이미지 */
@@ -75,9 +82,10 @@ nav {
 nav .logo {
     /* color: rgb(177, 76, 29); */
     color: #FF4F40;
+    font-family: 'HakgyoansimWoojuR';
     font-weight: 900;
     /* filter: drop-shadow(0 0 5px #FF4F40); */
-    font-size: 3vmin;
+    font-size: 4vmin;
 }
 
 nav .logo-img {

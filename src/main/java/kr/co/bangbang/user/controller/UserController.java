@@ -502,10 +502,12 @@ public class UserController {
 			// 게시글 전체 갯수 조회 메소드
 			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
 			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				Profile profile = pService.selectOneProfile(sessionId);
 				int totalCount = rService.getListCount(sessionId);
 				UPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
 				List<Review> rList = rService.selectReviewList(pInfo, sessionId);
 				if(rList.size() > 0) { // 조회 성공
+					mv.addObject("profile", profile);
 					mv.addObject("pInfo", pInfo);
 					mv.addObject("rList", rList);
 					mv.setViewName("user/my_board");
