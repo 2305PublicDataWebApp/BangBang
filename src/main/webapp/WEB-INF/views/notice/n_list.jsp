@@ -40,7 +40,7 @@
 							<c:url var="detailUrl" value="/notice/n_detail.do">
 								<c:param name="noticeNo" value="${notice.noticeNo }" />
 							</c:url>
-							<td><a href="${detailUrl }">${notice.noticeTitle }</a></td>
+							<td class="noticeti"><a href="${detailUrl }">${notice.noticeTitle }</a></td>
 							<td>
 								<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.noticeDate }"/>
 							</td>

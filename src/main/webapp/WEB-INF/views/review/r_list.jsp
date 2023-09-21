@@ -17,22 +17,22 @@
 		
 		<div class="container">
 			<div class="center">
-				<div class="noticetitle">
+				<div class="reviewtitle">
 					<span>후기게시판</span>
 				</div>
-				<hr>
-				<div>
+				<div class="mainsearch">
 					<form action="/review/r_search.do" method="get">
-						<select name="searchCondition">
+						<select name="searchCondition" class="choicetext">
 								<option value="all">전체</option>
 								<option value="title">제목</option>
 								<option value="content">내용</option>
 								<option value="writer">작성자</option>
 						</select>
-						<input type="text" name="searchKeyword" placeholder="검색">
-						<input type="submit" value="검색">
+						<input class= "searchtext" type="text" name="searchKeyword" placeholder="검색어를 입력하세요.">
+						<input class="clicksearch" type="submit" value="검색">
 					</form>
 				</div>
+				<hr>
 				<table class="reviewtable">
 					<thead>
 						<tr>
@@ -59,6 +59,8 @@
 						</tr>
 					</c:forEach>
 					</tbody>
+				</table>
+				<hr>
 				<div class="paging">
 					<c:if test="${rInfo.rStartNavi != 1}">
 						<c:url var="preUrl" value="/review/r_list.do">
@@ -79,11 +81,8 @@
 						<a href="${nextUrl }">[다음]</a>
 					</c:if>
 				</div>
-				</table>
-				<div class="bottom">
-					<div>
-						<button type="button" onclick="showRegisterRForm()">글쓰기</button>
-					</div>
+				<div>
+						<button class="button" type="button" onclick="showRegisterRForm()">글쓰기</button>
 				</div>
 			</div>
 		</div>
