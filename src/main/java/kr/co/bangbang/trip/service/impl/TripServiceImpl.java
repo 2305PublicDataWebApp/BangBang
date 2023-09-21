@@ -20,27 +20,9 @@ public class TripServiceImpl implements TripService{
 	private SqlSession sqlSession;
 	
 	@Override
-	public Integer getListCount() {
-		int result = tStore.selectListCount(sqlSession);
-		return result;
-	}
-
-	@Override
-	public List<Trip> selectTripList(TPageInfo tPInfo) {
-		List<Trip> tList = tStore.selectTripList(sqlSession, tPInfo);
-		return tList;
-	}
-
-	@Override
 	public int insertTrip(Trip trip) {
 		int result = tStore.insertTrip(sqlSession, trip);
 		return result;
-	}
-
-	@Override
-	public Trip selectTripByNo(Integer tripNo) {
-		Trip tripOne = tStore.selectTripByNo(sqlSession, tripNo);
-		return tripOne;
 	}
 
 	@Override
@@ -52,6 +34,30 @@ public class TripServiceImpl implements TripService{
 	@Override
 	public int deleteTrip(Trip trip) {
 		int result = tStore.deleteTrip(sqlSession, trip);
+		return result;
+	}
+
+	@Override
+	public List<Trip> selectTripList(TPageInfo tPInfo) {
+		List<Trip> tList = tStore.selectTripList(sqlSession, tPInfo);
+		return tList;
+	}
+
+	@Override
+	public List<Trip> selectTripList() {
+		List<Trip> tList = tStore.selectTripList(sqlSession);
+		return tList;
+	}
+
+	@Override
+	public Trip selectTripByNo(Integer tripNo) {
+		Trip tripOne = tStore.selectTripByNo(sqlSession, tripNo);
+		return tripOne;
+	}
+
+	@Override
+	public Integer getListCount() {
+		int result = tStore.selectListCount(sqlSession);
 		return result;
 	}
 

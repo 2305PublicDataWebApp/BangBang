@@ -7,7 +7,7 @@ ul{
     list-style-type: none;
     padding-left: 0;
     text-align: left;
- /* float: left; */
+/*  float: left; */
 }
 ul label {
     width: 100px;
@@ -27,7 +27,7 @@ input{
 #title{
     border-bottom: 1px solid black;
 }
-img{
+#logo-img{
     width: 30px;
     height: 30px;
 }

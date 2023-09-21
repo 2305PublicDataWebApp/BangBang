@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -36,11 +37,12 @@
 	                        <ul>
 	                        	<li>
 	                                <label for="type">게시글 타입</label>
-	                                <input type="text" id="type" name="tripType"><br>
+	                                <input type="text" id="type" name="tripType" required><br>
+	                                <p>타입은 여행지, 지역축제, 테마, 구성원별 중에서 입력해야 함</p>
 	                            </li>
 	                            <li>
 	                                <label for="title">여행지이름</label>
-	                                <input type="text" id="title" name="tripTitle"><br>
+	                                <input type="text" id="title" name="tripTitle" required><br>
 	                            </li>
 	                            <li>
 	                                <label for="addr">주소</label>
@@ -55,11 +57,6 @@
 	                                <input type="text" id="thum" name="tthum">
 	                                <button>파일찾기</button><br>                            
 	                            </li>
-<!-- 	                            <li> -->
-<!-- 	                                <label for="file">첨부파일</label> -->
-<!-- 	                                <input type="text" id="file" name="tfile"> -->
-<!-- 	                                <button>파일찾기</button><br> -->
-<!-- 	                            </li> -->
 	                            <li>
 	                                <label for="infoaddr">상세주소</label>
 	                                <input type="text" id="infoaddr" name="tripInfoAddr"><br>
@@ -79,69 +76,73 @@
 	                            <li>
 	                                <label for="summernote">상세정보</label>
 	                                <textarea id="summernote" name="tripContent"></textarea>
-<!-- 	                                <input type="text" id="" name="t-info"><br> -->
+ 	                            	<span onclick="clickThumbnailAppend();" id="test"><button class="writeBtn" type="button">썸네일 새로고침</button></span>
+									<select id="thumbnailPath" name="thumbnailPath"></select>
 	                            </li>
-	                            <script>
-								    // 메인화면 페이지 로드 함수
-// 								    $(document).ready(function(){
-// 										$('#summernote').summernote({
-// 											height : 300,
-// 											width : 700,
-// 											lang : "ko-KR",
-// 											callbacks:{
-// 												onImageUpload : function(files){
-// 													uploadSummernoteImageFile(files[0],this);
-// 												},
-// 												onPaste: function(e){
-// 													var clipboardData = e.originalEvent.clipboardData;
-// 													if(clipboardData && clipboardData.items && clipboardData.items.length){
-// 														var item = clipboardData.items[0];
-// 														if(item.kind === 'file' && item.type.indexOf('image/') !== -1){
-// 															e.preventDefault();
-// 														}
-// 													}
-// 												},
-// 											}
-// 										});
-// 							            // 섬머노트에디터 이미지 업로드 시 동작			
-// 										function uploadSummernoteImageFile(file,editor){
-// 											data = new FormData();
-// 											data.append("file",file);
-// 											$.ajax({
-// 												data:data,
-// 												type:"POST",
-// 												url:"/review/uploadSummernoteImageFile",
-// 												dataType:"JSON",
-// 												contentType:false,
-// 												processData:false,
-// 												success:function(data){
-// 													$(editor).summernote("insertImage",data.url);
-// 												}
-// 											});
-// 										}
-// 									});
-// 								    $(document).ready(function() {
-// 							            //여기 아래 부분
-// 							            $('#summernote').summernote({
-// 							                height: 300,                 // 에디터 높이
-// 							                minHeight: null,             // 최소 높이
-// 							                maxHeight: null,             // 최대 높이
-// 							                focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-// 							                lang: "ko-KR",					// 한글 설정
-// 							                placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-							                
-// 							            });
-// 							        });
-								    $(document).ready(function () {
-								        $('#summernote').summernote({
-								            placeholder: '내용을 작성하세요',
-								            height: 400,
-								            maxHeight: 400
-								        });
-								    });
-								</script>
 							</ul>
 							<button>등록</button>
+                            <script>
+	                            $(document).ready(function(){
+	                    			$('#summernote').summernote({
+	                    				height : 300,
+	                    				width : 700,
+	                    				lang : "ko-KR",
+	                    				callbacks:{
+	                    					onImageUpload : function(files){
+	                    						uploadSummernoteImageFile(files[0],this);
+	                    					},
+	                    					onPaste: function(e){
+	                    						var clipboardData = e.originalEvent.clipboardData;
+	                    						if(clipboardData && clipboardData.items && clipboardData.items.length){
+	                    							var item = clipboardData.items[0];
+	                    							if(item.kind === 'file' && item.type.indexOf('image/') !== -1){
+	                    								e.preventDefault();
+	                    							}
+	                    						}
+	                    					},
+	                    				}
+	                    			});
+	                    // 섬머노트에디터 이미지 업로드 시 동작			
+	                    			function uploadSummernoteImageFile(file,editor){
+	                    				data = new FormData();
+	                    				data.append("file",file);
+	                    				$.ajax({
+	                    					data:data,
+	                    					type:"POST",
+	                    					url:"/review/uploadSummernoteImageFile",
+	                    					dataType:"JSON",
+	                    					contentType:false,
+	                    					processData:false,
+	                    					success:function(data){
+	                    						$(editor).summernote("insertImage",data.url);
+	                    					}
+	                    				});
+	                    			}
+	                    		});
+	                            
+	                            
+	                          //썸네일 새로고침 버튼 함수
+	                            function clickThumbnailAppend(){
+	                            	
+	                            	//1.셀렉트 박스 하위 옵션을 먼저 모두 지워준다.
+	                            	$("#thumbnailPath").empty();
+	                            	
+	                            	//2.썸머노트의 컨텐츠 HTML을 가져와서 큰따옴표로 분리한다.
+	                            	var contentsHtml = $(".note-editable").html();
+	                            	var regExSplit = /[\"]/;
+	                            	var contentsHtmlArr = contentsHtml.split(regExSplit);
+	                            	
+	                            	//3.분리한 요소 중 이미지 저장 경로를 포함하고 있는 것을 이미지의 경로로 판단하고
+	                            	//  이를 반복문을 사용하여 셀렉트박스의 옵션값으로 추가한다.
+	                            	var index = 1;
+	                            	for(var i=0; i<contentsHtmlArr.length; i++){
+	                            		if(contentsHtmlArr[i].includes("/resources/image/")){
+	                            			$("#thumbnailPath").append("<option value="+contentsHtmlArr[i]+">"+index+"번째 이미지"+"</option>");
+	                            			index++;
+	                            		}
+	                            	}
+	                            }
+							</script>
 	                    </form>
 	                </div>
 	            </div>

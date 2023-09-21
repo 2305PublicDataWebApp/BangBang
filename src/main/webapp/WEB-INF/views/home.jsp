@@ -60,46 +60,21 @@
                         <h2>여행지 추천</h2>
                         <br>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                        <c:forEach begin="1" end="4" var="trip" items="${tList }" varStatus="i">
                             <div class="col">
                                 <div class="card h-100">
                                     <img src="/resources/images/main/개발자.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">개발자버니</h5>
-                                        <p class="card-text">html css먹이기 힘들다</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <c:url var="detailUrl" value="/trip/t_detail.do">
+		                    			<c:param name="tripNo" value="${trip.tripNo }"></c:param>
+		                    		</c:url>
+                                        <h5 class="card-title">${trip.tripTitle}</h5>
+                                        <p class="card-text">${trip.tripSummary }</p>
+                                        <a href="${detailUrl }" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="/resources/images/main/dirud.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">농구버니</h5>
-                                        <p class="card-text">농구나 하고싶다</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="/resources/images/main/무채색버니.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">무채색버니</h5>
-                                        <p class="card-text">문장 수 다르면 버튼위치가 달라지는데</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="/resources/images/main/퇴근.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">퇴근버니</h5>
-                                        <p class="card-text">어떻게 고정해야 하는거야야야야야</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
+                        	</div>
+                        </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -143,38 +118,39 @@
                                 </th>
                                 <th class="bottom_line">
                                     <div id="more">
-                                        <a href="#">+ 더보기</a>
+                                        <a href="/review/r_list.do">+ 더보기</a>
                                     </div>
                                 </th>
                             </thead>
                             <tbody>
-                                <!-- jsp에서 forEach문으로 반복하기 -->
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">후기1</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">후기2</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">후기3</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">후기4</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">후기5</a>
-                                    </td>
-                                </tr>
-                                <!-- 여기까지 forEach -->
+<%--                                 <c:forEach begin="1" end="5"> --%>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=2">공지사항</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=3">공지사항2</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=4">공지사항3</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=5">공지사항4!!</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=6">공지사항5</a>
+	                                    </td>
+	                                </tr>
+
+<%--                                 </c:forEach> --%>
                             </tbody>
                         </table>
                     </div>
@@ -188,7 +164,7 @@
                                 </th>
                                 <th class="no-bottom-line">
                                     <div id="more">
-                                        <a href="#">+ 더보기</a>
+                                        <a href="/notice/n_list.do">+ 더보기</a>
                                     </div>
                                 </th>
                             </thead>
@@ -200,33 +176,33 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- 여기도 for Each -->
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">공지사항1</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">공지사항2</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">공지사항3</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">공지사항4</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="bottom_line">
-                                        <a href="#">공지사항5</a>
-                                    </td>
-                                </tr>
-                                <!-- 여기까지 -->
+<%--                                 <c:forEach begin="1" end="5"> --%>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=2">공지사항</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=3">공지사항2</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=4">공지사항3</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=5">공지사항4!!</a>
+	                                    </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="2" class="bottom_line">
+	                                        <a href="/notice/n_detail.do?noticeNo=6">공지사항5</a>
+	                                    </td>
+	                                </tr>
+<%--                                 </c:forEach> --%>
                             </tbody>
                         </table>
                     </div>
