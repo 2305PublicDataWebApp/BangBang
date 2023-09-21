@@ -101,7 +101,7 @@ public class UserController {
 			User uOne = uService.userLoginCheck(user);
 			if(uOne != null) {	// 성공 시 아이디, 비밀번호 세션에 저장
 				session.setAttribute("userId", uOne.getUserId());
-				session.setAttribute("userPw", uOne.getUserPw());
+				session.setAttribute("userNickname", uOne.getUserNickname());
 				mv.setViewName("redirect:/index.jsp");
 			} else { // 실패
 				mv.addObject("msg", "로그인에 실패하였습니다.");
@@ -226,12 +226,12 @@ public class UserController {
 			, HttpSession session) {
 		try {
 			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
-			
 			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
 				User user = uService.selectOneById(userId);
-				
+				Profile profile = pService.selectOneProfile(sessionId);
 				if(user != null) { // 성공 시
 					mv.addObject("user", user);
+					mv.addObject("profile", profile);
 					mv.setViewName("user/info");
 				} else { // 실패 시
 					mv.addObject("msg", "정보 조회에 실패하였습니다.");
@@ -460,10 +460,33 @@ public class UserController {
 	@RequestMapping(value="modify.do", method=RequestMethod.GET)
 	public ModelAndView showModifyInfo(
 			ModelAndView mv
-			, @RequestParam("userId") String userId) {
-		User user = uService.selectOneById(userId);
-		mv.addObject("user", user);
-		mv.setViewName("user/modify");
+			, @RequestParam("userId") String userId
+			, HttpSession session) {
+		try {
+			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				User user = uService.selectOneById(userId);
+				Profile profile = pService.selectOneProfile(sessionId);
+				if(user != null) {
+					mv.addObject("user", user);
+					mv.addObject("profile", profile);
+					mv.setViewName("user/modify");
+				} else {
+					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("url", "redirect:/index.jsp");
+					mv.setViewName("common/error_page");
+				}
+			} else { // 세션에 저장된 아이디가 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "서비스 실패");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "redirect:/index.jsp");
+			mv.setViewName("common/error_page");
+		}
 		return mv;
 	}
 
@@ -473,20 +496,27 @@ public class UserController {
 	public ModelAndView showMyBoard(
 			ModelAndView mv
 			, HttpSession session
+			, @RequestParam("userId") String userId
 			, @RequestParam(value="page", required=false, defaultValue="1") Integer currentPage) {
 		try {
 			// 게시글 전체 갯수 조회 메소드
-			String userId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
-			int totalCount = rService.getListCount(userId);
-			UPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-			List<Review> rList = rService.selectReviewList(pInfo, userId);
-			if(rList.size() > 0) { // 조회 성공
-				mv.addObject("pInfo", pInfo);
-				mv.addObject("rList", rList);
-				mv.setViewName("user/my_board");
-			} else { // 조회 실패
-				mv.addObject("msg", "게시글 조회에 실패하였습니다.");
-				mv.addObject("url", "/user/mypage.do?userId="+userId);
+			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+				int totalCount = rService.getListCount(sessionId);
+				UPageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+				List<Review> rList = rService.selectReviewList(pInfo, sessionId);
+				if(rList.size() > 0) { // 조회 성공
+					mv.addObject("pInfo", pInfo);
+					mv.addObject("rList", rList);
+					mv.setViewName("user/my_board");
+				} else { // 조회 실패
+					mv.addObject("msg", "게시글 조회에 실패하였습니다.");
+					mv.addObject("url", "/user/mypage.do?userId="+sessionId);
+					mv.setViewName("common/error_page");
+				}
+			} else { // 세션에 저장된 아이디가 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
@@ -499,33 +529,33 @@ public class UserController {
 	}
 	
 	
-	// 내가 쓴 게시글 검색 페이지 이동
-	@RequestMapping(value="my_board_search.do", method=RequestMethod.GET)
-	public ModelAndView showMyBoardSearch(
-			ModelAndView mv
-			, String userId) {
-		User user = uService.selectOneById(userId);
-		mv.addObject("user", user);
-		mv.setViewName("user/my_board_search");
-		return mv;
-	}
+//	// 내가 쓴 게시글 검색 페이지 이동
+//	@RequestMapping(value="my_board_search.do", method=RequestMethod.GET)
+//	public ModelAndView showMyBoardSearch(
+//			ModelAndView mv
+//			, String userId) {
+//		User user = uService.selectOneById(userId);
+//		mv.addObject("user", user);
+//		mv.setViewName("user/my_board_search");
+//		return mv;
+//	}
 	
 	
 
 
-	// 댓글 쓴 게시글 검색 페이지 이동
-	@RequestMapping(value="my_reply_search.do", method=RequestMethod.GET)
-	public ModelAndView showMyReplySearch(ModelAndView mv) {
-		mv.setViewName("user/my_reply_search");
-		return mv;
-	}
+//	// 댓글 쓴 게시글 검색 페이지 이동
+//	@RequestMapping(value="my_reply_search.do", method=RequestMethod.GET)
+//	public ModelAndView showMyReplySearch(ModelAndView mv) {
+//		mv.setViewName("user/my_reply_search");
+//		return mv;
+//	}
 	
-	// 댓글 쓴 게시글 페이지 이동
-	@RequestMapping(value="my_reply.do", method=RequestMethod.GET)
-	public ModelAndView showMyReply(ModelAndView mv) {
-		mv.setViewName("user/my_reply");
-		return mv;
-	}
+//	// 댓글 쓴 게시글 페이지 이동
+//	@RequestMapping(value="my_reply.do", method=RequestMethod.GET)
+//	public ModelAndView showMyReply(ModelAndView mv) {
+//		mv.setViewName("user/my_reply");
+//		return mv;
+//	}
 	
 	/**
 	 * 회원 탈퇴

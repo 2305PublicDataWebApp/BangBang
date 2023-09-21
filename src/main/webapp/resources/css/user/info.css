@@ -15,7 +15,7 @@
 /* 프로필 */
 .profile-box {
     width : 340px;
-    height: 600px;
+    height: 455px;
     float: left;
 }
 
@@ -78,7 +78,6 @@ button {
     color: white
 }
 
-
 .profile-img-change {
     position: relative;
     display : block;
@@ -90,6 +89,10 @@ button {
     cursor: pointer; 
 }
 
+.profile-image  {
+	position: absolute;
+}
+
 /* 마이페이지 메뉴 */
 .menu-mypage {
     position: relative;
@@ -98,10 +101,6 @@ button {
     height: 450px;
     padding : 0 20px;
     float: left;
-}
-
-.profile-image  {
-	position: absolute;
 }
 
 .menu-box {

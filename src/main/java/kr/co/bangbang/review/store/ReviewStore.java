@@ -34,7 +34,7 @@ public interface ReviewStore {
 	 * @param userId 
 	 * @return List<Review>
 	 */
-	List<Review> selectReviewList(SqlSession sqlSession, UPageInfo pInfo, String userId);
+	List<Review> selectReviewList(SqlSession sqlSession, UPageInfo pInfo, String sessionId);
 
 	/**
 	 * 마이페이지 - 게시글 전체 갯수 조회
@@ -42,6 +42,6 @@ public interface ReviewStore {
 	 * @param userId 
 	 * @return
 	 */
-	int selectBoardCount(SqlSession sqlSession, String userId);
+	int selectBoardCount(SqlSession sqlSession, String sessionId);
 
 }

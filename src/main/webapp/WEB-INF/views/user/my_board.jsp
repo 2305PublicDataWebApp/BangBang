@@ -63,13 +63,15 @@
 		                    <tbody>
 		                    	<!-- *************** 테이블 내용 *************** -->
 								<c:forEach var="board" items="${ rList }" varStatus="r">
-<!-- 								<input -->
-		                        <tr>
+<%-- 									<input type="hidden" name="userId" value=${ userId }> --%>
+		                        <tr> 
 		                            <td>${ r.count }</td>
 <%-- 		                            <td>${ board.reiviewType }</td> --%>
+                          		 	<td>${board.reiviewType }</td>
                           		 	<c:url var="detailUrl" value="/review/r_detail.do">
-                          		 		<c:param name="reviewTitle" value="${ board.reviewTitle }"></c:param>
+                          		 		<c:param name="reviewNo" value="${ board.reviewNo }"></c:param>
                           		 	</c:url>
+                          		 	<td><a href="${ detailUrl }">${board.reviewTitle }</a></td>
                           		 	<td class="date">
                           		 		<fmt:formatDate pattern="YYYY-MM-dd" value="${ board.reviewDate }"/>
                           		 	</td>
@@ -78,27 +80,54 @@
 								</c:forEach>
 		                    </tbody>
 		                    <tfoot class="search-content">
-		                        <tr>
-		                            <td>
-		                                <select name="" id="">
-		                                    <option>전체</option>
-		                                    <option>제목</option>
-		                                    <option>내용</option>
-		                                </select>
-		                            </td>
-		                            <td colspan="3">
-		                                <input type="text" name="searchBaord">
-		                                <button>검색</button>
-		                            </td>
-		                        </tr>
+			                    <!-- *************** 테이블 네비게이션 *************** --
+				                <!-- 페이징 -->
+				                <br>
+				                <tr align="center">
+					                <td colspan="4">
+					                	<c:if test="${ pInfo.startNavi !=1 }">
+					                		<c:url var="prevUrl" value="/user/my_board.do">
+					                			<c:param name="page" value="${ pInfo.startNavi -1 }"></c:param>
+					                		</c:url>
+					                		<a href="${ prevUrl }">이전</a>
+					                	</c:if>
+					                	<c:forEach begin="${ pInfo.startNavi }" end="${ pInfo.endNavi }" var="p">
+					                		<!-- var : 변수명, value : url -->
+					                		<c:url var="pageUrl" value="/user/my_board.do?userId=${userId }">
+	                       						<!-- 쿼리 스트링 -->
+	                       						<c:param name="page" value="${ p }"></c:param>
+					                		</c:url>
+					                		<a href="${ pageUrl }">${ p }</a>&nbsp;
+					                	</c:forEach>
+                        				<c:if test="${ pInfo.endNavi != pInfo.naviTotalCount }">
+											<c:url var="nextUrl" value="/user/my_board.do">
+												<c:param name="page" value="${ pInfo.endNavi + 1 }"></c:param>
+											</c:url>
+											<a href="${ nextUrl }">[다음]</a>
+										</c:if>
+					                </td>
+				                </tr>
+				                
+				                
+				                
+<!-- 		                        <tr> -->
+<!-- 		                            <td> -->
+<!-- 		                                <select name="" id=""> -->
+<!-- 		                                    <option>전체</option> -->
+<!-- 		                                    <option>제목</option> -->
+<!-- 		                                    <option>내용</option> -->
+<!-- 		                                </select> -->
+<!-- 		                            </td> -->
+<!-- 		                            <td colspan="3"> -->
+<!-- 		                                <input type="text" name="searchBaord"> -->
+<!-- 		                                <button>검색</button> -->
+<!-- 		                            </td> -->
+<!-- 		                        </tr> -->
+
+
 		                    </tfoot>
 		                </table>
 		
-		                <!-- 페이징 -->
-		                <br>
-		                <div class="page">
-		                    [이전] 1 2 3 4 5 [다음]
-		                </div>
 	                </div>
 	            </div>
 	        </div>
@@ -154,6 +183,35 @@
 	                bolean = true;
 	            }
 	        })
+	        
+	        <!-- 프로필 이미지 미리보기 -->
+	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.
+	        var imageInput = document.getElementById('profile-image');
+	        var imagePreview = document.getElementById('image-preview');
+
+	        // 파일 선택 필드의 change 이벤트를 감지하여 미리보기 업데이트
+	        imageInput.addEventListener('change', function () {
+	            var file = imageInput.files[0]; // 선택한 파일
+
+	            if (file) {
+	                var reader = new FileReader(); // FileReader 객체 생성
+
+	                reader.onload = function (e) {
+	                    // 파일 읽기가 완료되면 미리보기 업데이트
+	                    var img = document.createElement('img'); // 이미지 엘리먼트 생성
+	                    img.src = e.target.result; // 읽은 파일 데이터를 이미지 소스로 설정
+	                    img.style.maxWidth = '100%'; // 이미지가 너무 크면 화면에 맞게 조절
+	                    imagePreview.innerHTML = ''; // 이미지 미리보기 영역 초기화
+	                    imagePreview.appendChild(img); // 이미지를 미리보기 영역에 추가
+	                };
+
+	                reader.readAsDataURL(file); // 파일을 읽어 데이터 URL로 변환하여 이미지 소스로 설정
+	            } else {
+	                // 파일이 선택되지 않았을 때 미리보기 영역 초기화
+	                imagePreview.innerHTML = '';
+	            }
+	            profileForm.submit();
+	        });
 	        
 	        <!-- 프로필 이미지 미리보기 -->
 	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.

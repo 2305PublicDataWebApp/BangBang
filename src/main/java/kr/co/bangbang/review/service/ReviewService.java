@@ -59,14 +59,14 @@ public interface ReviewService {
 	 * @param userId 
 	 * @return List<Review>
 	 */
-	List<Review> selectReviewList(UPageInfo pInfo, String userId);
+	List<Review> selectReviewList(UPageInfo pInfo, String sessionId);
 
 	/**
 	 * 마이페이지 - 게시글 전체 갯수 조회
 	 * @param userId 
 	 * @return
 	 */
-	int getListCount(String userId);
+	int getListCount(String sessionId);
 	
 
 }

@@ -4,32 +4,25 @@
     padding: 0;
 }
 
-.main-container-top {
+#container {
+	background: #F2F2F2;
+/* 	background: white; */
+}
+
+
+.main-container {
 	position: relative;
     background: white;
-    boarder : 1px solid black;
+/*     border : 1px solid black; */
     color: black;
-    background-color: white;
-    width: 1130px;
-    max-width: 1130px;
+/*     width: 1130px; */
+    width: 100%;
+/*     max-width: 1130px; */
     margin : 0 auto;
-    padding: 10px 20px;
+/*     padding: 100px 40px; */
     font-family: sans-serif;
 }
 
-
-
-main {
-    background: white;
-    color: black;
-    width: 1920px;
-    height: 500vmin;
-    height: 2500px;
-    overflow: hidden;
-	border-radius: 5px;
-    padding: 8vmin 10vmin;  /* 메인 위, 아래 공간 */
-    box-shadow: 0 0 50px #ccc;
-}
 
 .banner{
     width: 100%;
@@ -47,13 +40,14 @@ main {
 
 #trip{
     width: 100%;
-    margin: 200px 0;
+    margin: 0;
 }
 
 #in-trip{
     /* border: 1px solid #FF4F40; */
     max-width: 1130px;
     margin: 0 auto;
+    padding: 100px 40px;
 }
 
 #event{
@@ -76,6 +70,8 @@ main {
     align-items: stretch;
     max-width: 1130px;
     margin: 0 auto;
+    padding: 0 40px;
+ 
 }
 
 #review-board-img{ /* flex 아이템 */
@@ -106,8 +102,10 @@ table{
 }
 
 #notice{
+/* 	background: white; 
 	max-width: 1130px;
 	margin: 200px auto;
+	padding: 0 40px;
 }
 
 #notice-img{

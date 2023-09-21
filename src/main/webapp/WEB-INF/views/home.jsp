@@ -79,6 +79,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div id="event">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -209,13 +210,13 @@
                     </div>
                 </div>
             </main>
+		    <!-- footer -->
+			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
             
 <!--             <footer> -->
 <!--                     <div class="color-bar"></div> -->
 <!--                     <p>Gadients & animations in CSS to recreate Gumroad's rainbow bar as a loading animation.</p> -->
 <!--             </footer> -->
-		    <!-- footer -->
-			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	            
             <script>
                 let header = document.querySelector('header');

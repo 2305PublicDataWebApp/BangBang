@@ -64,15 +64,15 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	// 마이페이지 - 게시글 목록 조회
 	@Override
-	public List<Review> selectReviewList(UPageInfo pInfo, String userId) {
-		List<Review> rList = rStore.selectReviewList(sqlSession, pInfo, userId);
+	public List<Review> selectReviewList(UPageInfo pInfo, String sessionId) {
+		List<Review> rList = rStore.selectReviewList(sqlSession, pInfo, sessionId);
 		return rList;
 	}
 	
 	// 마이페이지 - 게시글 전체 갯수 조회
 	@Override
-	public int getListCount(String userId) {
-		int result = rStore.selectBoardCount(sqlSession, userId);
+	public int getListCount(String sessionId) {
+		int result = rStore.selectBoardCount(sqlSession, sessionId);
 		return result;
 	}
 }

@@ -81,8 +81,8 @@ public class ReviewStoreLogic implements ReviewStore{
 
 	// 마이페이지 - 게시글 전체 갯수 조회
 	@Override
-	public int selectBoardCount(SqlSession sqlSession, String userId) {
-		int result = sqlSession.selectOne("ReviewMapper.selectBoardCount", userId);
+	public int selectBoardCount(SqlSession sqlSession, String sessionId) {
+		int result = sqlSession.selectOne("ReviewMapper.selectBoardCount", sessionId);
 		return result;
 	}
 

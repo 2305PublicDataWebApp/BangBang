@@ -20,10 +20,10 @@
 		
 		<!-- 프로필 텍스트 -->
 		<form name="profileForm" action="/profile/upload.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="pUserId" value="${ userId }">
+			<input type="hidden" name="pUserId" value="${userId }">
 			<div class="mypage-profile-area">
 				<span class="mypage-profile-text">환영합니다!</span><br><br>
-				<span class="mypage-profile-text">${ user.userNickname }님</span>
+				<span class="mypage-profile-text">${userNickname }님</span>
 				
 				<!-- 프로필 변경 버튼 -->
 				<input type="file" id="profile-image" name="profile-image" accept="image/*" style="display: none;">
