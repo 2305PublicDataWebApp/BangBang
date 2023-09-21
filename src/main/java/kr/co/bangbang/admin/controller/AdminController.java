@@ -304,14 +304,14 @@ public class AdminController {
 			, String userId
 			, HttpSession session) {
 		try {
-			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			String sessionId = (String)session.getAttribute("adminId"); // 세션 아이디
 			
 			if(sessionId != "" && sessionId != null) {
 				int result = aService.deleteUser(userId);
 				if(result > 0) {
 					mv.addObject("msg", "회원 탈퇴되었습니다.");
 					mv.addObject("url", "/admin/list.do");
-					mv.setViewName("admin/user_list");
+					mv.setViewName("common/inform");
 				} else { // 탈퇴 실패
 					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
 					mv.addObject("url", "redirect:/admin/uModify.do?userId=" + sessionId);
