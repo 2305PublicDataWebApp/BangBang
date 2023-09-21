@@ -58,4 +58,11 @@ public interface AdminService {
 	 */
 	User selectOneById(String userId);
 
+	/**
+	 * 관리자-회원정보수정
+	 * @param user
+	 * @return
+	 */
+	int updateUser(User user);
+
 }

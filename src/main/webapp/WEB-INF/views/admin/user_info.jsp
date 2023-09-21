@@ -39,8 +39,9 @@
 					
 					<!-- 개인정보 조회 -->
 	                <span class="menu-box-text" style="float: left">개인 정보 조회</span>
-	                <a href="" style="margin-left: 400px; width=30px" >수정</a>
-	                <a href="" style="margin-left: 10px;">삭제</a>              
+	                <a href="/admin/uModify.do?userId=${ user.userId }" style="margin-left: 350px; width=30px" >수정</a>
+	                <a href="" style="margin-left: 10px;">탈퇴</a>   
+	                <a href="searchUserList.do" style="margin-left: 10px;">목록</a>           
 	                <br><br>
 	                <hr>
 	                

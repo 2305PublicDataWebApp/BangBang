@@ -67,4 +67,12 @@ public interface AdminStore {
 	 */
 	User selectOneById(SqlSession session, String userId);
 
+	/**
+	 * 관리자-회원정보수정
+	 * @param session
+	 * @param user
+	 * @return
+	 */
+	int updateUser(SqlSession session, User user);
+
 }

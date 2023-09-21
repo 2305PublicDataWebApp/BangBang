@@ -30,6 +30,7 @@ main {
 
 a {
 	text-decoration: none;
+	color: black;
 }
 
 .login-img {
@@ -91,6 +92,7 @@ nav .logo-img {
 nav ul {
     display: flex;
     gap: 4vmin;
+    list-style-type: none;
 }
 
 

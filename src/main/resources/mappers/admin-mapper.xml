@@ -43,6 +43,11 @@
 		INSERT INTO ADMIN_TBL VALUES(#{ adminId }, #{ adminPw }, #{ adminPwRe }, #{ adminEmail })
 	</insert>
 	
+	<!-- 관리자-회원 정보 수정 -->
+	<update id="updateUser">
+		UPDATE USER_TBL SET USER_PW = #{ userPw }, USER_PWRE = #{ userPwRe }, USER_NICKNAME = #{ userNickname }, USER_EMAIL = #{ userEmail } WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
+	</update>
+	
 	<!-- 관리자 로그인 -->
 	<select id="adminLogin" resultMap="adminResultMap">
 		SELECT * FROM ADMIN_TBL WHERE ADMIN_ID = #{ adminId } AND ADMIN_PW = #{ adminPw }
@@ -98,6 +103,8 @@
 	<select id="selectOneById" resultMap="AuserResultMap">
 		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
 	</select>
+	
+	
 	
 	
 </mapper>

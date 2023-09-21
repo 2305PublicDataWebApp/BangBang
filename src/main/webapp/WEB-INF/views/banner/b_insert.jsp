@@ -46,17 +46,17 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너명</label>
 				<div class="col-sm-10">
-					<input type="text" id="bannerName" name="bannerName" class="form-control"><br>
+					<input type="text" id="bannerName" name="bannerName" class="form-control" required=""><br>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너영역</label>
 				<div class="col-sm-10">
-					<select id="bannerArea" name="bannerArea" class="form-control" onchange="updateBannerSize()">
-						<option value="select">영역을 선택해주세요.</option>
-						<option value="main_b">메인 배너</option>
-						<option value="trip_b">여행지 추천 배너</option>
+					<select id="bannerArea" name="bannerArea" class="form-control" onchange="updateBannerSize()" required="">
+						<option value="select" required="">영역을 선택해주세요.</option>
+						<option value="main_b" required="">메인 배너</option>
+						<option value="trip_b" required="">여행지 추천 배너</option>
 					</select><br>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너크기</label>
 				<div class="col-sm-10">
-					<input type="text" id="bannerSize" name="bannerSize" class="form-control"><br>
+					<input type="text" id="bannerSize" name="bannerSize" class="form-control" required=""><br>
 				</div>
 			</div>
 
@@ -83,7 +83,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">링크 URL</label>
 				<div class="col-sm-10">
-					<input type="text" name="linkUrl" class="form-control"><br>
+					<input type="text" name="linkUrl" class="form-control" required=""><br>
 				</div>
 			</div>
 	
@@ -92,7 +92,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">이미지 파일</label>
 				<div class="col-sm-10">
-					<input type="file" name="fielUpload" onchange="readURL(this);" class="form-control"><br>
+					<input type="file" name="fielUpload" onchange="readURL(this);" class="form-control" required=""><br>
 				</div>
 			</div>
 	
@@ -100,11 +100,11 @@
 				<label class="col-sm-2 col-form-label">사용여부</label>
 				<div class="col-sm-10">
 					<div class="form-check">
-						<input type="radio" name="bStatusYn" value="Y" class="form-check-input">
+						<input type="radio" name="bStatusYn" value="Y" class="form-check-input" required="">
 						<label class="form-check-label">사용함</label>
 					</div>
 					<div class="form-check">
-						<input type="radio" name="bStatusYn" value="N" class="form-check-input">
+						<input type="radio" name="bStatusYn" value="N" class="form-check-input" required="">
 						<label class="form-check-label">사용 안함</label>
 					</div>
 				</div>

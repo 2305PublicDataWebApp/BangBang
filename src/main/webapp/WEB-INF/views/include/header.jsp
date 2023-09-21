@@ -29,9 +29,9 @@
             </c:if>
             <!-- 어드민 로그인 -->
             <c:if test="${ adminId ne null && userId eq null}">
-	            <a href="/admin/list.do"><li class="tab">회원관리</li></a>
-	            <a href="/banner/bList.do"><li class="tab">배너관리</a></li>
-	            <a href="/admin/a_logout.do">로그아웃</a>
+            	<a href="/banner/bList.do"><b>배너관리</b></a></li>
+	            <a href="/admin/list.do"><b>회원관리</b></li></a>
+	            <a href="/admin/a_logout.do"><b>로그아웃</b></a>
             </c:if>
            
 
