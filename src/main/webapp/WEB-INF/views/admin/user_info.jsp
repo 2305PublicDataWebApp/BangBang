@@ -44,7 +44,7 @@
 	                <div class="a_user_btn" style="width: 150px; float: right;" >
 	                <form action="/admin/uRemove.do" method="get">
 	                <a href="/admin/uModify.do?userId=${ user.userId }" style="width=30px" >수정</a>
-	                <a type="submit" href="/admin/uRemove.do" style="margin-left: 10px;">탈퇴</a>   
+	                <a type="submit" href="/admin/uRemove.do?userId=${ user.userId }" style="margin-left: 10px;">탈퇴</a>   
 	                <a href="/admin/list.do" style="margin-left: 10px;">목록</a>       
 	                </form>    
 	                </div>

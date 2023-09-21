@@ -29,26 +29,27 @@
          <h2>BANNER LIST <span id="visibleCount">발도장 로고</span><span id="nonVisibleCount"></span></h2>
       
          <list-item>
-	         <list-cell><input type="checkbox" id="tableHeader01" name="RowCheck" value="${bannerNo }"></list-cell>
-	         <list-cell>선택</list-cell>
-	         <list-cell>배너명</list-cell>
-	         <list-cell>배너위치</list-cell>
-	         <list-cell>파일명</list-cell>
+<%-- 	         <list-cell><input type="checkbox" id="tableHeader01" name="RowCheck" value="${bannerNo }"></list-cell> --%>
+	         <list-cell style="width : 50px">선택</list-cell>
+	         <list-cell style="width : 130px">No</list-cell>
+	         <list-cell style="width : 170px">배너명</list-cell>
+	         <list-cell style="width : 250px">배너위치</list-cell>
+	         <list-cell style="width : 800px">파일명</list-cell>
          </list-item>
            
          <panel-list id="myList">
          	<c:forEach var="banner" items="${bList }" varStatus="i">
-       			<list-item data-co="1" data-id="1" class="active">
-                     <list-cell><input type="checkbox" id="" name="RowCheck" value="${banner.bannerNo }"></list-cell>
-                     <list-cell>${i.count }</list-cell>
-                     <list-cell>${banner.bannerName }</list-cell>
-                     <list-cell>${banner.bannerArea }</list-cell>
-                     <list-cell>${banner.bannerFileName }</list-cell>
+       			<list-item data-co="1" data-id="1">
+                     <list-cell style="width : 55px"><input type="checkbox" id="" name="RowCheck" value="${banner.bannerNo }" ></list-cell>
+                     <list-cell style="width : 100px">${i.count }</list-cell>
+                     <list-cell style="width : 200px">${banner.bannerName }</list-cell>
+                     <list-cell style="width : 150px">${banner.bannerArea }</list-cell>
+                     <list-cell style="width : 800px">${banner.bannerFileName }</list-cell>
                 </list-item>
             </c:forEach>
        	 </panel-list>
 
-         <div class="paging" style="margin-left: 360px; margin-top: 25px;">
+         <div class="paging" style="margin-left: 350px; margin-top: 25px;">
            <a href="/banner/insert.do" class="btn btn-prev" style="width: 80px;">등록</a>
            <a href="#" class="btn btn-next" onclick="deleteValue();"  style="width: 80px;">삭제</a>
          </div>
