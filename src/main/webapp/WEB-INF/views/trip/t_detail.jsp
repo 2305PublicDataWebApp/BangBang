@@ -90,14 +90,21 @@
 	                <div>
 		            	<c:forEach var="tReply" items="${tRList }">
 		                    <div id="reply-list" style="border-bottom: 1px solid black;">
-		                        <div style="display: inline-block; width: 30px; height: 30px;">
-		                            <img src="" alt="a">
-		                        </div>
+<!-- 		                        <div style="display: inline-block; width: 30px; height: 30px;"> -->
+<!-- 		                            <img src="" alt="a"> -->
+<!-- 		                        </div> -->
 		                        <span>${tReply.tRUserId }</span>
 		                        <span>${tReply.tReplyDate }</span>
+		                        <input type="hidden" name="tRAdminId" value="${tReply.tRAdminId }">
 		                        <button>답글</button>
-		                        <button onclick="showModifyForm(this);">수정</button>
-		                        <button onclick= "deleteTReply('${tDelUrl}');">삭제</button>
+		                        <c:if test="${tReply.tRUserId eq userId }">
+			                        <button onclick="showModifyForm(this);">수정</button>
+			                        <button onclick= "deleteTReply('${tDelUrl}');">삭제</button>
+		                        </c:if>
+		                        <c:if test="${adminId ne null }">
+			                        <button onclick="showModifyForm(this);">수정</button>
+			                        <button onclick= "deleteTReply('${tDelUrl}');">삭제</button>
+		                        </c:if>
 		                        <p>${tReply.tReplyContent }</p>
 		                    </div> 
 		                    <div id="tReplyModifyForm" style="display:none;">
@@ -107,8 +114,8 @@
 						<%-- 					<td colspan="3"><input type="text" size="50" name="replyContent" value="${reply.replyContent }"></td> --%>
 						<!-- 				<td><input type="submit" value="완료"></td> -->
 						<!-- 			</form> -->
-								<input id="replyContent" type="text" size="50" name="tReplyContent" value="${reply.tReplyContent }">
-								<input type="button" onclick="tReplyModify(this,'${reply.tReplyNo}', '${reply.tTripNo }');" value="완료">
+								<input id="tReplyContent" type="text" size="50" name="tReplyContent" value="${tReply.tReplyContent }">
+								<input type="button" onclick="tReplyModify(this,'${tReply.tReplyNo}', '${tReply.tTripNo }');" value="완료">
 		                    </div>
 		                </c:forEach>
 	                </div>
@@ -131,6 +138,40 @@
 			function showModifyForm(obj, tReplyContent){
 				// 1. HTML 태그, display:none 사용하는 방법
 				obj.parentElement.nextElementSibling.style.display = "";
+			}
+			
+			// this를 넘기고 obj로 받아서 버튼 옆에있는 데이터를 업데이트 치도록 함
+			function tReplyModify(obj, tReplyNo, tTripNo) {  // obj를 이용해서 this 사용하기
+				// DOM프로그래밍을 이용하는 방법
+				const form = document.createElement("form");
+				form.action ="/tReply/update.do";
+				form.method ="post";
+				
+				const input = document.createElement("input");
+				input.type ="hidden";
+				input.value = tReplyNo;
+				input.name = "tReplyNo";
+				
+				const input2 = document.createElement("input");
+				input2.type ="hidden";
+				input2.value = tTripNo;
+				input2.name ="tTripNo";
+
+				const input3 = document.createElement("input");
+				input3.type ="text";
+				// 여기를 this를 이용하여 수정하기
+// 				input3.value = document.querySelector("#tReplyContent").value;
+				// this를 이용해서 내가 원하는 노드 찾기(this를 이용한 노트 탐색)
+				input3.value = obj.previousElementSibling.value; // children[0]도 사용 가능 .value는 붙여야 함.
+				// obj.previousElementSibling => <input type="text">의 위치가 됨
+				input3.name ="tReplyContent";
+
+				form.appendChild(input);  // appendChild(input) form태그에 input붙이기
+				form.appendChild(input2);
+				form.appendChild(input3);
+				
+				document.body.appendChild(form);  // body에 form 붙이기
+				form.submit();
 			}
 		</script>
 	</body>

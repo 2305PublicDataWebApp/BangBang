@@ -14,7 +14,8 @@ span{
 #main-container{
     max-width: 1130px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 100px 40px;
+    background-color: white;
 }
 #title{
     margin-top: 40px;

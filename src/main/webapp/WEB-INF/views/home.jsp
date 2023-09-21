@@ -138,10 +138,10 @@
                                 <c:forEach begin="1" end="5" var="review" items="${rList }" varStatus="i">
 	                                <tr>
 	                                <c:url var="rDetailUrl" value="/review/r_detail.do">
-		                    			<c:param name="reviewNo" value="${reivew.reviewNo }"></c:param>
+		                    			<c:param name="reviewNo" value="${review.reviewNo }"></c:param>
 		                    		</c:url>
 	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="${rDetailUrl }">${review.reivewTitle}</a>
+	                                        <a href="${rDetailUrl }">${review.reviewTitle}</a>
 	                                    </td>
 	                                </tr>
                                 </c:forEach>

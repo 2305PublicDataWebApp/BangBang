@@ -62,10 +62,10 @@ public class TReplyController {
 		// 세션은 서버가 올라갈 때 자동으로 생성 됨
 		String url = "";
 		try {
-			String tReplyWriter = (String)session.getAttribute("memberId");
-			if(!tReplyWriter.equals("")) {
+			String tReplyWriter = (String)session.getAttribute("userId");
+			if(!tReplyWriter.equals("") || tReplyWriter.contains("amdin")) {
 				tReply.settRUserId(tReplyWriter);
-				url= "/trip/t_detail.do?tTripNo="+ tReply.gettTripNo();
+				url= "/trip/t_detail.do?tripNo="+ tReply.gettTripNo();
 				int result = tRService.updateTReply(tReply);
 				if(result > 0) {
 					mv.setViewName("redirect:" + url);

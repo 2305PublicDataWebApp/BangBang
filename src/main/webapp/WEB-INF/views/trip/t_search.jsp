@@ -15,9 +15,6 @@
 	<body>
 	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    <main>
-	        <div class="banner">
-	            <img class="banner-img" src="/resources/images/main/dirud.png" class="d-block w-100" alt="벚꽃">
-	        </div>
 	        <div>
 	            <div id="list">
 	                <div id="select">
