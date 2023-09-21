@@ -39,7 +39,6 @@ button {
 }
 
 .profile {
-    position: fixed;
     width : 340px;
     height: 450px;
     margin-left: 20px;
@@ -72,7 +71,7 @@ button {
     position: relative;
     display: block;
     width: 220px;
-    top: 55px;
+    top: 40px;
     left: 58px;
     font-size: 1.3em;
     font-weight: bolder;
@@ -108,7 +107,7 @@ button {
 .menu-box {
     border : 1px solid #ccc;
     width: 660px;
-    height: 330px;
+    height: 353px;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
@@ -129,6 +128,13 @@ button {
 
 .menu-box hr {
     width: 500px;
+}
+
+.menu-info-detail {
+	position: relative;
+	right: 300px;
+	display: block;
+	width: 870px;
 }
 
 .menu-info {
@@ -187,7 +193,7 @@ button {
 }
 
 .info-detail {
-    padding: 20px;
+    padding: 20px 20px 20px 220px;
 }
 
 .info-id {

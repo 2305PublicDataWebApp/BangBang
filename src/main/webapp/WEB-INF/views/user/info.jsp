@@ -36,56 +36,58 @@
 					<!-- ***** 마이페이지 ***** 메뉴 -->
 					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include>
 					
-					<!-- 개인정보 조회 -->
-	                <span class="menu-box-text">개인 정보 조회</span>
-	                <br><br>
-	                <hr>
-	                
-	                <div class="info">
-					<input type="hidden" name="userId" value="userId">
-	                    <!-- 아이디 -->
-	                    <div class="info-detail">
-	                        <span class="info-id">아이디</span>
-	                        <span class="info-id-detail">${ user.userId }</span>
-	                    </div>
-	
-	                    <!-- 비밀번호 -->
-	                    <div class="info-detail">
-	                        <span class="info-pw">비밀번호</span>
-	                        <span class="info-pw-detail">${ user.userPw }</span>
-	                    </div>
-	
-	                    <!-- 이름 -->
-	                    <div class="info-detail">
-	                        <span class="info-name">이름</span>
-	                        <span class="info-name-detail">${ user.userName }</span>
-	                    </div>
-	
-	                    <!-- 닉네임 -->
-	                    <div class="info-detail">
-	                        <span class="info-nickname">닉네임</span>
-	                        <span class="info-nickname-detail">${ user.userNickname }</span>
-	                    </div>
-	
-	                    <!-- 이메일 -->
-	                    <div class="info-detail">
-	                        <span class="info-email">이메일</span>
-	                        <span class="info-email-detail">${ user.userEmail }</span>
-	                        
-	                    </div>
-	
-	                    <!-- 휴대폰 -->
-	                    <div class="info-detail">
-	                        <span class="info-phone">휴대폰</span>
-	                        <span class="info-phone-detail">${ user.userPhone }</span>
-	                    </div>
-	
-	                    <!-- 생년월일 -->
-	                    <div class="info-detail">
-	                        <span class="info-birth">생년월일</span>
-	                        <span class="info-birth-detail">${ user.userBirth }</span>
-	                    </div>
-	                </div>
+					<div class="menu-info-detail">
+						<!-- 개인정보 조회 -->
+		                <span class="menu-box-text">개인 정보 조회</span>
+		                <br><br>
+		                <hr>
+		                
+		                <div class="info">
+						<input type="hidden" name="userId" value="userId">
+		                    <!-- 아이디 -->
+		                    <div class="info-detail">
+		                        <span class="info-id">아이디</span>
+		                        <span class="info-id-detail">${ user.userId }</span>
+		                    </div>
+		
+		                    <!-- 비밀번호 -->
+		                    <div class="info-detail">
+		                        <span class="info-pw">비밀번호</span>
+		                        <span class="info-pw-detail">${ user.userPw }</span>
+		                    </div>
+		
+		                    <!-- 이름 -->
+		                    <div class="info-detail">
+		                        <span class="info-name">이름</span>
+		                        <span class="info-name-detail">${ user.userName }</span>
+		                    </div>
+		
+		                    <!-- 닉네임 -->
+		                    <div class="info-detail">
+		                        <span class="info-nickname">닉네임</span>
+		                        <span class="info-nickname-detail">${ user.userNickname }</span>
+		                    </div>
+		
+		                    <!-- 이메일 -->
+		                    <div class="info-detail">
+		                        <span class="info-email">이메일</span>
+		                        <span class="info-email-detail">${ user.userEmail }</span>
+		                        
+		                    </div>
+		
+		                    <!-- 휴대폰 -->
+		                    <div class="info-detail">
+		                        <span class="info-phone">휴대폰</span>
+		                        <span class="info-phone-detail">${ user.userPhone }</span>
+		                    </div>
+		
+		                    <!-- 생년월일 -->
+		                    <div class="info-detail">
+		                        <span class="info-birth">생년월일</span>
+		                        <span class="info-birth-detail">${ user.userBirth }</span>
+		                    </div>
+		                </div>
+					</div>
 	            </div>
 	        </div>
 	    </main>
@@ -138,27 +140,6 @@
 	            }
 	        })
 	        
-// 	        let profile = document.querySelector('.profile');
-	
-// 	        // 스크롤 이벤트 리스너
-// 	        window.addEventListener('scroll', () => {
-// 	            // 스크롤 위치
-// 	            let scrollY = window.scrollY;
-	
-// 	            // 프로필을 고정할 위치
-// 	            let fixedPosition = 500;
-	
-// 	            // 프로필이 고정될 때 상단으로부터의 거리
-// 	            let fixedTop = 50;
-	
-// 	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
-// 	            if (scrollY >= fixedPosition) {
-// 	                profile.style.position = 'fixed';
-// 	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
-// 	            } else {
-// 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
-// 	            }
-// 	        });
 	    </script>
 	</body>
 </html>

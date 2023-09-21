@@ -16,4 +16,16 @@ public class ProfileStoreLogic implements ProfileStore{
 		return result;
 	}
 
+	@Override
+	public Profile selectOneProfile(SqlSession session, String sessionId) {
+		Profile profile = session.selectOne("ProfileMapper.selectOneProfileById", sessionId);
+		return profile;
+	}
+
+	@Override
+	public int updateProfile(SqlSession session, Profile profile) {
+		int result = session.update("ProfileMapper.updateProfile", profile);
+		return result;
+	}
+
 }

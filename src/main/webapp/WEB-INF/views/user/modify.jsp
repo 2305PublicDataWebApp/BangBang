@@ -36,93 +36,95 @@
 					<!-- ***** 마이페이지 ***** 메뉴 -->
 					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include>
 	                
-	                <!-- 개인정보 수정 -->
-	                <span class="menu-box-text">개인 정보 수정</span>
-	                <br><br>
-	                <hr>
-	                
-	                <form action="/user/modify.do" method="post">
-	                    <div class="info">
-
-							<!-- 아이디 -->
-	                        <ul class="info-detail">
-	                        	<li>
-	                        	<label for="userId" class="info-id">아이디 </label>
-	                        	<input type="text" name="userId" id="userId" class="info-id-detail" value="${ user.userId }" readonly>
-	                        	</li>
-	                        </ul>
+	                <div class="menu-modify-detail">
+		                <!-- 개인정보 수정 -->
+		                <span class="menu-box-text">개인 정보 수정</span>
+		                <br><br>
+		                <hr>
+		                
+		                <form action="/user/modify.do" method="post">
+		                    <div class="info">
 	
-	                        <!-- 비밀번호 -->
-	                        <ul class="info-detail">
-		                        <li>
-		                            <label for="userPw" class="info-pw">비밀번호</label>
-		                            <input type="password" name="userPw" class="info-pw-detail" value="${ user.userPw }">
-		                        </li>
-	                        </ul>
-
-	                        <!-- 비밀번호 확인 -->
-	                        <ul class="info-detail">
-	                        	<li>
-	                            	<label for="userPwRe" class="info-pwRe">비밀번호 확인</label>
-	                            	<input type="password" name="userPwRe" id="userPwRe" class="info-pwRe-detail" value="${ user.userPwRe }">
-	                        	</li>
-	                        </ul>
+								<!-- 아이디 -->
+		                        <ul class="info-detail">
+		                        	<li>
+		                        	<label for="userId" class="info-id">아이디 </label>
+		                        	<input type="text" name="userId" id="userId" class="info-id-detail" value="${ user.userId }" readonly>
+		                        	</li>
+		                        </ul>
+		
+		                        <!-- 비밀번호 -->
+		                        <ul class="info-detail">
+			                        <li>
+			                            <label for="userPw" class="info-pw">비밀번호</label>
+			                            <input type="password" name="userPw" class="info-pw-detail" value="${ user.userPw }">
+			                        </li>
+		                        </ul>
 	
-	                        <!-- 이름 -->
-	                        <ul class="info-detail">
-	                        	<li>
-	                            	<label for="userName" class="info-name">이름</label>
-	                            	<input type="text" name="userName" id="userName" class="info-name-detail" value="${ user.userName }" readonly>
-	                        	</li>
-	                        </ul>
-
-	                        <!-- 닉네임 -->
-	                        <ul class="info-detail">
-		                        <li>
-		                        	<label for="userNickname" class="info-nickname">닉네임</label>
-		                            <input type="text" name="userNickname" id="userNickname" class="info-nickname-detail" value="${ user.userNickname }">
+		                        <!-- 비밀번호 확인 -->
+		                        <ul class="info-detail">
+		                        	<li>
+		                            	<label for="userPwRe" class="info-pwRe">비밀번호 확인</label>
+		                            	<input type="password" name="userPwRe" id="userPwRe" class="info-pwRe-detail" value="${ user.userPwRe }">
+		                        	</li>
+		                        </ul>
+		
+		                        <!-- 이름 -->
+		                        <ul class="info-detail">
+		                        	<li>
+		                            	<label for="userName" class="info-name">이름</label>
+		                            	<input type="text" name="userName" id="userName" class="info-name-detail" value="${ user.userName }" readonly>
+		                        	</li>
+		                        </ul>
+	
+		                        <!-- 닉네임 -->
+		                        <ul class="info-detail">
+			                        <li>
+			                        	<label for="userNickname" class="info-nickname">닉네임</label>
+			                            <input type="text" name="userNickname" id="userNickname" class="info-nickname-detail" value="${ user.userNickname }">
+			                            
+			                            <!-- 닉네임 중복확인 -->
+	                                	<button class="btn-nickname yellow mini">중복확인</button>
+			                        </li>
+		                        </ul>
+	
+		
+		                        <!-- 이메일 -->
+		                        <ul class="info-detail">
+			                        <li>
+			                            <label for="userEmail" class="info-email">이메일</label>
+			                            <input type="text" name="userEmail" id="userEmail" class="info-email-detail" value="${ user.userEmail }">
+		                            	
+		                            	<!-- 이메일 중복확인 -->
+		                                <button class="btn-email yellow mini">중복확인</button>
+			                        </li>
+		                        </ul>
 		                            
-		                            <!-- 닉네임 중복확인 -->
-                                	<button class="btn-nickname yellow mini">중복확인</button>
-		                        </li>
-	                        </ul>
-
-	
-	                        <!-- 이메일 -->
-	                        <ul class="info-detail">
-		                        <li>
-		                            <label for="userEmail" class="info-email">이메일</label>
-		                            <input type="text" name="userEmail" id="userEmail" class="info-email-detail" value="${ user.userEmail }">
-	                            	
-	                            	<!-- 이메일 중복확인 -->
-	                                <button class="btn-email yellow mini">중복확인</button>
-		                        </li>
-	                        </ul>
-	                            
-	
-	                        <!-- 휴대폰 -->
-	                        <ul class="info-detail">
-		                        <li>
-		                            <label for="userPhone" class="info-phone">휴대폰</label>
-		                            <input type="text" name="userPhone" id="userPhone" class="info-phone-detail" value="${ user.userPhone }" readonly>
-		                        </li>
-	                        </ul>
-	
-	                        <!-- 생년월일 -->
-	                        <ul class="info-detail">
-		                        <li>
-		                            <label for="userBirth" class="info-birth">생년월일</label>
-		                            <input type="date" name="userBirth" class="info-birth-detail" value="${ user.userBirth }" readonly>
-		                        </li>
-	                        </ul>
-	
-	                        <!-- 수정 버튼 -->
-	                        <br>
-	                        <div class="btn-container">
-	                        	<input type="submit" class="btn-3d red" value="확인">
-	                        </div>
-	                    </div>
-	                </form>
+		
+		                        <!-- 휴대폰 -->
+		                        <ul class="info-detail">
+			                        <li>
+			                            <label for="userPhone" class="info-phone">휴대폰</label>
+			                            <input type="text" name="userPhone" id="userPhone" class="info-phone-detail" value="${ user.userPhone }" readonly>
+			                        </li>
+		                        </ul>
+		
+		                        <!-- 생년월일 -->
+		                        <ul class="info-detail">
+			                        <li>
+			                            <label for="userBirth" class="info-birth">생년월일</label>
+			                            <input type="date" name="userBirth" class="info-birth-detail" value="${ user.userBirth }" readonly>
+			                        </li>
+		                        </ul>
+		
+		                        <!-- 수정 버튼 -->
+		                        <br>
+		                        <div class="btn-container">
+		                        	<input type="submit" class="btn-3d red" value="확인">
+		                        </div>
+		                    </div>
+		                </form>
+	                </div>
 	            </div>
 	        </div>
 	    </main>
@@ -177,28 +179,6 @@
 	                bolean = true;
 	            }
 	        })
-	        
-// 	        let profile = document.querySelector('.profile');
-	
-// 	        // 스크롤 이벤트 리스너
-// 	        window.addEventListener('scroll', () => {
-// 	            // 스크롤 위치
-// 	            let scrollY = window.scrollY;
-	
-// 	            // 프로필을 고정할 위치 (예: 500px)
-// 	            let fixedPosition = 580;
-	
-// 	            // 프로필이 고정될 때 상단으로부터의 거리 (예: 20px)
-// 	            let fixedTop = 50;
-	
-// 	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
-// 	            if (scrollY >= fixedPosition) {
-// 	                profile.style.position = 'fixed';
-// 	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
-// 	            } else {
-// 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
-// 	            }
-// 	        });
 	        
 	        <!-- 프로필 이미지 미리보기 -->
 	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.

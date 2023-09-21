@@ -48,6 +48,8 @@ public class ProfileController {
 		try {
 			// 세션 아이디로 유효성 검사
 			String pUserId = (String)sessoin.getAttribute("userId");
+			int result = 0;
+			Profile searchProfile = null;
 			if(pUserId != null && !pUserId.equals("")) {
 				// ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 파일 첨부 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 				// 파일이 있는지 여부 유효성 검사 후 파일 첨부 진행
@@ -63,10 +65,17 @@ public class ProfileController {
 					profile.setProfileImgRename(imgRename);
 					profile.setProfileImgPath(imgPath);
 					profile.setProfileImgLength(imgLength);
-					
-					int result = pService.insertProfile(profile);
+					searchProfile = pService.selectOneProfile(pUserId);
+					if(searchProfile != null) {
+						// 기존 프로필 이미지 파일 삭제 후 update
+						profile.setpUserId(pUserId);
+						result = pService.updateProfile(profile);
+					}else {
+						// 이미지 파일 저장 후 insert
+						result = pService.insertProfile(profile);
+					}
 					if(result > 0) { // 프로필 등록 성공
-						sessoin.setAttribute("profile", profile);
+//						sessoin.setAttribute("profile", profile);
 						mv.setViewName("redirect:/user/mypage.do?userId="+pUserId);
 					} else { // 프로필 등록 실패
 						mv.addObject("msg", "프로필 사진 등록에 실패하였습니다.");

@@ -11,4 +11,8 @@ public interface ProfileService {
 	 */
 	int insertProfile(Profile profile);
 
+	Profile selectOneProfile(String sessionId);
+
+	int updateProfile(Profile profile);
+
 }

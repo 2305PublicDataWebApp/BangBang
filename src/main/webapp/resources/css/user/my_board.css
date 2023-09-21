@@ -134,14 +134,15 @@ button {
     float: left;
     padding : 0 100px 0 140px;
 }
+
 .menu-info-board {
     float: left;
-    padding : 0 70px 0 75px;
+    padding : 0 85px 0 65px;
 }
 
 .menu-info-comment {
     float: left;
-    padding : 0 70px 0 0;
+    padding : 0 100px 0 0;
 }
 
 .menu-icon {

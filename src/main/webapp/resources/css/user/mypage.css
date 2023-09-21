@@ -13,11 +13,7 @@
     font-family: sans-serif;
 }
 
-/* 마이페이지 텍스트 */
-.menu-mypage {
-    width: 100px;
-    float: left;
-}
+
 
 /* 프로필 */
 .profile-box {
@@ -47,7 +43,7 @@ button {
 }
 
 .profile {
-    position: fixed;
+/*     position: fixed; */
     width: 340px;
     height: 450px;
     margin-left: 20px;
@@ -82,7 +78,7 @@ button {
     position: relative;
     display: block;
     width: 220px;
-    top: 55px;
+    top: 40px;
     left: 58px;
     font-size: 1.3em;
     font-weight: bolder;
@@ -148,12 +144,12 @@ button {
 }
 .menu-info-board {
     float: left;
-    padding : 0 70px 0 75px;
+    padding : 0 85px 0 67px;
 }
 
 .menu-info-comment {
     float: left;
-    padding : 0 70px 0 0;
+    padding : 0 100px 0 0;
 }
 
 .menu-icon {
@@ -179,9 +175,8 @@ button {
     right: 25px;
 }
 
-#my-reply {
+#my-logout{
     position: relative;
-    right: 25px;
 }
 
 #info-remove {

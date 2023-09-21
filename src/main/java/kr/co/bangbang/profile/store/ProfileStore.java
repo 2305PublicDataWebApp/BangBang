@@ -14,4 +14,8 @@ public interface ProfileStore {
 	 */
 	int insertProfile(SqlSession session, Profile profile);
 
+	Profile selectOneProfile(SqlSession session, String sessionId);
+
+	int updateProfile(SqlSession session, Profile profile);
+
 }

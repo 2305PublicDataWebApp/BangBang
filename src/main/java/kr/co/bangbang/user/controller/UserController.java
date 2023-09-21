@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bangbang.profile.domain.Profile;
+import kr.co.bangbang.profile.service.ProfileService;
 import kr.co.bangbang.review.domain.Review;
 import kr.co.bangbang.review.service.ReviewService;
 import kr.co.bangbang.user.domain.UPageInfo;
@@ -30,6 +32,9 @@ public class UserController {
 	
 	@Autowired
 	private ReviewService rService;
+
+	@Autowired
+	private ProfileService pService;
 	
 	/**
 	 * 회원가입 구현
@@ -183,8 +188,10 @@ public class UserController {
 			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
 			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
 				User user = uService.selectOneById(userId);
+				Profile profile = pService.selectOneProfile(sessionId);
 				if(user != null) {
 					mv.addObject("user", user);
+					mv.addObject("profile", profile);
 					mv.setViewName("user/mypage");
 				} else {
 					mv.addObject("msg", "정보 조회에 실패하였습니다.");

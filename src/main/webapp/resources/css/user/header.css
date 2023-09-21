@@ -81,8 +81,9 @@ nav .logo {
 }
 
 nav .logo-img {
-    position: absolute;
+    position: relative;
     z-index: 2;
+    top: 7px;
 }
 
 nav ul {

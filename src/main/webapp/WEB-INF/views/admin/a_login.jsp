@@ -50,7 +50,7 @@
 
                 <!-- 아이디 / 비밀번호 찾기 -->
                 <div class="admin-find">
-                    <a href="#" class="find-ink">아이디 찾기</a> | <a href="#" class="find-ink">비밀번호 찾기</a>
+<!--                     <a href="#" class="find-ink">아이디 찾기</a> | <a href="#" class="find-ink">비밀번호 찾기</a> -->
                 </div>
             </div>
         </main>

@@ -28,8 +28,8 @@
 		</div>
 		<!-- 댓글 쓴 게시글 -->
 		<div class="menu-info-comment">
-		    <a href="#"><img class="menu-icon" src="/resources/images/user/reply.png" alt="댓글 쓴 게시글 조회"></a><br>
-		    <span id="my-reply">댓글 쓴 게시글</span>
+		    <a href="/user/logout.do"><img class="menu-icon" src="/resources/images/user/logout.png" alt="댓글 쓴 게시글 조회"></a><br>
+		    <span id="my-logout">로그아웃</span>
 		</div>
 		<!-- 회원 탈퇴 -->
 		<div class="menu-info-remove">

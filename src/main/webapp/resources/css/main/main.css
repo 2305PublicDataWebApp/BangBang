@@ -3,412 +3,157 @@
     margin: 0;
     padding: 0;
 }
-a{
-    text-decoration-line: none;
+
+.main-container-top {
+	position: relative;
+    background: white;
+    boarder : 1px solid black;
+    color: black;
+    background-color: white;
+    width: 1130px;
+    max-width: 1130px;
+    margin : 0 auto;
+    padding: 10px 20px;
+    font-family: sans-serif;
 }
 
-/* .main-container { */
-/* 	position: relative; */
-/*     background: white; */
-/*     boarder : 1px solid black; */
-/*     color: black; */
-/*     background-color: white; */
-/*     width: 1130px; */
-/*     max-width: 1130px; */
-/*     margin : 0 auto; */
-/*     height: 650px; */
-/*     padding: 100px 20px; */
-/*     font-family: sans-serif; */
+
+
+main {
+    background: white;
+    color: black;
+    width: 1920px;
+    height: 500vmin;
+    height: 2500px;
+    overflow: hidden;
+	border-radius: 5px;
+    padding: 8vmin 10vmin;  /* 메인 위, 아래 공간 */
+    box-shadow: 0 0 50px #ccc;
 }
-/* #container{ */
-/*     width: 1130px; */
-/* } */
-/* body { */
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-/*     min-height:88vh; */
-    /* overflow: hidden; */
-/*     font-family: 'Roboto', sans-serif; */
-    /* background: #232323; */
-/* } */
-/* .note { */
-/*     position: absolute; */
-/*     top: 5px; */
-/*     left: 5px; */
-/*     color: #FF4F40; */
-/*     text-transform: uppercase; */
-/*     font-size: 3vmin; */
-/* } */
-/* header { */
-/*     background: #fffacd; 뒷 배경색 */
-/*     color: black; */
-/*     width: 208vmin; */
-/*     width: 100%; */
-/*     height: 88vmin; */
-/*     overflow: hidden; */
-/*     border-radius: 5px; */
-/*     padding: 8vmin 10vmin; */
-/*     border-bottom: 1.2vmin solid black; 헤더 하단 공간 */
-/*     position: relative; */
-/*     box-shadow: 0 0 50px #000; 그림자 */
-/* } */
-/* header:before { */
-/*     content: ""; */
-/*     position: absolute; */
-/*     top: -120px; */
-/*     right: -120px; */
-/*     width: 70vmin; */
-/*     height: 70vmin; */
-/*     border-radius: 50%; */
-/*     border: 50px solid rgb(247, 224, 125); */
-/* } */
-/* nav { */
-/*     display: flex; */
-/*     justify-content: space-between; */
-/*     position: relative; */
-/*     z-index: 2; */
-/*     padding: 0px 10px; */
-/* } */
-/* nav .logo { */
-/*     color: rgb(238, 200, 29); */
-/*     font-weight: 900; */
-/*     filter: drop-shadow(0 0 5px #FF4F40); */
-/*     font-size: 3vmin; */
-/* } */
-/* nav .log-img { */
-/*     position: relative; */
-/*     z-index: 2; */
-/*     right: 50px;  얘 때문에 이미지랑 제목이랑 겹침 */
-/* } */
-/* nav ul { */
-/*     display: flex; */
-/*     gap: 4vmin; */
-/* } */
-/* nav ul li { */
-/*     position: relative; */
-/*     cursor: pointer; */
-/*     font-weight: 700; */
-/* } */
-/* nav ul .tab:before { */
-/*     content: ""; */
-/*     width: 0%; */
-/*     height: 2px; */
-/*     background: #FF4F40; */
-/*     position: absolute; */
-/*     bottom: -2px; */
-/*     left: 0; */
-/*     box-shadow: 0 0 5px #FF4F40; */
-/*     transition: all .5s; */
-/*     border-radius: 50px; */
-/* } */
-/* nav ul .tab:hover:before { */
-/*     width: 100%; */
-/* } */
-/* nav ul .card:before { */
-/*     content: ""; */
-/*     position: absolute; */
-/*     right: -5px; */
-/*     top: -5px; */
-/*     width: 10px; */
-/*     height: 10px; */
-/*     background: #FF4F40; */
-/*     border-radius: 50%; */
-/* } */
-/* nav ul .joinBtn { */
-/*     background: #FF8F85; */
-/*     color: #8A251D; */
-/*     padding: 2px 12px; */
-/*     border-radius: 5px; */
-/* } */
-/* nav .fa-bars, */
-/* nav .fa-remove { */
-/*     display: none; */
-/* } */
-/* .header-content { */
-/*     display: flex; */
-/*     margin-top: 6vmin; */
-/*     position: relative; */
-/*     height: 66vmin; */
-/*     padding: 0px 10px; */
-/* } */
-/* .header-content .content { */
-/*     position: relative; */
-/*     z-index: 2; */
-/* } */
-/* .header-content .content h1 { */
-/*     margin-top: 3vmin; */
-/*     font-size: 6.5vmin; */
-/* } */
-/* .header-content .content h1 span { */
-/*     color: #FF4F40; */
-/* } */
-/* .header-content .content p { */
-/*     margin-top: 2.5vmin; */
-/*     font-size: 2vmin; */
-/*     width: 45vmin; */
-/*     word-break: break-all; */
-/* } */
-/* .header-content img { */
-/*     position: absolute; */
-/*     bottom: 0; */
-/*     right: -25vmin; */
-/*     width: 100%; */
-/*     height: 120%; */
-/*     z-index: 1; */
-/*     object-fit: contain; */
-/* } */
-/* .header-content .content .search { */
-/*     background: #fff; */
-/*     margin-top: 6vmin; */
-/*     display: flex; */
-/*     justify-content: space-between; */
-/*     align-items: center; */
-/*     color: #888; */
-/*     width: auto; */
-/*     box-shadow: 0 0 10px 0px #FF4F40; */
-/*     border-radius: 5px; */
-/*     overflow: hidden; */
-/* } */
-/* .header-content .content .search input, */
-/* .header-content .content .search button { */
-/*     border: 0; */
-/*     outline: 0; */
-/*     padding: 10px 15px; */
-/* } */
-/* .header-content .content .search .fa-search { */
-/*     margin-left: 15px; */
-/*     margin-right: 7px; */
-/* } */
-/* .header-content .content .search input { */
-/*     caret-color: #FF4F40; */
-/* } */
-/* .header-content .content .search button { */
-/*     width: 100px; */
-/*     text-transform: capitalize; */
-/*     color: #fff; */
-/*     background: #FF4F40; */
-/*     cursor: pointer; */
-/* } */
-/* .circle { */
-/*     width: 0px; */
-/*     height: 0px; */
-/*     border: 5px solid #FF8F85; */
-/*     border-radius: 50%; */
-/*     position: absolute; */
-/*     top: 0; */
-/*     animation: zoom 3.5s linear infinite; */
-/* } */
-/* @keyframes zoom { */
-/*     0%, */
-/*     100% { */
-/*         width: 0px; */
-/*         height: 0px; */
-/*         border: 0px solid #FF8F85; */
-/*     } */
-/*     50% { */
-/*         width: 2vmin; */
-/*         height: 2vmin; */
-/*         border: .6vmin solid #FF8F85; */
-/*     } */
-/* } */
-/* @media (min-width:0px) and (max-width: 1030px) { */
-/*     header { */
-/*         width: 90vmin; */
-/*         height: 75vmin; */
-/*         padding: 8vmin 5vmin; */
-/*     } */
-/*     header:before { */
-/*         content: ""; */
-/*         position: absolute; */
-/*         top: -13vmin; */
-/*         right: -13vmin; */
-/*         width: 45vmin; */
-/*         height: 45vmin; */
-/*         border-radius: 50%; */
-/*         border: 6vmin solid #FF8F85; */
-/*     } */
-/*     nav { */
-/*         z-index: 3; */
-/*     } */
-/*     nav ul { */
-/*         display: block; */
-/*         background: rgba(0, 0, 0, .8); */
-/*         position: absolute; */
-/*         top: 4.5vmin; */
-/*         right: 0; */
-/*         text-align: center; */
-/*         padding: 0 10px; */
-/*         border-radius: 5px; */
-/*         height: 0%; */
-/*         overflow: hidden; */
-/*     } */
-/*     nav ul li { */
-/*         margin: 1vmin 0; */
-/*         padding: 1vmin 2vmin; */
-/*         font-size: 3vmin; */
-/*     } */
-/*     nav .fa-bars, */
-/*     nav .fa-remove { */
-/*         display: block; */
-/*         font-size: 3.5vmin; */
-/*         cursor: pointer; */
-/*     } */
-/*     nav .fa-bars:hover, */
-/*     nav .fa-remove:hover, */
-/*     nav .fa-bars:active, */
-/*     nav .fa-remove:active { */
-/*         color: #FF4F40; */
-/*     } */
-/*     nav ul .card:before { */
-/*         left: 56%; */
-/*         top: 5px; */
-/*     } */
-/*     .header-content { */
-/*         margin-top: 5vmin; */
-/*         padding: 0px 1vmin; */
-/*         height: 53vmin; */
-/*     } */
-/*     .header-content img { */
-/*         right: -10vmin; */
-/*         bottom: 5vmin; */
-/*         object-fit: contain; */
-/*     } */
-/*     .header-content .content .search input, */
-/*     .header-content .content .search button { */
-/*         padding: 1.6vmin 2vmin; */
-/*     } */
-/*     .header-content .content .search input { */
-/*         width: 32.5vmin; */
-/*     } */
-/*     .header-content .content .search .fa-search { */
-/*         margin-left: 2vmin; */
-/*         margin-right: 1vmin; */
-/*     } */
-/*     .header-content .content .search button { */
-/*         width: 18vmin; */
-/*     } */
-/* } */
 
-/* main { */
-/*     /* background: white; */
-/*     color: black; */
-/*     width: 1920px; */
-/*     height: 500vmin; */
-/*     height: 2000px; */ */
-/*     overflow: hidden; */
-/*     border-radius: 5px;
-/*     padding: 8vmin 10vmin;  */ 메인 위, 아래 공간 */
-/*     box-shadow: 0 0 50px #ccc; */
-/* } */
-    .banner{
-        width: 100%;
-    }
-        #main-banner{
-            height: 400px;
-        }
-            .banner-img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-    #trip{
-        width: 100%;
-        margin: 200px 0;
-    }
-        #in-trip{
-            /* border: 1px solid #FF4F40; */
-            max-width: 1130px;
-            margin: 0 auto;
-        }
+.banner{
+    width: 100%;
+}
 
-    #event{
-        width: 100%;
-        margin: 200px 0;
-    }
-        #event-inner{
-            height: 80px;
-        }
+#main-banner{
+    height: 400px;
+}
 
-    #review{ /* flex 컨테이너 */
-        display: flex;  /* flex를 쓰기만 해도 안에 있는 div가 옆으로 배치됨 */
-        flex-flow: row wrap;
-        /* 아래 flex속성들을 한번에 쓴 것 */
-        /* flex-direction: row;
-        flex-wrap: wrap; */
-        /* height: 350px; */
-        justify-content: space-between;
-        align-items: stretch;
-        max-width: 1130px;
-        margin: 0 auto;
-    }
-        #review-board-img{ /* flex 아이템 */
-            /* height는 부모 div크기로 지정됨 */
-        }
-            #review-img{
-                /* height: 200px; */
-            }
-        #review-board{ /* flex 아이템 */
-            /* height는 부모 div크기로 지정됨 */
-            /* width: 500px; */
-            /* margin-left: 150px; */
-            /* width: 800px */
-        }
-            table{
-                width: 100%
-            }
-                .bottom_line{
-                    border-bottom: 1px solid black;
-                    padding: 18px 0;
-                }
-                #more{
-                    text-align: right;
-                }
-    #notice{
-        max-width: 1130px;
-        margin: 200px auto;
-        }
-        #notice-img{
-            height: 150px;
-        }
-            #table-img{
-                padding: 0;
-            }
-    h3{
-        margin-bottom: 0;
-    }
-    .no-bottom-line{
-        border-bottom: none;
-    }
+.banner-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#trip{
+    width: 100%;
+    margin: 200px 0;
+}
+
+#in-trip{
+    /* border: 1px solid #FF4F40; */
+    max-width: 1130px;
+    margin: 0 auto;
+}
+
+#event{
+    width: 100%;
+    margin: 200px 0;
+}
+
+#event-inner{
+    height: 80px;
+}
+
+#review{ /* flex 컨테이너 */
+    display: flex;  /* flex를 쓰기만 해도 안에 있는 div가 옆으로 배치됨 */
+    flex-flow: row wrap;
+    /* 아래 flex속성들을 한번에 쓴 것 */
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    /* height: 350px; */
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1130px;
+    margin: 0 auto;
+}
+
+#review-board-img{ /* flex 아이템 */
+    /* height는 부모 div크기로 지정됨 */
+}
+
+#review-img{
+    /* height: 200px; */
+}
+#review-board{ /* flex 아이템 */
+    /* height는 부모 div크기로 지정됨 */
+    /* width: 500px; */
+    /* margin-left: 150px; */
+    /* width: 800px */
+}
+
+table{
+    width: 100%
+}
+
+.bottom_line{
+    border-bottom: 1px solid black;
+    padding: 18px 0;
+}
+
+#more{
+    text-align: right;
+}
+
+#notice{
+	max-width: 1130px;
+	margin: 200px auto;
+}
+
+#notice-img{
+    height: 150px;
+}
+
+#table-img{
+    padding: 0;
+}
+
+h3{
+    margin-bottom: 0;
+}
+
+.no-bottom-line{
+    border-bottom: none;
+}
 
 footer{
-position: relative;
-height: 300px;
+	position: relative;
+	height: 300px;
 }
 
 @-webkit-keyframes loading {
-0% {
-background-position: 0;
+	0% {
+	background-position: 0;
 }
 100% {
-background-position: -150px;
+ba	ckground-position: -150px;
 }
-}
+
 .color-bar {
--webkit-animation: loading 0s infinite linear;
-animation: loading 1s infinite linear(0 0%, 0.62 5.15%);
-/* loading 1s infinite linear(0.82 47.79%, 1.32 50%) */
-background: f09d1f;
-/* FF3.6+ */
-/* Chrome,Safari4+ */
-/* Chrome10+,Safari5.1+ */
-/* Opera 11.10+ */
-/* IE10+ */
-background: linear-gradient(to right, #ffff98 0%, #faed73 20%, #ffbf5e 20%, #ff8e7d 20%, #ff6b54 20%, #fe5035 40%, #db465a 40%, #dc0d29 60%, #ab1226 60%, #df3cc7 60%, #8422ce 80%, #2069b2 80%);
-/* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f09d1f", endColorstr="#208488",GradientType=1 );
-/* IE6-9 */
-height: 5px;
-margin: 0 auto;
-/* max-width: 150px; */
+	-webkit-animation: loading 0s infinite linear;
+	animation: loading 1s infinite linear(0 0%, 0.62 5.15%);
+	/* loading 1s infinite linear(0.82 47.79%, 1.32 50%) */
+	background: f09d1f;
+	/* FF3.6+ */
+	/* Chrome,Safari4+ */
+	/* Chrome10+,Safari5.1+ */
+	/* Opera 11.10+ */
+	/* IE10+ */
+	background: linear-gradient(to right, #ffff98 0%, #faed73 20%, #ffbf5e 20%, #ff8e7d 20%, #ff6b54 20%, #fe5035 40%, #db465a 40%, #dc0d29 60%, #ab1226 60%, #df3cc7 60%, #8422ce 80%, #2069b2 80%);
+	/* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f09d1f", endColorstr="#208488",GradientType=1 );
+	/* IE6-9 */
+	height: 5px;
+	margin: 0 auto;
+	/* max-width: 150px; */
 }

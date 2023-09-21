@@ -23,4 +23,16 @@ public class ProfileServiceImpl implements ProfileService{
 		return result;
 	}
 
+	@Override
+	public Profile selectOneProfile(String sessionId) {
+		Profile profile = pStore.selectOneProfile(session, sessionId);
+		return profile;
+	}
+
+	@Override
+	public int updateProfile(Profile profile) {
+		int result = pStore.updateProfile(session, profile);
+		return result;
+	}
+
 }

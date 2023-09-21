@@ -4,10 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ProfileMapper">
 
+	<resultMap type="Profile" id="profileResultMap">
+		<id property="pUserId" column="P_USER_ID"></id>
+		<result property="profileImgName" column="IMG_NAME"/>
+		<result property="profileImgRename" column="IMG_RENAME"/>
+		<result property="profileImgPath" column="IMG_PATH"/>
+		<result property="profileImgLength" column="IMG_LENGTH"/>
+	</resultMap>
+
 	<!-- 프로필 등록 -->
 	<insert id="insertProfile">
 		INSERT INTO PROFILE_TBL VALUES(#{ pUserId }, #{ profileImgName }, #{ profileImgRename }, #{ profileImgPath }, #{ profileImgLength })
 	</insert>
 	
+	<update id="updateProfile">
+		UPDATE PROFILE_TBL
+		SET IMG_NAME = #{profileImgName }, IMG_RENAME = #{profileImgRename }, IMG_PATH = #{profileImgPath }, IMG_LENGTH = #{profileImgLength }
+		WHERE P_USER_ID = #{pUserId }
+	</update>
+	
+	<select id="selectOneProfileById" resultMap="profileResultMap">
+		SELECT * FROM PROFILE_TBL WHERE P_USER_ID = #{sessionId }
+	</select>
 </mapper>
   

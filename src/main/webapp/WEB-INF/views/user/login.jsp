@@ -51,7 +51,7 @@
                     <!-- 관리자 로그인 -->
                     <a href="/admin/a_login.do" class="admin-login-ink">관리자 로그인</a><br>
                     <!-- 아이디 / 비밀번호 찾기 -->
-                    <a href="#" class="find-ink">아이디 찾기</a> | <a href="#" class="find-ink">비밀번호 찾기</a>
+<!--                     <a href="#" class="find-ink">아이디 찾기</a> | <a href="#" class="find-ink">비밀번호 찾기</a> -->
                 </div>
             </div>
         </main>

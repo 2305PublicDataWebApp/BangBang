@@ -66,7 +66,7 @@
 <!-- 								<input -->
 		                        <tr>
 		                            <td>${ r.count }</td>
-		                            <td>${ board.reiviewType }</td>
+<%-- 		                            <td>${ board.reiviewType }</td> --%>
                           		 	<c:url var="detailUrl" value="/review/r_detail.do">
                           		 		<c:param name="reviewTitle" value="${ board.reviewTitle }"></c:param>
                           		 	</c:url>

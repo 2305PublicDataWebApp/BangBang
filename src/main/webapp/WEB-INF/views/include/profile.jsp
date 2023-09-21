@@ -4,7 +4,6 @@
 <div class="profile-box">
 	<div class="profile">
 	
-		<a class="user-logout" href="/user/logout.do?userId=${ userId }">로그아웃</a>
 		<!-- 프로필 사진 등록 전 -->
 		<c:if test="${ profile.profileImgRename eq null }">
 			<div class="mypage-profile" id="image-preview">
