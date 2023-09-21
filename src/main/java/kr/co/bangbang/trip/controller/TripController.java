@@ -31,13 +31,13 @@ public class TripController {
 	@Autowired
 	public TReplyService tRService;
 	
-	@RequestMapping(value="t_insert.do", method = RequestMethod.GET)
+	@RequestMapping(value="/trip/t_insert.do", method = RequestMethod.GET)
 	public ModelAndView showInsertForm(ModelAndView mv) {  // ModelAndView => 데이터도 넣고 페이지 이동도 할 수 있음
 		mv.setViewName("trip/t_insert");
 		return mv;
 	}
 
-	@RequestMapping(value = "t_insert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/trip/t_insert.do", method = RequestMethod.POST)
 	public ModelAndView insertTrip(
 			ModelAndView mv
 			, @ModelAttribute Trip trip
@@ -68,7 +68,7 @@ public class TripController {
 		return mv;
 	}
 
-	@RequestMapping(value="t_modify.do", method = RequestMethod.GET)
+	@RequestMapping(value="/trip/t_modify.do", method = RequestMethod.GET)
 	public ModelAndView showModifyForm(ModelAndView mv 
 			, @RequestParam("tripNo") Integer tripNo) {
 		try {
@@ -84,7 +84,7 @@ public class TripController {
 		return mv;
 	}
 
-	@RequestMapping(value="t_modify.do", method = RequestMethod.POST)
+	@RequestMapping(value="/trip/t_modify.do", method = RequestMethod.POST)
 	public ModelAndView modifyTrip(ModelAndView mv
 			, @ModelAttribute Trip trip
 			, HttpSession session
@@ -120,7 +120,7 @@ public class TripController {
 		return mv;
 	}
 
-	@RequestMapping(value="t_delete.do", method = RequestMethod.GET)
+	@RequestMapping(value="/trip/t_delete.do", method = RequestMethod.GET)
 	public ModelAndView deleteTrip(ModelAndView mv
 			,@ModelAttribute Trip trip, HttpSession session) {
 		try {
@@ -153,7 +153,7 @@ public class TripController {
 		return mv;
 	}
 
-	@RequestMapping(value="t_list.do", method = RequestMethod.GET)
+	@RequestMapping(value="/trip/t_list.do", method = RequestMethod.GET)
 	public ModelAndView showTripList(@RequestParam(value="page", required = false, defaultValue = "1") Integer tCurrentPage, ModelAndView mv) {
 		try {
 			Integer tTotalCount = tService.getListCount();
@@ -191,7 +191,7 @@ public class TripController {
 		return tPInfo;
 	}
 	
-	@RequestMapping(value = "t_detail.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/trip/t_detail.do", method = RequestMethod.GET)
 	public ModelAndView showTripDetail(@RequestParam("tripNo") Integer tripNo , ModelAndView mv) {
 		try {
 			// 게시글 내용 가져오면서 댓글 창도 같이 가져오기
@@ -221,7 +221,7 @@ public class TripController {
 		return mv;
 	}
 	
-	@RequestMapping(value="t_search.do", method = RequestMethod.GET)
+	@RequestMapping(value="/trip/t_search.do", method = RequestMethod.GET)
 	public ModelAndView tripSearchList(@RequestParam("searchCondition") String searchCondition
 			, @RequestParam("searchKeyword") String searchKeyword
 			, @RequestParam(value = "page", required = false, defaultValue = "1") Integer tCurrentPage
@@ -249,6 +249,21 @@ public class TripController {
 			mv.addObject("msg", "데이터 조회가 완료되지 않았습니다.");
 			mv.addObject("error", "공지사항 제목으로 조회 실패");
 			mv.addObject("url", "/trip/t_list.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value="/index.jsp", method = RequestMethod.GET)
+	public ModelAndView homeTripList(ModelAndView mv) {
+		try {
+			List<Trip> tList = tService.selectTripList();
+			mv.addObject("tList", tList);
+			mv.setViewName("trip/t_list");
+		} catch (Exception e) {
+			mv.addObject("msg", "게시글 조회에 실패했습니다.");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
 		}
 		return mv;

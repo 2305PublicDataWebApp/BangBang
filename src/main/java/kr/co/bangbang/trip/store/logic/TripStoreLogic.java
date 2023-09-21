@@ -26,9 +26,15 @@ public class TripStoreLogic implements TripStore{
 	}
 
 	@Override
-	public int selectListCount(SqlSession sqlSession) {
-		int result = sqlSession.selectOne("TripMapper.selectListCount");
+	public int deleteTrip(SqlSession sqlSession, Trip trip) {
+		int result = sqlSession.delete("TripMapper.deleteTrip", trip);
 		return result;
+	}
+
+	@Override
+	public List<Trip> selectTripList(SqlSession sqlSession) {
+		List<Trip> tList = sqlSession.selectList("TripMapper.selectTripList");
+		return tList;
 	}
 
 	@Override
@@ -47,8 +53,8 @@ public class TripStoreLogic implements TripStore{
 	}
 
 	@Override
-	public int deleteTrip(SqlSession sqlSession, Trip trip) {
-		int result = sqlSession.delete("TripMapper.deleteTrip", trip);
+	public int selectListCount(SqlSession sqlSession) {
+		int result = sqlSession.selectOne("TripMapper.selectListCount");
 		return result;
 	}
 

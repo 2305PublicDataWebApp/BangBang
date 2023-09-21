@@ -36,11 +36,17 @@ public interface TripService {
 	Integer getListCount();
 
 	/**
-	 * 게시글 리스트 조회?
+	 * 게시글 리스트 조회(페이징 처리)
 	 * @param tPInfo
 	 * @return
 	 */
 	List<Trip> selectTripList(TPageInfo tPInfo);
+
+	/**
+	 * 게시글 리스트 조회
+	 * @return
+	 */
+	List<Trip> selectTripList();
 
 	/**
 	 * 게시글 번호에 맞는 게시글 상세 조회
