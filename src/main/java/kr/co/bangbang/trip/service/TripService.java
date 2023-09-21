@@ -43,7 +43,7 @@ public interface TripService {
 	List<Trip> selectTripList(TPageInfo tPInfo);
 
 	/**
-	 * 게시글 리스트 조회
+	 * 메인페이지 - 게시글 리스트 조회
 	 * @return
 	 */
 	List<Trip> selectTripList();

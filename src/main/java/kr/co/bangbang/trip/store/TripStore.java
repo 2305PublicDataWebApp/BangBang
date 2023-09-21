@@ -35,7 +35,7 @@ public interface TripStore {
 	int deleteTrip(SqlSession sqlSession, Trip trip);
 
 	/**
-	 * 전체 게시글 조회
+	 * 메인페이지 - 전체 게시글 리스트 조회
 	 * @param sqlSession
 	 * @return
 	 */

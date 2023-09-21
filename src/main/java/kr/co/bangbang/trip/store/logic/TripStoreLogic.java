@@ -31,6 +31,7 @@ public class TripStoreLogic implements TripStore{
 		return result;
 	}
 
+	// 메인페이지 - 게시글 리스트 조회
 	@Override
 	public List<Trip> selectTripList(SqlSession sqlSession) {
 		List<Trip> tList = sqlSession.selectList("TripMapper.selectTripList");

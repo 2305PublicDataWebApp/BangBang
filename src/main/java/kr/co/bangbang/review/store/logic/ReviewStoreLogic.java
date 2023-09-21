@@ -69,6 +69,13 @@ public class ReviewStoreLogic implements ReviewStore{
 		return result;
 	}
 
+	// 마이페이지 - 게시글 전체 갯수 조회
+	@Override
+	public int selectBoardCount(SqlSession sqlSession, String userId) {
+		int result = sqlSession.selectOne("ReviewMapper.selectBoardCount", userId);
+		return result;
+	}
+
 	// 마이페이지 - 게시글 목록 조회
 	@Override
 	public List<Review> selectReviewList(SqlSession sqlSession, UPageInfo pInfo, String userId) {
@@ -79,11 +86,11 @@ public class ReviewStoreLogic implements ReviewStore{
 		return rList;
 	}
 
-	// 마이페이지 - 게시글 전체 갯수 조회
+	// 메인페이지 - 후기 목록 조회
 	@Override
-	public int selectBoardCount(SqlSession sqlSession, String userId) {
-		int result = sqlSession.selectOne("ReviewMapper.selectBoardCount", userId);
-		return result;
+	public List<Review> selectReviewList(SqlSession sqlSession) {
+		List<Review> rList = sqlSession.selectList("ReviewMapper.selectReviewList");
+		return rList;
 	}
 
 }

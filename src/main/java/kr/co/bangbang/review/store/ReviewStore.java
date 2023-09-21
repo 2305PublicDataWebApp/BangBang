@@ -28,6 +28,14 @@ public interface ReviewStore {
 	int selectListCount(SqlSession sqlSession, Map<String, String> rParamMap);
 
 	/**
+	 * 마이페이지 - 게시글 전체 갯수 조회
+	 * @param sqlSession
+	 * @param userId 
+	 * @return
+	 */
+	int selectBoardCount(SqlSession sqlSession, String userId);
+
+	/**
 	 * 마이페이지 - 게시글 목록 조회
 	 * @param sqlSession
 	 * @param pInfo
@@ -37,11 +45,10 @@ public interface ReviewStore {
 	List<Review> selectReviewList(SqlSession sqlSession, UPageInfo pInfo, String userId);
 
 	/**
-	 * 마이페이지 - 게시글 전체 갯수 조회
+	 * 메인페이지 - 후기 목록 조회
 	 * @param sqlSession
-	 * @param userId 
 	 * @return
 	 */
-	int selectBoardCount(SqlSession sqlSession, String userId);
+	List<Review> selectReviewList(SqlSession sqlSession);
 
 }

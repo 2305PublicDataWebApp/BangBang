@@ -43,6 +43,7 @@ public class TripServiceImpl implements TripService{
 		return tList;
 	}
 
+	// 메인페이지 - 게시글 리스트 조회
 	@Override
 	public List<Trip> selectTripList() {
 		List<Trip> tList = tStore.selectTripList(sqlSession);

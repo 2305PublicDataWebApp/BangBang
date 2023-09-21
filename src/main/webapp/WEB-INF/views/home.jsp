@@ -31,7 +31,7 @@
 			        </div>
 			        <div class="carousel-inner">
 			            <div id="main-banner" class="carousel-item active">
-			                <img class="banner-img" src="/resources/images/main/festival.png" class="d-block w-100" alt="벚꽃">
+			                <img class="banner-img" src="../resources/images/main/festival.png" class="d-block w-100" alt="벚꽃">
 			            </div>
 			            <div id="main-banner" class="carousel-item">
 			                <img class="banner-img" src="/resources/images/main/등대.jpg" class="d-block w-100" alt="에펠탑">
@@ -124,34 +124,16 @@
                                 </th>
                             </thead>
                             <tbody>
-<%--                                 <c:forEach begin="1" end="5"> --%>
+                                <c:forEach begin="1" end="5" var="review" items="${rList }" varStatus="i">
 	                                <tr>
+	                                <c:url var="rDetailUrl" value="/review/r_detail.do">
+		                    			<c:param name="reviewNo" value="${reivew.reviewNo }"></c:param>
+		                    		</c:url>
 	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=2">공지사항</a>
+	                                        <a href="${rDetailUrl }">${review.reivewTitle}</a>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=3">공지사항2</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=4">공지사항3</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=5">공지사항4!!</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=6">공지사항5</a>
-	                                    </td>
-	                                </tr>
-
-<%--                                 </c:forEach> --%>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -177,33 +159,16 @@
                                         </div>
                                     </td>
                                 </tr>
-<%--                                 <c:forEach begin="1" end="5"> --%>
+                                <c:forEach begin="1" end="5" var="notice" items="${nList }" varStatus="i">
 	                                <tr>
+	                                <c:url var="nDetailUrl" value="/notice/n_detail.do">
+		                    			<c:param name="noticeNo" value="${notice.noticeNo }"></c:param>
+		                    		</c:url>
 	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=2">공지사항</a>
+	                                        <a href="${nDetailUrl }">${notice.noticeTitle }</a>
 	                                    </td>
 	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=3">공지사항2</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=4">공지사항3</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=5">공지사항4!!</a>
-	                                    </td>
-	                                </tr>
-	                                <tr>
-	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="/notice/n_detail.do?noticeNo=6">공지사항5</a>
-	                                    </td>
-	                                </tr>
-<%--                                 </c:forEach> --%>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
