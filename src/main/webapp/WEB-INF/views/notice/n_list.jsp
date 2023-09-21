@@ -21,6 +21,11 @@
 				</div>
 				<hr>
 				<table class="noticetable">
+				<colgroup>
+				<col width="40px">
+				<col width="800px">
+				<col width="100px">
+				</colgroup>
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -42,7 +47,9 @@
 						</tr>
 					</c:forEach>
 				</tbody>
+				</table>
 				<div class="paging">
+				<div>
 					<c:if test="${nInfo.nStartNavi != 1}">
 						<c:url var="preUrl" value="/notice/n_list.do">
 							<c:param name="page" value="${nInfo.nStartNavi -1 }" />
@@ -62,7 +69,7 @@
 						<a href="${nextUrl }">[다음]</a>
 					</c:if>
 				</div>
-				</table>
+				</div>
 				<div class="bottom">
 					<div>
 						<c:if test="${adminId ne null }">

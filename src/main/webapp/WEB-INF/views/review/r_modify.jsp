@@ -5,15 +5,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>후기게시판 수정</title>
+		<link rel="stylesheet" href="/resources/css/review/r_modify.css">
+		<link rel="stylesheet" href="/resources/css/user/header.css">
 		<link rel="stylesheet" href="/resources/css/user/footer.css">
+		<link rel="stylesheet" href="/resources/css/reset.css">
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	    <!-- 썸머노트를 위한 import -->
+		<script src="../resources/js/summernote/summernote-lite.js"></script>
+		<script src="../resources/js/summernote/lang/summernote-ko-KR.js"></script>
+		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css">
 	</head>
 	<body>
-    	<header>
     		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-    	</header>
-    	
     	<div class="container">
-    		<div class="main">
+    		<div class="center">
     			<div class="reviewsubject">
     				<span>후기 수정</span>
     			</div>
@@ -23,20 +32,18 @@
     					<ul>
     						<li>
     							<label>유형</label>
-    							여행지<input type="radio" name="reviewtype" value="01">
-    							축제<input type="radio" name="reviewtype" value="02">
+    							<select id="rtype">
+    								<option value="location">여행지</option>
+    								<option value="festival">축제</option>
+    							</select>
     						</li>
     						<li>
     							<label>제목</label>
-    							<input type="text" name="reviewtitle" style="width:400px;height:40px";>
+    							<input type="text" name="reviewtitle" value="${review.reviewTitle }" style="width:400px;height:40px";>
     						</li>
 							<li>
-								<label>작성자</label>
-								<span>${userId }</span>
-							</li>
-							<li>
 								<label>내용</label>
-    							<textarea name="content" id="summernote" value="summernote"></textarea>
+    							<textarea id="summernote" name="reviewContent">${review.reviewContent }</textarea>
 							</li>
     					</ul>
     					<div class="button">
@@ -46,9 +53,15 @@
     			</div>
     		</div>
     	</div>
-    	
-    	<footer>
     		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-    	</footer>
+    		<script>
+    	 $(document).ready(function () {
+		        $('#summernote').summernote({
+		            placeholder: '내용을 작성하세요',
+		            height: 400,
+		            maxHeight: 400
+		        });
+		    });
+    	</script>
 	</body>
 </html>

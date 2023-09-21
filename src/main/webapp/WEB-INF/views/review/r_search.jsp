@@ -5,7 +5,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>후기게시판 검색</title>
+		<link rel="stylesheet" href="/resources/css/review/r_search.css">
+		<link rel="stylesheet" href="/resources/css/user/header.css">
 		<link rel="stylesheet" href="/resources/css/user/footer.css">
+		<link rel="stylesheet" href="/resources/css/reset.css">
 	</head>
 	<body>
 		<header>
@@ -13,7 +16,7 @@
 		</header>
 		
 		<div class="container">
-			<div class="main"></div>
+			<div class="center"></div>
 		</div>
 		
 		<footer>

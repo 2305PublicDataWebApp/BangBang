@@ -21,7 +21,7 @@
     	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
     	
     	<div class="container">
-    		<div class="main">
+    		<div class="center">
     			<div class="reviewsubject">
     				<h2><span>후기 등록</span></h2>
     			</div>
@@ -31,20 +31,18 @@
     					<ul>
     						<li>
     							<label>유형</label>
-    							여행지<input type="radio" name="reviewtype" value="L">
-    							축제<input type="radio" name="reviewtype" value="F">
+    							<select name="rtype">
+    								<option value="location">여행지</option>
+    								<option value="festival">축제</option>
+    							</select>
     						</li>
     						<li>
     							<label>제목</label>
-    							<input type="text" name="reviewtitle" style="width:400px;height:40px";>
+    							<input type="text" name="reviewTitle" style="width:400px;height:40px";>
     						</li>
 							<li>
-								<label>작성자</label>
-								<span>${userId }</span>
-							</li>
-							<li>
 								<label>내용</label>
-    							<textarea id="summernote" name="rinfo"></textarea>
+    							<textarea id="summernote" name="reviewContent"></textarea>
 							</li>
     					</ul>
     					<div class="button">
@@ -56,5 +54,14 @@
     	</div>
     	
     	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+    	<script>
+    	 $(document).ready(function () {
+		        $('#summernote').summernote({
+		            placeholder: '내용을 작성하세요',
+		            height: 400,
+		            maxHeight: 400
+		        });
+		    });
+    	</script>
 	</body>
 </html>

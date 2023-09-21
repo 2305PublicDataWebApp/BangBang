@@ -33,7 +33,7 @@ public interface ReviewService {
 	 * 후기 전체 갯수 조회 Service
 	 * @return
 	 */
-	int getRListCount();
+	Integer getRListCount();
 
 	/**
 	 * 후기 상세 조회 Service
