@@ -71,6 +71,12 @@ public class AdminStoreLogic implements AdminStore{
 		User user = session.selectOne("AdminMapper.selectOneById", userId);
 		return user;
 	}
+
+	@Override
+	public int updateUser(SqlSession session, User user) {
+		int result  = session.update("AdminMapper.updateUser", user);
+		return result;
+	}
 	
 	
 }

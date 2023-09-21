@@ -219,9 +219,9 @@ public class AdminController {
 			, @RequestParam("userId") String userId
 			, HttpSession session) {
 		try {
-//			String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
-			String sessionId = "user03";
-			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
+			//String sessionId = (String)session.getAttribute("userId"); // 세션에 저장된 아이디
+			String sessionId = "admin";
+			if(sessionId != "" && sessionId != null) {
 				User user = aService.selectOneById(userId);
 				
 				if(user != null) { // 성공 시
@@ -248,6 +248,52 @@ public class AdminController {
 	
 	
 	
+	
+	//관리자-회원정보수정 페이지 이동
+	@RequestMapping(value="uModify.do", method=RequestMethod.GET)
+	public ModelAndView showModifyInfo(
+			ModelAndView mv
+			, @RequestParam("userId") String userId) {
+		User user = aService.selectOneById(userId);
+		mv.addObject("user", user);
+		mv.setViewName("admin/user_modify");
+		return mv;
+	}
+	
+	
+	//관리자-회원정보수정
+	@RequestMapping(value="uModify.do", method=RequestMethod.POST)
+	public ModelAndView userModify(
+			ModelAndView mv
+			, @ModelAttribute User user
+			, String userId
+			, HttpSession session) {
+		try {
+//			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			String sessionId = "admin";
+			
+			if(sessionId !=null && sessionId != "") {
+				int result = aService.updateUser(user);
+				if(result > 0) { // 수정 성공 
+					mv.setViewName("redirect:/admin/aInfo.do?userId=" + userId);
+				} else { // 수정 실패
+					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+					mv.addObject("url", "redirect:/admin/uModify.do?userId=" + userId);
+					mv.setViewName("common/error_page");
+				}
+			} else {
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/admin/a_login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/admin/a_login.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
 	
 	
 }

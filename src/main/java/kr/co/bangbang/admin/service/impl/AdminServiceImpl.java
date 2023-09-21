@@ -65,5 +65,12 @@ public class AdminServiceImpl implements AdminService{
 		return user;
 	}
 
+	//관리자-회원정보수정
+	@Override
+	public int updateUser(User user) {
+		int result = aStore.updateUser(session, user);
+		return result;
+	}
+
 
 }

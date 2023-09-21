@@ -51,8 +51,8 @@ public class BannerController {
 		
 		try {
 //			String bannerNo = (String)session.getAttribute("bannerNo");
-//			String bAdminId = (String)session.getAttribute("adminId");
-			String bAdminId = "admin";
+			String bAdminId = (String)session.getAttribute("adminId");
+//			String bAdminId = "admin";
 			if(bAdminId != null && !bAdminId.equals("")) {
 				
 				banner.setbAdminId(bAdminId);
@@ -119,7 +119,7 @@ public class BannerController {
 		}
 		
 		//파일저장
-		File saveFile = new File(savePath + "\\" + fileRename);
+		File saveFile = new File(savePath + "\\" + fileRename + "." + extension);
 		uploadFile.transferTo(saveFile);
 		long fileLength = uploadFile.getSize();
 		

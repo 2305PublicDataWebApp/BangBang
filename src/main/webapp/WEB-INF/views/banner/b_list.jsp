@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>배너 리스트</title>
-	<link rel="stylesheet" href="/resources/css/admin/bannerList.css">
+	<link rel="stylesheet" href="/resources/css/banner/bannerList.css">
 	<link rel='stylesheet' href='/resources/css/banner/b_header.css'>
 	<link rel="stylesheet" href="/resources/css/user/footer.css">
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
