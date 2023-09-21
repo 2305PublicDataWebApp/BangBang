@@ -5,16 +5,16 @@
     <nav>
         <!-- 로고 -->
         <div class="logo">
-        	<a href="/index.jsp">
-	            <span class="logo-text">방방곡곡 발도장</span> <img class="logo-img" width="35px" src="/resources/images/logo.png" alt="로고">
+        	<a class="logo-text" href="/index.jsp">
+	            <span class="logo-text">방방곡곡 발도장</span> <img id="logo-top-img" width="35px" src="/resources/images/logo.png" alt="로고">
             </a>
         </div>
         <i class="fa fa-bars"></i>
         <!-- 네비게이션 -->
         <ul class="navBar">
-            <a href="/trip/t_list.do"><li class="tab">여행지</li></a>
-            <a href="/review/r_list.do"><li class="tab">여행후기</li></a>
-            <a href="/notice/n_list.do"><li class="tab">공지사항</li></a>
+            <a class="logo-text" href="/trip/t_list.do"><li class="tab">여행지</li></a>
+            <a class="logo-text" href="/review/r_list.do"><li class="tab">여행후기</li></a>
+            <a class="logo-text" href="/notice/n_list.do"><li class="tab">공지사항</li></a>
             <!-- 로그인 세션 없을 경우 -->
             <c:if test="${ userId eq null && adminId eq null }">
 	            <a href="/user/login.do">
@@ -29,9 +29,9 @@
             </c:if>
             <!-- 어드민 로그인 -->
             <c:if test="${ adminId ne null && userId eq null}">
-            	<a href="/banner/bList.do"><b>배너관리</b></a></li>
-	            <a href="/admin/list.do"><b>회원관리</b></li></a>
-	            <a href="/admin/a_logout.do"><b>로그아웃</b></a>
+            	<a class="logo-text" href="/banner/bList.do"><li class="tab">배너관리</li></a>
+	            <a class="logo-text" href="/admin/list.do"><li class="tab">회원관리</li></a>
+	            <a class="logo-text" href="/admin/a_logout.do"><li class="tab-logout">로그아웃</li></a>
             </c:if>
            
 
@@ -44,7 +44,7 @@
         <div class="content">
 
             <!-- 헤더 text -->
-            <h1>대한민국 <span>방방곡곡</span> <br> 어디든지!</h1>
+            <h1 style="font-family: 'TheJamsil5Bold';">대한민국 <span>방방곡곡</span> <br> 어디든지!</h1>
             <p>
                 방방곡곡 발도장은 국내 여행 정보를 제공해드리는 <br> 지식공유 플랫폼입니다.
             </p>

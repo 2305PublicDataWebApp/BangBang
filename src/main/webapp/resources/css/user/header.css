@@ -5,6 +5,27 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RixInooAriDuriR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 header {
     border-bottom-right-radius: 10px;
     background: #fffacd; /* 뒷 배경색 */
@@ -22,6 +43,7 @@ header {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(#fffacd -20%, white);s
 }
+
 
 /* 배경 이미지 */
 main {
@@ -78,20 +100,34 @@ nav {
     padding: 0px 10px;
 }
 
+.tab {
+	text-decoration: none;
+	color: black;
+	font-family: 'TheJamsil5Bold';
+/* 	font-weight: 100; */
+	font-size: 2.2vmin;
+}
 
-nav .logo {
-    /* color: rgb(177, 76, 29); */
-    color: #FF4F40;
-    font-family: 'HakgyoansimWoojuR';
-    font-weight: 900;
-    /* filter: drop-shadow(0 0 5px #FF4F40); */
-    font-size: 4vmin;
+.tab-logout {
+	text-decoration: none;
+	color: #FF4F40;
+	font-family: 'TheJamsil5Bold';
+	font-weight: 900;
+	font-size: 2.2vmin;
+}
+
+.logo-text {
+	text-decoration: none;
+	color: #FF4F40;
+	font-family: 'RixInooAriDuriR';
+	font-weight: 300;
+	font-size: 4vmin;
 }
 
 nav .logo-img {
-    position: relative;
+    position: absolute;
     z-index: 2;
-    top: 7px;
+    bottom: 3px;
 }
 
 nav ul {
