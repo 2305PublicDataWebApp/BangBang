@@ -13,8 +13,6 @@
 .main-container {
 	position: relative;
     background: white;
-/*     border : 1px solid black; */
-    color: black;
 /*     width: 1130px; */
     width: 100%;
 /*     max-width: 1130px; */
@@ -24,7 +22,7 @@
 }
 
 
-.banner{
+#banner{
     width: 100%;
 }
 
@@ -55,7 +53,7 @@
     margin: 200px 0;
 }
 
-#event-inner{
+#event-banner{
     height: 80px;
 }
 
@@ -102,10 +100,10 @@ table{
 }
 
 #notice{
-/* 	background: white; 
+ 	background: white; 
 	max-width: 1130px;
-	margin: 200px auto;
-	padding: 0 40px;
+	margin: 0px auto;
+	padding: 200px 40px;
 }
 
 #notice-img{
