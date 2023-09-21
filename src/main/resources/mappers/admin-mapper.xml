@@ -48,6 +48,11 @@
 		UPDATE USER_TBL SET USER_PW = #{ userPw }, USER_PWRE = #{ userPwRe }, USER_NICKNAME = #{ userNickname }, USER_EMAIL = #{ userEmail } WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
 	</update>
 	
+	<!-- 관리자-회원 탈퇴 -->
+	<update id="deleteUser">
+		UPDATE USER_TBL SET USER_YN = 'N' WHERE USER_ID = #{ userId }
+	</update>
+	
 	<!-- 관리자 로그인 -->
 	<select id="adminLogin" resultMap="adminResultMap">
 		SELECT * FROM ADMIN_TBL WHERE ADMIN_ID = #{ adminId } AND ADMIN_PW = #{ adminPw }

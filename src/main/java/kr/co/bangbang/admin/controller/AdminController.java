@@ -296,4 +296,40 @@ public class AdminController {
 	}
 	
 	
+	
+	//관리자-회원탈퇴
+	@RequestMapping(value="uRemove.do", method=RequestMethod.GET)
+	public ModelAndView removeUser(
+			ModelAndView mv
+			, String userId
+			, HttpSession session) {
+		try {
+			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+			
+			if(sessionId != "" && sessionId != null) {
+				int result = aService.deleteUser(userId);
+				if(result > 0) {
+					mv.addObject("msg", "회원 탈퇴되었습니다.");
+					mv.addObject("url", "/admin/list.do");
+					mv.setViewName("admin/user_list");
+				} else { // 탈퇴 실패
+					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+					mv.addObject("url", "redirect:/admin/uModify.do?userId=" + sessionId);
+					mv.setViewName("common/error_page");
+				}
+			} else { // 로그인 세션 정보 없을 경우
+				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("url", "/admin/login.do");
+				mv.setViewName("common/error_page");
+			}
+		} catch (Exception e) { // 예외처리
+			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/user/login.do");
+			mv.setViewName("common/error_page");
+		}
+		return mv;
+	}
+	
+	
 }

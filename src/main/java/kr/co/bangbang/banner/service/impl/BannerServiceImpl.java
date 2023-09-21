@@ -45,6 +45,21 @@ public class BannerServiceImpl implements BannerService{
 	}
 
 
+	@Override
+	public List<Banner> selecttBannerList(BPageInfo bInfo) {
+		List<Banner> tList = bStore.selecttBannerList(session, bInfo);
+		return tList;
+	}
+
+	@Override
+	public List<Banner> selectbBannerList(BPageInfo bInfo) {
+		List<Banner> bList = bStore.selectbBannerList(session, bInfo);
+		return bList;
+	}
+
+
+
+
 	
 	
 }

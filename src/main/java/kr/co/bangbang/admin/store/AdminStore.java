@@ -75,4 +75,12 @@ public interface AdminStore {
 	 */
 	int updateUser(SqlSession session, User user);
 
+	/**
+	 * 관리자-회원탈퇴
+	 * @param session
+	 * @param userId
+	 * @return
+	 */
+	int deleteUser(SqlSession session, String userId);
+
 }

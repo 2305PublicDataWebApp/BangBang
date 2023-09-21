@@ -77,6 +77,12 @@ public class AdminStoreLogic implements AdminStore{
 		int result  = session.update("AdminMapper.updateUser", user);
 		return result;
 	}
+
+	@Override
+	public int deleteUser(SqlSession session, String userId) {
+		int result = session.update("AdminMapper.deleteUser", userId);
+		return result;
+	}
 	
 	
 }

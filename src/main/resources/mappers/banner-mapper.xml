@@ -25,6 +25,7 @@
   </insert>
   
   
+  
   	<select id="selectListCount" resultType="_int">
 		SELECT COUNT (*) FROM BANNER WHERE B_STATUS_YN = 'Y'
 	</select>
@@ -32,6 +33,15 @@
 	<select id="selectBannerList" resultMap="BannerResultMap">
 		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' ORDER BY BANNER_NO DESC
 	</select>
+	
+	<select id="selectbBannerList" resultMap="BannerResultMap">
+		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' AND BANNER_AREA = 'main_b' ORDER BY BANNER_NO DESC
+	</select>
+	
+	<select id="selecttBannerList" resultMap="BannerResultMap">
+		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' AND BANNER_AREA = 'trip_b' ORDER BY BANNER_NO DESC
+	</select>
+	
   	
     <delete id="deleteBanner">
   		DELETE FROM BANNER WHERE BANNER_NO = #{bannerNo }
