@@ -65,4 +65,11 @@ public interface AdminService {
 	 */
 	int updateUser(User user);
 
+	/**
+	 * 관리자-회원탈퇴
+	 * @param userId
+	 * @return
+	 */
+	int deleteUser(String userId);
+
 }

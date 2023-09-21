@@ -40,4 +40,23 @@ public interface BannerStore {
 	 */
 	int delete(SqlSession session, String string);
 
+
+	/**
+	 * 트립배너
+	 * @param session
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selecttBannerList(SqlSession session, BPageInfo bInfo);
+
+	/**
+	 * 메인배너
+	 * @param session
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selectbBannerList(SqlSession session, BPageInfo bInfo);
+
+
+
 }

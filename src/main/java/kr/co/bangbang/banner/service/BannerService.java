@@ -34,6 +34,24 @@ public interface BannerService {
 	 */
 	int delete(String string);
 
+
+
+	/**
+	 * 트립배너 select
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selecttBannerList(BPageInfo bInfo);
+
+	/**
+	 * 메인배너 select
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selectbBannerList(BPageInfo bInfo);
+
+	
+
 	
 
 	

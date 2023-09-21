@@ -42,4 +42,30 @@ public class BannerStoreLogic implements BannerStore{
 		return result;
 	}
 
+
+
+	@Override
+	public List<Banner> selecttBannerList(SqlSession session, BPageInfo bInfo) {
+		int limit = bInfo.getRecordCountPerPage();
+		int offset = (bInfo.getCurrentPage()-1)*limit;
+		
+		RowBounds rowbounds = new RowBounds(offset, limit);
+		
+		List<Banner> tList = session.selectList("BannerMapper.selecttBannerList", null, rowbounds);
+		return tList;
+	}
+
+	@Override
+	public List<Banner> selectbBannerList(SqlSession session, BPageInfo bInfo) {
+		int limit = bInfo.getRecordCountPerPage();
+		int offset = (bInfo.getCurrentPage()-1)*limit;
+		
+		RowBounds rowbounds = new RowBounds(offset, limit);
+		
+		List<Banner> bList = session.selectList("BannerMapper.selectbBannerList", null, rowbounds);
+		return bList;
+	}
+
+
+
 }

@@ -30,15 +30,20 @@
 			            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 			        </div>
 			        <div class="carousel-inner">
-			            <div id="main-banner" class="carousel-item active">
-			                <img class="banner-img" src="../resources/images/main/festival.png" class="d-block w-100" alt="벚꽃">
+			        <c:forEach items="${bList }" var="banner">
+			        	<div id="main-banner" class="carousel-item active">
+			                <img class="banner-img" src="${banner.bannerFilePath }" class="d-block w-100" alt="벚꽃">
 			            </div>
-			            <div id="main-banner" class="carousel-item">
-			                <img class="banner-img" src="/resources/images/main/등대.jpg" class="d-block w-100" alt="에펠탑">
-			            </div>
-			            <div id="main-banner" class="carousel-item">
-			                <img class="banner-img" src="/resources/images/main/불꽃.jpg" class="d-block w-100" alt="강">
-			            </div>
+			        </c:forEach>
+<!-- 			            <div id="main-banner" class="carousel-item active"> -->
+<!-- 			                <img class="banner-img" src="/resources/images/main/festival.png" class="d-block w-100" alt="벚꽃"> -->
+<!-- 			            </div> -->
+<!-- 			            <div id="main-banner" class="carousel-item"> -->
+<!-- 			                <img class="banner-img" src="/resources/images/main/등대.jpg" class="d-block w-100" alt="에펠탑"> -->
+<!-- 			            </div> -->
+<!-- 			            <div id="main-banner" class="carousel-item"> -->
+<!-- 			                <img class="banner-img" src="/resources/images/main/불꽃.jpg" class="d-block w-100" alt="강"> -->
+<!-- 			            </div> -->
 			        </div>
 			        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 			            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -88,15 +93,20 @@
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div id="event-banner" class="carousel-item active">
-                                <img class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃">
-                            </div>
-                            <div id="event-banner" class="carousel-item">
-                                <img  class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃">
-                            </div>
-                            <div id="event-banner" class="carousel-item">
-                                <img class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃">
-                            </div>
+							<c:forEach items="${tbList }" var="trip_banner">
+					        	<div id="event_banner" class="carousel-item active">
+					                <img class="banner-img" src="${trip_banner.bannerFilePath }" class="d-block w-100" alt="벚꽃">
+					            </div>
+					        </c:forEach>                        
+<!--                             <div id="event-banner" class="carousel-item active"> -->
+<!--                                 <img class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃"> -->
+<!--                             </div> -->
+<!--                             <div id="event-banner" class="carousel-item"> -->
+<!--                                 <img  class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃"> -->
+<!--                             </div> -->
+<!--                             <div id="event-banner" class="carousel-item"> -->
+<!--                                 <img class="banner-img" src="/resources/images/main/축제배너 더 작은버전.png" class="d-block w-100" alt="벚꽃"> -->
+<!--                             </div> -->
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

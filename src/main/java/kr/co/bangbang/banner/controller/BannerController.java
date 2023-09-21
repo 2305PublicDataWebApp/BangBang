@@ -99,7 +99,7 @@ public class BannerController {
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		
 		//파일 저장 경로 구하기
-		String savePath = root + "\\buploadFile";
+		String savePath = root + "\\buploadFiles";
 		
 		//파일 이름 구하기
 		String fileName = uploadFile.getOriginalFilename();
@@ -126,13 +126,18 @@ public class BannerController {
 		//파일정보 리턴
 		fileMap.put("fileName", fileName);
 		fileMap.put("fileRename", fileRename);
-		fileMap.put("filePath", "../resources/buploadFiles/" + fileRename);
+		fileMap.put("filePath", "../resources/buploadFiles/" + fileRename + "." + extension);
 		fileMap.put("fileLength", fileLength);
 		
 		return fileMap;
 	}
 	
+		
 	
+	
+	
+	
+		
 	
 	@RequestMapping(value = "bList.do", method = RequestMethod.GET)
 	public ModelAndView showBannerList(
