@@ -16,4 +16,6 @@ public interface RReplyStore {
 
 	int deleteRReply(SqlSession sqlSession, RReply rreply);
 
+	int selectRReplyTotalCount(SqlSession sqlSession, int rReviewNo);
+
 }

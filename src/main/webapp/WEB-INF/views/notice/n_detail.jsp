@@ -32,6 +32,7 @@
     			<div class="noticontent">
     				<span>${notice.noticeContent }</span>
     			</div>
+    			<hr>
     			<div>
     				<button class="golist" type="button" onclick="showNoticeList();">목록으로</button>
     			</div>

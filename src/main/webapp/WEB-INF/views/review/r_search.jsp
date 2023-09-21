@@ -22,22 +22,14 @@
 				</div>
 				<hr>
 				<div>
-						<c:forEach begin="${rInfo.rStartNavi }" end="${rInfo.RendNavi }" var="r">
-							<c:url var="pageUrl" value="/review/search.do">
-								<c:param name="page" value="${r }"></c:param>
-								<c:param name="searchCondition" value="${searchCondition }"></c:param>
-								<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
-							</c:url>
-							<a href="${pageUrl }">${r }</a>&nbsp;
-						</c:forEach>
 					<form action="/review/r_search.do" method="get">
 						<select name="searchCondition">
-								<option value="all"<c:if test="{searchCondition == 'all' }">selected</c:if>>전체</option>
-								<option value="title"<c:if test="{searchCondition == 'title' }">selected</c:if>>제목</option>
-								<option value="content"<c:if test="{searchCondition == 'content' }">selected</c:if>>내용</option>
-								<option value="writer"<c:if test="{searchCondition == 'writer' }">selected</c:if>>작성자</option>
+								<option value="all"<c:if test="${searchCondition == 'all' }">selected</c:if>>전체</option>
+								<option value="title"<c:if test="${searchCondition == 'title' }">selected</c:if>>제목</option>
+								<option value="content"<c:if test="${searchCondition == 'content' }">selected</c:if>>내용</option>
+								<option value="writer"<c:if test="${searchCondition == 'writer' }">selected</c:if>>작성자</option>
 						</select>
-						<input type="text" name="searchKeyword" placeholder="검색" value="${searchKeyword }">
+						<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }">
 						<input type="submit" value="검색">
 					</form>
 				</div>
@@ -54,8 +46,7 @@
 						<c:forEach var="review" items="${rList }" varStatus="i">
 						<tr>
 							<td>
-								<c:if test="${notice.noticeType eq '여행지' }"><span>여행지</span></c:if>
-								<c:if test="${notice.noticeType eq '축제' }"><span>축제</span></c:if>
+								${review.reviewType }
 							</td>
 							<c:url var="detailUrl" value="/review/r_detail.do">
 								<c:param name="reviewNo" value="${review.reviewNo }" />

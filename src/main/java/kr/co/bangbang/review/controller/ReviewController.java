@@ -30,6 +30,7 @@ import kr.co.bangbang.review.domain.RReply;
 import kr.co.bangbang.review.domain.Review;
 import kr.co.bangbang.review.service.RReplyService;
 import kr.co.bangbang.review.service.ReviewService;
+import kr.co.bangbang.trip.domain.Trip;
 
 @Controller
 @RequestMapping("/review/")
@@ -77,16 +78,15 @@ public class ReviewController {
 
 	@RequestMapping(value="r_modify.do", method=RequestMethod.GET)
 	public ModelAndView showModifyForm(ModelAndView mv
-			, @RequestParam("reviewNo") Integer reviewNo
-			, @ModelAttribute Review review) {
+			, @RequestParam("reviewNo") Integer reviewNo) {
 		try {
-			review = rService.selectReviewByNo(reviewNo);
+			Review review = rService.selectReviewByNo(reviewNo);
 			mv.addObject("review", review);
 			mv.setViewName("review/r_modify");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 수정 실패");
 			mv.addObject("error",e.getMessage());
-			mv.addObject("url", "/notice/r_list.do?reviewNo="+review.getReviewNo());
+			mv.addObject("url", "/notice/r_insert.do");
 			mv.setViewName("common_error_page");
 		}
 		return mv;
@@ -127,14 +127,11 @@ public class ReviewController {
 
 	@RequestMapping(value="r_delete.do", method=RequestMethod.GET)
 	public ModelAndView deleteReview(ModelAndView mv
-			, @RequestParam("reviewNo") Integer reviewNo
-			, @RequestParam("rUserId") String rUserId
+			, @ModelAttribute Review review
 			, HttpSession session) {
 		try {
 			String userId = (String)session.getAttribute("userId");
-			Review review = new Review();
-			review.setReviewNo(reviewNo);
-			review.setrUserId(userId);
+			String rUserId = review.getrUserId();
 			if(rUserId != null && rUserId.equals(userId)) {
 				int result = rService.deleteReview(review);
 				if(result > 0) {
@@ -180,13 +177,15 @@ public class ReviewController {
 	public ModelAndView showReviewDetail(ModelAndView mv
 			, @RequestParam("reviewNo") Integer reviewNo) {
 		try {
-			Review reviewOne = rService.selectReviewByNo(reviewNo);
-			if(reviewOne != null) {
-				List<RReply> rreplyList = rrService.selectReplyList(reviewNo);
-				if(rreplyList.size()>0) {
-					mv.addObject("rrList", rreplyList);
+			Review review = rService.selectReviewByNo(reviewNo);
+			if(review != null) {
+				List<RReply> rrList = rrService.selectReplyList(reviewNo);
+				int rReplyCount = rrService.selectRReplyTotalCount(reviewNo);
+				if(rrList.size()>0) {
+					mv.addObject("rrList", rrList);
+					mv.addObject("rReplyCount", rReplyCount);
 				}
-				mv.addObject("review", reviewOne);
+				mv.addObject("review", review);
 				mv.setViewName("review/r_detail");
 			}else {
 				mv.addObject("msg","개시글 조회 실패");

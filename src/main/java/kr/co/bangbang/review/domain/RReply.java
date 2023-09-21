@@ -9,7 +9,7 @@ public class RReply {
 	private String rrUserId;
 	private Date rReplyDate;
 	private Date rReplyUpdate;
-	private int rRplyStatusYn;
+	private char rRplyStatusYn;
 	private String rrAdminId;
 	
 	public RReply() {
@@ -64,11 +64,11 @@ public class RReply {
 		this.rReplyUpdate = rReplyUpdate;
 	}
 
-	public int getrRplyStatusYn() {
+	public char getrRplyStatusYn() {
 		return rRplyStatusYn;
 	}
 
-	public void setrRplyStatusYn(int rRplyStatusYn) {
+	public void setrRplyStatusYn(char rRplyStatusYn) {
 		this.rRplyStatusYn = rRplyStatusYn;
 	}
 

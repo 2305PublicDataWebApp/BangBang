@@ -14,5 +14,7 @@ public interface RReplyService {
 
 	int deleteRReply(RReply rreply);
 
+	int selectRReplyTotalCount(int rReviewNo);
+
 
 }
