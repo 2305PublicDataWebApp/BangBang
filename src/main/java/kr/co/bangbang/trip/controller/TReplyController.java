@@ -67,7 +67,9 @@ public class TReplyController {
 				tReply.settRUserId(tReplyWriter);
 				url= "/trip/t_detail.do?tTripNo="+ tReply.gettTripNo();
 				int result = tRService.updateTReply(tReply);
-				mv.setViewName("redirect:" + url);
+				if(result > 0) {
+					mv.setViewName("redirect:" + url);
+				}
 			}
 			else {
 				mv.addObject("msg", "로그인이 되지 않았습니다.");

@@ -62,6 +62,13 @@ public class ReviewServiceImpl implements ReviewService{
 		return result;
 	}
 	
+	// 마이페이지 - 게시글 전체 갯수 조회
+	@Override
+	public int getListCount(String sessionId) {
+		int result = rStore.selectBoardCount(sqlSession, sessionId);
+		return result;
+	}
+	
 	// 마이페이지 - 게시글 목록 조회
 	@Override
 	public List<Review> selectReviewList(UPageInfo pInfo, String sessionId) {
@@ -69,10 +76,10 @@ public class ReviewServiceImpl implements ReviewService{
 		return rList;
 	}
 	
-	// 마이페이지 - 게시글 전체 갯수 조회
+	// 메인페이지 - 게시글 목록 조회
 	@Override
-	public int getListCount(String sessionId) {
-		int result = rStore.selectBoardCount(sqlSession, sessionId);
-		return result;
+	public List<Review> selectReviewList() {
+		List<Review> rList = rStore.selectReviewList(sqlSession);
+		return rList;
 	}
 }

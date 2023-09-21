@@ -43,4 +43,11 @@ public class NoticeServiceImpl implements NoticeService{
 		List<Notice> nList = nStore.selectNoticeList(sqlSession, nInfo);
 		return nList;
 	}
+	
+	// 메인페이지 - 공지사항 목록 조회
+	@Override
+	public List<Notice> selectNoticeList() {
+		List<Notice> nList = nStore.selectNoticeList(sqlSession);
+		return nList;
+	}
 }

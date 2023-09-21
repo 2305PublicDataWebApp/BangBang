@@ -54,6 +54,13 @@ public interface ReviewService {
 	int getRListCount(Map<String, String> rParamMap);
 
 	/**
+	 * 마이페이지 - 게시글 전체 갯수 조회
+	 * @param userId 
+	 * @return
+	 */
+	int getListCount(String sessionId);
+
+	/**
 	 * 마이페이지 - 게시글 목록 조회
 	 * @param pInfo
 	 * @param userId 
@@ -62,11 +69,10 @@ public interface ReviewService {
 	List<Review> selectReviewList(UPageInfo pInfo, String sessionId);
 
 	/**
-	 * 마이페이지 - 게시글 전체 갯수 조회
-	 * @param userId 
+	 * 메인페이지 - 후기 목록 조회
 	 * @return
 	 */
-	int getListCount(String sessionId);
+	List<Review> selectReviewList();
 	
 
 }

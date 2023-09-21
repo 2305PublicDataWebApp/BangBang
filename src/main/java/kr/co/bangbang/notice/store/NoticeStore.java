@@ -43,5 +43,12 @@ public interface NoticeStore {
 	 * @return
 	 */
 	List<Notice> selectNoticeList(SqlSession sqlSession, NPageInfo nInfo);
+	
+	/**
+	 * 메인페이지 - 공지사항 목록 조회
+	 * @param sqlSession
+	 * @return
+	 */
+	List<Notice> selectNoticeList(SqlSession sqlSession);
 
 }

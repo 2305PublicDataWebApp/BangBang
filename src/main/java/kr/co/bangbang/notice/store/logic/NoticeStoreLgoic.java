@@ -44,6 +44,13 @@ public class NoticeStoreLgoic implements NoticeStore{
 		List<Notice> nList = sqlSession.selectList("NoticeMapper.selectNoticeList", null, nrowBounds);
 		return nList;
 	}
+
+	// 메인페이지 - 공지사항 목록 조회
+	@Override
+	public List<Notice> selectNoticeList(SqlSession sqlSession) {
+		List<Notice> nList = sqlSession.selectList("NoticeMapper.selectNoticeList");
+		return nList;
+	}
 	
 
 }

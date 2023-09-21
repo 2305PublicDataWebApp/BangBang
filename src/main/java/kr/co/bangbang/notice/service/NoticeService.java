@@ -35,5 +35,11 @@ public interface NoticeService {
 	 * @return
 	 */
 	List<Notice> selectNoticeList(NPageInfo nInfo);
+	
+	/**
+	 * 메인페이지 - 공지사항 목록 조회
+	 * @return
+	 */
+	List<Notice> selectNoticeList();
 
 }
