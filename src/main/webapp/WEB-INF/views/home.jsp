@@ -94,7 +94,7 @@
                         </div>
                         <div class="carousel-inner">
 							<c:forEach items="${tbList }" var="trip_banner">
-					        	<div id="event_banner" class="carousel-item active">
+					        	<div id="event-banner" class="carousel-item active">
 					                <img class="banner-img" src="${trip_banner.bannerFilePath }" class="d-block w-100" alt="벚꽃">
 					            </div>
 					        </c:forEach>                        
