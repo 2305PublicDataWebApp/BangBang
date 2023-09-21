@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Review {
 	private int reviewNo;
-	private int reiviewType;
+	private String reiviewType;
 	private String reviewTitle;
 	private String reviewContent;
 	private String rUserId;
@@ -25,11 +25,11 @@ public class Review {
 		this.reviewNo = reviewNo;
 	}
 
-	public int getReiviewType() {
+	public String getReiviewType() {
 		return reiviewType;
 	}
 
-	public void setReiviewType(int reiviewType) {
+	public void setReiviewType(String reiviewType) {
 		this.reiviewType = reiviewType;
 	}
 

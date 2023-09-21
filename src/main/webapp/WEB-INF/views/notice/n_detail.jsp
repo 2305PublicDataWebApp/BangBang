@@ -17,10 +17,7 @@
     <div class="container">
         <div class="center">
     			<div class="noticesubject">
-    				<span>공지사항</span>
-    			</div>
-    			<div class="title">
-    			<span>${notice.noticeTitle }</span>
+    				<span>${notice.noticeTitle }</span>
     			</div>
     			
     			<div class="button">
@@ -28,15 +25,15 @@
     				<c:param name="noticeNo" value="${notice.noticeNo }" />
     			</c:url>
     			<c:if test="${adminId ne null}">
-    				<button type="button" onclick="showModifyPage('${modifyUrl }');">수정하기</button>
+    				<button class="modibu" type="button" onclick="showModifyPage('${modifyUrl }');">수정하기</button>
     			</c:if>
     			</div>
     			<hr>
-    			<div>
+    			<div class="noticontent">
     				<span>${notice.noticeContent }</span>
     			</div>
     			<div>
-    				<button type="button" onclick="showNoticeList();">목록으로</button>
+    				<button class="golist" type="button" onclick="showNoticeList();">목록으로</button>
     			</div>
         </div>
     </div>

@@ -37,7 +37,7 @@ public class ReviewServiceImpl implements ReviewService{
 		return result;
 	}
 	@Override
-	public int getRListCount() {
+	public Integer getRListCount() {
 		int result = rStore.selectListCount(sqlSession);
 		return result;
 	}

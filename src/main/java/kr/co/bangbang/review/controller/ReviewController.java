@@ -1,5 +1,6 @@
 package kr.co.bangbang.review.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -177,13 +178,13 @@ public class ReviewController {
 				mv.setViewName("review/r_detail");
 			}else {
 				mv.addObject("msg","개시글 조회 실패");
-				mv.addObject("url","review/r_list.do");
+				mv.addObject("url","/review/r_list.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의하세요.");
 			mv.addObject("error",e.getMessage());
-			mv.addObject("url", "review/r_list.do");
+			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -214,17 +215,17 @@ public class ReviewController {
 		rParamMap.put("searchKeyword", searchKeyword);
 		int rTotalCount = rService.getRListCount(rParamMap);
 		RPageInfo rInfo = this.getRPageInfo(rCurrentPage, rTotalCount);
-		List<Review> searchList = rService.searchReviewByKeyword(rInfo, rParamMap);
+		List<Review> searchList = new ArrayList<Review>();
+		searchList = rService.searchReviewByKeyword(rInfo, rParamMap);
 		if(!searchList.isEmpty()) {
 			mv.addObject("searchCondition", searchCondition);
 			mv.addObject("searchKeyword", searchKeyword);
 			mv.addObject("rInfo", rInfo);
 			mv.addObject("rList", searchList);
-			mv.setViewName("trip/t_search");
 			mv.setViewName("review/r_search");
 		}else {
 			mv.addObject("msg", "데이터 조회 실패");
-			mv.addObject("url", "review/r_list");
+			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;

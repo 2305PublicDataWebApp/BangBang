@@ -27,10 +27,6 @@
     						</td>
     					</tr>
     					<tr>
-    						<td class="name">작성자</td>
-    						<td class="name2"><span>${adminId }</span></td>
-    					</tr>
-    					<tr>
     						<td class="content">내용</td>
     						<td>
     							<textarea cols="120" rows="30" name="noticeContent"></textarea>
