@@ -38,13 +38,19 @@
 <%-- 					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include> --%>
 					
 					<!-- 개인정보 조회 -->
-					<form action="/admin/uRemove.do" method="get">
+					<div>
 					<input type="hidden" name="userId" value="${ userId }">
 	                <span class="menu-box-text" style="float: left">개인 정보 조회</span>
-	                <a href="/admin/uModify.do?userId=${ user.userId }" style="margin-left: 350px; width=30px" >수정</a>
+	                <div class="a_user_btn" style="width: 150px; float: right;" >
+	                <form action="/admin/uRemove.do" method="get">
+	                <a href="/admin/uModify.do?userId=${ user.userId }" style="width=30px" >수정</a>
 	                <a type="submit" href="/admin/uRemove.do" style="margin-left: 10px;">탈퇴</a>   
 	                <a href="/admin/list.do" style="margin-left: 10px;">목록</a>       
 	                </form>    
+	                </div>
+					</div>
+					
+	                
 	                <br><br>
 	                <hr>
 	                

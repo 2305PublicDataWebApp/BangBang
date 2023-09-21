@@ -48,7 +48,7 @@
             </c:forEach>
        	 </panel-list>
 
-         <div class="paging" style="margin-left: 430px; margin-top: 25px;">
+         <div class="paging" style="margin-left: 360px; margin-top: 25px;">
            <a href="/banner/insert.do" class="btn btn-prev" style="width: 80px;">등록</a>
            <a href="#" class="btn btn-next" onclick="deleteValue();"  style="width: 80px;">삭제</a>
          </div>

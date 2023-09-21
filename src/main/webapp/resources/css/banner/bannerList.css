@@ -82,10 +82,14 @@ app-panel {
     overflow: hidden;
     border: solid 1px rgba(180, 30, 30, 0.993);
     align-content: start;
-    width: 100%;
+    width: 1000px
     /* justify-content: start; */
-    height: 800px;
+/*     height: 800px; */
     margin-top: 70px;
+    border: 1px solid;
+    color: black;
+    height: 790px;
+    
 }
 
 /* HEADER/FOOTER */
@@ -179,10 +183,11 @@ list-cell:first-of-type {
 }
 
 app-panel:nth-of-type(2) list-cell:last-of-type {
-    color: rgba(255, 255, 255, 0.3);
+/*     color: rgba(255, 255, 255, 0.3); */
     font-size: 0.75rem;
     font-family: 'agency_fb', sans-serif;
     letter-spacing: 0.1rem;
+    color: black;
 }
 
 
