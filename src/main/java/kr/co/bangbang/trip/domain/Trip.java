@@ -17,6 +17,10 @@ public class Trip {
 	private char tStatusYn;
 	private String tAdminId;
 	private Date tripDate;
+	private String tripFilename;
+	private String tripFilerename;
+	private String tripFilepath;
+	private long tripFilelength;
 	
 	
 	public int getTripNo() {
@@ -103,14 +107,38 @@ public class Trip {
 	public void setTripDate(Date tripDate) {
 		this.tripDate = tripDate;
 	}
-	
+	public String getTripFilename() {
+		return tripFilename;
+	}
+	public void setTripFilename(String tripFilename) {
+		this.tripFilename = tripFilename;
+	}
+	public String getTripFilerename() {
+		return tripFilerename;
+	}
+	public void setTripFilerename(String tripFilerename) {
+		this.tripFilerename = tripFilerename;
+	}
+	public String getTripFilepath() {
+		return tripFilepath;
+	}
+	public void setTripFilepath(String tripFilepath) {
+		this.tripFilepath = tripFilepath;
+	}
+	public long getTripFilelength() {
+		return tripFilelength;
+	}
+	public void setTripFilelength(long tripFilelength) {
+		this.tripFilelength = tripFilelength;
+	}
 	@Override
 	public String toString() {
 		return "여행지추천게시판 [글 번호=" + tripNo + ", 글 타입=" + tripType + ", 여행지 이름=" + tripTitle + ", 여행지 주소="
 				+ tripAddr + ", 한줄소개=" + tripSummary + ", 상세내용=" + tripContent + ", 상세주소="
 				+ tripInfoAddr + ", 홈페이지=" + tripHomePage + ", 이용시간=" + tripTime + ", 이용금액="
-				+ tripPrice + ", 조회수=" + viewCount + ", 삭제여부=" + tStatusYn + ", 관리자 아이디=" + tAdminId + ", 작성일=" + tripDate + "]";
+				+ tripPrice + ", 조회수=" + viewCount + ", 삭제여부=" + tStatusYn + ", 관리자 아이디=" + tAdminId
+				+ ", 등록일=" + tripDate + ", 파일이름=" + tripFilename + ", 파일새이름=" + tripFilerename
+				+ ", 파일주소=" + tripFilepath + ", 파일길이=" + tripFilelength + "]";
 	}
-	
 	
 }

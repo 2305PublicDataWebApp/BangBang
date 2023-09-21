@@ -76,6 +76,10 @@
 		SELECT * FROM REVIEW_BOARD WHERE R_USER_ID = #{ userId } ORDER BY REVIEW_NO DESC
 	</select>
 	
+	<select id="selectRList" resultMap="ReviewResultMap">
+		SELECT * FROM REVIEW_BOARD ORDER BY REVIEW_NO ASC
+	</select>
+	
 	<!-- 마이페이지 - 게시글 전체 갯수 조회 -->
 	<select id="selectBoardCount" resultType="_int">
 		SELECT COUNT(*) FROM REVIEW_BOARD WHERE R_USER_ID = #{ userId } AND R_STATUS_YN = 'Y'

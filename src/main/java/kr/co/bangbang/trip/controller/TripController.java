@@ -59,6 +59,7 @@ public class TripController {
 	public ModelAndView insertTrip(
 			ModelAndView mv
 			, @ModelAttribute Trip trip
+			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
 			, HttpSession session  // 글쓰기 할때 작성자 아이디 고정 시켜놨기 때문에 ModelAttribute사용 할때 작성자가 안들어가므로 세션에서 작성자를 가져온다.
 			, HttpServletRequest request ) {
 		
@@ -66,6 +67,14 @@ public class TripController {
 			String tAdminId = (String)session.getAttribute("adminId");
 			if(tAdminId != null && !tAdminId.equals("")) {
 				trip.settAdminId(tAdminId);
+				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+					// 파일정보(이름, 리네임, 경로, 크기)및 파일저장
+					Map<String, Object> tMap = this.saveFile(request, uploadFile);
+					trip.setTripFilename((String)tMap.get("fileName"));
+					trip.setTripFilerename((String)tMap.get("fileRename"));
+					trip.setTripFilepath((String)tMap.get("filePath"));
+					trip.setTripFilelength((long)tMap.get("fileLength"));
+				}
 				int result = tService.insertTrip(trip);
 				if(result > 0) {
 					mv.setViewName("redirect:/trip/t_list.do");
@@ -86,6 +95,36 @@ public class TripController {
 		return mv;
 	}
 	
+	private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+		// resource  경로 구하기
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		// 파일 저장 경로 구하기
+		String savePath = root + "\\tuploadFiles";
+		// 파일 이름 구하기
+		String fileName = uploadFile.getOriginalFilename(); 
+		// 파일 확장자 구하기
+		String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+		// 시간으로 파일 리네임 하기
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileRename = sdf.format(new Date(System.currentTimeMillis())) + "." + extension;
+		// 파일 저장 전 폴더 만들기
+		File saveFolder = new File(savePath);
+		if(!saveFolder.exists()) {
+			saveFolder.mkdir();
+		}
+		// 파일 저장
+		File saveFile = new File(savePath + "\\" + fileRename);
+		uploadFile.transferTo(saveFile);
+		long fileLength = uploadFile.getSize();
+		// 파일 정보 리턴
+		fileMap.put("fileName", fileName);
+		fileMap.put("fileRename", fileRename);
+		fileMap.put("filePath", "../resources/tuploadFiles/" + fileRename);
+		fileMap.put("fileLength", fileLength);
+		return fileMap;
+	}
+
 	/**
 	 * 썸대노트 ajax 매핑 메소드+1 에디터 업로드 이미지 저장 및 파일 경로 json반환
 	 * 

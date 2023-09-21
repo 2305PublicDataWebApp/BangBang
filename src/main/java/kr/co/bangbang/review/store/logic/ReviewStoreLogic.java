@@ -89,7 +89,7 @@ public class ReviewStoreLogic implements ReviewStore{
 	// 메인페이지 - 후기 목록 조회
 	@Override
 	public List<Review> selectReviewList(SqlSession sqlSession) {
-		List<Review> rList = sqlSession.selectList("ReviewMapper.selectReviewList");
+		List<Review> rList = sqlSession.selectList("ReviewMapper.selectRList");
 		return rList;
 	}
 
