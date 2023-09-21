@@ -42,7 +42,7 @@
 	<select id="selectReviewByKeyword" resultMap="ReviewResultMap">
 	 	SELECT * FROM REVIEW_BOARD
 	 	<if test="searchCondition == 'all'">
-	 	WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%' OR REVIEW_TITLE LIKE '%'||#{searchKeyword }||'%' OR REVIEW_CONTENT LIKE'%'||#{searchKeyword }||'%' OR R_USER_ID LIKE '%'||#{searchKeyword }||'%'
+	 	WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%' OR REVIEW_TITLE LIKE '%'||#{searchKeyword }||'%' OR REVIEW_CONTENT LIKE'%'||#{searchKeyword }||'%' OR R_USER_ID LIKE '%'||#{searchKeyword }||'%' AND R_STATUS_YN = 'Y'
 	 	</if>
 	 	<if test="searchCondition == 'title'">
 	 	WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%'
@@ -58,7 +58,7 @@
 	<select id="selectReviewByKeywordCount" resultMap="ReviewResultMap">
 		SELECT COUNT(*) FROM REVIEW_BOARD
 		<if test="searchCondition == 'all'">
-		WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%' OR REVIEW_TITLE LIKE '%'||#{searchKeyword }||'%' OR REVIEW_CONTENT LIKE'%'||#{searchKeyword }||'%' OR R_USER_ID LIKE '%'||#{searchKeyword }||'%'
+		WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%' OR REVIEW_TITLE LIKE '%'||#{searchKeyword }||'%' OR REVIEW_CONTENT LIKE'%'||#{searchKeyword }||'%' OR R_USER_ID LIKE '%'||#{searchKeyword }||'%' AND R_STATUS_YN = 'Y'
 		</if>
 		<if test="searchCondition == 'title'">
 		WHERE REVIEW_TITLE LIKE'%'||#{searchKeyword }||'%'

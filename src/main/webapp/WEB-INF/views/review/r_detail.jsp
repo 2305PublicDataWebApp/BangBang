@@ -31,19 +31,47 @@
     				<button class="golist" type="button" onclick="showReviewList();">목록으로</button>
     			</div>
 			<hr>
-		<form action="/rreply/rr_insert.do" method="post">
-		<input type="hidden" name="rReviewNo" value="${review.reviewNo }">
-			<table width="500">
-				<tr>
-					<td>
-						<textarea rows="3" cols="55" name="rReplyContent"></textarea>
-					</td>
-					<td>
-						<input type="submit" value="완료">
-					</td>
-				</tr>
-			</table>
-		</form>
+			
+	                <!-- 댓글 등록 -->
+	                <form action="/rreply/rr_insert.do" method="post">
+	                    <div>
+	                        <input type="hidden" name="rReviewNo" value="${review.reviewNo }">
+	                        <textarea rows="4" cols="100" name="rReplyContent"></textarea>
+	                        <div style="display: flex; justify-content: right;">
+	                            <input type="submit" value="등록">
+	                        </div>
+	                    </div>
+	                </form>
+	                
+	                <!-- 댓글 목록 -->
+	                <div>
+		            	<c:forEach var="rReply" items="${rRList }">
+		                    <div id="reply-list" style="border-bottom: 1px solid black;">
+		                        <div style="display: inline-block; width: 30px; height: 30px;">
+		                            <img src="" alt="a">
+		                        </div>
+		                        <span>${rreply.rrUserId }</span>
+		                        <span>${rreply.rReplyDate }</span>
+		                        <button>답글</button>
+		                        <button onclick="showModifyForm(this);">수정</button>
+		                        <button onclick= "deleteRReply('${tDelUrl}');">삭제</button>
+		                        <p>${rreply.rReplyContent }</p>
+		                    </div> 
+		                    <div id="rReplyModifyForm" style="display:none;">
+						<!-- 			<form action="/reply/update.kh" method="post"> -->
+						<%-- 				<input type="hidden" name="replyNo" value="${reply.replyNo }"> --%>
+						<%-- 				<input type="hidden" name="refBoardNo" value="${reply.refBoardNo }"> --%>
+						<%-- 					<td colspan="3"><input type="text" size="50" name="replyContent" value="${reply.replyContent }"></td> --%>
+						<!-- 				<td><input type="submit" value="완료"></td> -->
+						<!-- 			</form> -->
+								<input id="replyContent" type="text" size="50" name="rReplyContent" value="${reply.rReplyContent }">
+								<input type="button" onclick="rReplyModify(this,'${rreply.rReplyNo}', '${rreply.rReviewNo }');" value="완료">
+		                    </div>
+		                </c:forEach>
+	                </div>
+	                
+	                
+	                	                
 		</div>
 			</div>
 			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
@@ -61,43 +89,6 @@
 		}
 		
 		
-		
-		function replyModify(obj, rReplyNo, rReviewNo){
-			// DOM 프로그래밍을 이용하는 방법
-			const form = document.createElement("form");
-			form.action = "/rreply/modify.do";
-			form.method ="post";
-			const input = document.createElement("input");
-			input.type = "hidden";
-			input.value = replyNo;
-			input.name = "rReplyNo";
-			const input2 = document.createElement("input");
-			input2.type = "hidden";
-			input2.value = refBoardNo;
-			input2.name = "rReviewNo";
-			const input3 = document.createElement("input");
-			input.type = "text";
-			// 여기를 this를 이용하여 수정해주세요!!
-//				input3.value = document.querySelector("#replyContent").value;
-			// this를 이용하여 내가 원하는 노드 찾기(this를 이용한 노드 탐색)
-			input3.value = obj.parentElement.previousElementSibling.childNodes[0].value;
-//				obj.parentElement.previousElementSibling.children[0].value;
-			input3.name = "rReplyContent";
-			form.appendChild(input);
-			form.appendChild(input2);
-			form.appendChild(input3);
-			
-			document.body.appendChild(form);
-			form.submit();
-		}
-		function showModifyForm(obj, replyContent){
-			// #1. HTML태그, display:none 사용하는 방법
-			obj.parentElement.parentElement.nextElementSibling.style.display="";
-
-		}
-	function deleteReply(url){
-		location.href = url; 
-	}
     </script>
 	</body>
 </html>

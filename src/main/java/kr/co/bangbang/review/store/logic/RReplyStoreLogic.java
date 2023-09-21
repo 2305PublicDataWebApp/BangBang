@@ -35,5 +35,11 @@ public class RReplyStoreLogic implements RReplyStore{
 		return result;
 	}
 
+	@Override
+	public int selectRReplyTotalCount(SqlSession sqlSession, int rReviewNo) {
+		int rReplyCount = sqlSession.selectOne("RReplyMapper.selectRReplyTotalCount",rReviewNo);
+		return rReplyCount;
+	}
+
 
 }

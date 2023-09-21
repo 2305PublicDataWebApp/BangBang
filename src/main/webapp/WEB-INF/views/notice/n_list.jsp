@@ -10,6 +10,7 @@
     	<link rel="stylesheet" href="../resources/css/notice/n_list.css">
     	<link rel="stylesheet" href="/resources/css/user/header.css">
     	<link rel="stylesheet" href="/resources/css/user/footer.css">
+    	<link rel="stylesheet" href="/resources/css/reset.css">
 	</head>
 	<body>
 			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
@@ -48,6 +49,7 @@
 					</c:forEach>
 				</tbody>
 				</table>
+				<hr>
 				<div class="paging">
 				<div>
 					<c:if test="${nInfo.nStartNavi != 1}">
@@ -70,10 +72,10 @@
 					</c:if>
 				</div>
 				</div>
-				<div class="bottom">
+				<div>
 					<div>
 						<c:if test="${adminId ne null }">
-							<button type="button" onclick="showRegisterNForm()">글쓰기</button>
+							<button class="button" type="button" onclick="showRegisterNForm()">글쓰기</button>
 						</c:if>
 					</div>
 				</div>

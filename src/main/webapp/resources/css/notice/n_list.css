@@ -9,3 +9,40 @@
 	width:100%;
     background : #F2F2F2;
 }
+
+.center{
+	max-width:1130px;
+	margin : 0 auto;
+	padding-right : 40px;
+	padding-left : 40px;
+	padding-top : 100px;
+	padding-bottom : 150px;
+	background : white;
+}
+
+.noticetitle{
+	font-size:40px;
+	padding-bottom:20px;
+}
+
+.button{
+	width:90px;
+	height:40px;
+	float:right;
+}
+
+.noticetable{
+	width:900px;
+	margin : 0 auto;
+}
+
+.paging{
+	text-align:center;
+	font-size:18px;
+	margin-top:30px;
+}
+
+td, th{
+	text-align:center;
+	padding-bottom:10px;
+	padding-top:10px;}

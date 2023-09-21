@@ -43,7 +43,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="review" items="${rList }" varStatus="i">
+						<c:forEach begin="0" end="10" var="review" items="${rList }" varStatus="i">
 						<tr>
 							<td>
 								${review.reviewType }

@@ -30,4 +30,8 @@
 		SELECT * FROM REVIEW_REPLY WHERE RREVIEW_NO = #{rReviewNo } AND RR_STATUS_YN = 'Y'
 	</select>
 	
+	<select id="selectRReplyTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW_REPLY WHERE RR_STATUS_YN = 'Y' AND RREPLY_NO = #{rReviewNo }
+	</select>
+	
 </mapper>

@@ -38,6 +38,11 @@ public class RReplyServiceImpl implements RReplyService{
 		int result = rrStore.deleteRReply(sqlSession, rreply);
 		return result;
 	}
+	@Override
+	public int selectRReplyTotalCount(int rReviewNo) {
+		int rReplyCount = rrStore.selectRReplyTotalCount(sqlSession, rReviewNo);
+		return rReplyCount;
+	}
 	
 
 }
