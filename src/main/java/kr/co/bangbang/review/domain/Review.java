@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Review {
 	private int reviewNo;
-	private String reiviewType;
+	private String reviewType;
 	private String reviewTitle;
 	private String reviewContent;
 	private String rUserId;
@@ -25,12 +25,12 @@ public class Review {
 		this.reviewNo = reviewNo;
 	}
 
-	public String getReiviewType() {
-		return reiviewType;
+	public String getReviewType() {
+		return reviewType;
 	}
 
-	public void setReiviewType(String reiviewType) {
-		this.reiviewType = reiviewType;
+	public void setReviewType(String reiviewType) {
+		this.reviewType = reiviewType;
 	}
 
 	public String getReviewTitle() {
@@ -91,7 +91,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "후기게시판 [글번호=" + reviewNo + ", 글유형=" + reiviewType + ", 글제목=" + reviewTitle
+		return "후기게시판 [글번호=" + reviewNo + ", 글유형=" + reviewType + ", 글제목=" + reviewTitle
 				+ ", 글내용=" + reviewContent + ", 작성자아이디=" + rUserId + ", 작성일=" + reviewDate
 				+ ", 조회수=" + reviewViewcount + ", 상태여부=" + rStatusYn + ", 관리자아이디=" + rAdminId + "]";
 	}

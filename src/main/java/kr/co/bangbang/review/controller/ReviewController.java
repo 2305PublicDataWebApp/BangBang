@@ -1,20 +1,30 @@
 package kr.co.bangbang.review.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.JsonObject;
 
 import kr.co.bangbang.notice.domain.Notice;
 import kr.co.bangbang.review.domain.RPageInfo;
@@ -49,18 +59,19 @@ public class ReviewController {
 				review.setrUserId(rUserId);
 				int result = rService.insertReview(review);
 				if(result > 0) {
-					mv.setViewName("redirect:/review/n_list.do");
+					mv.setViewName("redirect:/review/r_list.do");
 				}
-				mv.setViewName("redirect:/review/n_list.do");
+				mv.setViewName("redirect:/review/r_list.do");
 			}else {
 				mv.addObject("msg","게시글 등록 실패");
-				mv.addObject("url", "/review/n_list.do");
+				mv.addObject("error","로그인 필요");
+				mv.addObject("url", "/review/r_list.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의 바람");
 			mv.addObject("error",e.getMessage());
-			mv.addObject("url", "/notice/n_list.do");
+			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -91,17 +102,19 @@ public class ReviewController {
 		try {
 			String userId = (String)session.getAttribute("userId");
 			String rUserId = review.getrUserId();
-			if(rUserId != null && userId.equals("userId")) {
+			if(rUserId != null && rUserId.equals(userId)) {
 				int result = rService.modifyReview(review);
 				if(result > 0) {
 					mv.setViewName("redirect:/review/r_detail.do?reviewNo="+review.getReviewNo());	
 				}else {
 					mv.addObject("msg", "게시글 수정 실패");
+					mv.addObject("error","게시글 수정 실패");
 					mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 					mv.setViewName("common/error_page");					
 				}
 			}else {
-				mv.addObject("msg", "게시글 수정 실패");
+				mv.addObject("msg", "게시글 수정 권한 없음");
+				mv.addObject("error","권한이 없음");
 				mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 				mv.setViewName("common/error_page");				
 			}
@@ -123,7 +136,7 @@ public class ReviewController {
 			String userId = (String)session.getAttribute("userId");
 			Review review = new Review();
 			review.setReviewNo(reviewNo);
-			review.setrUserId(rUserId);
+			review.setrUserId(userId);
 			if(rUserId != null && rUserId.equals(userId)) {
 				int result = rService.deleteReview(review);
 				if(result > 0) {
@@ -134,7 +147,8 @@ public class ReviewController {
 					mv.setViewName("common/error_page");					
 				}
 			}else {
-				mv.addObject("msg", "게시글 삭제 실패");
+				mv.addObject("msg", "본인글만 삭제 가능");
+				mv.addObject("error", "권한없음");
 				mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 				mv.setViewName("common/error_page");
 			}
@@ -229,6 +243,39 @@ public class ReviewController {
 			mv.setViewName("common/error_page");
 		}
 		return mv;
+	}
+	
+	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
+		JsonObject jsonObject = new JsonObject();
+		
+        /*
+		 * String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
+		 */
+		
+		// 내부경로로 저장
+		String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
+		String fileRoot = contextRoot+"resources/fileupload/";
+		
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			jsonObject.addProperty("url", "/summernote/resources/fileupload/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
+			jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObject.toString();
+		return a;
 	}
 	
 }

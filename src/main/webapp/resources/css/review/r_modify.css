@@ -18,6 +18,54 @@
 	padding-top : 100px;
 	padding-bottom : 150px;
 	background : white;
-	border-style:solid;
-	border-color:red;
+}
+
+.reviewsubject{
+	font-size:40px;
+	padding-bottom:20px;
+}
+
+.reviewform{
+	padding-top : 20px;
+	padding-bottom : 10px;
+	padding-right:20px;
+	padding-left : 20px;
+}
+
+.button{
+	float:right;
+	width:100px;
+	height:50px;
+	margin-right:100px;
+	margin-rop:10px;
+}
+
+summernote {
+  margin-left:15px;
+}
+
+.one{
+	margin-bottom:10px;
+}
+
+.two{
+	margin-bottom:15px;
+}
+
+.select{
+	width:400px;
+	height:40px;
+	margin-left:15px;
+}
+
+.type{
+	font-size:20px;
+}
+
+.sub{
+	font-size: 20px;
+}
+
+.titbox{
+	margin-left:15px;
 }

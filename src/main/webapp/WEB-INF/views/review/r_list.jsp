@@ -46,8 +46,7 @@
 						<c:forEach var="review" items="${rList }" varStatus="i">
 						<tr>
 							<td>
-								<c:if test="${notice.noticeType eq '여행지' }"><span>여행지</span></c:if>
-								<c:if test="${notice.noticeType eq '축제' }"><span>축제</span></c:if>
+								${review.reviewType }
 							</td>
 							<c:url var="detailUrl" value="/review/r_detail.do">
 								<c:param name="reviewNo" value="${review.reviewNo }" />

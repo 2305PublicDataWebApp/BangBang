@@ -30,24 +30,21 @@
     			<div class="reviewform">
     				<form action="/review/r_modify.do" method="post">
     					<ul>
-    						<li>
-    							<label>유형</label>
-    							<select id="rtype">
-    								<option value="location">여행지</option>
-    								<option value="festival">축제</option>
-    							</select>
+    						<li class="one">
+    							<label class="type">유형</label>
+    							<input type="radio" name="reviewType" value="여행지">여행지
+    							<input type="radio" name="reviewType" value="축제">축제
     						</li>
-    						<li>
-    							<label>제목</label>
-    							<input type="text" name="reviewtitle" value="${review.reviewTitle }" style="width:400px;height:40px";>
+    						<li class="two">
+    							<label class="sub">제목</label>
+    							<input class="titbox" type="text" name="reviewtitle" value="${review.reviewTitle }" style="width:400px;height:40px";>
     						</li>
 							<li>
-								<label>내용</label>
     							<textarea id="summernote" name="reviewContent">${review.reviewContent }</textarea>
 							</li>
     					</ul>
-    					<div class="button">
-    						<input type="submit" value="수정">
+    					<div>
+    						<input class="button" type="submit" value="수정하기">
     					</div>
     				</form>
     			</div>
