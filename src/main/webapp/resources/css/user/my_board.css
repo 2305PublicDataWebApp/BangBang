@@ -70,10 +70,11 @@ button {
 
 .mypage-profile-text {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display: block;
-    width: 220px;
-    top: 40px;
-    left: 58px;
+    width: 350px;
+    top: 210px;
+    right: 105px;
     font-size: 1.3em;
     font-weight: bolder;
     color: white
@@ -81,13 +82,14 @@ button {
 
 .profile-img-change {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display : block;
     color : white;
-    top: 120px;
+    top: 220px;
     left: 90px;
     width: 160px;
     height: 25px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 /* 마이페이지 메뉴 */
@@ -114,6 +116,7 @@ button {
 }
 
 .menu-box-text {
+	font-family: 'TheJamsil5Bold';
     color: black;
     font-size: 1.5em;
 }
@@ -142,7 +145,7 @@ button {
 
 .menu-info-comment {
     float: left;
-    padding : 0 100px 0 0;
+    padding : 0 120px 0 0;
 }
 
 .menu-icon {
@@ -153,28 +156,32 @@ button {
 }
 
 #info-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #modify-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #my-board {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 21px;
 }
 
 #my-logout {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 10x;
+    right: 5px
 }
 
 #info-remove {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 5px;
 }
 
 /* ****************** 게시판 ****************** */
@@ -189,6 +196,7 @@ button {
 	text-align: left;
 }
 .my-board table {
+
     width: 100%;
     border-collapse: collapse;
     text-align: center;
@@ -196,7 +204,7 @@ button {
 
 th, tr, td {
     border-top: 1px solid black;
-    padding: 5px 0;
+    padding: 7px 0;
 }
 
 tr {
@@ -204,12 +212,25 @@ tr {
 }
 
 th {
-	background-color: skyblue;
+	font-family: 'LINESeedKR-Bd';
+	font-size: 20px;
+	background-color: #CCCCFF;
 }
+
+td {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 15px;
+}
+
+/* tfoot { */
+/* 	padding-top: 5px; */
+/* } */
 
 #menu-board-hr {
 	width: 870px;
-}
+
+	font-family: 'LINESeedKR-Bd';
+	font-size: 20px;}
 
 .page {
 	margin: 0 auto;

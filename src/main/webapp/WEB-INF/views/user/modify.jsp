@@ -120,7 +120,7 @@
 		                        <!-- 수정 버튼 -->
 		                        <br>
 		                        <div class="btn-container">
-		                        	<input type="submit" class="btn-3d red" value="확인">
+		                        	<input type="submit" class="btn-3d red" value="수정">
 		                        </div>
 		                    </div>
 		                </form>

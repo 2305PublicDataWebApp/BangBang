@@ -70,10 +70,11 @@ button {
 
 .mypage-profile-text {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display: block;
-    width: 220px;
-    top: 40px;
-    left: 58px;
+    width: 350px;
+    top: 210px;
+    right: 105px;
     font-size: 1.3em;
     font-weight: bolder;
     color: white
@@ -82,13 +83,14 @@ button {
 
 .profile-img-change {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display : block;
     color : white;
-    top: 120px;
+    top: 220px;
     left: 90px;
     width: 160px;
     height: 25px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 /* 마이페이지 메뉴 */
@@ -115,6 +117,7 @@ button {
 }
 
 .menu-box-text {
+	font-family: 'TheJamsil5Bold';
     color: black;
     font-size: 1.5em;
 }
@@ -143,7 +146,7 @@ button {
 
 .menu-info-comment {
     float: left;
-    padding : 0 100px 0 0;
+    padding : 0 120px 0 0;
 }
 
 .menu-icon {
@@ -154,28 +157,32 @@ button {
 }
 
 #info-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #modify-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #my-board {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 21px;
 }
 
 #my-logout {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 10x;
+    right: 5px
 }
 
 #info-remove {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 5px;
 }
 
 .menu-modify-detail {
@@ -185,8 +192,9 @@ button {
 	width: 870px;
 }
 
-/* 개인 정보 조회 */
+/* 개인 정보 수정 */
 .info {
+	font-family: 'TheJamsil5Bold';
     position: relative;
     /* border : 1px solid black; */
     height: 500px;
@@ -204,6 +212,8 @@ button {
 }
 
 .info-id-detail {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 100px;
     width: 220px;
@@ -217,6 +227,8 @@ button {
 }
 
 .info-pw-detail {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 80px;
     width: 220px;
@@ -231,7 +243,9 @@ button {
 
 .info-pwRe-detail {
     position: relative;
-    left: 35px;
+    font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
+    left: 40px;
     width: 220px;
     height: 30px;
     font-size : 20px;
@@ -244,6 +258,8 @@ button {
 
 .info-name-detail {
     position: relative;
+    font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     left: 120px;
     width: 220px;
     height: 30px;
@@ -256,6 +272,8 @@ button {
 }
 
 .info-nickname-detail {
+		font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 100px;
     width: 220px;
@@ -269,6 +287,8 @@ button {
 }
 
 .info-email-detail {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 100px;
     width: 220px;
@@ -282,6 +302,8 @@ button {
 }
 
 .info-phone-detail {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 100px;
     width: 220px;
@@ -295,6 +317,8 @@ button {
 }
 
 .info-birth-detail {
+	font-family: 'LINESeedKR-Bd';
+	font-size: 5px;
     position: relative;
     left: 80px;
     width: 220px;
@@ -313,6 +337,7 @@ button {
 
 .btn-nickname {
     position: absolute;
+    font-family: 'LINESeedKR-Bd';
     right : 40px;
     text-decoration: none;
     color: #435334;
@@ -340,6 +365,7 @@ button {
 /* Gradient buttons */
 .btn-email {
     position: absolute;
+    font-family: 'LINESeedKR-Bd';
     right : 40px;
     text-decoration: none;
     color: #435334;
@@ -404,6 +430,8 @@ input[class*="btn"]{
 /* 3D Button */
 .btn-3d {
     position: relative;
+    font-family: 'LINESeedKR-Bd';
+    font-size: 10px;
     display: inline-block;
     font-size: 15px;
     padding: 7px 30px;

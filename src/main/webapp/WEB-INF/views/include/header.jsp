@@ -6,7 +6,7 @@
         <!-- 로고 -->
         <div class="logo">
         	<a class="logo-text" href="/index.jsp">
-	            <span class="logo-text">방방곡곡 발도장</span> <img id="logo-top-img" width="35px" src="/resources/images/logo.png" alt="로고">
+	            <span class="logo-text">방방곡곡 발도장</span> <img id="header-logo" src="/resources/images/logo.png" alt="로고">
             </a>
         </div>
         <i class="fa fa-bars"></i>
@@ -45,14 +45,14 @@
 
             <!-- 헤더 text -->
             <h1 style="font-family: 'TheJamsil5Bold';">대한민국 <span>방방곡곡</span> <br> 어디든지!</h1>
-            <p>
+            <p style="font-family: 'SUITE-Regular'; font-size: 20px;">
                 방방곡곡 발도장은 국내 여행 정보를 제공해드리는 <br> 지식공유 플랫폼입니다.
             </p>
 
             <!-- 검색창 -->
             <div class="search">
                 <i class="fa fa-search"></i>
-                <input value="여행지 검색">
+                <input style="font-family: 'SUITE-Regular'; font-size: 15px;" value="여행지 검색">
                 <button>search</button>
             </div>
 

@@ -50,12 +50,6 @@
 		                        <span class="info-id-detail">${ user.userId }</span>
 		                    </div>
 		
-		                    <!-- 비밀번호 -->
-		                    <div class="info-detail">
-		                        <span class="info-pw">비밀번호</span>
-		                        <span class="info-pw-detail">${ user.userPw }</span>
-		                    </div>
-		
 		                    <!-- 이름 -->
 		                    <div class="info-detail">
 		                        <span class="info-name">이름</span>

@@ -15,37 +15,49 @@ footer {
 }
 
 .footer-logo {
-    position: absolute;
+    position: relative;
+    top: 12px;
+    left: 5px;
     width: 35px;
     height: 35px;
 }
 
 .footer-title {
+	font-family: 'RixInooAriDuriR';
     height: 100%;
     width: 700px;
     padding: 10px 0;
 }
 
 .footer-content {
+	font-family: 'TheJamsil5Bold';
     position: relative;
 }
 
 .footer-content-detail {
+	font-family: 'TheJamsil5Bold';
     display: block;
     padding: 10px 0 10px 250px;
+    width: 800px;
 }
 .span{
 	display: inline-block;
 }
 
 .detail-title {
+	font-family: 'TheJamsil5Bold';
     padding-right : 50px;
 }
 
 .detail-title-service {
+	font-family: 'TheJamsil5Bold';
+	position: relative;
+	bottom: 22px;
     padding-right : 35px;
 }
 
 small {
+	position: relative;
+	right: 103px;
     padding : 0 103px;
 }

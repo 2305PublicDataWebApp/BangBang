@@ -21,6 +21,10 @@ html {
     text-align: center;
 }
 
+h2 {
+	font-family: 'TheJamsil5Bold';
+}
+
 .login-box {
     position: relative;
     top: 5%;

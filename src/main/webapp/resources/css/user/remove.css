@@ -27,7 +27,7 @@ html {
     left: 50%;
     width: 500px;
     padding: 40px;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -38%);
     /* background: rgba(0,0,0,.5); */
     /* background: rgba(205, 215, 191, 0.5); */
     background: beige;
@@ -45,6 +45,7 @@ html {
 
 .remove-anno {
     text-align: center;
+    font-family: 'TheJamsil5Bold';
     font-size: 14px;
 }
 

@@ -41,7 +41,7 @@
 	                <!-- 내가 쓴 게시글 -->
 	                <div class="my-board">
 		                <span class="menu-box-text">내 게시글 조회</span>
-		                <br>
+		                <br><br>
 <!-- 		                <hr id="menu-board-hr"> -->
 <!-- 		                <br><br> -->
 		                <table>
@@ -82,7 +82,7 @@
 		                    <tfoot class="search-content">
 			                    <!-- *************** 테이블 네비게이션 *************** --
 				                <!-- 페이징 -->
-				                <br>
+				                
 				                <tr align="center">
 					                <td colspan="4">
 					                	<c:if test="${ pInfo.startNavi !=1 }">

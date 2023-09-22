@@ -7,7 +7,7 @@
     width: 1130px;
     max-width: 1130px;
     margin : 0 auto;
-    height: 1305px;
+    height: 1209px;
     padding: 100px 20px;
     font-family: sans-serif;
 }
@@ -69,10 +69,11 @@ button {
 
 .mypage-profile-text {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display: block;
-    width: 220px;
-    top: 40px;
-    left: 58px;
+    width: 350px;
+    top: 210px;
+    right: 105px;
     font-size: 1.3em;
     font-weight: bolder;
     color: white
@@ -80,13 +81,14 @@ button {
 
 .profile-img-change {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     display : block;
     color : white;
-    top: 120px;
+    top: 220px;
     left: 90px;
     width: 160px;
     height: 25px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .profile-image  {
@@ -113,6 +115,7 @@ button {
 }
 
 .menu-box-text {
+	font-family: 'TheJamsil5Bold';
     color: black;
     font-size: 1.5em;
 }
@@ -147,7 +150,7 @@ button {
 
 .menu-info-comment {
     float: left;
-    padding : 0 70px 0 0;
+    padding : 0 120px 0 0;
 }
 
 .menu-icon {
@@ -159,33 +162,38 @@ button {
 }
 
 #info-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #modify-text {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 28px;
 }
 
 #my-board {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 21px;
 }
 
-#my-reply {
+#my-logout {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 25px;
+    right: 5px
 }
 
 #info-remove {
+	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 5px;
 }
 
 /* 개인 정보 조회 */
 .info {
     position: relative;
+    font-family: 'TheJamsil5Bold';
     /* border : 1px solid black; */
     height: 500px;
     padding : 30px 60px;
