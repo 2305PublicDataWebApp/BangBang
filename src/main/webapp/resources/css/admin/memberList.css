@@ -39,10 +39,10 @@
   *,
   *::before,
   *::after {
-    box-sizing: border-box;
+    --box-sizing: border-box;
   }
   
-  html {
+  --html {
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -67,12 +67,12 @@
     display: block;
   }
   
-  body {
+  --body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.5;
+    --line-height: 1.5;
     color: #212529;
     text-align: left;
     background-color: #fff;
@@ -8964,10 +8964,10 @@
     @page {
       size: a3;
     }
-    body {
+    --body {
       min-width: 992px !important;
     }
-    .container {
+    --.container {
       min-width: 992px !important;
     }
     .navbar {
