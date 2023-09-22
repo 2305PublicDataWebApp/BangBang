@@ -1,4 +1,23 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+#form{
+    max-width: 1130px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    background-color: white;
+}
+span{
+	font-family: 'TheJamsil5Bold';
+}
 ul{
     list-style-type: none;
     padding-left: 0;
@@ -10,24 +29,28 @@ ul label {
     text-align: left;
     float: left;
 }
-li {
+.insert-li {
     margin: 15px 30px;
 }
 input{
     width: 70%;
 }
-#form{
-    max-width: 1130px;
-    margin: 0 auto;
-}
 #title{
     border-bottom: 1px solid black;
 }
-img{
+#logo-img{
     width: 30px;
     height: 30px;
 }
 form{
     max-width: 1130px;
     margin: 0 auto;
+}
+#btn-div{
+	display: flex;
+	justify-content: center;
+}
+#btnbtn{
+	width: 60px;
+	height: 30px;
 }
