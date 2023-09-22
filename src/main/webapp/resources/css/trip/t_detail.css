@@ -64,7 +64,10 @@ span{
     justify-content: right;
     margin-bottom: 100px;
 }
-button{
+#btnbtn{
     width: 60px; 
     height: 30px;
+}
+pre{
+	font-family: 'TheJamsil5Bold';
 }

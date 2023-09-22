@@ -28,7 +28,7 @@
 	                <div id="title">
 	                    <div style="margin-bottom: 20px;">
 	                        <span>게시글 수정</span>
-	                        <img src="/resources/images/logo.png" alt="발도장로고"> 
+	                        <img id="logo-img" src="/resources/images/logo.png" alt="발도장로고"> 
 	                    </div>
 	                </div>
 	                <div style="margin: 40px auto; max-width: 700px;">
@@ -36,55 +36,52 @@
 	                    	<input type="hidden" name="tripNo" value="${trip.tripNo }">
 	                    	<input type="hidden" name="tAdminId" value="${trip.tAdminId }">
 	                        <ul>
-	                        	<li>
+	                        	<li class="insert-li">
 	                                <label for="type">게시글 타입</label>
 	                                <input type="text" id="type" name="tripType" value="${trip.tripType }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="tTitle">여행지이름</label>
 	                                <input type="text" id="tTitle" name="tripTitle" value="${trip.tripTitle }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="addr">주소</label>
 	                                <input type="text" id="addr" name="tripAddr" value="${trip.tripAddr }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="oneInfo">한줄소개</label>
 	                                <input type="text" id="oneInfo" name="tripSummary" value="${trip.tripSummary }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="thum">썸네일</label>
-	                                <input type="text" id="thum" name="tthum" value="${trip.tripNo }">
+	                                <input type="file" id="thum" name="uploadFile" value="${trip.tripFilepath }">
 	                                <button>파일찾기</button><br>                            
 	                            </li>
-<!-- 	                            <li> -->
-<!-- 	                                <label for="file">첨부파일</label> -->
-<%-- 	                                <input type="text" id="file" name="tfile" value="${trip.tripNo }"> --%>
-<!-- 	                                <button>파일찾기</button><br> -->
-<!-- 	                            </li> -->
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="infoaddr">상세주소</label>
 	                                <input type="text" id="infoaddr" name="tripInfoAddr" value="${trip.tripInfoAddr }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="home">홈페이지</label>
 	                                <input type="text" id="home" name="tripHomePage" value="${trip.tripHomePage }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="time">이용시간</label>
 	                                <input type="text" id="time" name="tripTime" value="${trip.tripTime }"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="price">이용금액</label>
 	                                <input type="text" id="price" name="tripPrice" value="${trip.tripPrice }"><br>
 	                            </li>
-	                            <li>
-	                                <label for="summernote">상세정보</label>
-	                                <textarea id="summernote" name="tripContent" value="${trip.tripContent }"></textarea><br>
+	                            <li class="insert-li">
+	                                <label for="content">상세정보</label>
+	               					<textarea wrap="hard" rows="10" cols="55" id="content" name="tripContent"></textarea>
 <!-- 	                                <input type="text" id="info" name="tinfo" value=""><br> -->
 	                            </li>
 	                        </ul>
-	                        <button>등록</button>
+	                        <div id="btn-div">
+								<button id="btnbtn">등록</button>
+							</div>
 	                    </form>
 	                </div>
 	            </div>
@@ -92,14 +89,14 @@
 	    </main>
 	    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	    <script>
-		    $(document).ready(function () {
-		        $('#summernote').summernote({
+// 		    $(document).ready(function () {
+// 		        $('#summernote').summernote({
 // 		            placeholder: '내용을 작성하세요',
-					value: "${trip.tripContent }",
-		            height: 400,
-		            maxHeight: 400
-		        });
-		    });
+// 					value: "${trip.tripContent }",
+// 		            height: 400,
+// 		            maxHeight: 400
+// 		        });
+// 		    });
 	    </script>
 	</body>
 </html>
