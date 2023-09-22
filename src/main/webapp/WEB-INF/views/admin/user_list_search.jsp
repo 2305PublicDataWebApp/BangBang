@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-	<title>회원검색</title>
-		<link rel='stylesheet' href='/resources/css/admin/memberList.css'>
-		<link rel='stylesheet' href='/resources/css/admin/a_header.css'>
-		<link rel="stylesheet" href="/resources/css/user/footer.css">
-</head>
-<body>
-	<!-- header -->
-	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>	
-  <main class="u_list_main">
-	<br><br><br><br><br>
-	<h1>전체회원조회</h1>
+	<head>
+		<meta charset="UTF-8">
+		<title>검색회원조회</title>
+    	<link rel='stylesheet' href='/resources/css/admin/memberList.css'>
+    	<link rel="stylesheet" href="/resources/css/banner/bannerList.css">
+    	<link rel="stylesheet" href="/resources/css/user/header.css">
+    	<link rel="stylesheet" href="/resources/css/user/footer.css">
+    	<link rel="stylesheet" href="/resources/css/reset.css">
+	</head>
+	<body style="background: #F2F2F2;">
+	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+
+		<div class="container">
+			<div class="center">
+				<h1>전체회원조회</h1>
 	<hr>
 	<div id="boardTable" class="board-list">
 		<form action="/admin/searchUserList.do" method="get">
@@ -57,7 +59,7 @@
           	</c:forEach>
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example" style="justify-content: center;">
 			<c:url var="prevUrl" value="/admin/searchUserList.do">
 				<c:param name="page" value=""></c:param>
 				<c:param name="searchCondition" value="${paramMap.searchCondition }"></c:param>
@@ -66,16 +68,16 @@
 			<div class="current-page-area"></div>
             <ul class="pagination justify-content-center">
 	         	<c:if test="${aInfo.startNavi != 1 }">
-		            <li class="page-item" ><a class="page-link" href="${prevUrl }">Prev</a></li>
+		            <li class="page-item"  ><a class="page-link" href="${prevUrl }">Prev</a></li>
 	            </c:if>
-	            
+	         
 	            <c:forEach begin="${aInfo.startNavi }" end="${aInfo.endNavi }" var="p">
 					<c:url var="pageUrl" value="/admin/searchUserList.do">
 						<c:param name="page" value="${p }"></c:param>
 						<c:param name="searchCondition" value="${paramMap.searchCondition }"></c:param>
 						<c:param name="searchKeyword" value="${paramMap.searchKeyword }"></c:param>
 					</c:url>
-	            	<li class="page-item" ><a class="page-link" href="${pageUrl }">${p }</a></li>
+	            	<li class="page-item"><a class="page-link" href="${pageUrl }">${p }</a></li>
 	            </c:forEach>
 	            <c:if test="${aInfo.endNavi != aInfo.naviTotalCount }">
 					<c:url var="nextUrl" value="/admin/searchUserList.do"> 
@@ -83,13 +85,18 @@
 						<c:param name="searchCondition" value="${paramMap.searchCondition }"></c:param>
 						<c:param name="searchKeyword" value="${paramMap.searchKeyword }"></c:param>
 					</c:url>
-		            <li class="page-item" ><a class="page-link" href="${nextUrl }">Next</a></li>
+		            <li class="page-item"><a class="page-link" href="${nextUrl }">Next</a></li>
 	            </c:if>
             </ul>
         </nav>  
-  </main>
-  
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-</body>
+			</div>
+		</div>
+		
+			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+			
+			
+		<script>
+	
+		</script>
+	</body>
 </html>
