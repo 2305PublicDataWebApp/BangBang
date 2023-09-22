@@ -11,6 +11,7 @@
     	<link rel="stylesheet" href="/resources/css/user/header.css">
     	<link rel="stylesheet" href="/resources/css/user/footer.css">
     	<link rel="stylesheet" href="/resources/css/reset.css">
+    	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	</head>
 	<body>
 			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
