@@ -1,47 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">
-	<title>배너등록</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel='stylesheet' href='/resources/css/admin/a_header.css'>
-	<link rel="stylesheet" href="/resources/css/user/footer.css">
-	<script type="text/javascript" src="./resources/js/validation.js"></script>
+		<meta charset="UTF-8">
+		<title>배너등록</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	   	<link rel="stylesheet" href="/resources/css/banner/bannerList.css">
+	   	<link rel="stylesheet" href="/resources/css/user/header.css">
+	   	<link rel="stylesheet" href="/resources/css/user/footer.css">
+	   	<link rel="stylesheet" href="/resources/css/reset.css">
+	  		<script type="text/javascript" src="./resources/js/validation.js"></script>
 	</head>
-	<body>
-	
-	<!-- header -->
-    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-    
-    
-<%-- <jsp:include page="menu.jsp"/> --%>
-<!-- 	<div class="jumbotron"> -->
-<!-- 		<div class="container"> -->
-<!-- 			<h1 class="display-3"> -->
-<!-- 				HEADER -->
-<!-- 			</h1> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<body style="background: #F2F2F2;">
+	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 
-
-	<main class="i_main" style="width: 1130px; margin: 0 auto; background-color: white;">
-		<br><br><br>	
-
-    <div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h3>배너 등록<img src="/resources/images/logo.png" style="width: 35px; height: 35px; margin-right: 370px;" class="float-right"></h3>
-				<hr style="width: 1100px"><br><br>
-			</div>
-			<div class="col-md-6 text-right">
-				<!-- <img src="/img/logo.png" style="width: 30px; height: 30px;" class="float-right"> -->
-			</div>
-		</div>
-	</div>
-	
 	<div class="container">
+		<div class="center">
+			<div class="row">
+				<div class="col-md-6">
+					<h3>배너 등록<img src="/resources/images/logo.png" style="width: 37px; height: 37px; margin-right: 340px;" class="float-right"></h3>
+					<hr style="width: 1100px"><br><br>
+				</div>
+				<div class="col-md-6 text-right">
+					<!-- <img src="/img/logo.png" style="width: 30px; height: 30px;" class="float-right"> -->
+				</div>
+			</div>
 		<form name="newProduct" action="/banner/insert.do" class="form-horizontal" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너명</label>
@@ -49,7 +35,7 @@
 					<input type="text" id="bannerName" name="bannerName" class="form-control" required=""><br>
 				</div>
 			</div>
-			
+		
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너영역</label>
 				<div class="col-sm-10">
@@ -60,26 +46,23 @@
 					</select><br>
 				</div>
 			</div>
-			
+		
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">배너크기</label>
 				<div class="col-sm-10">
 					<input type="text" id="bannerSize" name="bannerSize" class="form-control" required=""><br>
 				</div>
 			</div>
-
-			
+	
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">이미지</label>
 				<div class="col-sm-10">
 					<div class="form-control">
-<!-- 						<input type="file" onchange="readURL(this);">  -->
-					<img id="preview" style="width:100px; height:100px;" />
+						<img id="preview" style="width:100px; height:100px;" />
 					</div><br>
-					
 				</div>
 			</div>
-			
+		
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">링크 URL</label>
 				<div class="col-sm-10">
@@ -116,27 +99,14 @@
 				</div>
 			</div>
 		</form>
+		</div>
 	</div>
+		
+	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+				
+	<script>
 	
-
-	</main>
-	
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>	
-
-<!-- 	<br><br><br>	 -->
-<!-- 	<div class="jumbotron" style="margin: 0;"> -->
-<!-- 		<div class="container"> -->
-<!-- 			<h1 class="display-3"> -->
-<!-- 				FOOTER -->
-<!-- 			</h1> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-
-
-    <script>
-        function updateBannerSize() {
+	function updateBannerSize() {
         var selectElement = document.getElementById("bannerArea");
         var bannerSize = document.getElementById("bannerSize");
         var unitPrice = document.getElementById("bannerSize");
@@ -152,10 +122,7 @@
 
     // 초기화 시 호출
     updateBannerSize();
-    
-    
-    
-    
+
     function readURL(input) {
     	  if (input.files && input.files[0]) {
     	    var reader = new FileReader();
@@ -167,8 +134,8 @@
     	    document.getElementById('preview').src = "";
     	  }
     	}
-    
-    </script>
 
+	</script>
+	
 	</body>
 </html>
