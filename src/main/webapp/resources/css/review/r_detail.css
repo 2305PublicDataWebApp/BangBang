@@ -7,6 +7,7 @@
 .container{
 	width:100%;
     background : #F2F2F2;
+    font-family: 'TheJamsil5Bold';
 }
 
 .center{
@@ -26,10 +27,11 @@
 }
 
 .golist{
-	margin-left:820px;
+	margin-left:930px;
 	width:90px;
 	height:40px;
 	margin-right:30px;
+	margin-bottom:10px;
 }
 
 .revicontent{

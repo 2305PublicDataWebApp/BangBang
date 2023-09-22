@@ -5,9 +5,11 @@
     padding: 0;
 }
 
+
 .container{
 	width:100%;
     background : #F2F2F2;
+    font-family: 'TheJamsil5Bold';
 }
 
 .center{
@@ -35,7 +37,6 @@
 
 .noticontent{
 	padding:40px;
-    height:300px;
     font-size:20px;
 }
 
@@ -45,4 +46,15 @@
 	width:90px;
 	height:40px;
 	margin-right:30px;
+}
+
+.showcontent{
+	width:100px;
+	display:block;
+	font-family: 'TheJamsil5Bold';
+}
+
+textarea{
+	font-family: inherit;
+	font-family: 'TheJamsil5Bold';
 }

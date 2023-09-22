@@ -45,7 +45,7 @@
 	                
 	                <!-- 댓글 목록 -->
 	                <div>
-		            	<c:forEach var="rReply" items="${rRList }">
+		            	<c:forEach var="rReply" items="${rrList }">
 		                    <div id="reply-list" style="border-bottom: 1px solid black;">
 		                        <div style="display: inline-block; width: 30px; height: 30px;">
 		                            <img src="" alt="a">
@@ -54,7 +54,7 @@
 		                        <span>${rreply.rReplyDate }</span>
 		                        <button>답글</button>
 		                        <button onclick="showModifyForm(this);">수정</button>
-		                        <button onclick= "deleteRReply('${tDelUrl}');">삭제</button>
+		                        <button onclick= "deleteRReply('${rDelUrl}');">삭제</button>
 		                        <p>${rreply.rReplyContent }</p>
 		                    </div> 
 		                    <div id="rReplyModifyForm" style="display:none;">

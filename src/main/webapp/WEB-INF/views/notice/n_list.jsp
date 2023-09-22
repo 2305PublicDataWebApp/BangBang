@@ -23,9 +23,9 @@
 				<hr>
 				<table class="noticetable">
 				<colgroup>
-				<col width="40px">
-				<col width="800px">
-				<col width="100px">
+				<col width="70px">
+				<col width="850px">
+				<col width="250px">
 				</colgroup>
 				<thead>
 					<tr>
