@@ -27,9 +27,13 @@
     						</td>
     					</tr>
     					<tr>
+    						<td class="name">작성자</td>
+    						<td class="name2"><span>${adminId }</span></td>
+    					</tr>
+    					<tr>
     						<td class="content">내용</td>
     						<td>
-    							<textarea cols="120" rows="30" name="noticeContent"></textarea>
+    							<textarea wrap="hard" cols="120" rows="30" name="noticeContent">${noticeContent}</textarea>
     						</td>
     					</tr>
     				</table>
@@ -39,6 +43,15 @@
     			</form>
     		</div>
     	</div>
+    	<script>
+    	//enter => <br>
+    	var text = document.getElementById("textarea").value;
+    	text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+
+    	//<br> => enter
+    	var text = document.getElementById("textarea").value;
+    	text = text.replaceAll("<br>", "\r\n");
+    	</script>
     	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</body>
 </html>

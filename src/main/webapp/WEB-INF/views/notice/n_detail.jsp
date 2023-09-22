@@ -30,7 +30,7 @@
     			</div>
     			<hr>
     			<div class="noticontent">
-    				<span>${notice.noticeContent }</span>
+    				<pre><span class="showcontent">${notice.noticeContent }</span></pre>
     			</div>
     			<hr>
     			<div>

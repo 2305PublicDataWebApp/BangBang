@@ -8,6 +8,7 @@
 .container{
 	width:100%;
     background : #F2F2F2;
+    font-family: 'TheJamsil5Bold';
 }
 
 .center{
@@ -33,7 +34,7 @@
 
 .noticetable{
 	width:900px;
-	margin : 0 auto;
+	margin-left : 100px;;
 }
 
 .paging{

@@ -40,7 +40,7 @@
     							<input class="titbox" type="text" name="reviewtitle" value="${review.reviewTitle }" style="width:400px;height:40px";>
     						</li>
 							<li>
-    							<textarea id="summernote" name="reviewContent">${review.reviewContent }</textarea>
+    							<textarea id="summernote" name="reviewContent"></textarea>
 							</li>
     					</ul>
     					<div>

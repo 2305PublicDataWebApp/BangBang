@@ -24,7 +24,7 @@
 	</update>
 	
 	<update id="deleteReview">
-		UPDATE REVIEW_BOARD SET R_STATUS_YN = 'N' WHERE REVIEW_NO = #{reviewNo } AND [R_USER_ID = #{rUserId } OR R_ADMIN_ID = #{rAdminId }]
+		UPDATE REVIEW_BOARD SET R_STATUS_YN = 'N' WHERE REVIEW_NO = #{reviewNo } AND R_USER_ID = #{rUserId } OR R_ADMIN_ID = #{rAdminId }]
 	</update>
 	
 	<select id="selectListCount" resultType="_int">
