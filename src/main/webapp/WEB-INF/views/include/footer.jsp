@@ -33,15 +33,15 @@
                 김대표
             </span>
         </div>
-        <span class="footer-content-detail">
+        <div class="footer-content-detail">
             <span class="detail-title-service span">
                 고객센터
             </span>
             <span class="detail-content span">
-                0503-4444-2222
+                <span>0503-4444-2222</span>
                 <br>
                 <small>운영시간 : 9:00 - 16:00</small>
             </span>
-        </span>
+        </div>
     </div>
 </footer>

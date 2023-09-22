@@ -10,24 +10,27 @@
 	    <link rel="stylesheet" href="/resources/css/trip/t_list.css">
 	    <link rel="stylesheet" href="/resources/css/user/footer.css">
 	    <link rel="stylesheet" href="/resources/css/user/header.css">
-	    <link rel="stylesheet" href="/resources/css/reset.css">
+<!-- 	    <link rel="stylesheet" href="/resources/css/reset.css"> -->
 	</head>
 	<body>
 	   <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	    <main>
 	        <div>
 	            <div id="list">
+	            <div id="tboard">
+	            	<span>여행지 추천</span>
+	            </div>
 	                <div id="select">
 	                    <form action="/trip/t_search.do" method="get">
-	                        <select name="searchCondition">
+	                        <select name="searchCondition" id="selec">
 								<option value="all">전체</option>
 								<option value="trip">여행지</option>
 								<option value="festival">지역축제</option>
 								<option value="content">테마</option>
 								<option value="by-member">구성원별</option>
 							</select>
-	                        <input type="text" name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<input type="submit" value="검색">
+	                        <input type="text" name="searchKeyword" id="search" placeholder="검색어를 입력하세요.">
+							<input type="submit" id="clicksearch" value="검색">
 	                    </form>
 	                </div>
 	                <div id="list-item">
@@ -37,7 +40,7 @@
 		                    		<c:param name="tripNo" value="${trip.tripNo }"></c:param>
 		                    	</c:url>
 		                        <div id="img-div">
-		                            <a href="${detailUrl }"><img class="banner-img" src="/resources/images/main/개발자.jpg" alt=""></a>
+		                            <a href="${detailUrl }"><img class="banner-img" src="${trip.tripFilepath }" alt=""></a>
 		                        </div>
 		                        <div id="info-li">
 		                            <ul>

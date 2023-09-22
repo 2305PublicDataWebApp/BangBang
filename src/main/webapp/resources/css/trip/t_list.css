@@ -1,13 +1,27 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
-    margin: 0;
+	margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    transition: all .3s;
+    list-style: none;
+    user-select: none;
 }
 body{
     background-color: #fbfaef;
 }
+span{
+	font-family: 'TheJamsil5Bold';
+}
 a{
     text-decoration-line: none;
+    font-family: 'TheJamsil5Bold';
 }
 ul{
     list-style: none;
@@ -28,12 +42,32 @@ ul{
     max-width: 1130px;
     margin: 0 auto;
     background-color: white;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+#tboard{
+	font-size: 40px;
+    padding-bottom: 20px;
 }
 #select{
     border-bottom: 1px solid black;
     display: flex; 
     justify-content: right;
     padding: 15px 0;
+}
+#selec{
+	height: 30px;
+    width: 80px;
+}
+#search{
+	height: 30px;
+    width: 150px;
+}
+#clicksearch{
+	height: 30px;
+    width: 50px;
 }
 #list-item{
 
@@ -53,7 +87,8 @@ ul{
             margin: 30px 60px 30px;
         }
         li{
-            height: 30px;
+/*             height: 30px; */
+			font-family: 'TheJamsil5Bold';
         }
             .trip-title{
                 font-size: 32px;

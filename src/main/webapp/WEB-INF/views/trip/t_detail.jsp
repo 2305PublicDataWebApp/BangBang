@@ -49,7 +49,7 @@
 	            </div>
 	            <div id="semi-info">
 	                <div style="display: inline-block; width: 49%;">
-	                    <b style="margin-right: 20px;">주소</b>
+	                    <b>주소</b>
 	                    <span>${trip.tripInfoAddr }</span>
 	                </div>
 	                <div style="display: inline-block; width: 49%;">
@@ -66,7 +66,8 @@
 	                </div>
 	            </div>
 	            <div id="summer-note">
-					${trip.tripContent }
+	            	<img alt="첨부파일" src="${trip.tripFilepath }">
+					<pre><span>${trip.tripContent }</span></pre>
 	            </div>
 	            <div id="button">
 	                <button onclick="showTripList();">목록으로</button>
@@ -102,10 +103,10 @@
 			                        <button onclick= "deleteTReply('${tDelUrl}');">삭제</button>
 		                        </c:if>
 		                        <c:if test="${adminId ne null }">
-			                        <button onclick="showModifyForm(this);">수정</button>
+<!-- 			                        <button onclick="showModifyForm(this);">수정</button> -->
 			                        <button onclick= "deleteTReply('${tDelUrl}');">삭제</button>
 		                        </c:if>
-		                        <p>${tReply.tReplyContent }</p>
+		                        <p id="reply">${tReply.tReplyContent }</p>
 		                    </div> 
 		                    <div id="tReplyModifyForm" style="display:none;">
 						<!-- 			<form action="/reply/update.kh" method="post"> -->

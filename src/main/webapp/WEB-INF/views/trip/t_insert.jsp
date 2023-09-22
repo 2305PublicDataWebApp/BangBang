@@ -35,52 +35,54 @@
 	                <div style="margin: 40px auto; max-width: 700px;">
 						<form action="/trip/t_insert.do" method="post">
 	                        <ul>
-	                        	<li>
+	                        	<li class="insert-li">
 	                                <label for="type">게시글 타입</label>
 	                                <input type="text" id="type" name="tripType" required><br>
 	                                <p>타입은 여행지, 지역축제, 테마, 구성원별 중에서 입력해야 함</p>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="title">여행지이름</label>
 	                                <input type="text" id="title" name="tripTitle" required><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="addr">주소</label>
 	                                <input type="text" id="addr" name="tripAddr"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="oneInfo">한줄소개</label>
 	                                <input type="text" id="oneInfo" name="tripSummary"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="thum">썸네일</label>
-	                                <input type="text" id="thum" name="tthum">
-	                                <button>파일찾기</button><br>                            
+	                                <input type="file" id="thum" name="uploadFile">
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="infoaddr">상세주소</label>
 	                                <input type="text" id="infoaddr" name="tripInfoAddr"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="home">홈페이지</label>
 	                                <input type="text" id="home" name="tripHomePage"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="time">이용시간</label>
 	                                <input type="text" id="time" name="tripTime"><br>
 	                            </li>
-	                            <li>
+	                            <li class="insert-li">
 	                                <label for="price">이용금액</label>
 	                                <input type="text" id="price" name="tripPrice"><br>
 	                            </li>
-	                            <li>
-	                                <label for="summernote">상세정보</label>
-	                                <textarea id="summernote" name="tripContent"></textarea>
+	                            <li class="insert-li">
+	                                <label for="content">상세정보</label>
+	                                <textarea wrap="hard" rows="10" cols="55" id="content" name="tripContent"></textarea>
+<!-- 	                                <textarea id="summernote" name="tripContent"></textarea> -->
 <!--  	                            	<span onclick="clickThumbnailAppend();" id="test"><button class="writeBtn" type="button">썸네일 새로고침</button></span> -->
 <!-- 									<select id="thumbnailPath" name="thumbnailPath"></select> -->
 	                            </li>
 							</ul>
-							<button>등록</button>
+							<div id="btn-div">
+								<button id="btnbtn">등록</button>
+							</div>
                             <script>
 // 	                            $(document).ready(function(){
 // 	                    			$('#summernote').summernote({

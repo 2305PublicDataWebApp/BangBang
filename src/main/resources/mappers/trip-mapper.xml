@@ -18,10 +18,14 @@
 		<result property="tStatusYn" 	column="T_STATUS_YN"/>
 		<result property="tAdminId" 	column="T_ADMIN_ID"/>
 		<result property="tripDate" 	column="TRIP_DATE"/>
+		<result property="tripFilename" 	column="TRIP_FILENAME"/>
+		<result property="tripFilerename" 	column="TRIP_FILERENAME"/>
+		<result property="tripFilepath" 	column="TRIP_FILEPATH"/>
+		<result property="tripFilelength" 	column="TRIP_FILELENGTH"/>
 	</resultMap>
 	
 	<insert id="insertTrip">
-		INSERT INTO TRIP_BOARD VALUES(SEQ_TRIP_NO.NEXTVAL, #{tripType }, #{tripTitle }, #{tripAddr }, #{tripSummary }, #{tripContent }, #{tripInfoAddr }, #{tripHomePage }, #{tripTime }, #{tripPrice }, #{viewCount }, DEFAULT, #{tAdminId }, DEFAULT )
+		INSERT INTO TRIP_BOARD VALUES(SEQ_TRIP_NO.NEXTVAL, #{tripType }, #{tripTitle }, #{tripAddr }, #{tripSummary }, #{tripContent }, #{tripInfoAddr }, #{tripHomePage }, #{tripTime }, #{tripPrice }, #{viewCount }, DEFAULT, #{tAdminId }, DEFAULT, #{tripFilename}, #{tripFilerename}, #{tripFilepath}, #{tripFilelength} )
 	</insert>
 	
 	<update id="updateTrip">
