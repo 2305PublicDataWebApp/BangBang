@@ -22,7 +22,7 @@
 	<body>
     		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
     	<div class="container">
-    		<div class="center">
+    		<div class="secenter">
     			<div class="reviewsubject">
     				<span>후기 수정</span>
     			</div>
