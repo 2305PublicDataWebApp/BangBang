@@ -56,20 +56,26 @@
 	                <div style="display: flex; justify-content: center;">
 	                    <div id="page">
 	                    	<c:if test="${tPInfo.tStartNavi ne '1' }">
-	                    		<c:url var="pageUrl" value="/trip/t_list.do">
-	                    			<c:param name="page" value="${tPInfo.startNavi -1 }"></c:param>
+	                    		<c:url var="pageUrl" value="/trip/t_search.do">
+	                    			<c:param name="page" value="${tPInfo.tStartNavi -1 }"></c:param>
+	                    			<c:param name="searchCondition" value="${searchCondition }"></c:param>
+									<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
 	                    		</c:url>
 		                        <a href="${pageUrl }">[이전]</a>
 	                    	</c:if>
 	                        <c:forEach begin="${tPInfo.tStartNavi }" end="${tPInfo.tEndNavi }" var="p">
-	                        	<c:url var="pageUrl" value="/trip/t_list.do">
+	                        	<c:url var="pageUrl" value="/trip/t_search.do">
 	                        		<c:param name="page" value="${p }"></c:param>
+	                        		<c:param name="searchCondition" value="${searchCondition }"></c:param>
+									<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
 	                        	</c:url>
 	                        	<a href="${pageUrl }">${p }</a>&nbsp;
 	                        </c:forEach>
 	                        <c:if test="${tPInfo.tEndNavi ne tPInfo.tNaviTotalCount }">
-	                        	<c:url var="pageUrl" value="/trip/t_list.do">
+	                        	<c:url var="pageUrl" value="/trip/t_search.do">
 	                        		<c:param name="page" value="${tPInfo.tEndNavi +1 }"></c:param>
+	                        		<c:param name="searchCondition" value="${searchCondition }"></c:param>
+									<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
 	                        	</c:url>
 		                        <a href="${pageUrl }">[다음]</a>
 	                        </c:if>

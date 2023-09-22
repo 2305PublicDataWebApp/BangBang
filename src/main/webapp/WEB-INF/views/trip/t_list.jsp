@@ -63,7 +63,7 @@
 	                        <!-- sts에서 페이징 처리하기 -->
 	                    	<c:if test="${tPInfo.tStartNavi ne '1' }">
 	                    		<c:url var="pageUrl" value="/trip/t_list.do">
-	                    			<c:param name="page" value="${tPInfo.startNavi -1 }"></c:param>
+	                    			<c:param name="page" value="${tPInfo.tStartNavi -1 }"></c:param>
 	                    		</c:url>
 		                        <a href="${pageUrl }">[이전]</a>
 	                    	</c:if>
