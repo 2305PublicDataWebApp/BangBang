@@ -58,7 +58,7 @@
 				<label class="col-sm-2 col-form-label">이미지</label>
 				<div class="col-sm-10">
 					<div class="form-control">
-						<img id="preview" style="width:100px; height:100px;" />
+						<img id="preview" style="width:830px; height:100px;" />
 					</div><br>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">링크 URL</label>
 				<div class="col-sm-10">
-					<input type="text" name="linkUrl" class="form-control" required=""><br>
+					<input type="text" name="linkUrl" class="form-control" placeholder="http://www.naver.com/" required=""><br>
 				</div>
 			</div>
 	
@@ -112,9 +112,9 @@
         var unitPrice = document.getElementById("bannerSize");
 
         if (selectElement.value === "main_b") {
-            unitPrice.value = "420*210";
+            unitPrice.value = "1516*400";
         } else if (selectElement.value === "trip_b") {
-            unitPrice.value = "100*100";
+            unitPrice.value = "1684*80";
         } else {
             unitPrice.value = "";
         }

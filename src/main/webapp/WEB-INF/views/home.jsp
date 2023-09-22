@@ -32,7 +32,7 @@
 			        <div class="carousel-inner">
 			        <c:forEach items="${bList }" var="banner">
 			        	<div id="main-banner" class="carousel-item active">
-			                <img class="banner-img" src="${banner.bannerFilePath }" class="d-block w-100" alt="벚꽃">
+			                <a href="${banner.linkUrl }"><img class="banner-img" src="${banner.bannerFilePath }" class="d-block w-100" alt="메인배너"></a>
 			            </div>
 			        </c:forEach>
 <!-- 			            <div id="main-banner" class="carousel-item active"> -->
@@ -95,7 +95,7 @@
                         <div class="carousel-inner">
 							<c:forEach items="${tbList }" var="trip_banner">
 					        	<div id="event-banner" class="carousel-item active">
-					                <img class="banner-img" src="${trip_banner.bannerFilePath }" class="d-block w-100" alt="벚꽃">
+					                <a href="${banner.linkUrl }"><img class="banner-img" src="${trip_banner.bannerFilePath }" class="d-block w-100" alt="이벤트배너"></a>
 					            </div>
 					        </c:forEach>                        
 <!--                             <div id="event-banner" class="carousel-item active"> -->

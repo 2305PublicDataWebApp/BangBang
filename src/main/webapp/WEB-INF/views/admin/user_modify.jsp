@@ -21,7 +21,7 @@
 	    
 	    <!-- main -->
 	    <main class="main">
-	        <div class="main-container">
+	        <div class="main-container" style="font-family: 'TheJamsil5Bold';">
 	
 	            <!-- *****마이페이지 ***** 프로필 -->
 <%-- 	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include> --%>
