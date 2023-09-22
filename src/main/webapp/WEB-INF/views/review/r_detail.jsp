@@ -33,7 +33,7 @@
 			<hr>
 			
 	                <!-- 댓글 등록 -->
-<%-- 	                <form action="/rreply/rr_insert.do" method="post">
+	                <form action="/rreply/rr_insert.do" method="post">
 	                    <div>
 	                        <input type="hidden" name="rReviewNo" value="${review.reviewNo }">
 	                        <textarea rows="4" cols="100" name="rReplyContent"></textarea>
@@ -41,7 +41,7 @@
 	                            <input type="submit" value="등록">
 	                        </div>
 	                    </div>
-	                </form> --%>
+	                </form>
 	                
 	                <!-- 댓글 목록 -->
 	                <div>
