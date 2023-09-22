@@ -134,16 +134,17 @@ button {
 
 .menu-info {
     float: left;
-    padding : 0 100px 0 140px;
+    padding : 0 108px 0 140px;
 }
+
 .menu-info-board {
     float: left;
-    padding : 0 85px 0 65px;
+    padding : 0 83px 0 75px;
 }
 
 .menu-info-comment {
     float: left;
-    padding : 0 100px 0 0;
+    padding : 0 113px 0 0;
 }
 
 .menu-icon {
@@ -156,13 +157,13 @@ button {
 #info-text {
 	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 28px;
+    right: 21px;
 }
 
 #modify-text {
 	font-family: 'TheJamsil5Bold';
     position: relative;
-    right: 28px;
+    right: 23px;
 }
 
 #my-board {
