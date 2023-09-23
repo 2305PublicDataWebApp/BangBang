@@ -47,7 +47,7 @@ public class TripController {
 			mv.setViewName("trip/t_insert");
 		}
 		else {
-			mv.addObject("msg", "관리자 정보가 존재하지 않습니다.");
+			mv.addObject("msg", "로그인 후 이용 가능");
 			mv.addObject("error", "관리자 로그인이 필요합니다.");
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
@@ -82,15 +82,15 @@ public class TripController {
 				}
 			}
 			else {
-				mv.addObject("msg", "관리자 정보가 존재하지 않습니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("error", "관리자 로그인이 필요합니다.");
 				mv.addObject("url", "/index.jsp");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/trip/t_insert.do");
+			mv.addObject("url", "/trip/t_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -155,9 +155,9 @@ public class TripController {
 			mv.addObject("trip", trip);
 			mv.setViewName("trip/t_modify");
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 조회에 실패했습니다.");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/trip/t_insert.do");
+			mv.addObject("url", "/trip/t_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -191,14 +191,14 @@ public class TripController {
 					mv.setViewName("redirect:/trip/t_detail.do?tripNo=" + trip.getTripNo());
 				}
 				else {
-					mv.addObject("msg", "게시글 수정이 완료되지 않았습니다.");
+					mv.addObject("msg", "게시글 수정 실패");
 					mv.addObject("error", "게시글 수정 실패");
 					mv.addObject("url", "/trip/t_modify.do?tripNo=" + trip.getTripNo());
 					mv.setViewName("common/error_page");
 				}
 			}
 			else {
-				mv.addObject("msg", "게시글 수정 권한이 없습니다.");
+				mv.addObject("msg", "게시글 수정 권한 없음");
 				mv.addObject("error", "게시글 수정 불가");
 				mv.addObject("url", "/trip/t_modify.do?tripNo=" + trip.getTripNo());
 				mv.setViewName("common/error_page");
@@ -206,7 +206,7 @@ public class TripController {
 		} catch (Exception e) {
 			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/trip/t_list.do");
+			mv.addObject("url", "/trip/t_modify.do?tripNo=" + trip.getTripNo());
 			mv.setViewName("common/error_page");
 		}
 		return mv;

@@ -47,13 +47,12 @@ public class NoticeController {
 				}
 				mv.setViewName("redirect:/notice/n_list.do");
 			}else {
-				mv.addObject("msg","관리자 정보가 존재하지 않습니다.");
-				mv.addObject("error","로그인이 필요합니다");
+				mv.addObject("msg","로그인 후 이용 가능");
 				mv.addObject("url","/index.jsp");
 				mv.setViewName("common/error_page");
 			}
 		}catch(Exception e) {
-			mv.addObject("msg","게시글 등록 실패");
+			mv.addObject("msg","서비스 실패");
 			mv.addObject("error",e.getMessage());			
 			mv.addObject("url","/notice/n_list.do");
 			mv.setViewName("common/error_page");
@@ -70,7 +69,7 @@ public class NoticeController {
 			mv.addObject("notice", notice);
 			mv.setViewName("notice/n_modify");
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 조회 실패");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/n_list.do");
 			mv.setViewName("common/error_page");
@@ -92,18 +91,16 @@ public class NoticeController {
 					mv.setViewName("redirect:/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 				}else {
 					mv.addObject("msg", "게시글 수정 실패");
-					mv.addObject("error","게시글 수정 실패");
 					mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 					mv.setViewName("common/error_page");
 				}
 			}else {
-				mv.addObject("msg", "게시글 수정 실.");
-				mv.addObject("error","게시글 수정 실패");
+				mv.addObject("msg", "게시글 수정 권한 없음");
 				mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 수정 실패");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/n_detail.do?noticeNo="+notice.getNoticeNo());
 			mv.setViewName("common/error_page");
@@ -123,7 +120,7 @@ public class NoticeController {
 			mv.setViewName("notice/n_list");
 			mv.addObject("nList", nList).addObject("nInfo", nInfo).setViewName("notice/n_list");
 		} catch (Exception e) {
-			mv.addObject("msg", "목록 조회 오류");
+			mv.addObject("msg", "관리자에게 문의 바랍니다.");
 			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
@@ -139,7 +136,7 @@ public class NoticeController {
 			mv.addObject("notice", noticeOne);
 			mv.setViewName("notice/n_detail");
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 상세 조회 실패");
+			mv.addObject("msg", "관리자에게 문의 바랍니다.");
 			mv.addObject("error",e.getMessage());
 			mv.addObject("url", "/notice/n_list.do");
 			mv.setViewName("common/error_page");
