@@ -21,46 +21,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Override
-	public int insertReview(Review review) {
-		int result = rStore.insertReview(sqlSession, review);
-		return result;
-	}
-	@Override
-	public int modifyReview(Review review) {
-		int result = rStore.modifyReview(sqlSession, review);
-		return result;
-	}
-	@Override
-	public int deleteReview(Review review) {
-		int result = rStore.deleteReview(sqlSession, review);
-		return result;
-	}
-	@Override
-	public Integer getRListCount() {
-		int result = rStore.selectListCount(sqlSession);
-		return result;
-	}
-	@Override
-	public Review selectReviewByNo(Integer reviewNo) {
-		Review review = rStore.selectReviewByNo(sqlSession, reviewNo);
-		return review;
-	}
-	@Override
-	public List<Review> selectReviewList(RPageInfo rInfo) {
-		List<Review> rList = rStore.selectReviewByList(sqlSession, rInfo);
-		return rList;
-	}
-	@Override
-	public List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rParamMap) {
-		List<Review> searchList = rStore.selectReviewByKeyword(sqlSession, rInfo, rParamMap);
-		return searchList;
-	}
-	@Override
-	public int getRListCount(Map<String, String> rParamMap) {
-		int result = rStore.selectListCount(sqlSession, rParamMap);
-		return result;
-	}
+
 	
 	// 마이페이지 - 게시글 전체 갯수 조회
 	@Override
@@ -81,5 +42,62 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<Review> selectReviewList() {
 		List<Review> rList = rStore.selectReviewList(sqlSession);
 		return rList;
+	}
+	
+	// 게시글 번호에 맞는 게시글 상세 조회
+	@Override
+	public Review selectReviewByNo(Integer reviewNo) {
+		Review review = rStore.selectReviewByNo(sqlSession, reviewNo);
+		return review;
+	}
+
+	// 전체 게시글 갯수
+	@Override
+	public Integer getRListCount() {
+		int result = rStore.selectListCount(sqlSession);
+		return result;
+	}
+	
+	// 게시글 리스트 조회(페이징 처리)
+	@Override
+	public List<Review> selectReviewList(RPageInfo rInfo) {
+		List<Review> rList = rStore.selectReviewByList(sqlSession, rInfo);
+		return rList;
+	}
+
+	// 게시글 작성
+	@Override
+	public int insertReview(Review review) {
+		int result = rStore.insertReview(sqlSession, review);
+		return result;
+	}
+
+	// 게시글 삭제
+	@Override
+	public int deleteReview(Review review) {
+		int result = rStore.deleteReview(sqlSession, review);
+		return result;
+	}
+
+	// 게시글 수정
+	@Override
+	public int modifyReview(Review review) {
+		int result = rStore.modifyReview(sqlSession, review);
+		return result;
+	}
+
+	
+	// 키워드 검색
+	@Override
+	public List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rparamMap) {
+		List<Review> searchList = rStore.searchReviewByKeyword(sqlSession, rInfo, rparamMap);
+		return searchList;
+	}
+
+	// 검색 게시글 전체 갯수
+	@Override
+	public int getRListCount(Map<String, String> rparamMap) {
+		int result = rStore.selectListCount(sqlSession, rparamMap);
+		return result;
 	}
 }

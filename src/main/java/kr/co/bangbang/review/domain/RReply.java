@@ -40,11 +40,11 @@ public class RReply {
 		this.rReplyContent = rReplyContent;
 	}
 
-	public String getRrUserId() {
+	public String getrrUserId() {
 		return rrUserId;
 	}
 
-	public void setRrUserId(String rrUserId) {
+	public void setrrUserId(String rrUserId) {
 		this.rrUserId = rrUserId;
 	}
 

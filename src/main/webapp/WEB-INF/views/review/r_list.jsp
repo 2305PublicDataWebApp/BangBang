@@ -82,7 +82,7 @@
 					</c:if>
 				</div>
 				<div>
-						<button class="button" type="button" onclick="showRegisterRForm()">글쓰기</button>
+						<button id="buttonr" type="button" onclick="showRegisterRForm()">글쓰기</button>
 				</div>
 			</div>
 		</div>

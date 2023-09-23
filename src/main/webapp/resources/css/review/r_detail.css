@@ -54,3 +54,32 @@
 	margin-left:820px;
 	margin-bottom:10px;
 }
+
+.replymodi{
+	width:90px;
+	height:40px;
+}
+.textre{
+	margin-top :20px;
+	resize:none;
+	margin-left:30px;
+}
+
+.texbu{
+	margin: 0 auto;
+}
+
+
+.replyta{
+	width:900px;
+}
+
+td, tr{
+	text-align:center;
+	padding-bottom:15px;
+	padding-top:15px;
+	margin-right:50px;
+}
+.mo{
+	margin-right:20px;
+}

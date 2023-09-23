@@ -11,7 +11,7 @@
 		<script>
 			const result = "${ msg }";
 			const url = "${ url }";
-			alert(result);
+ 			alert(result);
 			location.href = url
 		</script>
 	</body>
