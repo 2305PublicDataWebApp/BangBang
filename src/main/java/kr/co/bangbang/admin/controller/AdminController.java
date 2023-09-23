@@ -29,17 +29,6 @@ public class AdminController {
 	private AdminService aService;
 	
 	/**
-	 * 관리자 회원가입 페이지 이동
-	 * @param mv
-	 * @return ModelAndView
-	 */
-	@RequestMapping(value="a_join.do", method=RequestMethod.GET)
-	public ModelAndView showAdminRegister(ModelAndView mv) {
-		mv.setViewName("admin/a_join");
-		return mv;
-	}
-	
-	/**
 	 * 관리자 회원가입
 	 * @param mv
 	 * @param adminId
@@ -60,11 +49,11 @@ public class AdminController {
 			Admin admin = new Admin(adminId, adminPw, adminPw, adminEmail);
 			int result = aService.adminRegister(admin);
 			if(result > 0) {
-				mv.addObject("msg", "관리자 회원가입에 성공하였습니다.");
+				mv.addObject("msg", "관리자 회원가입 성공");
 				mv.addObject("url", "/admin/a_login.do");
 				mv.setViewName("common/inform");
 			} else {
-				mv.addObject("msg", "회원가입에 실패하였습니다.");
+				mv.addObject("msg", "관리자 회원가입 실패");
 				mv.addObject("url", "/admin/join.do");
 				mv.setViewName("common/error_page");
 			}
@@ -74,6 +63,85 @@ public class AdminController {
 			mv.addObject("url", "/admin/join.do");
 			mv.setViewName("common/error_page");
 		}
+		return mv;
+	}
+
+	//관리자-회원정보수정
+		@RequestMapping(value="uModify.do", method=RequestMethod.POST)
+		public ModelAndView userModify(
+				ModelAndView mv
+				, @ModelAttribute User user
+				, String userId
+				, HttpSession session) {
+			try {
+	//			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
+				String sessionId = "admin";
+				
+				if(sessionId !=null && sessionId != "") {
+					int result = aService.updateUser(user);
+					if(result > 0) { // 수정 성공 
+						mv.setViewName("redirect:/admin/aInfo.do?userId=" + userId);
+					} else { // 수정 실패
+						mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+						mv.addObject("url", "redirect:/admin/uModify.do?userId=" + userId);
+						mv.setViewName("common/error_page");
+					}
+				} else {
+					mv.addObject("msg", "로그인 후 이용바랍니다.");
+					mv.addObject("url", "/admin/a_login.do");
+					mv.setViewName("common/error_page");
+				}
+			} catch (Exception e) {
+				mv.addObject("msg", "관리자에게 문의해주세요");
+				mv.addObject("error", e.getMessage());
+				mv.addObject("url", "/admin/a_login.do");
+				mv.setViewName("common/error_page");
+			}
+			return mv;
+		}
+
+	//관리자-회원탈퇴
+		@RequestMapping(value="uRemove.do", method=RequestMethod.GET)
+		public ModelAndView removeUser(
+				ModelAndView mv
+				, String userId
+				, HttpSession session) {
+			try {
+				String sessionId = (String)session.getAttribute("adminId"); // 세션 아이디
+				
+				if(sessionId != "" && sessionId != null) {
+					int result = aService.deleteUser(userId);
+					if(result > 0) {
+						mv.addObject("msg", "회원 탈퇴되었습니다.");
+						mv.addObject("url", "/admin/list.do");
+						mv.setViewName("common/inform");
+					} else { // 탈퇴 실패
+						mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
+						mv.addObject("url", "redirect:/admin/uModify.do?userId=" + sessionId);
+						mv.setViewName("common/error_page");
+					}
+				} else { // 로그인 세션 정보 없을 경우
+					mv.addObject("msg", "로그인 후 이용바랍니다.");
+					mv.addObject("url", "/admin/login.do");
+					mv.setViewName("common/error_page");
+				}
+			} catch (Exception e) { // 예외처리
+				mv.addObject("msg", "관리자에게 문의해주세요");
+				mv.addObject("error", e.getMessage());
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/error_page");
+			}
+			return mv;
+		}
+
+	/**
+	 * 관리자 회원가입 페이지 이동
+	 * @param mv
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value="a_join.do", method=RequestMethod.GET)
+	public ModelAndView showAdminRegister(ModelAndView mv) {
+		mv.setViewName("admin/a_join");
 		return mv;
 	}
 	
@@ -107,7 +175,7 @@ public class AdminController {
 				session.setAttribute("adminPw", aOne.getAdminPw());
 				mv.setViewName("redirect:/index.jsp");
 			} else { // 로그인 실패
-				mv.addObject("msg", "로그인에 실패하였습니다.");
+				mv.addObject("msg", "관리자 로그인 실패");
 				mv.addObject("url", "/admin/a_login.do");
 				mv.setViewName("common/error_page");
 			}
@@ -120,7 +188,12 @@ public class AdminController {
 		return mv;
 	}
 	
-	// 관리자 로그아웃
+	/**
+	 * 관리자 로그아웃
+	 * @param mv
+	 * @param session
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "a_logout.do", method = RequestMethod.GET)
 	public ModelAndView adminLogout(
 			ModelAndView mv
@@ -129,7 +202,7 @@ public class AdminController {
 			session.invalidate();
 			mv.setViewName("redirect:/index.jsp");
 		} else {
-			mv.addObject("msg", "로그아웃에 실패하였습니다.");
+			mv.addObject("msg", "로그아웃 실패");
 			mv.addObject("url", "redirect:/index.jsp");
 			mv.setViewName("common/error_page");
 		}
@@ -151,31 +224,6 @@ public class AdminController {
 		return mv;
 	}
 
-	private APageInfo getPageInfo(Integer currentPage, Integer totalCount) {
-		int recordCountPerPage = 10;
-		int naviCountPerPage = 5;
-		
-		int naviTotalCount;
-		naviTotalCount 
-			= (int)Math.ceil((double)totalCount/recordCountPerPage);   //6.2 -> 7 올림해주는 식
-		
-		int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;  //이거뭐냐...
-		
-		int endNavi = startNavi + naviCountPerPage - 1;
-		
-		if(endNavi > naviTotalCount) {
-			endNavi = naviTotalCount;
-		}
-			
-		APageInfo aInfo = new APageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
-		
-		return aInfo;
-	}
-	
-	
-	
-	
-	
 	@RequestMapping(value = "searchUserList.do", method = RequestMethod.GET)
 	public String searchUserList(
 			@RequestParam("searchCondition") String searchCondition
@@ -261,74 +309,25 @@ public class AdminController {
 	}
 	
 	
-	//관리자-회원정보수정
-	@RequestMapping(value="uModify.do", method=RequestMethod.POST)
-	public ModelAndView userModify(
-			ModelAndView mv
-			, @ModelAttribute User user
-			, String userId
-			, HttpSession session) {
-		try {
-//			String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
-			String sessionId = "admin";
-			
-			if(sessionId !=null && sessionId != "") {
-				int result = aService.updateUser(user);
-				if(result > 0) { // 수정 성공 
-					mv.setViewName("redirect:/admin/aInfo.do?userId=" + userId);
-				} else { // 수정 실패
-					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
-					mv.addObject("url", "redirect:/admin/uModify.do?userId=" + userId);
-					mv.setViewName("common/error_page");
-				}
-			} else {
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
-				mv.addObject("url", "/admin/a_login.do");
-				mv.setViewName("common/error_page");
-			}
-		} catch (Exception e) {
-			mv.addObject("msg", "관리자에게 문의해주세요");
-			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/admin/a_login.do");
-			mv.setViewName("common/error_page");
+	private APageInfo getPageInfo(Integer currentPage, Integer totalCount) {
+		int recordCountPerPage = 10;
+		int naviCountPerPage = 5;
+		
+		int naviTotalCount;
+		naviTotalCount 
+			= (int)Math.ceil((double)totalCount/recordCountPerPage);   //6.2 -> 7 올림해주는 식
+		
+		int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;  //이거뭐냐...
+		
+		int endNavi = startNavi + naviCountPerPage - 1;
+		
+		if(endNavi > naviTotalCount) {
+			endNavi = naviTotalCount;
 		}
-		return mv;
-	}
-	
-	
-	
-	//관리자-회원탈퇴
-	@RequestMapping(value="uRemove.do", method=RequestMethod.GET)
-	public ModelAndView removeUser(
-			ModelAndView mv
-			, String userId
-			, HttpSession session) {
-		try {
-			String sessionId = (String)session.getAttribute("adminId"); // 세션 아이디
 			
-			if(sessionId != "" && sessionId != null) {
-				int result = aService.deleteUser(userId);
-				if(result > 0) {
-					mv.addObject("msg", "회원 탈퇴되었습니다.");
-					mv.addObject("url", "/admin/list.do");
-					mv.setViewName("common/inform");
-				} else { // 탈퇴 실패
-					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
-					mv.addObject("url", "redirect:/admin/uModify.do?userId=" + sessionId);
-					mv.setViewName("common/error_page");
-				}
-			} else { // 로그인 세션 정보 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
-				mv.addObject("url", "/admin/login.do");
-				mv.setViewName("common/error_page");
-			}
-		} catch (Exception e) { // 예외처리
-			mv.addObject("msg", "관리자에게 문의해주세요");
-			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/user/login.do");
-			mv.setViewName("common/error_page");
-		}
-		return mv;
+		APageInfo aInfo = new APageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
+		
+		return aInfo;
 	}
 	
 	

@@ -70,14 +70,16 @@ public class UserController {
 			
 			int result = uService.userRegister(user);
 			if(result > 0) {
-				mv.setViewName("user/login"); // 성공 시 로그인 페이지
+				mv.addObject("msg", "회원가입 성공");
+				mv.addObject("url", "/user/login.do");
+				mv.setViewName("common/inform"); // 성공 시 로그인 페이지
 			} else {  // 실패
-				mv.addObject("msg", "회원가입에 실패하였습니다.");
+				mv.addObject("msg", "회원가입 실패");
 				mv.addObject("url", "/user/join.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
-			mv.addObject("msg", "회원가입 실패");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/user/join.do");
 			mv.setViewName("common/error_page");
@@ -104,12 +106,12 @@ public class UserController {
 				session.setAttribute("userNickname", uOne.getUserNickname());
 				mv.setViewName("redirect:/index.jsp");
 			} else { // 실패
-				mv.addObject("msg", "로그인에 실패하였습니다.");
+				mv.addObject("msg", "로그인 실패");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
-			mv.addObject("msg", "회원가입 실패");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/user/join.do");
 			mv.setViewName("common/error_page");
@@ -131,7 +133,7 @@ public class UserController {
 			session.invalidate();
 			mv.setViewName("redirect:/index.jsp");
 		} else {
-			mv.addObject("msg", "로그아웃에 실패하였습니다.");
+			mv.addObject("msg", "로그아웃 실패");
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");
 		}
@@ -194,17 +196,17 @@ public class UserController {
 					mv.addObject("profile", profile);
 					mv.setViewName("user/mypage");
 				} else {
-					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("msg", "정보 조회 실패");
 					mv.addObject("url", "redirect:/index.jsp");
 					mv.setViewName("common/error_page");
 				}
 			} else { // 세션에 저장된 아이디가 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-		mv.addObject("msg", "서비스 실패");
+		mv.addObject("msg", "관리자에게 문의바랍니다.");
 		mv.addObject("error", e.getMessage());
 		mv.addObject("url", "redirect:/index.jsp");
 		mv.setViewName("common/error_page");
@@ -234,17 +236,17 @@ public class UserController {
 					mv.addObject("profile", profile);
 					mv.setViewName("user/info");
 				} else { // 실패 시
-					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("msg", "정보 조회 실패");
 					mv.addObject("url", "redirect:/index.jsp");
 					mv.setViewName("common/error_page");
 				}
 			} else { // 세션에 저장된 아이디가 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
-			mv.addObject("msg", "서비스 실패");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "redirect:/index.jsp");
 			mv.setViewName("common/error_page");
@@ -268,7 +270,7 @@ public class UserController {
 		if(sessionId != null && !sessionId.isEmpty()) {
 			mv.setViewName("user/check_pw"); // 비밀번호 확인 페이지로 이동
 		} else {
-			mv.addObject("msg", "로그인 후 이용바랍니다.");
+			mv.addObject("msg", "로그인 후 이용 가능");
 			mv.addObject("url", "/user/login.do");
 			mv.setViewName("errorPage"); // 오류 페이지로 이동
 		}
@@ -307,62 +309,6 @@ public class UserController {
 	}
 	
 	/**
-	 * 회원 탈퇴 비밀번호 검증 페이지 이동
-	 * @param mv
-	 * @param user
-	 * @param session
-	 * @return ModelAndView
-	 */
-	@RequestMapping(value="remove_check.do", method=RequestMethod.GET)
-	public ModelAndView removeCheckForm(
-			ModelAndView mv
-			, @ModelAttribute User user
-			, HttpSession session) {
-		
-		String sessionId = (String)session.getAttribute("userId"); // 세션 아이디
-		
-		if(sessionId != null && !sessionId.isEmpty()) {
-			mv.setViewName("user/remove_check"); // 비밀번호 확인 페이지로 이동
-		} else {
-			mv.addObject("msg", "로그인 후 이용바랍니다.");
-			mv.addObject("url", "/user/login.do");
-			mv.setViewName("errorPage"); // 오류 페이지로 이동
-		}
-		return mv;
-	}
-	
-	/**
-	 * 회원 탈퇴 비밀번호 검증
-	 * @param mv
-	 * @param userPw
-	 * @param session
-	 * @return ModelAndView
-	 */
-	@RequestMapping(value="remove_check.do", method=RequestMethod.POST)
-	public ModelAndView removeCheck(
-			ModelAndView mv
-			, @RequestParam("userPw") String userPw
-			, HttpSession session) {
-		String userId = (String)session.getAttribute("userId"); // 세션 아이디
-		
-		User uUser = new User();
-		uUser.setUserId(userId);
-		uUser.setUserPw(userPw);
-		User user = uService.userLoginCheck(uUser);
-		
-		if(user != null) {
-			User uOne = uService.selectOneById(userId);
-			mv.addObject("user", uOne);
-			mv.setViewName("redirect:/user/remove.do?userId=" + userId);
-		} else {
-			mv.addObject("msg", "비밀번호가 일치하지 않습니다.");
-			mv.addObject("url", "/user/check_pw");
-			mv.setViewName("error_page"); // 오류 페이지로 이동
-		}
-		return mv;
-	}
-	
-	/**
 	 * 회원 정보 수정
 	 * @param mv
 	 * @param user
@@ -389,12 +335,12 @@ public class UserController {
 					mv.setViewName("common/error_page");
 				}
 			} else {
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/user/login.do");
 			mv.setViewName("common/error_page");
@@ -419,21 +365,21 @@ public class UserController {
 			if(userId.equals(sessionId) && sessionId != "" && sessionId != null) {
 				int result = uService.deleteUser(userId);
 				if(result > 0) {
-					mv.addObject("msg", "회원 탈퇴되었습니다.");
+					mv.addObject("msg", "회원 탈퇴 성공");
 					mv.addObject("url", "/user/logout.do");
 					mv.setViewName("common/inform");
 				} else { // 탈퇴 실패
-					mv.addObject("msg", "회원 정보 수정에 실패하였습니다.");
-					mv.addObject("url", "redirect:/user/modify.do?userId=" + sessionId);
+					mv.addObject("msg", "회원 탈퇴 실패");
+					mv.addObject("url", "redirect:/user/remove.do?userId=" + sessionId);
 					mv.setViewName("common/error_page");
 				}
 			} else { // 로그인 세션 정보 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) { // 예외처리
-			mv.addObject("msg", "관리자에게 문의해주세요");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/user/login.do");
 			mv.setViewName("common/error_page");
@@ -472,17 +418,17 @@ public class UserController {
 					mv.addObject("profile", profile);
 					mv.setViewName("user/modify");
 				} else {
-					mv.addObject("msg", "정보 조회에 실패하였습니다.");
+					mv.addObject("msg", "정보 조회 실패");
 					mv.addObject("url", "redirect:/index.jsp");
 					mv.setViewName("common/error_page");
 				}
 			} else { // 세션에 저장된 아이디가 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "서비스 실패");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "redirect:/index.jsp");
 			mv.setViewName("common/error_page");
@@ -519,12 +465,12 @@ public class UserController {
 					mv.addObject("rList", rList);
 					mv.setViewName("user/my_board");
 				} else { // 조회 실패
-					mv.addObject("msg", "게시글 조회에 실패하였습니다.");
+					mv.addObject("msg", "게시글 조회 실패");
 					mv.addObject("url", "/user/mypage.do?userId="+sessionId);
 					mv.setViewName("common/error_page");
 				}
 			} else { // 세션에 저장된 아이디가 없을 경우
-				mv.addObject("msg", "로그인 후 이용바랍니다.");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/user/login.do");
 				mv.setViewName("common/error_page");
 			}
