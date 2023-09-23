@@ -65,7 +65,9 @@
 		                        <td>${rreply.rrUserId }</td>
 		                        <td>(${rreply.rReplyDate })</td>
 		                        <td>${rreply.rReplyContent }</td>
+		                        <input type="hidden" name="rrAdminId" value="${rreply.rrAdminId }">
 		                        <td>
+		                        <c:if test="${rreply.rrUserId eq userId}">
 		                        <a class="mo" href="javascript:void(0);" onclick="showModifyForm(this, '${rreply.rReplyContent }');">수정하기</a>
 						<c:url var="delUrl" value="/rreply/rr_delete.do">
 							<c:param name="rReplyNo" value="${rreply.rReplyNo }" />
@@ -73,10 +75,22 @@
 						<c:param name="rrUserId" value="${rreply.rrUserId }" />
 <!-- 						성공하면 디테일로 가기 위해 필요한 boardNo셋팅 -->
 						<c:param name="rReviewNo" value="${rreply.rReviewNo }" />
-					</c:url>
+						</c:url>
 					<a href="javascript:void(0);" onclick="deleteReply('${delUrl}');">삭제하기</a>
 					</td>
 		            	</tr>
+		                        </c:if>
+		                        <c:if test="${adminId ne null }">
+		                         <a class="mo" href="javascript:void(0);" onclick="showModifyForm(this, '${rreply.rReplyContent }');">수정하기</a>
+						<c:url var="delUrl" value="/rreply/rr_delete.do">
+							<c:param name="rReplyNo" value="${rreply.rReplyNo }" />
+<!-- 						내것만 지우도록 하기 위해서 replyWriter를 추가함 -->
+						<c:param name="rrUserId" value="${rreply.rrUserId }" />
+<!-- 						성공하면 디테일로 가기 위해 필요한 boardNo셋팅 -->
+						<c:param name="rReviewNo" value="${rreply.rReviewNo }" />
+						</c:url>
+					<a href="javascript:void(0);" onclick="deleteReply('${delUrl}');">삭제하기</a>
+		                        </c:if>
 		                    <tr id="rReplyModifyForm" style="display:none;">
 								<td><input class = "modite" id="rReplyContent" type="text" size="50" name="rReplyContent" value="${rreply.rReplyContent }"></td>
 								<td><input type="button" onclick="rReplyModify(this,'${rreply.rReplyNo}', '${rreply.rReviewNo }');" value="완료"></td>
