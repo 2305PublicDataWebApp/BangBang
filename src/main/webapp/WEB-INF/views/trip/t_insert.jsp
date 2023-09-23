@@ -54,7 +54,7 @@
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="thum">썸네일</label>
-	                                <input type="file" id="thum" name="uploadFile">
+	                                <input type="file" id="thum" name="tUploadFile">
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="infoaddr">상세주소</label>
