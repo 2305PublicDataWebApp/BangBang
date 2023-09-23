@@ -45,7 +45,7 @@ public class TReplyController {
 			else {
 				mv.addObject("msg", "로그인이 필요한 서비스 입니다.");
 				mv.addObject("error", "로그인 정보 조회 실패");
-				mv.addObject("url", url);
+				mv.addObject("url", "/user/join.do" );
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
@@ -62,10 +62,12 @@ public class TReplyController {
 		// 세션은 서버가 올라갈 때 자동으로 생성 됨
 		String url = "";
 		try {
-			String tReplyWriter = (String)session.getAttribute("userId");
-			if(!tReplyWriter.equals("") || tReplyWriter.contains("amdin")) {
-				tReply.settRUserId(tReplyWriter);
-				url= "/trip/t_detail.do?tripNo="+ tReply.gettTripNo();
+			String userId = (String)session.getAttribute("userId");
+			String tRAdminId = (String)session.getAttribute("adminId");
+			String replyWriter = tReply.gettRUserId();
+			url = "/trip/t_detail.do?tripNo="+tReply.gettTripNo();
+			if(!replyWriter.equals("") && replyWriter.equals(userId)|| tRAdminId.contains("amdin")) {
+				tReply.settRUserId(userId);
 				int result = tRService.updateTReply(tReply);
 				if(result > 0) {
 					mv.setViewName("redirect:" + url);
@@ -98,10 +100,11 @@ public class TReplyController {
 		String url = "";
 		try {
 			// 세션에서 아이디 가져오는거 많이 쓰임
-			String memberId = (String)session.getAttribute("memberId");  // 세션에서 getAttribute로 값을 가져오면 오브젝트인가 암튼 그런식으로 가져와기 때문에 형변환 해줘야 함
+			String userId = (String)session.getAttribute("userId");  // 세션에서 getAttribute로 값을 가져오면 오브젝트인가 암튼 그런식으로 가져와기 때문에 형변환 해줘야 함
+			String tRAdminId = (String)session.getAttribute("adminId");
 			String replyWriter = tReply.gettRUserId();
-			url = "/trip/t_detail.do?tTripNo="+tReply.gettTripNo();
-			if(replyWriter != null && replyWriter.equals(memberId)) {  // null이 아니면 진행해라
+			url = "/trip/t_detail.do?tripNo="+tReply.gettTripNo();
+			if((replyWriter != null && replyWriter.equals(userId)) || tRAdminId.contains("admin")) {  // null이 아니면 진행해라
 //				Reply reply = new Reply();
 //				reply.setReplyNo(replyNo);
 //				reply.setReplyWriter(replyWriter);  // 값이 많아져서 ModelAttribute로 받아옴
@@ -128,7 +131,6 @@ public class TReplyController {
 		} catch (Exception e) {
 			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
-//			mv.addObject("url", "/board/delete.kh?boardNo=");  // 나중에 이걸로 수정할 거임
 			mv.addObject("url", url);
 			mv.setViewName("common/error_page");
 		}

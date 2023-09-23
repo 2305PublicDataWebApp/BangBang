@@ -166,13 +166,26 @@ public class TripController {
 	@RequestMapping(value="t_modify.do", method = RequestMethod.POST)
 	public ModelAndView modifyTrip(ModelAndView mv
 			, @ModelAttribute Trip trip
+			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
 			, HttpSession session
 			, HttpServletRequest request) {
 		try {
 			String adminId = (String)session.getAttribute("adminId");
 			String tAdminId = trip.gettAdminId();
-			if(tAdminId != null && tAdminId.contains("admin")) {
+			if(tAdminId != null && !tAdminId.equals("")) {
 				// 수정이라는 과정은 대체하는 것, 대체하는 방법은 삭제 후 등록
+				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {  //uploadFile이 있는지 없는지 확인 후 원래이름 확인?
+					String fileReName = trip.getTripFilerename();
+					if(fileReName != null) {
+						this.deleteFile(fileReName, request);  // 삭제해라
+					}
+					Map<String, Object> tFileMap = this.saveFile(request, uploadFile);
+					trip.setTripFilename((String)tFileMap.get("fileName"));
+					trip.setTripFilerename((String)tFileMap.get("fileRename"));
+					trip.setTripFilepath((String)tFileMap.get("filePath"));
+					trip.setTripFilelength((long)tFileMap.get("fileLength"));
+				}
+				
 				int result = tService.updateTrip(trip);
 				if(result > 0) {
 					mv.setViewName("redirect:/trip/t_detail.do?tripNo=" + trip.getTripNo());
@@ -191,9 +204,9 @@ public class TripController {
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "해당 ID는 관리자가 아닙니다.");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/trip/t_list.kh");
+			mv.addObject("url", "/trip/t_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -344,7 +357,7 @@ public class TripController {
 			// resource  경로 구하기
 			String root = request.getSession().getServletContext().getRealPath("resources");
 			// 파일 저장 경로 구하기
-			String savePath = root + "\\tuploadFiles";
+			String savePath = root + "\\tuploadFiles\\";
 			// 파일 이름 구하기
 			String fileName = uploadFile.getOriginalFilename(); 
 			// 파일 확장자 구하기
@@ -367,6 +380,16 @@ public class TripController {
 			fileMap.put("filePath", "../resources/tuploadFiles/" + fileRename);
 			fileMap.put("fileLength", fileLength);
 			return fileMap;
+		}
+
+		private void deleteFile(String fileReName, HttpServletRequest request) {
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String delFilepath = root + "\\tuploadFiles\\" + fileReName;
+			File delFile = new File(delFilepath);
+			if (delFile.exists()) {
+				delFile.delete();
+			}
+			
 		}
 		
 		

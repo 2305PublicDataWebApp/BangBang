@@ -66,7 +66,7 @@
 	                </div>
 	            </div>
 	            <div id="summer-note">
-	            	<img alt="첨부파일" src="${trip.tripFilepath }">
+	            	<img alt="상세이미지" src="${trip.tripFilepath }">
 					<pre>${trip.tripContent }</pre>
 	            </div>
 	            <div id="button">
@@ -97,15 +97,30 @@
 		                        <span>${tReply.tRUserId }</span>
 		                        <span>${tReply.tReplyDate }</span>
 		                        <input type="hidden" name="tRAdminId" value="${tReply.tRAdminId }">
-		                        <button  id="btnbtn">답글</button>
+<!-- 		                        <button  id="btnbtn">답글</button> -->
 		                        <c:if test="${tReply.tRUserId eq userId }">
 			                        <button  id="btnbtn" onclick="showModifyForm(this);">수정</button>
-			                        <button id="btnbtn" onclick= "deleteTReply('${tDelUrl}');">삭제</button>
+			                        
+			                        <c:url var="tRDelUrl" value="/tReply/delete.do">
+										<c:param name="tReplyNo" value="${tReply.tReplyNo }"></c:param>
+										<!-- 내것만 지우도록 하기 위해서 작성자가 나라는 걸 확인하는 tRUserId를 추가함. -->
+										<c:param name="tRUserId" value="${tReply.tRUserId }"></c:param>
+										<!-- 성공하면 디테일로 가기 위해 필요한 boardNo 셋팅 -->
+										<c:param name="tTripNo" value="${tReply.tTripNo }"></c:param>
+									</c:url>
+			                        <button id="btnbtn" onclick= "deleteTReply('${tRDelUrl}');">삭제</button>
 		                        </c:if>
+		                        
 		                        <c:if test="${adminId ne null }">
 <!-- 			                        <button onclick="showModifyForm(this);">수정</button> -->
-			                        <button id="btnbtn" onclick= "deleteTReply('${tDelUrl}');">삭제</button>
+									<c:url var="adminTRDelUrl" value="/tReply/delete.do">
+										<c:param name="tReplyNo" value="${tReply.tReplyNo }"></c:param>
+										<!-- 성공하면 디테일로 가기 위해 필요한 boardNo 셋팅 -->
+										<c:param name="tTripNo" value="${tReply.tTripNo }"></c:param>
+									</c:url>
+			                        <button id="btnbtn" onclick= "deleteAdminTReply('${adminTRDelUrl}');">삭제</button>
 		                        </c:if>
+		                        
 		                        <p id="reply">${tReply.tReplyContent }</p>
 		                    </div> 
 		                    <div id="tReplyModifyForm" style="display:none;">
@@ -174,6 +189,15 @@
 				document.body.appendChild(form);  // body에 form 붙이기
 				form.submit();
 			}
+			
+			function deleteTReply(tRDelUrl){
+				location.href= tRDelUrl;
+			}
+			
+			function deleteAdminTReply(adminTRDelUrl){
+				location.href= adminTRDelUrl;
+			}
+			
 		</script>
 	</body>
 </html>
