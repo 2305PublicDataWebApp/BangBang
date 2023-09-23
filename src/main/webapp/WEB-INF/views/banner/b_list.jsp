@@ -76,8 +76,8 @@
 				</div>
 				<div>
 					<div>
-						<button class="button" type="button" onclick="showRegisterBanner()" style="font-family: 'TheJamsil5Bold';">등록</button>
-						<button class="button" type="button" onclick="deleteValue();" style="font-family: 'TheJamsil5Bold';">삭제</button>
+						<button class="button" type="button" onclick="showRegisterBanner()" style="font-family: 'TheJamsil5Bold'; background-color: #FFFACD; color: black; border-color: black;">등록</button>
+						<button class="button" type="button" onclick="deleteValue();" style="font-family: 'TheJamsil5Bold'; background-color: #FFFACD; color: black; border-color: black;">삭제</button>
 					
 					</div>
 				</div>

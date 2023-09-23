@@ -22,7 +22,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h3>배너 등록<img src="/resources/images/logo.png" style="width: 37px; height: 37px; margin-right: 340px;" class="float-right"></h3>
-					<hr style="width: 1100px"><br><br>
+					<hr style="width: 1030px"><br><br>
 				</div>
 				<div class="col-md-6 text-right">
 					<!-- <img src="/img/logo.png" style="width: 30px; height: 30px;" class="float-right"> -->
@@ -95,7 +95,7 @@
 	
 			<div class="form-group row">
 				<div class="col-sm-10 offset-sm-2">
-					<input type="submit" class="btn btn-primary" value="등록"  style="background-color: #FFFACD; color: black; width: 100%;">
+					<input type="submit" class="btn btn-primary" value="등록"  style="background-color: #FFFACD; color: black; width: 100%; border-color: black;">
 				</div>
 			</div>
 		</form>
