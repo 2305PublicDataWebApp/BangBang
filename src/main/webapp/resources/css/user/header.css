@@ -79,6 +79,13 @@ a {
     height: 35px;
 }
 
+.tab-logout {
+    position: relative;
+    bottom: 7px;
+    width: 35px;
+    height: 35px;
+}
+
 .login-img img {
     width: 100%;
     height: auto;
@@ -122,13 +129,13 @@ nav {
 	font-size: 2.2vmin;
 }
 
-.tab-logout {
-	text-decoration: none;
-	color: #FF4F40;
-	font-family: 'TheJamsil5Bold';
-	font-weight: 900;
-	font-size: 2.2vmin;
-}
+/* .tab-logout { */
+/* 	text-decoration: none; */
+/* 	color: #FF4F40; */
+/* 	font-family: 'TheJamsil5Bold'; */
+/* 	font-weight: 900; */
+/* 	font-size: 2.2vmin; */
+/* } */
 
 .logo-text {
 	text-decoration: none;

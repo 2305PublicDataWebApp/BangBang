@@ -31,7 +31,10 @@
             <c:if test="${ adminId ne null && userId eq null}">
             	<a class="logo-text" href="/banner/bList.do"><li class="tab">배너관리</li></a>
 	            <a class="logo-text" href="/admin/list.do"><li class="tab">회원관리</li></a>
-	            <a class="logo-text" href="/admin/a_logout.do"><li class="tab-logout">로그아웃</li></a>
+<!-- 	            <a class="logo-text" href="/admin/a_logout.do"><li class="tab-logout">로그아웃</li></a> -->
+	            <a href="/admin/a_logout.do">
+	            	<img class="tab-logout" src="/resources/images/admin/adminLogout.png" alt="마이페이지">
+	            </a>
             </c:if>
            
 
