@@ -7,6 +7,8 @@
 		<title>관리자 회원가입</title>
         <link rel="stylesheet" href="/resources/css/admin/a_join.css">
         <link rel="stylesheet" href="/resources/css/reset.css">
+    	<!-- jquery 라이브러리 -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
 	<body>
 		<!-- main -->
@@ -22,7 +24,7 @@
             <div class="join-box">
                 <h2>관리자 회원가입</h2>
                 <span><prv>*</prv> 필수입력사항</span><br><br>
-                <form action="a_join.do" method="post">
+                <form action="a_join.do" method="post" onsubmit="return validateForm();">
 
                     <!-- 아이디 입력 -->
                     <div class="user-box">
@@ -39,6 +41,7 @@
                     <!-- 비밀번호 확인 -->
                     <div class="user-box">
                         <input type="password" name="adminPwRe" required="">
+                        <span id="passwordMatchError" style="color: red;"></span>
                         <label>비밀번호 확인 *</label>
                     </div>
 
@@ -61,5 +64,21 @@
                 </form>
             </div>
         </main>
+		<script>
+		    function validateForm() {
+		        var adminPw = document.getElementsByName("adminPw")[0].value;
+		        var adminPwRe = document.getElementsByName("adminPwRe")[0].value;
+		
+		        // 비밀번호와 비밀번호 확인이 다를 경우
+		        if (adminPw !== adminPwRe) {
+		            document.getElementById("passwordMatchError").innerHTML = "비밀번호와 일치하지 않습니다.";
+		            return false; // 폼 제출 중단
+		        }
+		
+		        // 다를 경우를 대비하여 초기화
+		        document.getElementById("passwordMatchError").innerHTML = "";
+		        return true;
+		    }
+		</script>
 	</body>
 </html>

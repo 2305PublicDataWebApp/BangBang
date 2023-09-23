@@ -50,11 +50,4 @@ public class UserServiceImpl implements UserService{
 		int result = uStore.deleteUser(session, userId);
 		return result;
 	}
-
-	@Override
-	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

@@ -137,15 +137,9 @@ main {
     animation-delay: .75s
 }
 
-/* ********************** ajax ********************** */
-.id_ok{
-	color:#008000;
-	display: none;
-}
-
-.id_already{
-	color:#6A82FB; 
-	display: none;
+#passwordMatchError {
+	position: relative;
+	bottom: 27px;
 }
 
 /* ********************** 로그인 버튼 ********************** */

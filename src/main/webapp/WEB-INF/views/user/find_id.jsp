@@ -13,7 +13,7 @@
         <main class="mid-container">
             <!-- 상단 텍스트 -->
             <div class="introduce">
-                <img src="/resources/images/user/logo.png" width="50px"><br><br>
+                <img src="/resources/images/logo.png" width="50px"><br><br>
                 <h2>방방곡곡 발도장에 오신것을 환영합니다.</h2>
                 <small>방방곡곡 발도장은 국내 여행 정보를 제공해드리는 지식공유 플랫폼입니다.</small>
             </div>
@@ -23,7 +23,7 @@
                 <h2>아이디 찾기</h2>
                 <form action="/find_id.do" method="post">
 
-                    <!-- 아이디 입력 -->
+                    <!-- 이름 입력 -->
                     <div class="user-box">
                         <input type="text" name="userName" required="">
                         <label>이름</label>

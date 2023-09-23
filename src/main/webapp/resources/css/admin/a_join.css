@@ -148,6 +148,11 @@ main {
     animation-delay: .75s
 }
 
+#passwordMatchError {
+	position: relative;
+	bottom: 27px;
+}
+
 /* ********************** 회원가입 버튼 ********************** */
 
 body {

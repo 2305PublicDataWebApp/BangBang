@@ -37,16 +37,17 @@ html {
 }
 
 .remove-box a span {
-    position: absolute;
+    position: relative;
     display: block;
     /* text-align: center; */
     font-size: 5px;;
 }
 
 .remove-anno {
+	position: relative;
+	top: 13px;
     text-align: center;
-    font-family: 'TheJamsil5Bold';
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* ********************** 탈퇴 버튼 ********************** */

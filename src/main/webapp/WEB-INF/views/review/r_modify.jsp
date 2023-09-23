@@ -29,6 +29,9 @@
     			<hr>
     			<div class="reviewform">
     				<form action="/review/r_modify.do" method="post">
+    					<input type="hidden" name="rUserId" value="${ review.rUserId }">
+
+
     					<ul>
     						<li class="one">
     							<label class="type">유형</label>

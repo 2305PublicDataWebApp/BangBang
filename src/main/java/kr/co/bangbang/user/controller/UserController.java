@@ -99,7 +99,7 @@ public class UserController {
 			, HttpSession session) {
 		try {
 			User uOne = uService.userLoginCheck(user);
-			if(uOne != null) {	// 성공 시 아이디, 비밀번호 세션에 저장
+			if(uOne != null) {	// 성공 시 아이디, 닉네임 세션에 저장
 				session.setAttribute("userId", uOne.getUserId());
 				session.setAttribute("userNickname", uOne.getUserNickname());
 				mv.setViewName("redirect:/index.jsp");
@@ -149,28 +149,28 @@ public class UserController {
 		return mv;
 	}
 	
-	/**
-	 * 아이디 찾기 페이지 이동
-	 * @param mv
-	 * @return ModelAndView
-	 */
-	@RequestMapping(value="find_id.do", method=RequestMethod.GET)
-	public ModelAndView showFindIdForm(ModelAndView mv) {
-		mv.setViewName("user/find_id");
-		return mv;
-		
-	}
+//	/**
+//	 * 아이디 찾기 페이지 이동
+//	 * @param mv
+//	 * @return ModelAndView
+//	 */
+//	@RequestMapping(value="find_id.do", method=RequestMethod.GET)
+//	public ModelAndView showFindIdForm(ModelAndView mv) {
+//		mv.setViewName("user/find_id");
+//		return mv;
+//		
+//	}
 	
-	/**
-	 * 비밀번호 찾기 페이지 이동
-	 * @param mv
-	 * @return ModelAndView
-	 */
-	@RequestMapping(value="find_pw.do", method=RequestMethod.GET)
-	public ModelAndView showFindPwForm(ModelAndView mv) {
-		mv.setViewName("user/find_pw");
-		return mv;
-	}
+//	/**
+//	 * 비밀번호 찾기 페이지 이동
+//	 * @param mv
+//	 * @return ModelAndView
+//	 */
+//	@RequestMapping(value="find_pw.do", method=RequestMethod.GET)
+//	public ModelAndView showFindPwForm(ModelAndView mv) {
+//		mv.setViewName("user/find_pw");
+//		return mv;
+//	}
 	
 	/**
 	 * 마이페이지 이동
@@ -253,7 +253,7 @@ public class UserController {
 	}
 	
 	/**
-	 * 비밀번호 체크 페이지로 이동
+	 * 비밀번호 체크 페이지로 이동(개인 정보 수정)
 	 * @param mv
 	 * @param user
 	 * @param session
@@ -300,8 +300,8 @@ public class UserController {
 			mv.setViewName("redirect:/user/modify.do?userId=" + userId);
 		} else {
 			mv.addObject("msg", "비밀번호가 일치하지 않습니다.");
-			mv.addObject("url", "/user/check_pw");
-			mv.setViewName("error_page"); // 오류 페이지로 이동
+			mv.addObject("url", "/user/check_pw.do");
+			mv.setViewName("common/error_page"); // 오류 페이지로 이동
 		}
 		return mv;
 	}
@@ -491,7 +491,14 @@ public class UserController {
 	}
 
 	
-	// 내가 쓴 게시글 페이지 이동
+	/**
+	 * 내가 쓴 게시글 페이지 이동
+	 * @param mv
+	 * @param session
+	 * @param userId
+	 * @param currentPage
+	 * @return
+	 */
 	@RequestMapping(value="my_board.do", method=RequestMethod.GET)
 	public ModelAndView showMyBoard(
 			ModelAndView mv

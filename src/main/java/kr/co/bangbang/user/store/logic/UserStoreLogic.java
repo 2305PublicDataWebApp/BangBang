@@ -48,5 +48,4 @@ public class UserStoreLogic implements UserStore{
 		int result = session.update("UserMapper.deleteUser", userId);
 		return result;
 	}
-
 }

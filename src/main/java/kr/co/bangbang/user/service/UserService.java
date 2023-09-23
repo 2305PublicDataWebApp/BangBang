@@ -42,12 +42,4 @@ public interface UserService {
 	 * @return
 	 */
 	int deleteUser(String userId);
-
-	/**
-	 * 개시글 전체 갯수 조회
-	 * @return
-	 */
-	int getListCount();
-
-
 }

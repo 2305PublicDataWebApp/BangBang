@@ -15,14 +15,9 @@ main {
 html {
     height: 100%;
 }
-
 .introduce {
     padding:170px 0;
     text-align: center;
-}
-
-h2 {
-	font-family: 'TheJamsil5Bold';
 }
 
 .login-box {

@@ -49,6 +49,4 @@ public interface UserStore {
 	 * @return int
 	 */
 	int deleteUser(SqlSession session, String userId);
-
-
 }

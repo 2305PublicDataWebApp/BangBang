@@ -37,6 +37,12 @@ public class User {
 		this.userPhone = userPhone;
 		this.userBirth = userBirth;
 	}
+	
+	public User(String userName, String userEmail) {
+		super();
+		this.userName = userName;
+		this.userEmail = userEmail;
+	}
 
 	// getter, setter 메소드
 	public String getUserId() {

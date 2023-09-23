@@ -54,6 +54,11 @@ public class ProfileController {
 				// ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 파일 첨부 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 				// 파일이 있는지 여부 유효성 검사 후 파일 첨부 진행
 				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+					// 파일이 있다면 삭제
+					String fileRename = profile.getProfileImgRename();
+					if (fileRename != null) {
+						this.deleteImgage(fileRename, request);
+					}
 					Map<String, Object> pMap = this.saveFile(uploadFile, request);
 					String imgName = (String)pMap.get("imgName");
 					String imgRename = (String)pMap.get("imgRename");
@@ -146,5 +151,15 @@ public class ProfileController {
 		infoMap.put("imgPath", savePath);
 		infoMap.put("imgLength", imgLength);
 		return infoMap;
+	}
+	
+	// 파일 삭제 메소드
+	private void deleteImgage(String fileRename, HttpServletRequest request) {
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String delPath = root + "\\buploadFiles\\" + fileRename;
+		File delFile = new File(delPath);
+		if (delFile.exists()) {
+			delFile.delete();
+		}
 	}
 }
