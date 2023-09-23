@@ -81,7 +81,6 @@
 		            	</tr>
 		                        </c:if>
 		                        <c:if test="${adminId ne null }">
-		                         <a class="mo" href="javascript:void(0);" onclick="showModifyForm(this, '${rreply.rReplyContent }');">수정하기</a>
 						<c:url var="delUrl" value="/rreply/rr_delete.do">
 							<c:param name="rReplyNo" value="${rreply.rReplyNo }" />
 <!-- 						내것만 지우도록 하기 위해서 replyWriter를 추가함 -->
