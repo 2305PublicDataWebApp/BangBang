@@ -46,7 +46,7 @@ public class BannerController {
 			ModelAndView mv
 			,HttpSession session
 			, @ModelAttribute Banner banner
-			,@RequestParam(value = "fielUpload", required = false) MultipartFile uploadFile
+			,@RequestParam(value = "fileUpload", required = false) MultipartFile uploadFile
 			,HttpServletRequest request) {
 		
 		try {
@@ -69,19 +69,19 @@ public class BannerController {
 				if(result > 0) {
 					mv.setViewName("redirect:/banner/bList.do");
 				} else {
-					mv.addObject("msg", "배너등록 내용이 존재하지 않습니다");
-					mv.addObject("error", "배너등록이 필요합니다.");
+					mv.addObject("msg", "諛곕꼫�벑濡� �궡�슜�씠 議댁옱�븯吏� �븡�뒿�땲�떎");
+					mv.addObject("error", "諛곕꼫�벑濡앹씠 �븘�슂�빀�땲�떎.");
 					mv.addObject("url", "/index.jsp");
 					mv.setViewName("common/error_page");	
 				}	
 			} else {
-				mv.addObject("msg", "로그인이 확인되지 않습니다");
-				mv.addObject("error", "로그인이 필요합니다.");
+				mv.addObject("msg", "濡쒓렇�씤�씠 �솗�씤�릺吏� �븡�뒿�땲�떎");
+				mv.addObject("error", "濡쒓렇�씤�씠 �븘�슂�빀�땲�떎.");
 				mv.addObject("url", "/index.jsp");
 				mv.setViewName("common/error_page");				
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "배너 등록 실패");
+			mv.addObject("msg", "諛곕꼫 �벑濡� �떎�뙣");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/banner/insert.do");
 			mv.setViewName("common/error_page");
@@ -95,35 +95,35 @@ public class BannerController {
 		
 		Map<String, Object> fileMap = new HashMap<String, Object>();
 		
-		//resources 경로 구하기
+		//resources 寃쎈줈 援ы븯湲�
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		
-		//파일 저장 경로 구하기
+		//�뙆�씪 ���옣 寃쎈줈 援ы븯湲�
 		String savePath = root + "\\buploadFiles";
 		
-		//파일 이름 구하기
+		//�뙆�씪 �씠由� 援ы븯湲�
 		String fileName = uploadFile.getOriginalFilename();
 		
-		//파일 확장자 구하기
+		//�뙆�씪 �솗�옣�옄 援ы븯湲�
 		String extension 
 		= fileName.substring(fileName.lastIndexOf(".")+1);
 		
-		//시간으로 파일 리네임하기
+		//�떆媛꾩쑝濡� �뙆�씪 由щ꽕�엫�븯湲�
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String fileRename = sdf.format(new Date(System.currentTimeMillis()));
 		
-		//파일 저장 전 폴더 만들기
+		//�뙆�씪 ���옣 �쟾 �뤃�뜑 留뚮뱾湲�
 		File saveFolder = new File(savePath);
 		if(!saveFolder.exists()) {
 			saveFolder.mkdir();
 		}
 		
-		//파일저장
+		//�뙆�씪���옣
 		File saveFile = new File(savePath + "\\" + fileRename + "." + extension);
 		uploadFile.transferTo(saveFile);
 		long fileLength = uploadFile.getSize();
 		
-		//파일정보 리턴
+		//�뙆�씪�젙蹂� 由ы꽩
 		fileMap.put("fileName", fileName);
 		fileMap.put("fileRename", fileRename);
 		fileMap.put("filePath", "../resources/buploadFiles/" + fileRename + "." + extension);
@@ -160,9 +160,9 @@ public class BannerController {
 		
 		int naviTotalCount;
 		naviTotalCount 
-			= (int)Math.ceil((double)totalCount/recordCountPerPage);   //6.2 -> 7 올림해주는 식
+			= (int)Math.ceil((double)totalCount/recordCountPerPage);   //6.2 -> 7 �삱由쇳빐二쇰뒗 �떇
 		
-		int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;  //이거뭐냐...
+		int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;  //�씠嫄곕춴�깘...
 		
 		int endNavi = startNavi + naviCountPerPage - 1;
 		
@@ -192,8 +192,8 @@ public class BannerController {
 //        	if(result > 0) {
 //        		mv.setViewName("redirect:/banner/bList.do");
 //        	} else {
-//        		mv.addObject("msg", "배너삭제 내용이 존재하지 않습니다");
-//				mv.addObject("error", "배너삭제가 필요합니다.");
+//        		mv.addObject("msg", "諛곕꼫�궘�젣 �궡�슜�씠 議댁옱�븯吏� �븡�뒿�땲�떎");
+//				mv.addObject("error", "諛곕꼫�궘�젣媛� �븘�슂�빀�땲�떎.");
 //				mv.addObject("url", "/index.jsp");
 //				mv.setViewName("common/error_page");	
 //        	}

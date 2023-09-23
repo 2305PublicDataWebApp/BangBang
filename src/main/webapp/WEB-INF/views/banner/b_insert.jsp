@@ -75,7 +75,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">이미지 파일</label>
 				<div class="col-sm-10">
-					<input type="file" name="fielUpload" onchange="readURL(this);" class="form-control" required=""><br>
+					<input type="file" name="fileUpload" onchange="readURL(this);" class="form-control" required=""><br>
 				</div>
 			</div>
 	
