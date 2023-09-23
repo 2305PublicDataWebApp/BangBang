@@ -20,8 +20,18 @@
     				<span>${review.reviewTitle }</span>
     			</div>
     			<div class="button-1">
-    				<button class="modibu" type="button" onclick="showModifyPage('${modifyUrl }');">수정하기</button>
-    				<button class="delbu" type="button" onclick="deleteReview('${deleteUrl}');">삭제하기</button>
+    			<c:url var="deleteUrl" value="/review/r_delete.do">
+    				<c:param name="reviewNo" value="${review.reviewNo }" />
+    				<c:param name="rUserId" value="${review.rUserId }" />
+    			</c:url>
+    			<c:url var="modifyUrl" value="/review/r_modify.do">
+    				<c:param name="reviewNo" value="${review.reviewNo }" />
+    				<c:param name="rUserId" value="${review.rUserId }" />
+    			</c:url>
+    				<c:if test="${review.rUserId eq userId }">
+    					<button class="modibu" type="button" onclick="showModifyPage('${modifyUrl }');">수정하기</button>
+    					<button class="delbu" type="button" onclick="deleteReview('${deleteUrl}');">삭제하기</button>
+    				</c:if>
     			</div>
     			<hr>
     			<div class="revicontent">
@@ -34,61 +44,92 @@
 			
 	                <!-- 댓글 등록 -->
 	                <form action="/rreply/rr_insert.do" method="post">
-	                    <div>
 	                        <input type="hidden" name="rReviewNo" value="${review.reviewNo }">
-	                        <textarea rows="4" cols="100" name="rReplyContent"></textarea>
-	                        <div style="display: flex; justify-content: right;">
-	                            <input type="submit" value="등록">
-	                        </div>
-	                    </div>
+	                <table>
+	                <tr>
+	                	<td>
+	                        <textarea rows="4" cols="100" name="rReplyContent" class="textre"></textarea>
+	                	</td>
+	                    <td>
+	                         <input class="replymodi" type="submit" value="등록">
+	                    </td>
+	                </tr>
+	                </table>
 	                </form>
 	                
 	                <!-- 댓글 목록 -->
 	                <div>
-		            	<c:forEach var="rReply" items="${rrList }">
-		                    <div id="reply-list" style="border-bottom: 1px solid black;">
-		                        <div style="display: inline-block; width: 30px; height: 30px;">
-		                            <img src="" alt="a">
-		                        </div>
-		                        <span>${rreply.rrUserId }</span>
-		                        <span>${rreply.rReplyDate }</span>
-		                        <button>답글</button>
-		                        <button onclick="showModifyForm(this);">수정</button>
-		                        <button onclick= "deleteRReply('${rDelUrl}');">삭제</button>
-		                        <p>${rreply.rReplyContent }</p>
-		                    </div> 
-		                    <div id="rReplyModifyForm" style="display:none;">
-						<!-- 			<form action="/reply/update.kh" method="post"> -->
-						<%-- 				<input type="hidden" name="replyNo" value="${reply.replyNo }"> --%>
-						<%-- 				<input type="hidden" name="refBoardNo" value="${reply.refBoardNo }"> --%>
-						<%-- 					<td colspan="3"><input type="text" size="50" name="replyContent" value="${reply.replyContent }"></td> --%>
-						<!-- 				<td><input type="submit" value="완료"></td> -->
-						<!-- 			</form> -->
-								<input id="replyContent" type="text" size="50" name="rReplyContent" value="${reply.rReplyContent }">
-								<input type="button" onclick="rReplyModify(this,'${rreply.rReplyNo}', '${rreply.rReviewNo }');" value="완료">
-		                    </div>
+	                <table class="replyta">
+		            	<c:forEach var="rreply" items="${rrList }">
+		            	<tr>
+		                        <td>${rreply.rrUserId }</td>
+		                        <td>(${rreply.rReplyDate })</td>
+		                        <td>${rreply.rReplyContent }</td>
+		                        <td>
+		                        <a class="mo" href="javascript:void(0);" onclick="showModifyForm(this, '${rreply.rReplyContent }');">수정하기</a>
+						<c:url var="delUrl" value="/rreply/rr_delete.do">
+							<c:param name="rReplyNo" value="${rreply.rReplyNo }" />
+<!-- 						내것만 지우도록 하기 위해서 replyWriter를 추가함 -->
+						<c:param name="rrUserId" value="${rreply.rrUserId }" />
+<!-- 						성공하면 디테일로 가기 위해 필요한 boardNo셋팅 -->
+						<c:param name="rReviewNo" value="${rreply.rReviewNo }" />
+					</c:url>
+					<a href="javascript:void(0);" onclick="deleteReply('${delUrl}');">삭제하기</a>
+					</td>
+		            	</tr>
+		                    <tr id="rReplyModifyForm" style="display:none;">
+								<td><input class = "modite" id="rReplyContent" type="text" size="50" name="rReplyContent" value="${rreply.rReplyContent }"></td>
+								<td><input type="button" onclick="rReplyModify(this,'${rreply.rReplyNo}', '${rreply.rReviewNo }');" value="완료"></td>
+		                    </tr>
+		                    <br/>
 		                </c:forEach>
+	                </table>
+		                    </div> 
 	                </div>
-	                
-	                
-	                	                
 		</div>
-			</div>
 			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	<script>
+	// ###### 게시글 ######
     	function showReviewList(){
     		location.href="/review/r_list.do";
     	}
     	function showModifyPage(modifyUrl){
-    		const reviewNo = "${review.reviewNo}"
-			location.href="/review/r_modify.do?reviewNo="+reviewNo;
+    		location.href = modifyUrl;
 		}
 		function deleteReview(deleteUrl){
-			const reviewNo = "${reivew.reviewNo}"
-			location.href = "/review/r_delete.do?reviewNo="+reviewNo;
+			location.href = deleteUrl;
 		}
-		
-		
+		// ###### 댓글 #######
+				function rReplyModify(obj, rReplyNo, rReviewNo){
+					// DOM 프로그래밍을 이용하는 방법
+					const form = document.createElement("form");
+					form.action = "/rreply/rr_modify.do";
+					form.method ="post";
+					const input = document.createElement("input");
+					input.type = "hidden";
+					input.value = rReplyNo;
+					input.name = "rReplyNo";
+					const input2 = document.createElement("input");
+					input2.type = "hidden";
+					input2.value = rReviewNo;
+					input2.name = "rReviewNo";
+					const input3 = document.createElement("input");
+					input.type = "text";
+					input3.value = obj.parentElement.previousElementSibling.childNodes[0].value;
+					input3.name = "rReplyContent";
+					form.appendChild(input);
+					form.appendChild(input2);
+					form.appendChild(input3);
+					
+					document.body.appendChild(form);
+					form.submit();
+				}
+				function showModifyForm(obj, rReplyContent){
+					obj.parentElement.parentElement.nextElementSibling.style.display="";
+				}
+		function deleteReply(url){
+			location.href = url;
+		}
     </script>
 	</body>
 </html>
