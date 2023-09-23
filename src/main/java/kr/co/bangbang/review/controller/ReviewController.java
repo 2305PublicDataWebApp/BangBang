@@ -45,15 +45,15 @@ public class ReviewController {
 				mv.addObject("review", reviewOne);
 				mv.setViewName("review/r_detail");
 			}else {
-				mv.addObject("msg", "게시글 데이터 조회 실패");
+				mv.addObject("msg", "게시글 조회 실패");
 				mv.addObject("error","게시글 조회 실패");
-				mv.addObject("url","r_list.do");
+				mv.addObject("url","/review/r_list.do");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg","관리자에게 문의해주세요.");
+			mv.addObject("msg","관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url","r_insert.do");
+			mv.addObject("url","/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -71,9 +71,9 @@ public class ReviewController {
 			mv.addObject("rInfo", rInfo);
 			mv.setViewName("review/r_list");
 		} catch (Exception e) {
-		mv.addObject("msg", "게시글 조회에 실패했습니다.");
+		mv.addObject("msg", "관리자에게 문의바랍니다.");
 		mv.addObject("error", e.getMessage());
-		mv.addObject("url", "r_insert.do");
+		mv.addObject("url", "/index.jsp");
 		mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -117,13 +117,12 @@ public class ReviewController {
 				}
 				mv.setViewName("redirect:/review/r_list.do");
 			}else {
-				mv.addObject("msg", "정보가 존재하지 않습니다.");
-				mv.addObject("error", "로그인 해주세요");
+				mv.addObject("msg", "로그인 후 이용 가능");
 				mv.addObject("url", "/index.jsp");
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg","게시글 등록 실패");
+			mv.addObject("msg","관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
@@ -150,13 +149,13 @@ public class ReviewController {
 					mv.setViewName("common/error_page");
 				}
 			}else {
-				mv.addObject("msg", "권한이 없음");
+				mv.addObject("msg", "게시글 수정 권한 없음");
 				mv.addObject("error", "게시글 수정 불가");
 				mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 				mv.setViewName("common/error_page");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "관리자에게 문의");
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/review/r_detail.do?reviewNo="+review.getReviewNo());
 			mv.setViewName("common/error_page");
@@ -184,7 +183,7 @@ public class ReviewController {
 					mv.addObject("url", "/review/r_list.do");
 				}
 			}else {
-				mv.addObject("msg", "권한 부족");
+				mv.addObject("msg", "게시글 삭제 권한 없음");
 				mv.addObject("error","게시글 삭제 불가");
 				mv.addObject("url" ,"/review/r_list.do");
 				mv.setViewName("common/error_page");
@@ -206,9 +205,9 @@ public class ReviewController {
 			mv.addObject("review", review);
 			mv.setViewName("review/r_modify");
 		} catch (Exception e) {
-			mv.addObject("msg","게시글 조회 실패");
+			mv.addObject("msg","관리자에게 문의바랍니다.");
 			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/review/r_inser.do");
+			mv.addObject("url", "/review/r_list.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
@@ -234,9 +233,9 @@ public class ReviewController {
 			mv.addObject("rList", searchRList);
 			mv.setViewName("review/r_search");
 		}else {
-			mv.addObject("msg","데이터 조회가 완료되지 않았습니다.");
+			mv.addObject("msg","데이터 조회 실패");
 			mv.addObject("error","공지사항 제목으로 목록 조회 실패");
-			mv.addObject("url","/review/r_list.do");
+			mv.addObject("url","/index.jsp");
 			mv.setViewName("common/error_page");		
 		}
 		return mv;

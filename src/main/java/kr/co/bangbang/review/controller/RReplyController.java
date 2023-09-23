@@ -96,9 +96,10 @@ public class RReplyController {
 		String url="";
 		try {
 			String userId = (String)session.getAttribute("userId");
+			String rrAdminId = (String)session.getAttribute("adminId");
 			String rrUserId = rreply.getrrUserId();
 			url = "/review/r_detail.do?reviewNo="+rreply.getrReviewNo();
-			if(rrUserId != null && rrUserId.equals(userId)) {
+			if((rrUserId != null && rrUserId.equals(userId)) ||rrAdminId.contains("admin")) {
 				int result = rrSerivce.deleteRReply(rreply);
 				if(result > 0) {
 					mv.setViewName("redirect:"+url);

@@ -23,7 +23,7 @@
 	</update>
 	
 	<update id="deleteRReply">
-		UPDATE REVIEW_REPLY SET RR_STATUS_YN = 'N' WHERE RREPLY_NO = #{rReplyNo } AND RR_USER_ID = #{rrUserId }
+		UPDATE REVIEW_REPLY SET RR_STATUS_YN = 'N' WHERE RREPLY_NO = #{rReplyNo }
 	</update>
 	
 	<select id="selectReplyList" resultMap="rreplyResultMap">
