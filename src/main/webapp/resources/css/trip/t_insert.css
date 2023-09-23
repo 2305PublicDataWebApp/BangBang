@@ -35,12 +35,24 @@ ul label {
 input{
     width: 70%;
 }
-#title{
+#title-div{
     border-bottom: 1px solid black;
+}
+#insert-div{
+	display:flex;
+	margin:20px 0 20px 20px;
+}
+#insert-span{
+	line-height: 30px;
+    margin-right: 10px;
 }
 #logo-img{
     width: 30px;
     height: 30px;
+}
+#tarea{
+	width: 70%;
+	height: 200px;
 }
 form{
     max-width: 1130px;

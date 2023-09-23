@@ -12,7 +12,7 @@
 	    <link rel="stylesheet" href="/resources/css/user/header.css">
 	    <link rel="stylesheet" href="/resources/css/reset.css">
 	    
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -26,9 +26,9 @@
 	    <main>
 	        <div id="main-container">
 	            <div id="form">
-	                <div id="title">
-	                    <div style="margin:20px 0 20px 20px;">
-	                        <span>게시글 등록</span>
+	                <div id="title-div">
+	                    <div id="insert-div">
+	                        <span id="insert-span">게시글 등록</span>
 	                        <img id="logo-img" src="/resources/images/logo.png" alt="발도장로고"> 
 	                    </div>
 	                </div>
@@ -38,7 +38,7 @@
 	                        	<li class="insert-li">
 	                                <label for="type">게시글 타입</label>
 	                                <input type="text" id="type" name="tripType" required><br>
-	                                <p>타입은 여행지, 지역축제, 테마, 구성원별 중에서 입력해야 함</p>
+	                                <p style="margin-left: 100px;">타입은 여행지, 지역축제, 테마, 구성원별 중에서 입력해야 함</p>
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="title">여행지이름</label>
@@ -62,7 +62,7 @@
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="home">홈페이지</label>
-	                                <input type="text" id="home" name="tripHomePage"><br>
+	                                <input id="home" type="text"  name="tripHomePage"><br>
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="time">이용시간</label>
@@ -74,7 +74,7 @@
 	                            </li>
 	                            <li class="insert-li">
 	                                <label for="content">상세정보</label>
-	                                <textarea wrap="hard" rows="10" cols="55" id="content" name="tripContent"></textarea>
+	                                <textarea id="tarea" wrap="hard" name="tripContent"></textarea>
 <!-- 	                                <textarea id="summernote" name="tripContent"></textarea> -->
 <!--  	                            	<span onclick="clickThumbnailAppend();" id="test"><button class="writeBtn" type="button">썸네일 새로고침</button></span> -->
 <!-- 									<select id="thumbnailPath" name="thumbnailPath"></select> -->
