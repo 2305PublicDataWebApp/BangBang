@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.bangbang.banner.domain.Banner;
+
 //import com.google.gson.JsonObject;
 
 import kr.co.bangbang.trip.domain.TPageInfo;
@@ -54,22 +56,28 @@ public class TripController {
 		}
 		return mv;
 	}
-
+	
+	
 	@RequestMapping(value = "t_insert.do", method = RequestMethod.POST)
 	public ModelAndView insertTrip(
 			ModelAndView mv
+			,HttpSession session
 			, @ModelAttribute Trip trip
-			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
-			, HttpSession session  // 글쓰기 할때 작성자 아이디 고정 시켜놨기 때문에 ModelAttribute사용 할때 작성자가 안들어가므로 세션에서 작성자를 가져온다.
-			, HttpServletRequest request ) {
+			,@RequestParam(value = "tUploadFile", required = false) MultipartFile uploadFile
+			,HttpServletRequest request) {
 		
 		try {
+//			String bannerNo = (String)session.getAttribute("bannerNo");
+//			String bAdminId = (String)session.getAttribute("adminId");
+//			String bAdminId = "admin";
 			String tAdminId = (String)session.getAttribute("adminId");
 			if(tAdminId != null && !tAdminId.equals("")) {
+				
 				trip.settAdminId(tAdminId);
+				
 				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
-					// 파일정보(이름, 리네임, 경로, 크기)및 파일저장
 					Map<String, Object> tMap = this.saveFile(request, uploadFile);
+					
 					trip.setTripFilename((String)tMap.get("fileName"));
 					trip.setTripFilerename((String)tMap.get("fileRename"));
 					trip.setTripFilepath((String)tMap.get("filePath"));
@@ -79,22 +87,71 @@ public class TripController {
 				int result = tService.insertTrip(trip);
 				if(result > 0) {
 					mv.setViewName("redirect:/trip/t_list.do");
-				}
-			}
-			else {
-				mv.addObject("msg", "관리자 정보가 존재하지 않습니다.");
-				mv.addObject("error", "관리자 로그인이 필요합니다.");
+				} else {
+					mv.addObject("msg", "배너등록 내용이 존재하지 않습니다");
+					mv.addObject("error", "배너등록이 필요합니다.");
+					mv.addObject("url", "/index.jsp");
+					mv.setViewName("common/error_page");	
+				}	
+			} else {
+				mv.addObject("msg", "로그인이 확인되지 않습니다");
+				mv.addObject("error", "로그인이 필요합니다.");
 				mv.addObject("url", "/index.jsp");
-				mv.setViewName("common/error_page");
+				mv.setViewName("common/error_page");				
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
+			mv.addObject("msg", "배너 등록 실패");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/trip/t_insert.do");
 			mv.setViewName("common/error_page");
 		}
 		return mv;
 	}
+
+//	@RequestMapping(value = "t_insert.do", method = RequestMethod.POST)
+//	public ModelAndView insertTrip(
+//			ModelAndView mv
+//			, @ModelAttribute Trip trip
+//			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
+//			, HttpSession session  // 글쓰기 할때 작성자 아이디 고정 시켜놨기 때문에 ModelAttribute사용 할때 작성자가 안들어가므로 세션에서 작성자를 가져온다.
+//			, HttpServletRequest request ) {
+//		
+//		try {
+//			String tAdminId = (String)session.getAttribute("adminId");
+//			if(tAdminId != null && !tAdminId.equals("")) {
+//				trip.settAdminId(tAdminId);
+//				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+//					// 파일정보(이름, 리네임, 경로, 크기)및 파일저장
+//					Map<String, Object> tMap = this.saveFile(request, uploadFile);
+//					trip.setTripFilename((String)tMap.get("fileName"));
+//					trip.setTripFilerename((String)tMap.get("fileRename"));
+//					trip.setTripFilepath((String)tMap.get("filePath"));
+//					trip.setTripFilelength((long)tMap.get("fileLength"));
+//				}
+//				
+//				int result = tService.insertTrip(trip);
+//				if(result > 0) {
+//					mv.setViewName("redirect:/trip/t_list.do");
+//				}
+//			}
+//			else {
+//				mv.addObject("msg", "관리자 정보가 존재하지 않습니다.");
+//				mv.addObject("error", "관리자 로그인이 필요합니다.");
+//				mv.addObject("url", "/index.jsp");
+//				mv.setViewName("common/error_page");
+//			}
+//		} catch (Exception e) {
+//			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
+//			mv.addObject("error", e.getMessage());
+//			mv.addObject("url", "/trip/t_insert.do");
+//			mv.setViewName("common/error_page");
+//		}
+//		return mv;
+//	}
+	
+	
+	
+	
 	
 	/**
 	 * 썸대노트 ajax 매핑 메소드+1 에디터 업로드 이미지 저장 및 파일 경로 json반환
@@ -352,35 +409,76 @@ public class TripController {
 			return tPInfo;
 		}
 
-		private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
+		
+		private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception, Exception {
+			
 			Map<String, Object> fileMap = new HashMap<String, Object>();
-			// resource  경로 구하기
+			
+			//resources 경로 구하기
 			String root = request.getSession().getServletContext().getRealPath("resources");
-			// 파일 저장 경로 구하기
-			String savePath = root + "\\tuploadFiles\\";
-			// 파일 이름 구하기
-			String fileName = uploadFile.getOriginalFilename(); 
-			// 파일 확장자 구하기
+			
+			//파일 저장 경로 구하기
+			String savePath = root + "\\tuploadFiles";
+			
+			//파일 이름 구하기
+			String fileName = uploadFile.getOriginalFilename();
+			
+			//파일 확장자 구하기
 			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
-			// 시간으로 파일 리네임 하기
+			
+			//시간으로 파일 리네임하기
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String fileRename = sdf.format(new Date(System.currentTimeMillis())) + "." + extension;
-			// 파일 저장 전 폴더 만들기
+			String fileRename = sdf.format(new Date(System.currentTimeMillis()));
+			
+			//파일 저장 전 폴더 만들기
 			File saveFolder = new File(savePath);
 			if(!saveFolder.exists()) {
 				saveFolder.mkdir();
 			}
-			// 파일 저장
-			File saveFile = new File(savePath + "\\" + fileRename);
+			
+			//파일저장
+			File saveFile = new File(savePath + "\\" + fileRename + "." + extension);
 			uploadFile.transferTo(saveFile);
 			long fileLength = uploadFile.getSize();
-			// 파일 정보 리턴
+			
+			//파일정보 리턴
 			fileMap.put("fileName", fileName);
 			fileMap.put("fileRename", fileRename);
-			fileMap.put("filePath", "../resources/tuploadFiles/" + fileRename);
+			fileMap.put("filePath", "../resources/tuploadFiles/" + fileRename + "." + extension);
 			fileMap.put("fileLength", fileLength);
+			
 			return fileMap;
 		}
+		
+//		private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
+//			Map<String, Object> fileMap = new HashMap<String, Object>();
+//			// resource  경로 구하기
+//			String root = request.getSession().getServletContext().getRealPath("resources");
+//			// 파일 저장 경로 구하기
+//			String savePath = root + "\\tuploadFiles\\";
+//			// 파일 이름 구하기
+//			String fileName = uploadFile.getOriginalFilename(); 
+//			// 파일 확장자 구하기
+//			String extension = fileName.substring(fileName.lastIndexOf(".")+1);
+//			// 시간으로 파일 리네임 하기
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+//			String fileRename = sdf.format(new Date(System.currentTimeMillis())) + "." + extension;
+//			// 파일 저장 전 폴더 만들기
+//			File saveFolder = new File(savePath);
+//			if(!saveFolder.exists()) {
+//				saveFolder.mkdir();
+//			}
+//			// 파일 저장
+//			File saveFile = new File(savePath + "\\" + fileRename);
+//			uploadFile.transferTo(saveFile);
+//			long fileLength = uploadFile.getSize();
+//			// 파일 정보 리턴
+//			fileMap.put("fileName", fileName);
+//			fileMap.put("fileRename", fileRename);
+//			fileMap.put("filePath", "../resources/tuploadFiles/" + fileRename);
+//			fileMap.put("fileLength", fileLength);
+//			return fileMap;
+//		}
 
 		private void deleteFile(String fileReName, HttpServletRequest request) {
 			String root = request.getSession().getServletContext().getRealPath("resources");
