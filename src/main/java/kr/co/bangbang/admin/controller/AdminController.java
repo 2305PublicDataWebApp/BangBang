@@ -84,13 +84,17 @@ public class AdminController {
 				String sessionId = (String)session.getAttribute("adminId"); // 세션 아이디
 				//String sessionId = "admin";
 				
-				if(sessionId !=null && sessionId != "") {
+				if(sessionId != null && sessionId != "") {
 					int result = aService.updateUser(user);
 					if(result > 0) { // 수정 성공 
-						mv.setViewName("redirect:/admin/aInfo.do?userId=" + sessionId);
+						//mv.setViewName("redirect:/admin/aInfo.do?userId=" + userId);
+						mv.addObject("user", user);
+						mv.addObject("msg", "관리자 회원수정 성공");
+						mv.addObject("url", "/admin/aInfo.do?userId=" + userId);
+						mv.setViewName("common/inform");
 					} else { // 수정 실패
 						mv.addObject("msg", "관리자 회원정보 수정 실패");
-						mv.addObject("url", "redirect:/admin/uModify.do?userId=" + sessionId);
+						mv.addObject("url", "redirect:/admin/uModify.do?userId=" + userId);
 						mv.setViewName("common/error_page");
 					}
 				} else {
