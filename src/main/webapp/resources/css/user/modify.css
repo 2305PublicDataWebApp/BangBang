@@ -331,28 +331,25 @@ button {
 .btn-nickname.mini{
 	position : absolute;
 	right: 85px;
+	bottom: 21px;
     padding: 4px 12px;  
     font-size: 12px;
 }
 
 .btn-nickname {
     position: absolute;
-    font-family: 'LINESeedKR-Bd';
+    font-family: 'TheJamsil5Bold'; 
     right : 40px;
     text-decoration: none;
-    color: #435334;
-    padding: 10px 30px;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.21);
-    border-bottom: 4px solid rgba(0,0,0,0.21);
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: black; 
+   	background-color: #FFFACD;
+   	border-color: black;
+   	border: 1px solid black;
+    width: 90px;
+	height: 30px;
+    float: right;
+    margin-left: 10px;
     cursor: pointer;
-}
-
-.btn-nickname.yellow {
-    background: linear-gradient(rgba(240,210,100,1) 800%, rgba(229,201,96,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
 }
 
 /* ********************** 이메일 중복확인 버튼**********************  */
@@ -365,52 +362,53 @@ button {
 /* Gradient buttons */
 .btn-email {
     position: absolute;
-    font-family: 'LINESeedKR-Bd';
     right : 40px;
+    font-family: 'TheJamsil5Bold'; 
+    background-color: #FFFACD; 
+    color: black; 
+	border-color: black;
+	border: 1px solid black;
+    width: 90px;
+    height: 30px;
+    float: right;
+    margin-left: 10px;
     text-decoration: none;
-    color: #435334;
-    padding: 10px 30px;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.21);
-    border-bottom: 4px solid rgba(0,0,0,0.21);
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
     cursor: pointer;
 }
 
-.btn-email.yellow {
-    background: linear-gradient(rgba(240,210,100,1) 80%, rgba(229,201,96,1) 100%);
-}
+/* .btn-email.yellow { */
+/*     background: linear-gradient(rgba(240,210,100,1) 80%, rgba(229,201,96,1) 100%); */
+/* } */
 
-.btn-addr.yellow:active {background: #DBC05B;}
+/* .btn-addr.yellow:active {background: #DBC05B;} */
 
 /* ********************** 수정 버튼**********************  */
 
 
-* {
-    box-sizing: border-box;
-}
+/* * { */
+/*     box-sizing: border-box; */
+/* } */
 
-body {
-    margin: 0;
-    background: #eaedf1;
-    font-family: 'Lato', sans-serif;
-}
+/* body { */
+/*     margin: 0; */
+/*     background: #eaedf1; */
+/*     font-family: 'Lato', sans-serif; */
+/* } */
 
-.header {
-    background: white;
-    padding: 30px;
-    text-align: center;
-}
+/* .header { */
+/*     background: white; */
+/*     padding: 30px; */
+/*     text-align: center; */
+/* } */
 
 
-.color .red {
-    background: #fa5a5a;
-}
+/* .color .red { */
+/*     background: #fa5a5a; */
+/* } */
 
-.content-3d {
-    margin: 40px auto;
-}
+/* .content-3d { */
+/*     margin: 40px auto; */
+/* } */
 
 /* value */
 /* 위치조정 */
@@ -422,46 +420,43 @@ body {
     /* margin-bottom: 40px; */
 }
 
-input[class*="btn"]{
-    border: 0;
-    width: 120px;
-}
+/* input[class*="btn"]{ */
+/*     border: 0; */
+/*     width: 120px; */
+/* } */
 
 /* 3D Button */
 .btn-3d {
     position: relative;
-    font-family: 'LINESeedKR-Bd';
-    font-size: 10px;
-    display: inline-block;
-    font-size: 15px;
-    padding: 7px 30px;
-    color: white;
-    margin: 20px 10px 10px;
-    border-radius: 6px;
-    text-align: center;
-    transition: top .01s linear;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    font-family: 'TheJamsil5Bold';
+	background-color: #FFFACD; 
+	color: black; 
+	border-color: black;
+    width: 90px;
+    height: 40px;
+    float: right;
+    margin-left: 10px;
     cursor: pointer;
 }
 
 
-.btn-3d:active {
-    top: 9px;
-}
+/* .btn-3d:active { */
+/*     top: 9px; */
+/* } */
 
 /* 3D button colors */
-.btn-3d.red {
-    background-color: #e74c3c;
-    box-shadow: 0 0 0 1px #c63702 inset,
-        0 0 0 2px rgba(255, 255, 255, 0.15) inset,
-        0 8px 0 0 #C24032,
-        0 8px 0 1px rgba(0, 0, 0, 0.4),
-        0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
+/* .btn-3d.red { */
+/*     background-color: #e74c3c; */
+/*     box-shadow: 0 0 0 1px #c63702 inset, */
+/*         0 0 0 2px rgba(255, 255, 255, 0.15) inset, */
+/*         0 8px 0 0 #C24032, */
+/*         0 8px 0 1px rgba(0, 0, 0, 0.4), */
+/*         0 8px 8px 1px rgba(0, 0, 0, 0.5); */
+/* } */
 
 /* 3D button active */
-.btn-3d.red:active {
-    box-shadow: 0 0 0 1px #c63702 inset,
-        0 0 0 2px rgba(255,255,255,0.15) inset,
-        0 0 0 1px rgba(0,0,0,0.4);
-}
+/* .btn-3d.red:active { */
+/*     box-shadow: 0 0 0 1px #c63702 inset, */
+/*         0 0 0 2px rgba(255,255,255,0.15) inset, */
+/*         0 0 0 1px rgba(0,0,0,0.4); */
+/* } */
