@@ -77,6 +77,7 @@ public class AdminServiceImpl implements AdminService{
 		return uList;
 	}
 
+	//관리자 회원상세조회
 	@Override
 	public User selectOneById(String userId) {
 		User user = aStore.selectOneById(session, userId);

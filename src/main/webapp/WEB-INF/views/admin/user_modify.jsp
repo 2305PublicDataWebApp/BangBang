@@ -31,7 +31,8 @@
 				<hr>
 				
 				<div class="modifyDiv">
-<!-- 					<form action="/admin/uModify.do" method="post"> -->
+				<input type="hidden" name="userId" value="${ userId }">
+					<form action="/admin/uModify.do" method="post">
 	                    <div class="info">
 
 							<!-- 아이디 -->
@@ -108,10 +109,11 @@
 	
 	                        <!-- 수정 버튼 -->
 	                        <br>
-	                        <c:url var="ModifyUrl" value="/admin/uModify.do">
-	                        	<c:param name="userId" value="${user.userId }"></c:param>
-	                        </c:url> 
-							<button class="modifyBtn"  onclick="Modify('${ModifyUrl}');" style="font-family: 'TheJamsil5Bold'; background-color: #FFFACD; color: black; border-color: black;">수정</button>
+	                        
+<%-- 	                        <c:url var="ModifyUrl" value="/admin/uModify.do"> --%>
+<%-- 	                        	<c:param name="userId" value="${user.userId }"></c:param> --%>
+<%-- 	                        </c:url>  --%>
+							<button class="modifyBtn" type="submit" style="font-family: 'TheJamsil5Bold'; background-color: #FFFACD; color: black; border-color: black;">수정</button>
 	                        
 <!-- 	                        <div class="btn-container"> -->
 <!-- 	                        	<input type="submit" class="btn-3d red" value="확인"> -->
@@ -128,9 +130,7 @@
 		
 		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 			
-			
-		<!-- js -->
-	    <!-- 헤더 랜덤 이벤트 효과 -->
+		
 	    <script>
 	        let header = document.querySelector('header');
 	        let bars = document.querySelector('.fa-bars');
@@ -208,9 +208,7 @@
 	        });
 	        
 	        
-	        function Modify(ModifyUrl){
-				location.href= ModifyUrl;
-			}
+	        
 	        
 	    </script>
 		
