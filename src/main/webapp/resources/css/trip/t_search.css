@@ -90,6 +90,12 @@ ul{
                 font-size: 20px;
                 padding: 20px 0;
             }
+#clicksearch{
+	background-color: #FFFACD;
+    border: 1px black solid;
+    height: 30px;
+    width: 50px;
+}
 .input-btn{
 	font-family: 'TheJamsil5Bold';
     background-color: #FFFACD;

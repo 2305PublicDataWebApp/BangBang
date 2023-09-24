@@ -63,19 +63,19 @@
                 
                 <div id="trip">
                     <div id="in-trip">
-                        <h2>여행지 추천</h2>
+                        <h2 class="font">여행지 추천</h2>
                         <br>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                         <c:forEach begin="1" end="4" var="trip" items="${tList }" varStatus="i">
                             <div class="col">
                                 <div class="card h-100">
-                                    <img src="/resources/images/main/개발자.jpg" class="card-img-top" alt="...">
+                                    <img src="${trip.tripFilepath }" class="card-img-top" alt="home-trip">
                                     <div class="card-body">
                                     <c:url var="detailUrl" value="/trip/t_detail.do">
 		                    			<c:param name="tripNo" value="${trip.tripNo }"></c:param>
 		                    		</c:url>
-                                        <h5 class="card-title">${trip.tripTitle}</h5>
-                                        <p class="card-text">${trip.tripSummary }</p>
+                                        <h5 class="card-title aa">${trip.tripTitle}</h5>
+                                        <p class="card-text aa">${trip.tripSummary }</p>
                                         <a href="${detailUrl }" class="btn btn-primary">Go somewhere</a>
                                     </div>
                                 </div>
@@ -126,11 +126,11 @@
                         <table>
                             <thead>
                                 <th class="bottom_line">
-                                    <h3>여행 후기</h3>
+                                    <h3 class="font">여행 후기</h3>
                                 </th>
                                 <th class="bottom_line">
                                     <div id="more">
-                                        <a href="/review/r_list.do">+ 더보기</a>
+                                        <a class="aa" href="/review/r_list.do">+ 더보기</a>
                                     </div>
                                 </th>
                             </thead>
@@ -141,7 +141,7 @@
 		                    			<c:param name="reviewNo" value="${review.reviewNo }"></c:param>
 		                    		</c:url>
 	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="${rDetailUrl }">${review.reviewTitle}</a>
+	                                        <a class="aa" href="${rDetailUrl }">${review.reviewTitle}</a>
 	                                    </td>
 	                                </tr>
                                 </c:forEach>
@@ -154,11 +154,11 @@
                         <table>
                             <thead>
                                 <th class="no-bottom-line">
-                                    <h3>공지사항</h3>
+                                    <h3 class="font">공지사항</h3>
                                 </th>
                                 <th class="no-bottom-line">
                                     <div id="more">
-                                        <a href="/notice/n_list.do">+ 더보기</a>
+                                        <a class="aa" href="/notice/n_list.do">+ 더보기</a>
                                     </div>
                                 </th>
                             </thead>
@@ -176,7 +176,7 @@
 		                    			<c:param name="noticeNo" value="${notice.noticeNo }"></c:param>
 		                    		</c:url>
 	                                    <td colspan="2" class="bottom_line">
-	                                        <a href="${nDetailUrl }">${notice.noticeTitle }</a>
+	                                        <a class="aa" href="${nDetailUrl }">${notice.noticeTitle }</a>
 	                                    </td>
 	                                </tr>
                                 </c:forEach>

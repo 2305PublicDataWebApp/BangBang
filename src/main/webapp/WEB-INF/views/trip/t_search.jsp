@@ -27,7 +27,7 @@
 								<option value="by-member" 	<c:if test="${searchCondition == 'by-member'}"	>selected</c:if>>구성원별</option>
 							</select>
 	                        <input type="text" name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<input  type="submit" value="검색">
+							<input class="bbtn" type="submit" value="검색">
 	                    </form>
 	                </div>
 	                <div id="list-item">
@@ -85,5 +85,52 @@
 	        </div>
 	    </main>
 	    <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+	    <script>
+		    <!-- 헤더 랜덤 이벤트 효과 -->
+	        let header = document.querySelector('header');
+	        let bars = document.querySelector('.fa-bars');
+	        let navBar = document.querySelector('.navBar');
+	
+	
+	        function circle() {
+	
+	            let div = document.createElement('div');
+	            div.classList.add('circle');
+	
+	            let left = Math.floor(Math.random() * 100);
+	            let top = Math.floor(Math.random() * 100);
+	
+	            div.style.left = left + '%';
+	            div.style.top = top + '%';
+	
+	            header.appendChild(div);
+	
+	
+	            setTimeout(function () {
+	                header.removeChild(div)
+	            }, 3500)
+	
+	
+	        }
+	
+	
+	        setInterval(function () {
+	            circle()
+	        }, 700);
+	
+	
+	        let bolean = true;
+	        bars.addEventListener("click", () => {
+	            if (bolean == true) {
+	                navBar.style.height = "40vmin";
+	                bars.classList.replace("fa-bars", "fa-remove");
+	                bolean = false;
+	            } else {
+	                navBar.style.height = "0%";
+	                bars.classList.replace("fa-remove", "fa-bars");
+	                bolean = true;
+	            }
+	        })	    
+	    </script>
 	</body>
 </html>
