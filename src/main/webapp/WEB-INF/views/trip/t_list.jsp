@@ -54,7 +54,7 @@
 	                </div>
 	                <c:if test="${adminId ne null }">
 		                <div style="display: flex; justify-content: right;">
-		                    <button style="padding: 3px 8px; margin: 5px 10px;" onclick="insertTrip()">등록</button>
+		                    <button class="input-btn" style="padding: 3px 8px; margin: 5px 10px;" onclick="insertTrip()">등록</button>
 		                </div>
 	                </c:if>
 	                

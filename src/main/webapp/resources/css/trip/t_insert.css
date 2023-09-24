@@ -62,7 +62,11 @@ form{
 	display: flex;
 	justify-content: center;
 }
-#btnbtn{
-	width: 60px;
-	height: 30px;
+.input-btn{
+	font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    width: 90px;
+    height: 40px;
 }

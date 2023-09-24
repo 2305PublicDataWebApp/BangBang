@@ -33,7 +33,7 @@
 	                    </div>
 	                </div>
 	                <div style="margin: 40px auto; max-width: 700px;">
-						<form action="/trip/t_insert.do" method="post">
+						<form action="/trip/t_insert.do" method="post" enctype="multipart/form-data">
 	                        <ul>
 	                        	<li class="insert-li">
 	                                <label for="type">게시글 타입</label>
@@ -81,7 +81,7 @@
 	                            </li>
 							</ul>
 							<div id="btn-div">
-								<button id="btnbtn">등록</button>
+								<button class="input-btn">등록</button>
 							</div>
                             <script>
 // 	                            $(document).ready(function(){

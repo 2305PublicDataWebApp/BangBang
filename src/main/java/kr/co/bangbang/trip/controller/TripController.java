@@ -59,7 +59,7 @@ public class TripController {
 			ModelAndView mv
 			,HttpSession session
 			, @ModelAttribute Trip trip
-			,@RequestParam(value = "tUploadFile", required = false) MultipartFile uploadFile
+			,@RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile
 			,HttpServletRequest request) {
 		
 		try {
@@ -219,8 +219,7 @@ public class TripController {
 			, HttpServletRequest request) {
 		try {
 			String adminId = (String)session.getAttribute("adminId");
-			String tAdminId = trip.gettAdminId();
-			if(tAdminId != null && !tAdminId.equals("")) {
+			if(adminId != null && !adminId.equals("")) {
 				// 수정이라는 과정은 대체하는 것, 대체하는 방법은 삭제 후 등록
 				if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {  //uploadFile이 있는지 없는지 확인 후 원래이름 확인?
 					String fileReName = trip.getTripFilerename();

@@ -27,7 +27,7 @@
 								<option value="by-member" 	<c:if test="${searchCondition == 'by-member'}"	>selected</c:if>>구성원별</option>
 							</select>
 	                        <input type="text" name="searchKeyword" placeholder="검색어를 입력하세요.">
-							<input type="submit" value="검색">
+							<input  type="submit" value="검색">
 	                    </form>
 	                </div>
 	                <div id="list-item">
@@ -35,7 +35,7 @@
 	                    <c:forEach var="trip" items="${sTList }" varStatus="i">
 		                    <div id="item-container">
 		                        <div id="img-div">
-		                            <a href="/trip/t_detail.do?tripNo=${trip.tripNo }"><img class="banner-img" src="/resources/images/main/개발자.jpg" alt=""></a>
+		                            <a href="/trip/t_detail.do?tripNo=${trip.tripNo }"><img class="banner-img" src="${trip.tripFilepath }" alt=""></a>
 		                        </div>
 		                        <div id="info-li">
 		                            <ul>
@@ -50,9 +50,9 @@
 	                </div>
 	                <c:if test="${adminId ne null }">
 		                <div style="display: flex; justify-content: right;">
-		                    <button style="padding: 3px 8px; margin: 5px 10px;">등록</button>
+		                    <button  class="input-btn" style="padding: 3px 8px; margin: 5px 10px;">등록</button>
 		                </div>
-					</c:if>
+					</c:if> 
 	                <div style="display: flex; justify-content: center;">
 	                    <div id="page">
 	                    	<c:if test="${tPInfo.tStartNavi ne '1' }">

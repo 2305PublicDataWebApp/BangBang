@@ -76,11 +76,13 @@ ul{
         border-bottom: 1px solid black;
         display: flex;
         padding:30px 0;
+        flex-wrap: nowrap;
     }
         #img-div{
             width: 350px;
             height: 200px;
             margin: 30px;
+            flex-shrink: 0;
         }
         #info-li{
             height: 200px;
@@ -103,6 +105,14 @@ ul{
                 font-size: 20px;
                 padding: 20px 0;
             }
+.input-btn{
+	font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    width: 90px;
+    height: 40px;
+}
 #page{
     max-width: 1130px;
     margin: 30px auto;
