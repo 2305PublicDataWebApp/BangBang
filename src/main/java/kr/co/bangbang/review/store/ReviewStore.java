@@ -88,7 +88,7 @@ public interface ReviewStore {
 	 * @param rparamMap
 	 * @return
 	 */
-	List<Review> searchReviewByKeyword(SqlSession sqlSession, RPageInfo rInfo, Map<String, String> rparamMap);
+	List<Review> searchReviewByKeyword(SqlSession sqlSession, RPageInfo rInfo, Map<String, String> paramMap);
 
 	/**
 	 * 검색 게시글 전체 갯수
@@ -96,7 +96,7 @@ public interface ReviewStore {
 	 * @param rparamMap
 	 * @return
 	 */
-	int selectListCount(SqlSession sqlSession, Map<String, String> rparamMap);
+	int selectListCount(SqlSession sqlSession, Map<String, String> paramMap);
 
 
 }

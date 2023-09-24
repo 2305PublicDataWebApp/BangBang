@@ -82,7 +82,9 @@
 					</c:if>
 				</div>
 				<div>
+				<c:if test="${userId ne null}">
 						<button id="buttonr" type="button" onclick="showRegisterRForm()">글쓰기</button>
+				</c:if>
 				</div>
 			</div>
 		</div>

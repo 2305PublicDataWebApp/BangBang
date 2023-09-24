@@ -29,6 +29,8 @@
 }
 
 .modibu{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	width:90px;
 	height:40px;
 	margin-left:925px;
@@ -41,6 +43,8 @@
 }
 
 .golist{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	margin-top:10px;
 	float:right;
 	width:90px;

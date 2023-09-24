@@ -9,15 +9,7 @@
 		<link rel="stylesheet" href="/resources/css/user/header.css">
 		<link rel="stylesheet" href="/resources/css/user/footer.css">
 		<link rel="stylesheet" href="/resources/css/reset.css">
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	    <!-- 썸머노트를 위한 import -->
-		<script src="../resources/js/summernote/summernote-lite.js"></script>
-		<script src="../resources/js/summernote/lang/summernote-ko-KR.js"></script>
-		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css">
+
 	</head>
 	<body>
     		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
@@ -28,9 +20,12 @@
     			</div>
     			<hr>
     			<div class="reviewform">
-    				<form action="/review/r_modify.do" method="post">
+    				<form action="/review/r_modify.do" method="post" enctype="multipart/form-data">
     					<input type="hidden" name="reviewNo" value="${review.reviewNo }">
-    					<input type="hidden" name="rUserId" value="${review.rUserId }">
+    					<input type="hidden" name="reviewFilename" value="${review.reviewFilename }">
+						<input type="hidden" name="reviewFileRename" value="${review.reviewFileRename }">
+						<input type="hidden" name="reviewFilenpath" value="${review.reviewFilepath }">
+						<input type="hidden" name="reviewFileLength" value="${review.reviewFileLength }">
     					<ul>
     						<li class="one">
     							<label class="type">유형</label>
@@ -40,6 +35,11 @@
     						<li class="two">
     							<label class="sub">제목</label>
     							<input class="titbox" type="text" name="reviewtitle" value="${review.reviewTitle }" style="width:400px;height:40px";>
+    						</li>
+    						<li>
+    							<label>첨부파일</label>
+    							<a href="../resources/ruploadFiles/${review.reviewFilename }" download>${review.reviewFilename }</a>
+								<input type="file" name="uploadFile">
     						</li>
 							<li>
     							<textarea id="summernote" name="reviewContent"></textarea>

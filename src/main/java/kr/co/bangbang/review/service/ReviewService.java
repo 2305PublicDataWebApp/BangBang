@@ -78,14 +78,14 @@ public interface ReviewService {
 	 * @param rparamMap
 	 * @return
 	 */
-	List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rparamMap);
+	List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> paramMap);
 
 	/**
 	 * 검색 게시글 전체 갯수
 	 * @param rparamMap
 	 * @return
 	 */
-	int getRListCount(Map<String, String> rparamMap);
+	int getRListCount(Map<String, String> paramMap);
 
 
 	

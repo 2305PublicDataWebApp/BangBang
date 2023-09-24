@@ -89,15 +89,15 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	// 키워드 검색
 	@Override
-	public List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> rparamMap) {
-		List<Review> searchList = rStore.searchReviewByKeyword(sqlSession, rInfo, rparamMap);
-		return searchList;
+	public List<Review> searchReviewByKeyword(RPageInfo rInfo, Map<String, String> paramMap) {
+		List<Review> searchRList = rStore.searchReviewByKeyword(sqlSession, rInfo, paramMap);
+		return searchRList;
 	}
 
 	// 검색 게시글 전체 갯수
 	@Override
-	public int getRListCount(Map<String, String> rparamMap) {
-		int result = rStore.selectListCount(sqlSession, rparamMap);
+	public int getRListCount(Map<String, String> paramMap) {
+		int result = rStore.selectListCount(sqlSession, paramMap);
 		return result;
 	}
 }

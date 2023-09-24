@@ -29,7 +29,7 @@
     			</div>
     			<hr>
     			<div class="reviewform">
-    				<form action="/review/r_insert.do" method="post">
+    				<form action="/review/r_insert.do" method="post" enctype="multipart/form-data">
     					<ul>
     						<li class="one">
     							<label class="type">유형</label>
@@ -40,6 +40,10 @@
     						<li>
     							<label class="two">제목</label>
     							<input  class="titbox" type="text" name="reviewTitle" style="width:400px;height:40px";>
+    						</li>
+    						<li>
+    							<label>첨부파일</label>
+    							<input type="file" name="uploadFile">
     						</li>
 							<li>
     							<textarea id="summernote" name="reviewContent"></textarea>

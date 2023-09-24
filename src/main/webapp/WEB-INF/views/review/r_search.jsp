@@ -17,22 +17,22 @@
 		
 		<div class="container">
 			<div class="center">
-			<div class="noticetitle">
+			<div class="reviewtitle">
 					<span>후기게시판</span>
 				</div>
-				<hr>
-				<div>
+				<div class="mainsearch">
 					<form action="/review/r_search.do" method="get">
-						<select name="searchCondition">
+						<select name="searchCondition"  class="choicetext">
 								<option value="all"<c:if test="${searchCondition == 'all' }">selected</c:if>>전체</option>
 								<option value="title"<c:if test="${searchCondition == 'title' }">selected</c:if>>제목</option>
 								<option value="content"<c:if test="${searchCondition == 'content' }">selected</c:if>>내용</option>
 								<option value="writer"<c:if test="${searchCondition == 'writer' }">selected</c:if>>작성자</option>
 						</select>
-						<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }">
-						<input type="submit" value="검색">
+						<input class= "searchtext"  type="text" name="searchKeyword" placeholder="검색어를 입력하세요." value="${searchKeyword }">
+						<input class="clicksearch" type="submit" value="검색">
 					</form>
 				</div>
+				<hr>
 				<table class="reviewtable">
 					<thead>
 						<tr>
@@ -59,6 +59,7 @@
 						</tr>
 					</c:forEach>
 					</tbody>
+				</table>
 				<div class="paging">
 					<c:if test="${rInfo.rStartNavi != 1}">
 						<c:url var="preUrl" value="/review/r_list.do">
@@ -79,15 +80,19 @@
 						<a href="${nextUrl }">[다음]</a>
 					</c:if>
 				</div>
-				</table>
-				<div class="bottom">
 					<div>
-						<button type="button" onclick="showRegisterRForm()">글쓰기</button>
+					<c:if test="${userId ne null}">
+						<button id="buttonr"  type="button" onclick="showRegisterRForm()">글쓰기</button>
+					</c:if>
 					</div>
-				</div>
 				</div>
 		</div>
 		
 			<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<script>
+			function showRegisterRForm(){
+				location.href="/review/r_insert.do"
+			}
+		</script>
 	</body>
 </html>

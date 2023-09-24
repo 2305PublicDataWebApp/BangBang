@@ -20,6 +20,7 @@
     				<span>${review.reviewTitle }</span>
     			</div>
     			<div class="button-1">
+    				<c:if test="${review.rUserId eq userId }">
     			<c:url var="deleteUrl" value="/review/r_delete.do">
     				<c:param name="reviewNo" value="${review.reviewNo }" />
     				<c:param name="rUserId" value="${review.rUserId }" />
@@ -28,17 +29,29 @@
     				<c:param name="reviewNo" value="${review.reviewNo }" />
     				<c:param name="rUserId" value="${review.rUserId }" />
     			</c:url>
-    				<c:if test="${review.rUserId eq userId }">
     					<button class="modibu" type="button" onclick="showModifyPage('${modifyUrl }');">수정하기</button>
+    					<button class="delbu" type="button" onclick="deleteReview('${deleteUrl}');">삭제하기</button>
+    				</c:if>
+    				<c:if test="${adminId ne null }">
+    					<c:url var="deleteUrl" value="/review/r_delete.do">
+    						<c:param name="reviewNo" value="${review.reviewNo }" />
+    						<c:param name="rAdminId" value="${review.rAdminId }" />
+    					</c:url>
     					<button class="delbu" type="button" onclick="deleteReview('${deleteUrl}');">삭제하기</button>
     				</c:if>
     			</div>
     			<hr>
+    			<div>
+    				<img class="reimg" alt="첨부파일" src="/resources/ruploadFiles/${review.reviewFileRename }" width="900" height="500">
+    			</div>
     			<div class="revicontent">
     				<span>${review.reviewContent }</span>
     			</div>
     			<div>
     				<button class="golist" type="button" onclick="showReviewList();">목록으로</button>
+    			</div>
+    			<div class="reply">
+    				<span>${rreplyCount }</span>
     			</div>
 			<hr>
 			

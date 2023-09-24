@@ -27,6 +27,8 @@
 }
 
 #buttonr{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	float:right;
 	width:90px;
 	height:40px;
@@ -45,6 +47,8 @@
 }
 
 .clicksearch{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	height:30px;
 	width: 50px;
 }

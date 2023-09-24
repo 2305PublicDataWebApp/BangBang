@@ -87,18 +87,18 @@ public class ReviewStoreLogic implements ReviewStore{
 
 	// 키워드 검색
 	@Override
-	public List<Review> searchReviewByKeyword(SqlSession sqlSession, RPageInfo rInfo, Map<String, String> rparamMap) {
+	public List<Review> searchReviewByKeyword(SqlSession sqlSession, RPageInfo rInfo, Map<String, String> paramMap) {
 		int limit = rInfo.getrRecordCountPerPage();
 		int offset = (rInfo.getrCurrentPage()-1)*limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		List<Review> searchRList = sqlSession.selectList("ReviewMapper.searchReviewByKeyword", rparamMap, rowBounds);
+		List<Review> searchRList = sqlSession.selectList("ReviewMapper.searchReviewByKeyword", paramMap, rowBounds);
 		return searchRList;
 	}
 
 	// 검색 게시글 전체 갯수
 	@Override
-	public int selectListCount(SqlSession sqlSession, Map<String, String> rparamMap) {
-		int result = sqlSession.selectOne("ReviewMapper.selectListByKeywordCount", rparamMap);
+	public int selectListCount(SqlSession sqlSession, Map<String, String> paramMap) {
+		int result = sqlSession.selectOne("ReviewMapper.selectListByKeywordCount", paramMap);
 		return result;
 	}
 

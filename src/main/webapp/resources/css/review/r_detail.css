@@ -27,6 +27,8 @@
 }
 
 .golist{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	margin-left:930px;
 	width:90px;
 	height:40px;
@@ -41,11 +43,15 @@
 }
 
 .modibu{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	width:90px;
 	height:40px;
 }
 
 .delbu{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	margin-left:10px;
 	width:90px;
 	height:40px;
@@ -56,6 +62,8 @@
 }
 
 .replymodi{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	width:90px;
 	height:40px;
 }
@@ -82,4 +90,11 @@ td, tr{
 }
 .mo{
 	margin-right:20px;
+}
+
+.reimg{
+	max-width:900px;
+	max-height:900px;
+	margin-top:20px;
+	margin-left:20px;
 }

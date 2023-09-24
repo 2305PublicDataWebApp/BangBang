@@ -23,6 +23,6 @@
 		SELECT * FROM NOTICE_BOARD WHERE NOTICE_NO = #{noticeNo }
 	</select>
 	<select id="selectNoticeList" resultMap="noticeResultMap">
-		SELECT * FROM NOTICE_BOARD 
+		SELECT * FROM NOTICE_BOARD ORDER BY NOTICE_NO DESC
 	</select>
 </mapper>

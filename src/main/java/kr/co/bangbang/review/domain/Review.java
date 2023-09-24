@@ -8,6 +8,10 @@ public class Review {
 	private String reviewTitle;
 	private String reviewContent;
 	private String rUserId;
+	private String reviewFilename;
+	private String reviewFileRename;
+	private String reviewFilepath;
+	private long reviewFileLength;
 	private Date reviewDate;
 	private int reviewViewcount;
 	private char rStatusYn;
@@ -29,8 +33,8 @@ public class Review {
 		return reviewType;
 	}
 
-	public void setReviewType(String reiviewType) {
-		this.reviewType = reiviewType;
+	public void setReviewType(String reviewType) {
+		this.reviewType = reviewType;
 	}
 
 	public String getReviewTitle() {
@@ -55,6 +59,38 @@ public class Review {
 
 	public void setrUserId(String rUserId) {
 		this.rUserId = rUserId;
+	}
+
+	public String getReviewFilename() {
+		return reviewFilename;
+	}
+
+	public void setReviewFilename(String reviewFilename) {
+		this.reviewFilename = reviewFilename;
+	}
+
+	public String getReviewFileRename() {
+		return reviewFileRename;
+	}
+
+	public void setReviewFileRename(String reviewFileRename) {
+		this.reviewFileRename = reviewFileRename;
+	}
+
+	public String getReviewFilepath() {
+		return reviewFilepath;
+	}
+
+	public void setReviewFilepath(String reviewFilepath) {
+		this.reviewFilepath = reviewFilepath;
+	}
+
+	public long getReviewFileLength() {
+		return reviewFileLength;
+	}
+
+	public void setReviewFileLength(long reviewFileLength) {
+		this.reviewFileLength = reviewFileLength;
 	}
 
 	public Date getReviewDate() {
@@ -91,10 +127,13 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "후기게시판 [글번호=" + reviewNo + ", 글유형=" + reviewType + ", 글제목=" + reviewTitle
-				+ ", 글내용=" + reviewContent + ", 작성자아이디=" + rUserId + ", 작성일=" + reviewDate
-				+ ", 조회수=" + reviewViewcount + ", 상태여부=" + rStatusYn + ", 관리자아이디=" + rAdminId + "]";
+		return "Review [reviewNo=" + reviewNo + ", reviewType=" + reviewType + ", reviewTitle=" + reviewTitle
+				+ ", reviewContent=" + reviewContent + ", rUserId=" + rUserId + ", reviewFilename=" + reviewFilename
+				+ ", reviewFileRename=" + reviewFileRename + ", reviewFilepath=" + reviewFilepath
+				+ ", reviewFileLength=" + reviewFileLength + ", reviewDate=" + reviewDate + ", reviewViewcount="
+				+ reviewViewcount + ", rStatusYn=" + rStatusYn + ", rAdminId=" + rAdminId + "]";
 	}
-	
+
+
 	
 }

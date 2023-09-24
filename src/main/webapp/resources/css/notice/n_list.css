@@ -27,6 +27,8 @@
 }
 
 .button{
+	background-color:#FFFACD;
+	border : 1px black solid;
 	width:90px;
 	height:40px;
 	float:right;
