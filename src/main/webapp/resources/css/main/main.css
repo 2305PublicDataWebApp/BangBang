@@ -8,8 +8,15 @@
 	background: #F2F2F2;
 /* 	background: white; */
 }
+.aa{
+	text-decoration-line: none;
+    font-family: 'TheJamsil5Bold';
+    color:black;
+}
 
-
+.font{
+	font-family: 'TheJamsil5Bold';
+}
 .main-container {
 	position: relative;
     background: white;
@@ -50,7 +57,7 @@
 
 #event{
     width: 100%;
-    margin: 200px 0;
+    margin: 50px 0 150px 0;
 }
 
 #event-banner{

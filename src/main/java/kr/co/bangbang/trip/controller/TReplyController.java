@@ -66,7 +66,7 @@ public class TReplyController {
 			String tRAdminId = (String)session.getAttribute("adminId");
 			String replyWriter = tReply.gettRUserId();
 			url = "/trip/t_detail.do?tripNo="+tReply.gettTripNo();
-			if(!replyWriter.equals("") && replyWriter.equals(userId)|| tRAdminId.contains("amdin")) {
+			if((!replyWriter.equals("") && replyWriter.equals(userId)) || tRAdminId.contains("amdin")) {
 				tReply.settRUserId(userId);
 				int result = tRService.updateTReply(tReply);
 				if(result > 0) {

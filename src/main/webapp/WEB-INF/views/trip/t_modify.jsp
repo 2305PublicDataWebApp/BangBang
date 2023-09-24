@@ -15,7 +15,7 @@
 <!-- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
 <!-- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-<!-- 		<!-- 썸머노트를 위한 import --> -->
+<!-- 		<!-- 썸머노트를 위한 import -->
 <!-- 		<script src="../resources/js/summernote/summernote-lite.js"></script> -->
 <!-- 		<script src="../resources/js/summernote/lang/summernote-ko-KR.js"></script> -->
 <!-- 		<link rel="stylesheet" href="../resources/css/summernote/summernote-lite.css"> -->
@@ -95,6 +95,51 @@
 // 		            maxHeight: 400
 // 		        });
 // 		    });
+			<!-- 헤더 랜덤 이벤트 효과 -->
+	        let header = document.querySelector('header');
+	        let bars = document.querySelector('.fa-bars');
+	        let navBar = document.querySelector('.navBar');
+	
+	
+	        function circle() {
+	
+	            let div = document.createElement('div');
+	            div.classList.add('circle');
+	
+	            let left = Math.floor(Math.random() * 100);
+	            let top = Math.floor(Math.random() * 100);
+	
+	            div.style.left = left + '%';
+	            div.style.top = top + '%';
+	
+	            header.appendChild(div);
+	
+	
+	            setTimeout(function () {
+	                header.removeChild(div)
+	            }, 3500)
+	
+	
+	        }
+	
+	
+	        setInterval(function () {
+	            circle()
+	        }, 700);
+	
+	
+	        let bolean = true;
+	        bars.addEventListener("click", () => {
+	            if (bolean == true) {
+	                navBar.style.height = "40vmin";
+	                bars.classList.replace("fa-bars", "fa-remove");
+	                bolean = false;
+	            } else {
+	                navBar.style.height = "0%";
+	                bars.classList.replace("fa-remove", "fa-bars");
+	                bolean = true;
+	            }
+	        })
 	    </script>
 	</body>
 </html>

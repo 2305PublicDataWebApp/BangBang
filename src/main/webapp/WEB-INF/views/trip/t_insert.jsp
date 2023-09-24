@@ -144,6 +144,52 @@
 // 	                            		}
 // 	                            	}
 // 	                            }
+
+					<!-- 헤더 랜덤 이벤트 효과 -->
+			        let header = document.querySelector('header');
+			        let bars = document.querySelector('.fa-bars');
+			        let navBar = document.querySelector('.navBar');
+			
+			
+			        function circle() {
+			
+			            let div = document.createElement('div');
+			            div.classList.add('circle');
+			
+			            let left = Math.floor(Math.random() * 100);
+			            let top = Math.floor(Math.random() * 100);
+			
+			            div.style.left = left + '%';
+			            div.style.top = top + '%';
+			
+			            header.appendChild(div);
+			
+			
+			            setTimeout(function () {
+			                header.removeChild(div)
+			            }, 3500)
+			
+			
+			        }
+			
+			
+			        setInterval(function () {
+			            circle()
+			        }, 700);
+			
+			
+			        let bolean = true;
+			        bars.addEventListener("click", () => {
+			            if (bolean == true) {
+			                navBar.style.height = "40vmin";
+			                bars.classList.replace("fa-bars", "fa-remove");
+			                bolean = false;
+			            } else {
+			                navBar.style.height = "0%";
+			                bars.classList.replace("fa-remove", "fa-bars");
+			                bolean = true;
+			            }
+			        })
 							</script>
 	                    </form>
 	                </div>

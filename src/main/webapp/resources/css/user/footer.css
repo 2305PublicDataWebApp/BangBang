@@ -20,6 +20,7 @@
     left: 5px;
     width: 35px;
     height: 35px;
+    vertical-align: baseline;
 }
 
 .footer-title {
