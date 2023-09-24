@@ -5,7 +5,7 @@
   
   <mapper namespace="BannerMapper">
   
-  <resultMap type="Banner" id="BannerResultMap">
+  	<resultMap type="Banner" id="BannerResultMap">
 		<id property="bannerNo"             	column="BANNER_NO" />
 		<result property="bannerName" 	    	column="BANNER_NAME" />
 		<result property="bannerArea"    		column="BANNER_AREA" />
@@ -17,34 +17,41 @@
 		<result property="bStatusYn" 	 		column="B_STATUS_YN" />
 		<result property="bAdminId" 	  		column="B_ADMIN_ID" />
 	</resultMap>
+ 
+ 
+  	 <!--배너등록 -->
+ 	 <insert id="insertBanner">
+	  	INSERT INTO BANNER VALUES(SEQ_BANNER_NO.NEXTVAL, #{bannerName }, #{bannerArea }, 
+	  	#{bannerSize }, #{bannerFileName }, #{bannerFilePath }, #{bannerFileLength }, 
+	  	#{linkUrl }, DEFAULT, #{bAdminId })
+	 </insert>
+	 
+	 <!--배너삭제 -->
+    <delete id="deleteBanner">
+  		DELETE FROM BANNER WHERE BANNER_NO = #{bannerNo }
+    </delete>
   
-  <insert id="insertBanner">
-  	INSERT INTO BANNER VALUES(SEQ_BANNER_NO.NEXTVAL, #{bannerName }, #{bannerArea }, 
-  	#{bannerSize }, #{bannerFileName }, #{bannerFilePath }, #{bannerFileLength }, 
-  	#{linkUrl }, DEFAULT, #{bAdminId })
-  </insert>
   
-  
-  
+  	<!--전체배너갯수-->
   	<select id="selectListCount" resultType="_int">
 		SELECT COUNT (*) FROM BANNER WHERE B_STATUS_YN = 'Y'
 	</select>
 	
+	<!--배너전체조회 -->
 	<select id="selectBannerList" resultMap="BannerResultMap">
 		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' ORDER BY BANNER_NO DESC
 	</select>
 	
+	<!--메인배너-->
 	<select id="selectbBannerList" resultMap="BannerResultMap">
 		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' AND BANNER_AREA = 'main_b' ORDER BY BANNER_NO DESC
 	</select>
 	
+	<!--트립배너 -->
 	<select id="selecttBannerList" resultMap="BannerResultMap">
 		SELECT * FROM BANNER WHERE B_STATUS_YN = 'Y' AND BANNER_AREA = 'trip_b' ORDER BY BANNER_NO DESC
 	</select>
 	
   	
-    <delete id="deleteBanner">
-  		DELETE FROM BANNER WHERE BANNER_NO = #{bannerNo }
-    </delete>
   
   </mapper>

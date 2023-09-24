@@ -12,6 +12,7 @@
     	<link rel="stylesheet" href="/resources/css/user/header.css">
     	<link rel="stylesheet" href="/resources/css/user/footer.css">
     	<link rel="stylesheet" href="/resources/css/reset.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body style="background: #F2F2F2;">
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
@@ -30,7 +31,7 @@
 				<option value="nickname" <c:if test="${param.searchCondition == 'nickname' }">selected</c:if>>닉네임</option>   
 			</select> 
 	        <input class="form-control" type="text" name="searchKeyword" placeholder="검색"/>
-	        <input type="submit" value="검색">
+	        <input type="submit" value="검색" style="background-color: #FFFACD; color: black; border-color: black; width: 90px;">
 	        </div>
 	     </form>
      </div>
@@ -68,7 +69,7 @@
 			<div class="current-page-area"></div>
             <ul class="pagination justify-content-center">
 	         	<c:if test="${aInfo.startNavi != 1 }">
-		            <li class="page-item"  ><a class="page-link" href="${prevUrl }">Prev</a></li>
+		            <li class="page-item"  ><a class="page-link" href="${prevUrl }" style="background-color: #FFFACD; color: black; border-color: black;">Prev</a></li>
 	            </c:if>
 	         
 	            <c:forEach begin="${aInfo.startNavi }" end="${aInfo.endNavi }" var="p">
@@ -77,7 +78,7 @@
 						<c:param name="searchCondition" value="${paramMap.searchCondition }"></c:param>
 						<c:param name="searchKeyword" value="${paramMap.searchKeyword }"></c:param>
 					</c:url>
-	            	<li class="page-item"><a class="page-link" href="${pageUrl }">${p }</a></li>
+	            	<li class="page-item"><a class="page-link" href="${pageUrl }" style="background-color: #FFFACD; color: black; border-color: black;">${p }</a></li>
 	            </c:forEach>
 	            <c:if test="${aInfo.endNavi != aInfo.naviTotalCount }">
 					<c:url var="nextUrl" value="/admin/searchUserList.do"> 
@@ -85,7 +86,7 @@
 						<c:param name="searchCondition" value="${paramMap.searchCondition }"></c:param>
 						<c:param name="searchKeyword" value="${paramMap.searchKeyword }"></c:param>
 					</c:url>
-		            <li class="page-item"><a class="page-link" href="${nextUrl }">Next</a></li>
+		            <li class="page-item"><a class="page-link" href="${nextUrl }" style="background-color: #FFFACD; color: black; border-color: black;">Next</a></li>
 	            </c:if>
             </ul>
         </nav>  

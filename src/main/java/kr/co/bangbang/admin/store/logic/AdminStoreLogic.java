@@ -22,14 +22,35 @@ public class AdminStoreLogic implements AdminStore{
 		return result;
 	}
 
-	//관리자-전체 회원수
+	// 관리자 로그인
+	@Override
+	public Admin adminLogin(SqlSession session, Admin admin) {
+		Admin aOne = session.selectOne("AdminMapper.adminLogin", admin);
+		return aOne;
+	}
+	
+	//관리자 회원정보수정
+	@Override
+	public int updateUser(SqlSession session, User user) {
+		int result  = session.update("AdminMapper.updateUser", user);
+		return result;
+	}
+
+	//관리자 회원탈퇴
+	@Override
+	public int deleteUser(SqlSession session, String userId) {
+		int result = session.update("AdminMapper.deleteUser", userId);
+		return result;
+	}
+
+	//관리자 전체회원수
 	@Override
 	public int selectListCount(SqlSession session) {
 		int result = session.selectOne("AdminMapper.selectListCount");
 		return result;
 	}
 
-	//관리자-전체 회원조회
+	//관리자 전체회원조회
 	@Override
 	public List<User> selectUserList(SqlSession session, APageInfo aInfo) {
 		
@@ -42,12 +63,14 @@ public class AdminStoreLogic implements AdminStore{
 		return uList;
 	}
 
+	//관리자 검색회원수
 	@Override
 	public int selectListCount(SqlSession session, Map<String, String> paramMap) {
 		int result = session.selectOne("AdminMapper.selectListByKeywordCount", paramMap);
 		return result;
 	}
 
+	//관리자 회원검색
 	@Override
 	public List<User> searchUserByKeyword(SqlSession session, APageInfo aInfo, Map<String, String> paramMap) {
 		
@@ -59,29 +82,11 @@ public class AdminStoreLogic implements AdminStore{
 		return searchList;
 	}
 
-	// 관리자 로그인
-	@Override
-	public Admin adminLogin(SqlSession session, Admin admin) {
-		Admin aOne = session.selectOne("AdminMapper.adminLogin", admin);
-		return aOne;
-	}
-	
+	//관리자 회원상세조회
 	@Override
 	public User selectOneById(SqlSession session, String userId) {
 		User user = session.selectOne("AdminMapper.selectOneById", userId);
 		return user;
-	}
-
-	@Override
-	public int updateUser(SqlSession session, User user) {
-		int result  = session.update("AdminMapper.updateUser", user);
-		return result;
-	}
-
-	@Override
-	public int deleteUser(SqlSession session, String userId) {
-		int result = session.update("AdminMapper.deleteUser", userId);
-		return result;
 	}
 	
 	

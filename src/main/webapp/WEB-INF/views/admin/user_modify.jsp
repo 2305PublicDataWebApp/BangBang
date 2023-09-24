@@ -1,47 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원 정보 수정</title>
-	    <link rel="stylesheet" href="/resources/css/admin/a_modify.css">
-	    <link rel="stylesheet" href="/resources/css/reset.css">
-	    <link rel="stylesheet" href="/resources/css/user/header.css">
-	    <link rel="stylesheet" href="/resources/css/user/footer.css">
+		<title>회원정보수정</title>
+    	<link rel="stylesheet" href="/resources/css/banner/bannerList.css">
+    	<link rel="stylesheet" href="/resources/css/user/header.css">
+    	<link rel="stylesheet" href="/resources/css/user/footer.css">
+    	<link rel="stylesheet" href="/resources/css/reset.css">
+    	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    	<link rel="stylesheet" href="/resources/css/admin/a_modify.css">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
 	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	    <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Rajdhani&family=Roboto+Mono&family=Roboto:wght@300&family=Tilt+Prism&display=swap" rel="stylesheet">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body>
-		<!-- header -->
-	    <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	    
-	    <!-- main -->
-	    <main class="main">
-	        <div class="main-container" style="font-family: 'TheJamsil5Bold';">
-	
-	            <!-- *****마이페이지 ***** 프로필 -->
-<%-- 	            <jsp:include page="/WEB-INF/views/include/profile.jsp"></jsp:include> --%>
-	
-	            
-	            <div class="menu-mypage">
-	
-<!-- 	                <span class="menu-box-text">마이페이지</span> -->
-	                <br><br>
-<!-- 	                <hr> -->
-	                
-					<!-- ***** 마이페이지 ***** 메뉴 -->
-<%-- 					<jsp:include page="/WEB-INF/views/include/mypage_menu.jsp"></jsp:include> --%>
-	                
-	                <!-- 개인정보 수정 -->
-	                <span class="menu-box-text">개인 정보 수정</span>
-	                <br><br>
-	                <hr>
-	                
-	                <form action="/admin/uModify.do" method="post">
+		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+
+		<div class="container">
+			<div class="center">
+				<div class="bannertitle">
+					<span>회원정보수정</span>
+				</div>
+				<hr>
+				
+				<div class="modifyDiv">
+<!-- 					<form action="/admin/uModify.do" method="post"> -->
 	                    <div class="info">
 
 							<!-- 아이디 -->
@@ -118,19 +108,28 @@
 	
 	                        <!-- 수정 버튼 -->
 	                        <br>
-	                        <div class="btn-container">
-	                        	<input type="submit" class="btn-3d red" value="확인">
-	                        </div>
+	                        <c:url var="ModifyUrl" value="/admin/uModify.do">
+	                        	<c:param name="userId" value="${user.userId }"></c:param>
+	                        </c:url> 
+							<button class="modifyBtn"  onclick="Modify('${ModifyUrl}');" style="font-family: 'TheJamsil5Bold'; background-color: #FFFACD; color: black; border-color: black;">수정</button>
+	                        
+<!-- 	                        <div class="btn-container"> -->
+<!-- 	                        	<input type="submit" class="btn-3d red" value="확인"> -->
+<!-- 	                        </div> -->
 	                    </div>
-	                </form>
-	            </div>
-	        </div>
-	    </main>
-	    
-	   	<!-- footer -->
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+                	</form>
+	                				
+				</div>
+	                
 	
-	    <!-- js -->
+	
+			</div>
+		</div>
+		
+		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+			
+			
+		<!-- js -->
 	    <!-- 헤더 랜덤 이벤트 효과 -->
 	    <script>
 	        let header = document.querySelector('header');
@@ -178,27 +177,6 @@
 	            }
 	        })
 	        
-// 	        let profile = document.querySelector('.profile');
-	
-// 	        // 스크롤 이벤트 리스너
-// 	        window.addEventListener('scroll', () => {
-// 	            // 스크롤 위치
-// 	            let scrollY = window.scrollY;
-	
-// 	            // 프로필을 고정할 위치 (예: 500px)
-// 	            let fixedPosition = 580;
-	
-// 	            // 프로필이 고정될 때 상단으로부터의 거리 (예: 20px)
-// 	            let fixedTop = 50;
-	
-// 	            // 스크롤이 특정 위치 이상으로 내려갔을 때 .profile에 position: fixed; 적용
-// 	            if (scrollY >= fixedPosition) {
-// 	                profile.style.position = 'fixed';
-// 	                profile.style.top = `${fixedTop}px`; // 조금 아래로 내리려면 top 속성 사용
-// 	            } else {
-// 	                profile.style.position = 'static'; // 스크롤 위치가 작을 때는 기본 위치로 돌려놓음
-// 	            }
-// 	        });
 	        
 	        <!-- 프로필 이미지 미리보기 -->
 	     	// 파일 선택 필드와 이미지 미리보기 영역에 대한 참조를 가져옵니다.
@@ -228,6 +206,14 @@
 	            }
 	            profileForm.submit();
 	        });
+	        
+	        
+	        function Modify(ModifyUrl){
+				location.href= ModifyUrl;
+			}
+	        
 	    </script>
+		
+		
 	</body>
 </html>

@@ -28,30 +28,6 @@ public class AdminServiceImpl implements AdminService{
 		return result;
 	}
 
-	@Override
-	public Integer getListCount() {
-		int result = aStore.selectListCount(session);
-		return result;
-	}
-
-	@Override
-	public List<User> selectUserList(APageInfo aInfo) {
-		List<User> uList = aStore.selectUserList(session,aInfo);
-		return uList;
-	}
-
-	@Override
-	public int getListCount(Map<String, String> paramMap) {
-		int result = aStore.selectListCount(session,paramMap);
-		return result;
-	}
-
-	@Override
-	public List<User> searchUserByKeyword(APageInfo aInfo, Map<String, String> paramMap) {
-		List<User> uList = aStore.searchUserByKeyword(session, aInfo, paramMap);
-		return uList;
-	}
-
 	// 관리자 로그인
 	@Override
 	public Admin adminLogin(Admin admin) {
@@ -59,23 +35,52 @@ public class AdminServiceImpl implements AdminService{
 		return aOne;
 	}
 	
-	@Override
-	public User selectOneById(String userId) {
-		User user = aStore.selectOneById(session, userId);
-		return user;
-	}
-
-	//관리자-회원정보수정
+	//관리자 회원정보수정
 	@Override
 	public int updateUser(User user) {
 		int result = aStore.updateUser(session, user);
 		return result;
 	}
 
+	//관리자 회원탈퇴
 	@Override
 	public int deleteUser(String userId) {
 		int result = aStore.deleteUser(session, userId);
 		return result;
+	}
+
+	//관리자 전체회원수
+	@Override
+	public Integer getListCount() {
+		int result = aStore.selectListCount(session);
+		return result;
+	}
+
+	//관리자 회원검색
+	@Override
+	public List<User> selectUserList(APageInfo aInfo) {
+		List<User> uList = aStore.selectUserList(session,aInfo);
+		return uList;
+	}
+
+	//관리자 검색회원 전체 개수
+	@Override
+	public int getListCount(Map<String, String> paramMap) {
+		int result = aStore.selectListCount(session,paramMap);
+		return result;
+	}
+
+	//관리자 조건에 따라 키워드로 회원 검색
+	@Override
+	public List<User> searchUserByKeyword(APageInfo aInfo, Map<String, String> paramMap) {
+		List<User> uList = aStore.searchUserByKeyword(session, aInfo, paramMap);
+		return uList;
+	}
+
+	@Override
+	public User selectOneById(String userId) {
+		User user = aStore.selectOneById(session, userId);
+		return user;
 	}
 
 

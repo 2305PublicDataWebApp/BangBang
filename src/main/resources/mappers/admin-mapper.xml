@@ -24,18 +24,7 @@
 		<result property="adminEmail" column="ADMIN_EMAIL" />
 	</resultMap>
 	
-	<resultMap type="User" id="AuserResultMap">
-		<id property="userId" 			column="USER_ID" />
-		<result property="userPw" 		column="USER_PW" />
-		<result property="userPwRe" 	column="USER_PWRE" />
-		<result property="userName" 	column="USER_NAME" />
-		<result property="userNickname" column="USER_NICKNAME" />
-		<result property="userEmail" 	column="USER_EMAIL" />
-		<result property="userPhone" 	column="USER_PHONE" />
-		<result property="userBirth" 	column="USER_BIRTH" />
-		<result property="userRegDate" 	column="USER_REGDATE" />
-		<result property="userYn" 		column="USER_YN" />
-	</resultMap>
+	
 	
 	
 	<!-- 관리자 회원가입 -->
@@ -87,7 +76,7 @@
 		</if> 
 	</select>
 	
-	
+	<!--관리자 회원검색 -->
 	<select id="searchUserByKeyword" resultMap="userResultMap">
 		SELECT * FROM USER_TBL
 		<if test="searchCondition == 'all'">
@@ -105,7 +94,7 @@
 	</select>
 	
 	<!--관리자-회원정보조회 -->
-	<select id="selectOneById" resultMap="AuserResultMap">
+	<select id="selectOneById" resultMap="userResultMap">
 		SELECT * FROM USER_TBL WHERE USER_ID = #{ userId } AND USER_YN = 'Y'
 	</select>
 	
