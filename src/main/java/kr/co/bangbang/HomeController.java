@@ -64,7 +64,7 @@ public class HomeController {
 			mv.addObject("tbList", tbList);
 			mv.setViewName("home");
 		} catch (Exception e) {
-			mv.addObject("msg", "게시글 조회에 실패했습니다.");
+			mv.addObject("msg", "홈게시글 조회에 실패했습니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/error_page");

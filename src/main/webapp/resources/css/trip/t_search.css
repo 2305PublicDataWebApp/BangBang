@@ -90,6 +90,14 @@ ul{
                 font-size: 20px;
                 padding: 20px 0;
             }
+.input-btn{
+	font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    width: 90px;
+    height: 40px;
+}
 #page{
     max-width: 1130px;
     margin: 30px auto;

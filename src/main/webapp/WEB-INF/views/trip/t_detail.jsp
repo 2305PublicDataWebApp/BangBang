@@ -20,9 +20,9 @@
 	    <main>
 	        <div id="main-container">
 	            <div id="title">
-	                    <p style="font-size: 30px; font-weight: bold; margin-bottom: 15px;">${trip.tripTitle }</p>
-	                    <p style="font-size: 15px; margin-bottom: 28px;">${trip.tripAddr }</p>
-	                    <p style="font-size: 20px;">${trip.tripSummary }</p>
+	                    <p style="font-size: 35px; font-weight: bold; margin-bottom: 50px;">${trip.tripTitle }</p>
+	                    <p style="font-size: 20px; margin-bottom: 55px;">${trip.tripAddr }</p>
+	                    <p style="font-size: 25px; padding-bottom: 15px;">${trip.tripSummary }</p>
 	            </div>
 	            <div id="review-btn">
 	                <p>조회수
@@ -40,8 +40,8 @@
 							<c:param name="tAdminId" value="${trip.tAdminId }"></c:param>
 						</c:url>
 						<c:if test="${ adminId ne null}">
-		                    <button id="btnbtn" onclick="showModify('${tModifyUrl}')">수정</button>
-		                    <button id="btnbtn" onclick="deleteTrip('${tDelUrl }');">삭제</button>
+		                    <button class="input-btn" onclick="showModify('${tModifyUrl}')">수정</button>
+		                    <button class="input-btn" onclick="deleteTrip('${tDelUrl }');">삭제</button>
 		                </c:if>
 		                </div>
 					</c:if>
@@ -66,14 +66,16 @@
 	                </div>
 	            </div>
 	            <div id="summer-note">
-	            	<img alt="상세이미지" src="${trip.tripFilepath }">
-					<pre>${trip.tripContent }</pre>
+	            	<div id="summer-div">
+		            	<img id="summer-img" alt="상세이미지" src="${trip.tripFilepath }">
+	            	</div>
+					<p>${trip.tripContent }</p>
 	            </div>
 	            <div id="button">
-	                <button id="btnbtn" onclick="showTripList();">목록으로</button>
+	                <button class="input-btn" onclick="showTripList();">목록으로</button>
 	            </div>
 	            <div id="reply">
-	                <p>댓글
+	                <p style="font-size: 20px;">댓글
 	                    <span>${tReplyCount }</span>
 	                </p>
 	                <!-- 댓글 등록 -->
@@ -82,7 +84,7 @@
 	                        <input type="hidden" name="tTripNo" value="${trip.tripNo }">
 	                        <textarea rows="4" cols="100" name="tReplyContent"></textarea>
 	                        <div style="display: flex; justify-content: right;">
-	                            <input type="submit" value="등록">
+	                            <input class="input-btn" type="submit" value="등록">
 	                        </div>
 	                    </div>
 	                </form>
@@ -99,7 +101,7 @@
 		                        <input type="hidden" name="tRAdminId" value="${tReply.tRAdminId }">
 <!-- 		                        <button  id="btnbtn">답글</button> -->
 		                        <c:if test="${tReply.tRUserId eq userId }">
-			                        <button  id="btnbtn" onclick="showModifyForm(this);">수정</button>
+			                        <button class="input-btn" onclick="showModifyForm(this);">수정</button>
 			                        
 			                        <c:url var="tRDelUrl" value="/tReply/delete.do">
 										<c:param name="tReplyNo" value="${tReply.tReplyNo }"></c:param>
@@ -108,7 +110,7 @@
 										<!-- 성공하면 디테일로 가기 위해 필요한 boardNo 셋팅 -->
 										<c:param name="tTripNo" value="${tReply.tTripNo }"></c:param>
 									</c:url>
-			                        <button id="btnbtn" onclick= "deleteTReply('${tRDelUrl}');">삭제</button>
+			                        <button class="input-btn" onclick= "deleteTReply('${tRDelUrl}');">삭제</button>
 		                        </c:if>
 		                        
 		                        <c:if test="${adminId ne null }">
@@ -118,7 +120,7 @@
 										<!-- 성공하면 디테일로 가기 위해 필요한 boardNo 셋팅 -->
 										<c:param name="tTripNo" value="${tReply.tTripNo }"></c:param>
 									</c:url>
-			                        <button id="btnbtn" onclick= "deleteAdminTReply('${adminTRDelUrl}');">삭제</button>
+			                        <button class="input-btn" onclick= "deleteAdminTReply('${adminTRDelUrl}');">삭제</button>
 		                        </c:if>
 		                        
 		                        <p id="reply">${tReply.tReplyContent }</p>
@@ -131,7 +133,7 @@
 						<!-- 				<td><input type="submit" value="완료"></td> -->
 						<!-- 			</form> -->
 								<input id="tReplyContent" type="text" size="50" name="tReplyContent" value="${tReply.tReplyContent }">
-								<input type="button" onclick="tReplyModify(this,'${tReply.tReplyNo}', '${tReply.tTripNo }');" value="완료">
+								<input class="input-btn" type="button" onclick="tReplyModify(this,'${tReply.tReplyNo}', '${tReply.tTripNo }');" value="완료">
 		                    </div>
 		                </c:forEach>
 	                </div>

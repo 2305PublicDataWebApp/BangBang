@@ -29,7 +29,7 @@
 	</insert>
 	
 	<update id="updateTrip">
-		UPDATE TRIP_BOARD SET TRIP_TYPE = #{tripType }, TRIP_TITLE = #{tripTitle }, TRIP_ADDR = #{tripAddr }, TRIP_SUMMARY = #{tripSummary }, TRIP_CONTENT = #{tripContent }, TRIP_INFO_ADDR = #{tripInfoAddr }, TRIP_HOMEPAGE = #{tripHomePage }, TRIP_TIME = #{tripTime }, TRIP_PRICE = #{tripPrice } WHERE TRIP_NO = #{tripNo}
+		UPDATE TRIP_BOARD SET TRIP_TYPE = #{tripType }, TRIP_TITLE = #{tripTitle }, TRIP_ADDR = #{tripAddr }, TRIP_SUMMARY = #{tripSummary }, TRIP_CONTENT = #{tripContent }, TRIP_INFO_ADDR = #{tripInfoAddr }, TRIP_HOMEPAGE = #{tripHomePage }, TRIP_TIME = #{tripTime }, TRIP_PRICE = #{tripPrice }, TRIP_FILENAME = #{tripFilename}, TRIP_FILERENAME = #{tripFilerename}, TRIP_FILEPATH = #{tripFilepath}, TRIP_FILELENGTH = #{tripFilelength} WHERE TRIP_NO = #{tripNo}
 	</update>
 	
 	<update id="deleteTrip">
@@ -37,7 +37,7 @@
 	</update>
 	
 	<select id="selectTripList" resultMap="tripResultMap">
-		SELECT * FROM TRIP_BOARD WHERE T_STATUS_YN = 'Y'
+		SELECT * FROM TRIP_BOARD WHERE T_STATUS_YN = 'Y' ORDER BY TRIP_NO DESC
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
