@@ -42,7 +42,9 @@
     			</div>
     			<hr>
     			<div>
-    				<img class="reimg" alt="첨부파일" src="/resources/ruploadFiles/${review.reviewFileRename }" width="900" height="500">
+    			<c:if test="${review.reviewFilename ne null }">
+    				<img class="reimg" src="/resources/ruploadFiles/${review.reviewFileRename }">
+    			</c:if>
     			</div>
     			<div class="revicontent">
     				<span>${review.reviewContent }</span>
