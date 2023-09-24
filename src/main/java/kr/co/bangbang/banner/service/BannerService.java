@@ -15,19 +15,6 @@ public interface BannerService {
 	int insertBanner(Banner banner);
 
 	/**
-	 * 전체 배너 갯수
-	 * @return
-	 */
-	Integer getListCount();
-
-	/**
-	 * 배너 전체 조회
-	 * @param bInfo
-	 * @return
-	 */
-	List<Banner> selectBannerList(BPageInfo bInfo);
-
-	/**
 	 * 배너선택삭제
 	 * @param string
 	 * @return
@@ -35,6 +22,19 @@ public interface BannerService {
 	int delete(String string);
 
 
+
+	/**
+	 * 전체배너갯수
+	 * @return
+	 */
+	Integer getListCount();
+
+	/**
+	 * 배너전체조회
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selectBannerList(BPageInfo bInfo);
 
 	/**
 	 * 트립배너 select

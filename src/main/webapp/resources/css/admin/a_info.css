@@ -20,7 +20,7 @@
 }
 
 button {
-    border: none;
+    --border: none;
     margin: 0;
     padding: 0;
     background: none;
@@ -94,10 +94,10 @@ button {
 /* 마이페이지 메뉴 */
 .menu-mypage {
     position: relative;
-    left: 200px;
-    width : 700px;
+    --left: 200px;
+    --width : 700px;
     height: 450px;
-    padding : 0 20px;
+    --padding : 0 20px;
     float: left;
 }
 
@@ -184,6 +184,8 @@ button {
     /* border : 1px solid black; */
     height: 700px;
     padding : 30px 60px;
+    width: 500px;
+    margin-left: 275px;
 }
 
 .info-detail {
@@ -297,4 +299,15 @@ button {
 }
 .adminbtn {
 	margin-left: 100px
+}
+.uButton {
+	font-family: 'TheJamsil5Bold'; 
+	background-color: #FFFACD; 
+	color: black; 
+	border-color: black;
+    background-color: #FFFACD;
+    width: 90px;
+    height: 40px;
+    float: right;
+    margin-left: 10px;
 }

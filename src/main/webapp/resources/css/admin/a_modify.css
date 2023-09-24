@@ -20,13 +20,13 @@
 }
 
 button {
-    border: none;
-    margin: 0;
-    padding: 0;
-    background: none;
-    color: inherit;
+    --border: none;
+    --margin: 0;
+    --padding: 0;
+    --background: none;
+    --color: inherit;
     font: inherit;
-    cursor: pointer;
+    --cursor: pointer;
 }
 
 /* 로그아웃 */
@@ -182,8 +182,10 @@ button {
 .info {
     position: relative;
     /* border : 1px solid black; */
-    height: 500px;
+    height: 700px;
     padding : 30px 60px;
+    width: 650px;
+    margin-left: 200px;
 }
 
 .info-detail {
@@ -429,4 +431,16 @@ input[class*="btn"]{
     box-shadow: 0 0 0 1px #c63702 inset,
         0 0 0 2px rgba(255,255,255,0.15) inset,
         0 0 0 1px rgba(0,0,0,0.4);
+}
+.modifyBtn {
+	width: 380px;
+    height: 40px;
+    --float: right;
+    --margin-left: 10px;
+    font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    margin-top: 30px;
+    margin-left: 20px;
 }

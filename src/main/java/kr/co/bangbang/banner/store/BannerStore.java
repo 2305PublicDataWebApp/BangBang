@@ -18,21 +18,6 @@ public interface BannerStore {
 	int insertBanner(SqlSession session, Banner banner);
 
 	/**
-	 * 전체 배너 갯수 store
-	 * @param session
-	 * @return
-	 */
-	int selectListCount(SqlSession session);
-
-	/**
-	 * 배너 전체 조회
-	 * @param session
-	 * @param bInfo
-	 * @return
-	 */
-	List<Banner> selectBannerList(SqlSession session, BPageInfo bInfo);
-
-	/**
 	 * 배너삭제
 	 * @param session
 	 * @param string
@@ -40,6 +25,20 @@ public interface BannerStore {
 	 */
 	int delete(SqlSession session, String string);
 
+	/**
+	 * 전체배너갯수
+	 * @param session
+	 * @return
+	 */
+	int selectListCount(SqlSession session);
+
+	/**
+	 * 배너전체조회
+	 * @param session
+	 * @param bInfo
+	 * @return
+	 */
+	List<Banner> selectBannerList(SqlSession session, BPageInfo bInfo);
 
 	/**
 	 * 트립배너

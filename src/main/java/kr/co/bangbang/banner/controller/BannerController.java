@@ -33,6 +33,11 @@ public class BannerController {
 	@Autowired
 	private BannerService bService;
 	
+	/**
+	 * 배너등록 페이지이동
+	 * @param mv
+	 * @return
+	 */
 	@RequestMapping(value = "insert.do", method = RequestMethod.GET)
 	public ModelAndView bannerInsertForm(
 			ModelAndView mv) {
@@ -40,7 +45,15 @@ public class BannerController {
 		return mv;
 	}
 	
-	 
+	 /**
+	  * 배너등록
+	  * @param mv
+	  * @param session
+	  * @param banner
+	  * @param uploadFile
+	  * @param request
+	  * @return
+	  */
 	@RequestMapping(value = "insert.do", method = RequestMethod.POST)
 	public ModelAndView bannerInsert(
 			ModelAndView mv
@@ -69,19 +82,17 @@ public class BannerController {
 				if(result > 0) {
 					mv.setViewName("redirect:/banner/bList.do");
 				} else {
-					mv.addObject("msg", "諛곕꼫�벑濡� �궡�슜�씠 議댁옱�븯吏� �븡�뒿�땲�떎");
-					mv.addObject("error", "諛곕꼫�벑濡앹씠 �븘�슂�빀�땲�떎.");
+					mv.addObject("msg", "관리자 배너등록 실패");
 					mv.addObject("url", "/index.jsp");
 					mv.setViewName("common/error_page");	
 				}	
 			} else {
-				mv.addObject("msg", "濡쒓렇�씤�씠 �솗�씤�릺吏� �븡�뒿�땲�떎");
-				mv.addObject("error", "濡쒓렇�씤�씠 �븘�슂�빀�땲�떎.");
-				mv.addObject("url", "/index.jsp");
+				mv.addObject("msg", "관리자 로그인 후 이용가능");
+				mv.addObject("url", "admin/a_login.do");
 				mv.setViewName("common/error_page");				
 			}
 		} catch (Exception e) {
-			mv.addObject("msg", "諛곕꼫 �벑濡� �떎�뙣");
+			mv.addObject("msg", "서비스 실패");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/banner/insert.do");
 			mv.setViewName("common/error_page");
@@ -91,54 +102,32 @@ public class BannerController {
 
 
 
-	private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception, Exception {
-		
-		Map<String, Object> fileMap = new HashMap<String, Object>();
-		
-		//resources 寃쎈줈 援ы븯湲�
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		
-		//�뙆�씪 ���옣 寃쎈줈 援ы븯湲�
-		String savePath = root + "\\buploadFiles";
-		
-		//�뙆�씪 �씠由� 援ы븯湲�
-		String fileName = uploadFile.getOriginalFilename();
-		
-		//�뙆�씪 �솗�옣�옄 援ы븯湲�
-		String extension 
-		= fileName.substring(fileName.lastIndexOf(".")+1);
-		
-		//�떆媛꾩쑝濡� �뙆�씪 由щ꽕�엫�븯湲�
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String fileRename = sdf.format(new Date(System.currentTimeMillis()));
-		
-		//�뙆�씪 ���옣 �쟾 �뤃�뜑 留뚮뱾湲�
-		File saveFolder = new File(savePath);
-		if(!saveFolder.exists()) {
-			saveFolder.mkdir();
-		}
-		
-		//�뙆�씪���옣
-		File saveFile = new File(savePath + "\\" + fileRename + "." + extension);
-		uploadFile.transferTo(saveFile);
-		long fileLength = uploadFile.getSize();
-		
-		//�뙆�씪�젙蹂� 由ы꽩
-		fileMap.put("fileName", fileName);
-		fileMap.put("fileRename", fileRename);
-		fileMap.put("filePath", "../resources/buploadFiles/" + fileRename + "." + extension);
-		fileMap.put("fileLength", fileLength);
-		
-		return fileMap;
-	}
-	
-		
-	
-	
-	
-	
-		
-	
+	/**
+	 * 배너다중삭제
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+    public String ajaxTest(
+    		HttpServletRequest request) throws Exception {
+
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        int result = 0;
+        for(int i=0; i<size; i++) {
+        	result += bService.delete(ajaxMsg[i]);
+        }
+        return result+"";
+    }
+
+	/**
+	 * 배너리스트
+	 * @param mv
+	 * @param currentPage
+	 * @return
+	 */
 	@RequestMapping(value = "bList.do", method = RequestMethod.GET)
 	public ModelAndView showBannerList(
 			ModelAndView mv
@@ -152,7 +141,61 @@ public class BannerController {
 		return mv;
 	}
 
+	/**
+	 * 파일저장
+	 * @param request
+	 * @param uploadFile
+	 * @return
+	 * @throws Exception
+	 * @throws Exception
+	 */
+	private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception, Exception {
+		
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+		
+		//resources 경로 구하기
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		
+		//파일 저장 경로 구하기
+		String savePath = root + "\\buploadFiles";
+		
+		//파일 이름 구하기
+		String fileName = uploadFile.getOriginalFilename();
+		
+		//파일 확장자 구하기
+		String extension 
+		= fileName.substring(fileName.lastIndexOf(".")+1);
+		
+		//시간으로 파일 리네임하기
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileRename = sdf.format(new Date(System.currentTimeMillis()));
+		
+		//파일 저장 전 폴더 만들기
+		File saveFolder = new File(savePath);
+		if(!saveFolder.exists()) {
+			saveFolder.mkdir();
+		}
+		
+		//파일저장
+		File saveFile = new File(savePath + "\\" + fileRename + "." + extension);
+		uploadFile.transferTo(saveFile);
+		long fileLength = uploadFile.getSize();
+		
+		//파일정보 리턴
+		fileMap.put("fileName", fileName);
+		fileMap.put("fileRename", fileRename);
+		fileMap.put("filePath", "../resources/buploadFiles/" + fileRename + "." + extension);
+		fileMap.put("fileLength", fileLength);
+		
+		return fileMap;
+	}
 
+	/**
+	 * 배너리스트 페이징
+	 * @param currentPage
+	 * @param totalCount
+	 * @return
+	 */
 	private BPageInfo getPageInfo(Integer currentPage, Integer totalCount) {
 		
 		int recordCountPerPage = 10;
@@ -169,37 +212,11 @@ public class BannerController {
 		if(endNavi > naviTotalCount) {
 			endNavi = naviTotalCount;
 		}
-
+	
 		BPageInfo bInfo = new BPageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
 		
 		return bInfo;
-	}	
-
-	
-	
-	
-	@ResponseBody
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-    public String ajaxTest(
-    		HttpServletRequest request) throws Exception {
-
-        String[] ajaxMsg = request.getParameterValues("valueArr");
-        int size = ajaxMsg.length;
-        int result = 0;
-        for(int i=0; i<size; i++) {
-        	result += bService.delete(ajaxMsg[i]);
-        	
-//        	if(result > 0) {
-//        		mv.setViewName("redirect:/banner/bList.do");
-//        	} else {
-//        		mv.addObject("msg", "諛곕꼫�궘�젣 �궡�슜�씠 議댁옱�븯吏� �븡�뒿�땲�떎");
-//				mv.addObject("error", "諛곕꼫�궘�젣媛� �븘�슂�빀�땲�떎.");
-//				mv.addObject("url", "/index.jsp");
-//				mv.setViewName("common/error_page");	
-//        	}
-        }
-        return result+"";
-    }
+	}
 	
 	
 	
