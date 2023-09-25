@@ -245,6 +245,12 @@ public class AdminController {
 		return mv;
 	}
 	
+	/**
+	 * 전체회원조회
+	 * @param mv
+	 * @param currentPage
+	 * @return
+	 */
 	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public ModelAndView showUserList(
 			ModelAndView mv
