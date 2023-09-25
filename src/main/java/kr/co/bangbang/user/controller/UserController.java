@@ -495,23 +495,6 @@ public class UserController {
 //		return mv;
 //	}
 	
-	
-
-
-//	// 댓글 쓴 게시글 검색 페이지 이동
-//	@RequestMapping(value="my_reply_search.do", method=RequestMethod.GET)
-//	public ModelAndView showMyReplySearch(ModelAndView mv) {
-//		mv.setViewName("user/my_reply_search");
-//		return mv;
-//	}
-	
-//	// 댓글 쓴 게시글 페이지 이동
-//	@RequestMapping(value="my_reply.do", method=RequestMethod.GET)
-//	public ModelAndView showMyReply(ModelAndView mv) {
-//		mv.setViewName("user/my_reply");
-//		return mv;
-//	}
-	
 	/**
 	 * 회원 탈퇴
 	 * @param mv
@@ -529,7 +512,7 @@ public class UserController {
 	 * @param currentPage
 	 * @param totalCount
 	 * @return UPageInfo
-	 */
+	 */ 
 	private UPageInfo getPageInfo(Integer currentPage, int totalCount) {
 		UPageInfo pi = null;
 		int recordCountPerPage = 10;
