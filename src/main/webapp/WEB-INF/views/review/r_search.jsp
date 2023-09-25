@@ -51,7 +51,7 @@
 							<c:url var="detailUrl" value="/review/r_detail.do">
 								<c:param name="reviewNo" value="${review.reviewNo }" />
 							</c:url>
-							<td>${review.reviewTitle }</td>
+							<td><a href="/review/r_detail.do?reviewNo=${review.reviewNo }">${review.reviewTitle }</a></td>
 							<td>${review.rUserId }</td>
 							<td>
 								<fmt:formatDate pattern="yyyy-MM-dd" value="${review.reviewDate }"/>
