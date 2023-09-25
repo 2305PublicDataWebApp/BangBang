@@ -302,52 +302,70 @@ button {
 }
 
 .btn-nickname.mini{
-	position : absolute;
+	--position : absolute;
     padding: 4px 12px;  
     font-size: 12px;
+    font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    width: 75px;
+    height: 30px;
+    float: right;
+    margin-left: 10px;
 }
 
 .btn-nickname {
     position: absolute;
     right : 40px;
-    text-decoration: none;
-    color: #435334;
-    padding: 10px 30px;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.21);
-    border-bottom: 4px solid rgba(0,0,0,0.21);
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-    cursor: pointer;
+    --text-decoration: none;
+    --color: #435334;
+    --padding: 10px 30px;
+    --display: inline-block;
+    --border: 1px solid rgba(0,0,0,0.21);
+    --border-bottom: 4px solid rgba(0,0,0,0.21);
+    --border-radius: 4px;
+    --text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    --cursor: pointer;
 }
 
-.btn-nickname.yellow {
+--.btn-nickname.yellow {
     background: linear-gradient(rgba(240,210,100,1) 800%, rgba(229,201,96,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
 }
 
 /* ********************** 이메일 중복확인 버튼**********************  */
 .btn-email.mini{
-    padding: 4px 12px;  
+    --padding: 4px 12px;  
+    --font-size: 12px;
+    padding: 4px 12px;
     font-size: 12px;
+    font-family: 'TheJamsil5Bold';
+    background-color: #FFFACD;
+    color: black;
+    border-color: black;
+    width: 75px;
+    height: 30px;
+    float: right;
+    margin-left: 10px;
 }
 
 /* Gradient buttons */
 .btn-email {
     position: absolute;
     right : 40px;
-    text-decoration: none;
-    color: #435334;
-    padding: 10px 30px;
-    display: inline-block;
-    border: 1px solid rgba(0,0,0,0.21);
-    border-bottom: 4px solid rgba(0,0,0,0.21);
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-    cursor: pointer;
+    --text-decoration: none;
+    --color: #435334;
+    --padding: 10px 30px;
+    --display: inline-block;
+    --border: 1px solid rgba(0,0,0,0.21);
+    --border-bottom: 4px solid rgba(0,0,0,0.21);
+    --border-radius: 4px;
+    --text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    --cursor: pointer;
 }
 
-.btn-email.yellow {
+--.btn-email.yellow {
     background: linear-gradient(rgba(240,210,100,1) 80%, rgba(229,201,96,1) 100%);
 }
 
