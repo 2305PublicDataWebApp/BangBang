@@ -90,7 +90,7 @@
 ### 13. 여행지 추천 게시판리스트
 ![23](https://github.com/2305PublicDataWebApp/BangBang/assets/134674392/6daf4f95-7442-424a-a79b-203167a18d2e)
 ### 14. 여행지 후기 상세글
-![22](https://github.com/2305PublicDataWebApp/BangBang/assets/134674392/b635b2cc-b254-4501-b5c3-3391ea8f7442)
+<img width="1279" alt="스크린샷 2023-10-06 094152" src="https://github.com/2305PublicDataWebApp/BangBang/assets/134674358/ea69a690-d0ef-4379-98e8-b2ca1cccbc1a">
 ### 15. 공지사항 상세조회
 ![21](https://github.com/2305PublicDataWebApp/BangBang/assets/134674392/1f8e4119-355e-4aa9-9242-5c09b12acc76)
 ### 16. 공지등록
